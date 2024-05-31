@@ -3,19 +3,32 @@
   <div class="header">
     <img src="assets/ocean-sonics-logo.svg" alt="Logo" class="logo">
   </div>
+  <!-- Barra de búsqueda -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search" class="search-input">
+    <i class="fa-solid fa-search search-icon"></i>
+  </div>
 
   <nav>
+    <div class="header-element" routerLink="/summary" routerLinkActive="active">
+      <i class="fa-solid fa-chart-line"></i>
+      <a>Inicio</a>
+    </div>
     <div class="header-element" routerLink="/map" routerLinkActive="active">
+      <i class="fa-solid fa-location-dot"></i>
       <a>Mapa</a>
     </div>
-    <div class="header-element" routerLink="/summary" routerLinkActive="active">
-      <a>Resumen</a>
-    </div>
     <div class="header-element" routerLink="/recording" routerLinkActive="active">
+      <i class="fa-solid fa-microphone"></i>
       <a>Grabación</a>
     </div>
     <div class="header-element" routerLink="/configuration" routerLinkActive="active">
+      <i class="fa-solid fa-gear"></i>
       <a>Configuración</a>
+    </div>
+    <div class="header-element" routerLink="/device-info" routerLinkActive="active">
+      <i class="fa-solid fa-circle-info"></i>
+      <a>Device Info</a>
     </div>
   </nav>
 </div>

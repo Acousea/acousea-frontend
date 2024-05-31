@@ -3,11 +3,14 @@
 
 
 :root {
-  --mainColor: #504136;
-  --mainColorLighter: #604E41;
-  --mainTextWhite: #fff;
-  --mainTextBlack: #000;
-  --mainColorLightest: #E3D5CA;
+  --main-color: #279AF1;
+  --unselected-color: #ADADAD;
+  --unselected-dark-color: #7D7D7D;
+  --gray: #545454;
+  --background-white: #FAFAFA;
+  --background-lightgray: #F2F2F2;
+  --graph-color-1: #FFA800;
+  --light-gray: #E7E7E7;
 }
 
 /* Reset CSS */
@@ -38,7 +41,7 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-html{
+html {
   background-color: white;
 }
 
@@ -85,9 +88,15 @@ input, button {
   border: none;
 }
 
-.classType .fc-header-toolbar{
+.classType .fc-header-toolbar {
   display: none;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

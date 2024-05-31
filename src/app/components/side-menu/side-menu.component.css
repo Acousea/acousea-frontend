@@ -2,9 +2,9 @@
 .side-menu {
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0; /* Color de fondo */
-  width: 250px;
+  background-color: var(--background-white);
   padding: 30px;
+  height: 100%;
 }
 
 .header {
@@ -27,39 +27,60 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100%;
   align-items: start;
   gap: 10px;
   padding: 20px 20px;
-  background-color: rgb(0, 125, 166); /* Color de fondo */
+  /*background-color: rgb(0, 125, 166); !* Color de fondo *!*/
   margin-top: 20px; /* Espacio superior */
+  margin-bottom: 10px;
 }
 
 .header-element {
   font-family: 'Roboto', sans-serif; /* Fuente */
-  color: white; /* Color del texto */
-  text-transform: uppercase; /* Transformar el texto a mayúsculas */
-  font-size: 18px; /* Tamaño del texto */
+  font-size: 25px; /* Tamaño del texto */
+  color: var(--unselected-dark-color); /* Color del texto */
   cursor: pointer; /* Cambia el cursor al pasar sobre el elemento */
-  transition: color 0.3s ease, background-color 0.3s ease; /* Transición suave para cambios de color */
   padding: 10px 15px; /* Relleno */
   border-radius: 5px; /* Bordes redondeados */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transición suave para cambios de color */
 }
 
 .header-element a {
   color: inherit; /* Heredar color */
-  text-decoration: none; /* Sin subrayado */
+  margin-left: 10px;
 }
 
 .header-element:hover {
-  background-color: #132E79; /* Color de fondo al pasar el mouse */
-  color: #caf0f8; /* Color del texto al pasar el mouse */
+  color: var(--main-color); /* Color del texto al pasar el mouse */
 }
 
 .header-element.active {
-  background-color: #03045e; /* Color de fondo para el elemento activo */
-  color: #caf0f8; /* Color del texto para el elemento activo */
+  /*Font weight bold*/
+  font-weight: bold;
+  color: var(--main-color); /* Color del texto al pasar el mouse */
 }
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+}
+
+.search-input {
+  width: 200px; /* Ancho deseado */
+  padding: 5px;
+  border: 1px solid var(--light-gray);
+  border-radius: 5px;
+}
+
+.search-icon {
+  margin-left: 5px;
+  color: #555;
+  cursor: pointer;
+}
+
 
 @media (max-width: 768px) {
   /* Estilos para dispositivos móviles */

@@ -7,12 +7,14 @@ import {SummarySiteComponent} from "./sites/summary-site/summary-site.component"
 
 
 export const routes: Routes = [
+  // Default redirect to /summary
+  { path: '', redirectTo: 'summary', pathMatch: 'full' },
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: 'map', component: MapSiteComponent },
       { path: 'summary', component: SummarySiteComponent },
+      { path: 'map', component: MapSiteComponent },
       { path: 'recording', component: RecordingSiteComponent },
       { path: 'configuration', component: ConfigurationSiteComponent },
     ]
