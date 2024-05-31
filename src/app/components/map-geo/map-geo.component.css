@@ -1,0 +1,25 @@
+/* Asegúrate de que el contenedor principal ocupe toda la pantalla */
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Contenedor del mapa que ocupa el espacio restante */
+.map-container {
+  flex-grow: 1;
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.map-frame {
+  flex-grow: 1;
+  border: 2px solid black;
+  display: flex;
+}
+
+#map {
+  flex-grow: 1;
+}

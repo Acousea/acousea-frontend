@@ -6,14 +6,14 @@ import 'leaflet-arrowheads';
 import {CurrentVectorParser, SingleLatLonUVValues} from "./current-vector-parser/current-vector-parser";
 
 @Component({
-  selector: 'app-map-site',
+  selector: 'app-map-geo',
   standalone: true,
   imports: [],
-  templateUrl: './map-site.component.html',
+  templateUrl: './map-geo.component.html',
   styleUrls: [
-    './map-site.component.css'] // Add this line to the file
+    './map-geo.component.css'] // Add this line to the file
 })
-export class MapSiteComponent implements OnInit {
+export class MapGeoComponent implements OnInit {
   map: any;
   private drifterIcon: any;
   private drifterMarker!: Marker<any>;
