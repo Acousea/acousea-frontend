@@ -1,14 +1,9 @@
-import { Component } from '@angular/core';
-import {HeaderComponent} from "../../components/header/header.component";
-import {FooterComponent} from "../../components/footer/footer.component";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-recording-site',
   standalone: true,
-  imports: [
-    HeaderComponent,
-    FooterComponent
-  ],
+  imports: [],
   templateUrl: './recording-site.component.html',
   styleUrl: './recording-site.component.css'
 })

@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-side-menu',
   standalone: true,
   imports: [
     RouterLink,
     RouterOutlet,
     RouterLinkActive
   ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  templateUrl: './side-menu.component.html',
+  styleUrl: './side-menu.component.css'
 })
-export class HeaderComponent {
+export class SideMenuComponent {
 
 }

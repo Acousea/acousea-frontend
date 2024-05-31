@@ -1,14 +1,10 @@
-import { Component } from '@angular/core';
-import {FooterComponent} from "../../components/footer/footer.component";
-import {HeaderComponent} from "../../components/header/header.component";
+import {Component} from '@angular/core';
+
 
 @Component({
   selector: 'app-summary-site',
   standalone: true,
-  imports: [
-    FooterComponent,
-    HeaderComponent
-  ],
+  imports: [],
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'
 })

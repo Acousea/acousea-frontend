@@ -1,14 +1,9 @@
-import { Component } from '@angular/core';
-import {HeaderComponent} from "../../components/header/header.component";
-import {FooterComponent} from "../../components/footer/footer.component";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-configuration-site',
   standalone: true,
-  imports: [
-    HeaderComponent,
-    FooterComponent
-  ],
+  imports: [],
   templateUrl: './configuration-site.component.html',
   styleUrl: './configuration-site.component.css'
 })
