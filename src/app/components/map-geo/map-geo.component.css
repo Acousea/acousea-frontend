@@ -2,7 +2,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  flex: 1;
 }
 
 /* Contenedor del mapa que ocupa el espacio restante */

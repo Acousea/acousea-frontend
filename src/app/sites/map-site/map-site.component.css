@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.map-container {
+  display: flex;
+  flex: 1;
+}
+
+
+

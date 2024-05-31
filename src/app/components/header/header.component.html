@@ -1,24 +1,21 @@
 <!-- Div with top left image -->
-<div class="header">
-  <img src="assets/ocean-sonics-logo.svg" alt="Logo" class="logo">
-  <h1>Sistema de control de derivador oceánico</h1>
+<div class = "side-menu">
+  <div class="header">
+    <img src="assets/ocean-sonics-logo.svg" alt="Logo" class="logo">
+  </div>
+
+  <nav>
+    <div class="header-element" routerLink="/map" routerLinkActive="active">
+      <a>Mapa</a>
+    </div>
+    <div class="header-element" routerLink="/summary" routerLinkActive="active">
+      <a>Resumen</a>
+    </div>
+    <div class="header-element" routerLink="/recording" routerLinkActive="active">
+      <a>Grabación</a>
+    </div>
+    <div class="header-element" routerLink="/configuration" routerLinkActive="active">
+      <a>Configuración</a>
+    </div>
+  </nav>
 </div>
-
-<nav>
-  <div class="header-element" routerLink="/map" routerLinkActive="active">
-    <a>Mapa</a>
-  </div>
-  <div class="header-element" routerLink="/summary" routerLinkActive="active">
-    <a>Resumen</a>
-  </div>
-  <div class="header-element" routerLink="/recording" routerLinkActive="active">
-    <a>Grabación</a>
-  </div>
-  <div class="header-element" routerLink="/configuration" routerLinkActive="active">
-    <a>Configuración</a>
-  </div>
-</nav>
-
-<router-outlet name="map"></router-outlet>
-<router-outlet name="recording"></router-outlet>
-<router-outlet name="configuration"></router-outlet>

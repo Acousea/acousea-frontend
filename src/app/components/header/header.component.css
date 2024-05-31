@@ -1,6 +1,14 @@
 /* Estilo general del header */
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0; /* Color de fondo */
+  width: 250px
+}
+
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -23,9 +31,12 @@
 /* Estilo de la barra de navegación */
 nav {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
-  padding: 10px 20px;
+  height: 100%;
+  align-items: start;
+  gap: 10px;
+  padding: 20px 20px;
   background-color: rgb(0, 125, 166); /* Color de fondo */
   margin-top: 20px; /* Espacio superior */
 }
