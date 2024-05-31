@@ -3,6 +3,7 @@ import {LandingSiteComponent} from "./sites/landing-site/landing-site.component"
 import {ConfigurationSiteComponent} from "./sites/configuration-site/configuration-site.component";
 import {RecordingSiteComponent} from "./sites/recording-site/recording-site.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
+import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
 
 
 export const routes: Routes = [
@@ -11,6 +12,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'map', pathMatch: 'full' },
   // Add route 'map' to the routes array
   { path: 'map', component: MapSiteComponent },
+  {path: 'summary', component: SummarySiteComponent},
   { path: 'recording', component: RecordingSiteComponent},
   { path: 'configuration', component: ConfigurationSiteComponent},
 

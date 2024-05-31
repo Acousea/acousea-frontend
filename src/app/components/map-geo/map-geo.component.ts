@@ -19,6 +19,7 @@ export class MapGeoComponent implements OnInit {
   private drifterMarker!: Marker<any>;
   private currentParser: CurrentVectorParser;
   private latestCurrentData: SingleLatLonUVValues | undefined;
+  private readonly LPGC_Coord = [28.1, -15.4];
 
   constructor(private httpClient: HttpClient) {
     this.drifterIcon = L.icon({
@@ -57,9 +58,7 @@ export class MapGeoComponent implements OnInit {
 
   simulateDrifterMovement(): void {
     // Simula el movimiento del derivador oceánico
-    const drifterLocation: L.LatLngExpression = [
-      0, 0
-    ]; // Coordenadas del derivador oceánico
+    const drifterLocation: L.LatLngExpression = [this.LPGC_Coord[0], this.LPGC_Coord[1]]; // Coordenadas del derivador oceánico
 
     setInterval(async () => {
       // Randomly move the drifter
