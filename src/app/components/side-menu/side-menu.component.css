@@ -30,12 +30,9 @@ nav {
   align-items: start;
   gap: 10px;
   padding: 20px 20px;
-  /*background-color: rgb(0, 125, 166); !* Color de fondo *!*/
   margin-top: 20px; /* Espacio superior */
   margin-bottom: 10px;
 }
-
-
 
 .search-bar {
   display: flex;

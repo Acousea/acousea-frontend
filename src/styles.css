@@ -8,9 +8,11 @@
   --unselected-dark-color: #7D7D7D;
   --gray: #545454;
   --background-white: #FAFAFA;
-  --background-lightgray: #F2F2F2;
+  --background-lightgray: #F5F5F5;
   --graph-color-1: #FFA800;
   --light-gray: #E7E7E7;
+  --main-color-transparent: rgba(39, 154, 241, 0.08);
+  --gray-stroke-light: rgba(217, 217, 217, 1);
 }
 
 /* Reset CSS */

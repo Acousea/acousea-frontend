@@ -14,7 +14,7 @@ export class CurrentVectorParser {
 
   async getOceanCurrents(lat: number, lon: number): Promise<SingleLatLonUVValues> {
     const data = await firstValueFrom(this.httpClient.get(
-      `${environment.apiUrl}/api/v1/surface_fields/latest/${lat}/${lon}/`
+      `${environment.apiUrl}/${environment.apiVersion}/surface-fields/latest/${lat}/${lon}/`
     ));
     return this.parseCurrentVectors(data);
 

@@ -1,4 +1,4 @@
-<div class="device-info-site" *ngIf="deviceInfo">
+<div class="device-info-site" *ngIf="deviceInfo; else errorTemplate">
   <h2>Device Status</h2>
   <ul>
     <li>Unit Status: <span>{{ deviceInfo.deviceStatus.unitStatus }}</span></li>
@@ -42,3 +42,9 @@
     <li>Memory Capacity: <span>{{ deviceInfo.about.memoryCapacity }}</span></li>
   </ul>
 </div>
+
+<ng-template #errorTemplate>
+  <div class="error-message">
+    Unable to retrieve complete device information.
+  </div>
+</ng-template>
