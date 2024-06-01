@@ -10,25 +10,17 @@
   </div>
 
   <nav>
-    <div class="header-element" routerLink="/summary" routerLinkActive="active">
-      <i class="fa-solid fa-chart-line"></i>
-      <a>Inicio</a>
-    </div>
-    <div class="header-element" routerLink="/map" routerLinkActive="active">
-      <i class="fa-solid fa-location-dot"></i>
-      <a>Mapa</a>
-    </div>
-    <div class="header-element" routerLink="/recording" routerLinkActive="active">
-      <i class="fa-solid fa-microphone"></i>
-      <a>Grabación</a>
-    </div>
-    <div class="header-element" routerLink="/configuration" routerLinkActive="active">
-      <i class="fa-solid fa-gear"></i>
-      <a>Configuración</a>
-    </div>
-    <div class="header-element" routerLink="/device-info" routerLinkActive="active">
-      <i class="fa-solid fa-circle-info"></i>
-      <a>Device Info</a>
-    </div>
+    <app-menu-element [link]="'/summary'" [icon] = "'fa-solid fa-chart-line'" [text]="'Inicio'" ></app-menu-element>
+    <app-menu-element [link]="'/map'" [icon] = "'fa-solid fa-location-dot'" [text]="'Mapa'" ></app-menu-element>
+    <app-menu-element
+      [link]="'/recording'" [icon] = "'fa-solid fa-microphone'" [text]="'Grabación'"
+      [menuItems]="recordingMenuItems"
+    >
+    </app-menu-element>
+    <app-menu-element [link]="'/configuration'" [icon] = "'fa-solid fa-gear'" [text]="'Configuración'"
+                      [menuItems]="configurationMenuItems">
+    </app-menu-element>
+    <app-menu-element [link]="'/device-info'" [icon] = "'fa-solid fa-circle-info'" [text]="'Device info'" ></app-menu-element>
+
   </nav>
 </div>

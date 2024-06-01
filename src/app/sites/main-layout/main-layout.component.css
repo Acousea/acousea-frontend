@@ -1,6 +1,5 @@
 .general-site {
   display: flex;
-  gap: 20px;
   background-color: var(--background-white);
   flex-grow: 1;
   width: 100%;

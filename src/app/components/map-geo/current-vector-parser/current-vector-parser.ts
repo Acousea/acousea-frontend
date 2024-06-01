@@ -1,5 +1,6 @@
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
+import {environment} from "../../../app.config";
 
 export interface SingleLatLonUVValues {
   lat: number;
@@ -13,7 +14,7 @@ export class CurrentVectorParser {
 
   async getOceanCurrents(lat: number, lon: number): Promise<SingleLatLonUVValues> {
     const data = await firstValueFrom(this.httpClient.get(
-      `http://localhost:8000/api/v1/surface_fields/latest/${lat}/${lon}/`
+      `${environment.apiUrl}/api/v1/surface_fields/latest/${lat}/${lon}/`
     ));
     return this.parseCurrentVectors(data);
 

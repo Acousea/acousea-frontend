@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Marker} from "leaflet";
 import * as L from 'leaflet';
@@ -13,13 +13,14 @@ import {CurrentVectorParser, SingleLatLonUVValues} from "./current-vector-parser
   styleUrls: [
     './map-geo.component.css'] // Add this line to the file
 })
-export class MapGeoComponent implements OnInit {
+export class MapGeoComponent implements OnInit, OnDestroy {
   map: any;
   private drifterIcon: any;
   private drifterMarker!: Marker<any>;
   private currentParser: CurrentVectorParser;
   private latestCurrentData: SingleLatLonUVValues | undefined;
   private readonly LPGC_Coord = [28.1, -15.4];
+  private intervalId: any; // Variable para almacenar el ID del setInterval
 
   constructor(private httpClient: HttpClient) {
     this.drifterIcon = L.icon({
@@ -34,6 +35,10 @@ export class MapGeoComponent implements OnInit {
     this.initMap();
     this.addOceanDrifter();
     this.simulateDrifterMovement();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId); // Limpiar el intervalo de simulación
   }
 
   initMap(): void {
@@ -60,7 +65,7 @@ export class MapGeoComponent implements OnInit {
     // Simula el movimiento del derivador oceánico
     const drifterLocation: L.LatLngExpression = [this.LPGC_Coord[0], this.LPGC_Coord[1]]; // Coordenadas del derivador oceánico
 
-    setInterval(async () => {
+    this.intervalId = setInterval(async () => {
       // Randomly move the drifter
       drifterLocation[0] += (Math.random() - 0.5);
       drifterLocation[1] += (Math.random() - 0.5);

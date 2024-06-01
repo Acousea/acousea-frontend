@@ -4,6 +4,7 @@ import {ConfigurationSiteComponent} from "./sites/configuration-site/configurati
 import {RecordingSiteComponent} from "./sites/recording-site/recording-site.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
 import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
+import {DeviceInfoSiteComponent} from "./sites/device-info-site/device-info-site.component";
 
 
 export const routes: Routes = [
@@ -17,6 +18,7 @@ export const routes: Routes = [
       { path: 'map', component: MapSiteComponent },
       { path: 'recording', component: RecordingSiteComponent },
       { path: 'configuration', component: ConfigurationSiteComponent },
+      { path: 'device-info', component: DeviceInfoSiteComponent}
     ]
   },
   { path: '**', redirectTo: '' }

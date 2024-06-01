@@ -1,0 +1,27 @@
+.summary-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--unselected-color);
+  background-color: var(--background-white);
+  border-radius: 10px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--light-gray);
+  border-radius: 16%; /* Esto hace el borde redondeado */
+  margin-right: 10px;
+}
+
+.icon-placeholder {
+  font-size: 24px; /* Ajusta el tamaño del icono según sea necesario */
+}
+
+.card-name {
+  font-size: 16px;
+}

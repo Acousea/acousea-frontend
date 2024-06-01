@@ -1,0 +1,44 @@
+<div class="device-info-site" *ngIf="deviceInfo">
+  <h2>Device Status</h2>
+  <ul>
+    <li>Unit Status: <span>{{ deviceInfo.deviceStatus.unitStatus }}</span></li>
+    <li>Battery: <span>{{ deviceInfo.deviceStatus.battery }}</span></li>
+    <li>Unit Time: <span>{{ deviceInfo.deviceStatus.unitTime }}</span></li>
+    <li>Time Sync: <span>{{ deviceInfo.deviceStatus.timeSync }}</span></li>
+    <li>Temperature: <span>{{ deviceInfo.deviceStatus.temperature }}</span></li>
+    <li>Humidity: <span>{{ deviceInfo.deviceStatus.humidity }}</span></li>
+  </ul>
+
+  <h2>Recording Status</h2>
+  <ul>
+    <li>Record WAV: <span>{{ deviceInfo.recordingStatus.recordWAV }}</span></li>
+    <li>Record FFT: <span>{{ deviceInfo.recordingStatus.recordFFT }}</span></li>
+  </ul>
+
+  <h2>Event Status</h2>
+  <ul>
+    <li>{{ deviceInfo.eventStatus.noSignalEventInactive }}</li>
+    <li>{{ deviceInfo.eventStatus.signalPresentEventInactive }}</li>
+    <li>{{ deviceInfo.eventStatus.signalPresentEventActive }}</li>
+    <li>{{ deviceInfo.eventStatus.noSignalEventActive }}</li>
+  </ul>
+
+  <h2>Epoch</h2>
+  <p>
+    <span *ngFor="let epoch of deviceInfo.epochs">{{ epoch }} </span>
+  </p>
+
+  <h2>Tilt</h2>
+  <p>{{ deviceInfo.tilt }}</p>
+
+  <h2>About</h2>
+  <ul>
+    <li>Device Information</li>
+    <li>Firmware Release: <span>{{ deviceInfo.about.firmwareRelease }}</span></li>
+    <li>Hardware Release: <span>{{ deviceInfo.about.hardwareRelease }}</span></li>
+    <li>IP Address: <span>{{ deviceInfo.about.ipAddress }}</span></li>
+    <li>MAC Address: <span>{{ deviceInfo.about.macAddress }}</span></li>
+    <li>Hydrophone Sensitivity: <span>{{ deviceInfo.about.hydrophoneSensitivity }}</span></li>
+    <li>Memory Capacity: <span>{{ deviceInfo.about.memoryCapacity }}</span></li>
+  </ul>
+</div>
