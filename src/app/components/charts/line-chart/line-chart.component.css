@@ -1,0 +1,10 @@
+.chart-container{
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  background-color: var(--background-white);
+  border: 1px solid var(--light-gray);
+}
+
+

@@ -1,5 +1,5 @@
-<div class="manu-element-container" (click)="toggleDropdown()">
-  <div class="menu-element" [routerLink]="link" routerLinkActive="active">
+<div class="manu-element-container" >
+  <div class="menu-element" [routerLink]="link" routerLinkActive="active" (click)="toggleDropdown()">
     <i [ngClass]="icon"></i>
     <a>{{ text }}</a>
     <i *ngIf="subMenuItems.length != 0" class="up-down-arrow fa-solid"
