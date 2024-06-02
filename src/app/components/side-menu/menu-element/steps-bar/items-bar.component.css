@@ -1,0 +1,78 @@
+.progress-container {
+  background-color: var(--background-white);
+  padding: 0 13px;
+}
+
+.progress-steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.step-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.step-container:hover .step-name {
+  color: var(--main-color);
+}
+
+.step-container:hover .step {
+  background-color: var(--main-color);
+  transition: background-color 0.3s;
+}
+
+.step {
+  display: flex;
+  width: 12px;
+  height: 12px;
+  background-color: var(--light-gray);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.step-container.current .step {
+  background-color: var(--main-color);
+}
+
+.step-name {
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px;
+  color: var(--unselected-dark-color);
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el desbordamiento */
+  text-overflow: ellipsis; /* Añade puntos suspensivos al texto desbordado */
+  z-index: 1;
+}
+
+.step-container.current .step-name {
+  color: var(--main-color);
+  background-color: var(--main-color-transparent);
+  border-radius: 5px;
+}
+
+.step-name:hover {
+  color: var(--main-color);
+  transition: color 0.3s;
+}
+
+.base-line {
+  width: 2px;
+  height: calc(100% - 40px); /* Ajusta la altura según sea necesario */
+  background-color: var(--light-gray);
+  position: absolute;
+  left: 5px; /* Ajusta para que pase por el medio de los puntos */
+  top: 20px; /* Ajusta para centrar la línea verticalmente */
+  z-index: 0;
+}

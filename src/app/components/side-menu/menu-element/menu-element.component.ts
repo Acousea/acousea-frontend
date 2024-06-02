@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {BehaviorSubject} from "rxjs";
+import {ItemsBarComponent} from "./steps-bar/items-bar.component";
 
 
 export interface MenuItem {
@@ -19,7 +20,8 @@ export interface MenuItem {
     RouterLinkActive,
     NgClass,
     NgIf,
-    NgForOf
+    NgForOf,
+    ItemsBarComponent
   ],
   templateUrl: './menu-element.component.html',
   styleUrl: './menu-element.component.css'
@@ -28,11 +30,11 @@ export class MenuElementComponent implements OnInit {
   @Input() link: string = '';
   @Input() text: string = '';
   @Input() icon: string = '';
-  @Input() menuItems: MenuItem[] = [];
+  @Input() subMenuItems: MenuItem[] = [];
   dropdownClosed: BehaviorSubject<boolean> | undefined = undefined;
 
   ngOnInit(): void {
-    if (this.menuItems.length > 0) {
+    if (this.subMenuItems.length > 0) {
       this.dropdownClosed = new BehaviorSubject<boolean>(true);
     }
   }

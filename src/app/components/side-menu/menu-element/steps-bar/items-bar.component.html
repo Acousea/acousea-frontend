@@ -1,0 +1,9 @@
+<div class="progress-container">
+  <div class="progress-steps">
+    <div *ngFor="let step of items" [routerLink]="step.link" routerLinkActive="current" class="step-container">
+      <div class="step"></div>
+      <div class="step-name">{{ step.text }}</div>
+    </div>
+    <div class="base-line"></div>
+  </div>
+</div>

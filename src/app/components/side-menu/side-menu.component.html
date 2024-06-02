@@ -14,11 +14,11 @@
     <app-menu-element [link]="'/map'" [icon] = "'fa-solid fa-location-dot'" [text]="'Mapa'" ></app-menu-element>
     <app-menu-element
       [link]="'/recording'" [icon] = "'fa-solid fa-microphone'" [text]="'Grabación'"
-      [menuItems]="recordingMenuItems"
+      [subMenuItems]="recordingMenuItems"
     >
     </app-menu-element>
     <app-menu-element [link]="'/configuration'" [icon] = "'fa-solid fa-gear'" [text]="'Configuración'"
-                      [menuItems]="configurationMenuItems">
+                      [subMenuItems]="configurationMenuItems">
     </app-menu-element>
     <app-menu-element [link]="'/device-info'" [icon] = "'fa-solid fa-circle-info'" [text]="'Device info'" ></app-menu-element>
 

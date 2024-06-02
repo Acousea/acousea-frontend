@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NgClass} from "@angular/common";
-import {BehaviorSubject} from "rxjs";
 import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.component";
 
 @Component({
@@ -19,14 +18,15 @@ import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.compon
 })
 export class SideMenuComponent {
   recordingMenuItems: MenuItem[] = [
-    {link: '/recordings', text: 'Recordings', icon: 'recordings'},
-    {link: '/recordings/record', text: 'Record WAV', icon: 'record'},
-    {link: '/recordings/record', text: 'Record FFT', icon: 'record'}
+    {link: '/recording', text: 'Stream Recording', icon: 'recordings'},
+    {link: '/recording/setup-recording', text: 'Setup Recording', icon: 'record'},
+    {link: '/recording/export', text: 'Export Recordings', icon: 'record'}
   ];
   configurationMenuItems: MenuItem[] = [
     {link: '/configuration', text: 'Configuration', icon: 'configuration'},
     {link: '/configuration/fft', text: 'FFT', icon: 'fft'},
     {link: '/configuration/wav', text: 'WAV', icon: 'wav'}
+
   ];
 
 }

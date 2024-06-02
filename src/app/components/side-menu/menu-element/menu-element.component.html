@@ -2,16 +2,13 @@
   <div class="menu-element" [routerLink]="link" routerLinkActive="active" >
     <i [ngClass]="icon"></i>
     <a>{{ text }}</a>
-    <i *ngIf="menuItems.length != 0" class="up-down-arrow fa-solid"
+    <i *ngIf="subMenuItems.length != 0" class="up-down-arrow fa-solid"
        [ngClass]="{'fa-angle-down': dropdownClosed?.value, 'fa-angle-up': !dropdownClosed?.value}"
        aria-hidden="true"
        (click)="toggleDropdown()"
     ></i>
   </div>
-  <div *ngIf="menuItems.length != 0" class="dropdown-menu-items-container" [class.closed]="dropdownClosed?.value">
-    <div *ngFor="let item of menuItems" class="dropdown-item" [routerLink]="item.link" routerLinkActive="active">
-      <i [ngClass]="item.icon"></i>
-      <a>{{ item.text }}</a>
-    </div>
+  <div *ngIf="subMenuItems.length != 0" class="dropdown-menu-items-container" [class.closed]="dropdownClosed?.value">
+    <app-items-bar [items]="subMenuItems"></app-items-bar>
   </div>
 </div>
