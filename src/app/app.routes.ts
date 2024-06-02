@@ -6,6 +6,7 @@ import {MapSiteComponent} from "./sites/map-site/map-site.component";
 import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
 import {DeviceInfoSiteComponent} from "./sites/device-info-site/device-info-site.component";
 import {ItemsBarComponent} from "./components/side-menu/menu-element/steps-bar/items-bar.component";
+import {LineChartComponent} from "./components/charts/line-chart/line-chart.component";
 
 
 export const routes: Routes = [
@@ -23,6 +24,7 @@ export const routes: Routes = [
     ]
   },
   { path: 'steps-bar', component: ItemsBarComponent},
+  { path: 'chart', component: LineChartComponent},
 
 
 
