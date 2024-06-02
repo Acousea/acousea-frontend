@@ -8,10 +8,17 @@
 .summary-site {
   display: flex;
   flex-direction: column;
-
   background-color: var(--background-lightgray);
-  flex-grow: 1;
   padding: 40px;
+  text-align: center;
+}
+
+.summary-title{
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+
 }
 
 .summary-cards {

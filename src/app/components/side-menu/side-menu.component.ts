@@ -18,15 +18,14 @@ import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.compon
 })
 export class SideMenuComponent {
   recordingMenuItems: MenuItem[] = [
-    {link: '/recording', text: 'Stream Recording', icon: 'recordings'},
-    {link: '/recording/setup-recording', text: 'Setup Recording', icon: 'record'},
-    {link: '/recording/export', text: 'Export Recordings', icon: 'record'}
+    {link: '/recording/stream', text: 'Stream Recording', icon: ''},
+    {link: '/recording/setup', text: 'Setup Recording', icon: ''},
+    {link: '/recording/export', text: 'Export Recordings', icon: ''}
   ];
   configurationMenuItems: MenuItem[] = [
-    {link: '/configuration', text: 'Configuration', icon: 'configuration'},
-    {link: '/configuration/fft', text: 'FFT', icon: 'fft'},
-    {link: '/configuration/wav', text: 'WAV', icon: 'wav'}
-
+    {link: '/configuration/data-collection', text: 'Data Collection', icon: ''},
+    {link: '/configuration/epoch', text: 'Epoch', icon: ''},
+    {link: '/configuration/network', text: 'Network', icon: ''}
   ];
 
 }

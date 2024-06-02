@@ -7,39 +7,49 @@ import {SummarySiteComponent} from "./sites/summary-site/summary-site.component"
 import {DeviceInfoSiteComponent} from "./sites/device-info-site/device-info-site.component";
 import {ItemsBarComponent} from "./components/side-menu/menu-element/steps-bar/items-bar.component";
 import {LineChartComponent} from "./components/charts/line-chart/line-chart.component";
+import {StreamRecordingComponent} from "./sites/recording-site/stream-recording/stream-recording.component";
+import {ExportRecordingComponent} from "./sites/recording-site/export-recording/export-recording.component";
+import {SetupRecordingComponent} from "./sites/recording-site/setup-recording/setup-recording.component";
+import {NetworkConfigComponent} from "./sites/configuration-site/network-config/network-config.component";
+import {
+  DataCollectionConfigComponent
+} from "./sites/configuration-site/data-collection-config/data-collection-config.component";
+import {EpochConfigComponent} from "./sites/configuration-site/epoch-config/epoch-config.component";
 
 
 export const routes: Routes = [
   // Default redirect to /summary
-  { path: '', redirectTo: 'summary', pathMatch: 'full' },
+  {path: '', redirectTo: 'summary', pathMatch: 'full'},
   {
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: 'summary', component: SummarySiteComponent },
-      { path: 'map', component: MapSiteComponent },
-      { path: 'recording', component: RecordingSiteComponent },
-      { path: 'configuration', component: ConfigurationSiteComponent },
-      { path: 'device-info', component: DeviceInfoSiteComponent},
+      {path: 'summary', component: SummarySiteComponent},
+      {path: 'map', component: MapSiteComponent},
+      {path: 'recording', redirectTo: 'recording/stream', pathMatch: 'full'},
+      {
+        path: 'recording', children: [
+          {path: 'stream', component: StreamRecordingComponent},
+          {path: 'setup', component: SetupRecordingComponent},
+          {path: 'export', component: ExportRecordingComponent}
+        ]
+      },
+      {path: 'configuration', component: ConfigurationSiteComponent},
+      {
+        path: 'configuration', children: [
+          {path: 'data-collection', component: DataCollectionConfigComponent},
+          {path: 'epoch', component: EpochConfigComponent},
+          {path: 'network', component: NetworkConfigComponent}
+        ]
+      },
+      {path: 'device-info', component: DeviceInfoSiteComponent},
     ]
   },
-  { path: 'steps-bar', component: ItemsBarComponent},
-  { path: 'chart', component: LineChartComponent},
-
-
+  {path: 'steps-bar', component: ItemsBarComponent},
+  {path: 'chart', component: LineChartComponent},
 
   // Create fake routes from step1 to step 4 that go to /steps-bar
-  { path: 'steps-bar/1', component: ItemsBarComponent},
-  { path: 'steps-bar/2', component: ItemsBarComponent},
-  { path: 'steps-bar/3', component: ItemsBarComponent},
-  { path: 'steps-bar/4', component: ItemsBarComponent},
-  { path: 'step1', redirectTo: 'steps-bar/1' },
-  { path: 'step2', redirectTo: 'steps-bar/2' },
-  { path: 'step3', redirectTo: 'steps-bar/3' },
-  { path: 'step4', redirectTo: 'steps-bar/4' },
-  { path: '**', redirectTo: '' }
-
-
+  {path: '**', redirectTo: ''}
 
 
 ];
