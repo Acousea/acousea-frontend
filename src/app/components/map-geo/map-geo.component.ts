@@ -1,9 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Marker} from "leaflet";
 import * as L from 'leaflet';
 import 'leaflet-arrowheads';
-import {CurrentVectorParser, SingleLatLonUVValues} from "./current-vector-parser/current-vector-parser";
+import {
+  CurrentVectorsService,
+  SingleLatLonUVValues
+} from "../../services/current-vectors-service/current-vectors.service";
+
 
 @Component({
   selector: 'app-map-geo',
@@ -17,18 +20,16 @@ export class MapGeoComponent implements OnInit, OnDestroy {
   map: any;
   private drifterIcon: any;
   private drifterMarker!: Marker<any>;
-  private currentParser: CurrentVectorParser;
   private latestCurrentData: SingleLatLonUVValues | undefined;
   private readonly LPGC_Coord = [28.1, -15.4];
   private intervalId: any; // Variable para almacenar el ID del setInterval
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private currentVectorParser: CurrentVectorsService){
     this.drifterIcon = L.icon({
       iconUrl: '/assets/drifter-icon.png',
       iconSize: [32, 32],
       iconAnchor: [16, 16]
     });
-    this.currentParser = new CurrentVectorParser(httpClient);
   }
 
   ngOnInit(): void {
@@ -74,7 +75,7 @@ export class MapGeoComponent implements OnInit, OnDestroy {
       this.drifterMarker.setLatLng(drifterLocation);
 
       // Obtener y guardar las corrientes oceánicas en latestCurrentData
-      this.latestCurrentData = await this.currentParser.getOceanCurrents(drifterLocation[0], drifterLocation[1]);
+      this.latestCurrentData = await this.currentVectorParser.getOceanCurrents(drifterLocation[0], drifterLocation[1]);
 
       // Dibujar los vectores de corriente
       if (this.latestCurrentData) {

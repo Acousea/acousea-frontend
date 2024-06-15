@@ -54,6 +54,38 @@ nav {
   cursor: pointer;
 }
 
+.footer-button {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  background-color: var(--background-white);
+  font-weight: bold;
+  color: var(--unselected-dark-color);
+  border: 1px solid var(--light-gray);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-button i {
+  margin-right: 5px; /* Añade espacio entre el icono y el texto */
+}
+
+.action-button:hover {
+  color: var(--main-color);
+}
+
+.action-button:active {
+  transform: scale(0.95); /* Escala el botón ligeramente hacia abajo */
+}
+
 @media (max-width: 768px) {
   /* Estilos para dispositivos móviles */
   .header {

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../app.config";
-import {DeviceInfo} from "../device-info-value-objects/device-info-value-objects";
+import {environment} from "../../app.config";
+import {DeviceInfo} from "../../sites/device-info-site/device-info-value-objects/device-info-value-objects";
 import {catchError, Observable, of} from "rxjs";
 import { map } from 'rxjs/operators';
-import {BackendResponse} from "../../../global-interfaces/global-interfaces";
+import {BackendResponse} from "../../global-interfaces/global-interfaces";
 
 @Injectable({
   providedIn: 'root'
 })
-export class DeviceInfoServiceService {
+export class DeviceInfoService {
 
   constructor(private httpClient: HttpClient) {}
 

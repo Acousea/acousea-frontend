@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {NgClass} from "@angular/common";
+import {NgClass, NgStyle} from "@angular/common";
 import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.component";
+import {PingService} from "../../services/ping-service/ping.service";
+import {firstValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-side-menu',
@@ -11,7 +13,8 @@ import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.compon
     RouterOutlet,
     RouterLinkActive,
     NgClass,
-    MenuElementComponent
+    MenuElementComponent,
+    NgStyle
   ],
   templateUrl: './side-menu.component.html',
   styleUrl: './side-menu.component.css'
@@ -27,5 +30,17 @@ export class SideMenuComponent {
     {link: '/configuration/epoch', text: 'Epoch', icon: ''},
     {link: '/configuration/network', text: 'Network', icon: ''}
   ];
+  protected pingBtnColor: string = '';
+
+  constructor(protected pingService: PingService) {
+
+  }
+
+  onPing() {
+    this.pingBtnColor = '';
+    this.pingService.pingServer().then(success => {
+        this.pingBtnColor = success? '#38fd0b' : '#fd0b0b';
+    });
+  }
 
 }

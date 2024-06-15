@@ -1,6 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
-import {environment} from "../../../app.config";
+import {environment} from "../../app.config";
+import {Injectable} from "@angular/core";
 
 export interface SingleLatLonUVValues {
   lat: number;
@@ -9,7 +10,12 @@ export interface SingleLatLonUVValues {
   v: number | undefined;
 }
 
-export class CurrentVectorParser {
+// Convert to service
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CurrentVectorsService {
   constructor(private httpClient: HttpClient) {  }
 
   async getOceanCurrents(lat: number, lon: number): Promise<SingleLatLonUVValues> {

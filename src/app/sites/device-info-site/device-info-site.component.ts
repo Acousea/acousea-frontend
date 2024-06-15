@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {DeviceInfo} from "./device-info-value-objects/device-info-value-objects";
-import {DeviceInfoServiceService} from "./device-info-service/device-info-service.service";
+import {DeviceInfoService} from "../../services/device-info-service/device-info.service";
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
 
 @Component({
@@ -18,7 +18,7 @@ export class DeviceInfoSiteComponent implements OnInit{
   deviceInfo: DeviceInfo | undefined;
   errorMessage: string | undefined;
 
-  constructor(private deviceInfoService: DeviceInfoServiceService) { }
+  constructor(private deviceInfoService: DeviceInfoService) { }
 
   ngOnInit(): void {
     this.deviceInfoService.getDeviceInfo('192.168.10.150').subscribe((response: BackendResponse<DeviceInfo>) => {
