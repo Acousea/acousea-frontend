@@ -1,1 +1,80 @@
-<p>data-collection-config works!</p>
+<div class="top-container">
+  <h1>Data Collection Settings</h1>
+</div>
+<div class="settings-container">
+
+  <div class="settings-box waveform">
+    <h2>Waveform Data</h2>
+    <div class="setting-group">
+      <label for="max-waveform-frequency">Max Waveform Frequency</label>
+      <select id="max-waveform-frequency" [(ngModel)]="selectedWaveformSampleRate">
+        <option *ngFor="let rate of waveformSampleRates" [value]="rate">{{ rate }}</option>
+      </select>
+    </div>
+    <div class="setting-group">
+      <label for="waveform-mode">Mode</label>
+      <select id="waveform-mode" [(ngModel)]="selectedLoggingMode">
+        <option *ngFor="let mode of loggingModes" [value]="mode.value">{{ mode.label }}</option>
+      </select>
+    </div>
+    <div class="setting-group">
+      <label for="waveform-file-length">File Length</label>
+      <input type="number" id="waveform-file-length" [(ngModel)]="fileLength" min="1" max="255">
+    </div>
+    <div class="setting-group">
+      <label for="bit-depth">Bit Depth</label>
+      <select id="bit-depth" [(ngModel)]="selectedBitDepth">
+        <option *ngFor="let bit of bitDepths" [value]="bit">{{ bit }}</option>
+      </select>
+    </div>
+    <div class="setting-group">
+      <label for="endianness">Endianness</label>
+      <select id="endianness" [(ngModel)]="selectedEndianness">
+        <option *ngFor="let endian of endiannessOptions" [value]="endian.value">{{ endian.label }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="settings-box spectrum">
+    <h2>Spectrum (FFT)</h2>
+    <div class="setting-group">
+      <label for="max-spectrum-frequency">Max Spectrum Frequency</label>
+      <select id="max-spectrum-frequency" [(ngModel)]="selectedSpectrumSampleRate">
+        <option *ngFor="let rate of spectrumSampleRates" [value]="rate">{{ rate }}</option>
+      </select>
+    </div>
+    <div class="setting-group">
+      <label for="spectrum-mode">Mode</label>
+      <select id="spectrum-mode" [(ngModel)]="selectedLoggingMode">
+        <option *ngFor="let mode of loggingModes" [value]="mode.value">{{ mode.label }}</option>
+      </select>
+    </div>
+    <div class="setting-group">
+      <label for="max-log-length">Max Log Length</label>
+      <input type="number" id="max-log-length" [(ngModel)]="maxLogLength" min="1" max="255">
+    </div>
+    <div class="setting-group">
+      <label for="spectrum-processing-mode">Mode</label>
+      <select id="spectrum-processing-mode" [(ngModel)]="selectedProcessingMode">
+        <option *ngFor="let mode of processingModes" [value]="mode">{{ mode }}</option>
+      </select>
+    </div>
+    <div class="setting-group">
+      <label for="update-rate">Update Rate</label>
+      <select id="update-rate" [(ngModel)]="selectedUpdateRate">
+        <option *ngFor="let rate of updateRates" [value]="rate">{{ rate }}</option>
+      </select>
+    </div>
+    <div class="setting-group">
+      <label for="accumulations-per-result">Accumulations Per Result</label>
+      <input type="number" id="accumulations-per-result" [(ngModel)]="accumulationsPerResult" min="1">
+    </div>
+  </div>
+</div>
+
+<div class="bottom-container">
+  <div class="checkbox-group">
+    <input type="checkbox" id="enable-delay" [(ngModel)]="enableDelay">
+    <label for="enable-delay">Enable Delay</label>
+  </div>
+  <button class="apply-button" (click)="applySettings()">APPLY</button>
+</div>

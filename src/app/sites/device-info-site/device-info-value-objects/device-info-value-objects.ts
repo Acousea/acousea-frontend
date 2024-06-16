@@ -1,38 +1,28 @@
 export interface DeviceStatus {
-  unitStatus: string;
-  battery: string;
-  unitTime: string;
-  timeSync: string;
+  unit_status: string;
+  battery_status: string;
+  unit_time: string;
+  time_sync: string;
   temperature: string;
   humidity: string;
+  hydrophone_sensitivity: string;
 }
 
 export interface RecordingStatus {
-  recordWAV: string;
-  recordFFT: string;
-}
-
-export interface EventStatus {
-  noSignalEventInactive: string;
-  signalPresentEventInactive: string;
-  signalPresentEventActive: string;
-  noSignalEventActive: string;
+  record_wav: string;
+  wav_sample_rate: string;
+  record_fft: string;
+  fft_sample_rate: string;
 }
 
 export interface About {
-  firmwareRelease: string;
-  hardwareRelease: string;
-  ipAddress: string;
-  macAddress: string;
-  hydrophoneSensitivity: string;
-  memoryCapacity: string;
+  firmware_release: string;
+  hardware_release: string;
+  ip_address: string;
 }
 
 export interface DeviceInfo {
-  deviceStatus: DeviceStatus;
-  recordingStatus: RecordingStatus;
-  eventStatus: EventStatus;
-  epochs: number[];
-  tilt: string;
+  device_status: DeviceStatus;
+  recording_status: RecordingStatus;
   about: About;
 }

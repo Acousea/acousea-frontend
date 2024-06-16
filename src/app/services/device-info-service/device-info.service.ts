@@ -14,7 +14,7 @@ export class DeviceInfoService {
   constructor(private httpClient: HttpClient) {}
 
   getDeviceInfo(ip: string): Observable<BackendResponse<DeviceInfo>> {
-    return this.httpClient.get<BackendResponse<DeviceInfo>>(`${environment.apiUrl}/${environment.apiVersion}/device-info/${ip}`)
+    return this.httpClient.get<BackendResponse<DeviceInfo>>(`${environment.apiUrl}/${environment.apiVersion}/iclisten/info/${ip}`)
       .pipe(
         map((response: BackendResponse<DeviceInfo>) => {
           if (response.success) {

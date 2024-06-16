@@ -1,23 +1,44 @@
 :host {
   display: flex;
   flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .device-info-site {
-  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
   font-family: Arial, sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
 }
 
 h2 {
   font-size: 20px;
-  margin-top: 20px;
-  border-bottom: 1px solid #ccc;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ccc;
   padding-bottom: 5px;
 }
 
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 li {

@@ -3,7 +3,6 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NgClass, NgStyle} from "@angular/common";
 import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.component";
 import {PingService} from "../../services/ping-service/ping.service";
-import {firstValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-side-menu',
