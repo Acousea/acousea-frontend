@@ -4,16 +4,16 @@
   </div>
   <div class="summary-cards">
     <app-summary-card
-      [icon]="'dolphin'" [boldText]="'Negrita'" [lightText]="'Normal'">
+      [icon]="'dolphin'" [boldText]="String(numClicks)" [lightText]="'Clicks'">
     </app-summary-card>
     <app-summary-card
-      [icon]="'foundation-sound'" [boldText]="'Negrita'" [lightText]="'Normal'">
+      [icon]="'foundation-sound'" [boldText]="String(numReports)" [lightText]="'reportes'">
     </app-summary-card>
     <app-summary-card
-      [icon]="'time-clock'" [boldText]="'Negrita'" [lightText]="'Normal'">
+      [icon]="'time-clock'" [boldText]="String(numMinutes)" [lightText]="'minutos'">
     </app-summary-card>
     <app-summary-card
-      [icon]="'audio-file'" [boldText]="'Negrita'" [lightText]="'Normal'">
+      [icon]="'audio-file'" [boldText]="String(numFiles)" [lightText]="'ficheros'">
     </app-summary-card>
   </div>
   <app-line-chart [inputData]="clickData" [timeMode]="'hours'" [scaleType]="'linear'"></app-line-chart>

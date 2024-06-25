@@ -25,7 +25,9 @@ export class PingService {
   }
 
   private async ping(): Promise<boolean> {
-    const response: BackendResponse<PingResult> = await firstValueFrom(this.httpClient.get(`${environment.apiUrl}/${environment.apiVersion}/ping`));
+    const response: BackendResponse<PingResult> = await firstValueFrom(
+      this.httpClient.get(`${environment.apiUrl}/${environment.apiVersion}/ping/localizer`)
+    );
     if (response.success) {
       console.log('Ping: ' + response.success.message);
       return true;

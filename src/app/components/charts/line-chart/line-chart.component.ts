@@ -1,10 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import {
   ChartDataset, ChartOptions, ChartType,
   ScaleType,
 } from 'chart.js';
 import {BaseChartDirective} from "ng2-charts";
 import 'chartjs-adapter-date-fns';
+import {ChartInputData} from "../../../sites/summary-site/summary-site.component";
 
 
 @Component({
@@ -16,26 +17,21 @@ import 'chartjs-adapter-date-fns';
   templateUrl: './line-chart.component.html',
   styleUrl: './line-chart.component.css'
 })
-export class LineChartComponent {
-  @Input() inputData: { dataLabel: string, data: {x: number; y: number }[]} | undefined = undefined
-  @Input() public scaleType: ScaleType = 'logarithmic';
-  @Input() public timeMode = 'day';
+export class LineChartComponent implements OnChanges {
+  @Input() inputData: ChartInputData | undefined = undefined
+  @Input() public scaleType: ScaleType = 'linear';
+  @Input() public timeMode = 'hour';
   @Input() public lineChartType: ChartType = 'line';
   @Input() public xAxisTitle = 'Time';
   @Input() public yAxisTitle = 'Data';
   public lineChartLegend = true;
 
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
   public lineChartData: ChartDataset[] = [
     {
-      data: (this.inputData)? this.inputData.data : [
-        {x: new Date('2023-01-01').getTime(), y: 10},
-        {x: new Date('2023-01-02').getTime(), y: 100},
-        {x: new Date('2023-01-03').getTime(), y: 1000},
-        {x: new Date('2023-01-04').getTime(), y: 10000},
-        {x: new Date('2023-01-05').getTime(), y: 1000},
-        {x: new Date('2023-01-06').getTime(), y: 10000},
-      ],
-      label: (this.inputData)? this.inputData.dataLabel : 'MockData',
+      data: (this.inputData) ? this.inputData.data : [],
+      label: (this.inputData) ? this.inputData.dataLabel : 'No Data',
       fill: true,
       tension: 0.1,
     }
@@ -68,13 +64,43 @@ export class LineChartComponent {
           text: 'Date',
         },
         time: {
-          unit: 'day',
+          unit: 'hour',
           displayFormats: {
-            day: 'd MMM yyy'
+            second: 'd MMM yyyy HH:mm:ss' // Mostramos día, mes, año, horas, minutos y segundos
           }
         }
       }
     }
   };
+
+  constructor() {
+    console.log("Line Chart Data: ", this.lineChartData)
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("Changes chart Data: ", this.inputData?.data);
+    // Update the line chart data with the new input data
+    // FIXME: This works with an pre-initialized data array, but not with the parameter data array
+
+
+    this.lineChartData = [
+      {
+        data: (this.inputData) ? this.inputData.data: [],
+        label: (this.inputData) ? this.inputData.dataLabel : 'No Data',
+        fill: true,
+        tension: 0.1,
+      }
+    ];
+
+    if (this.chart) {
+      this.chart.update();
+    }
+
+    console.log("Line Chart Data: ", this.lineChartData)
+
+
+
+  }
+
 
 }

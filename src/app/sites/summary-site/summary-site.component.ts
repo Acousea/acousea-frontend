@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {SummaryCardComponent} from "../../components/summary-card/summary-card.component";
 import {LineChartComponent} from "../../components/charts/line-chart/line-chart.component";
+import {StatsService} from "../../services/stats-service/stats.service";
 
-interface ChartInputData {
+export interface ChartInputData {
   dataLabel: string;
   data: { x: number; y: number }[];
 }
@@ -18,32 +19,47 @@ interface ChartInputData {
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'
 })
-export class SummarySiteComponent {
+export class SummarySiteComponent implements OnInit {
   clickData: ChartInputData | undefined = undefined;
 
-  clicks: number[] = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-  timestamps: number[] = [
-    new Date(2024, 1, 1, 0, 0, 0).getTime(),
-    new Date(2024, 1, 1, 1, 0, 0).getTime(),
-    new Date(2024, 1, 1, 2, 0, 0).getTime(),
-    new Date(2024, 1, 1, 3, 0, 0).getTime(),
-    new Date(2024, 1, 1, 4, 0, 0).getTime(),
-    new Date(2024, 1, 1, 5, 0, 0).getTime(),
-    new Date(2024, 1, 1, 6, 0, 0).getTime(),
-    new Date(2024, 1, 1, 7, 0, 0).getTime(),
-    new Date(2024, 1, 1, 8, 0, 0).getTime(),
-    new Date(2024, 1, 1, 9, 0, 0).getTime(),
-  ]
+  clicks: number[] = [];
+  timestamps: number[] = []
+  numClicks: number = 0;
+  numFiles: number = 0;
+  numMinutes: number = 0;
+  numReports: number = 0;
 
-
-  constructor() {
+  constructor(private statsService: StatsService) {
     this.clickData = {
       dataLabel: 'Clicks',
       data: this.clicks.map((click, index) => {
         return {x: this.timestamps[index], y: click};
       })
     }
-
-
   }
+
+  ngOnInit(): void {
+    this.statsService.getStats().then(stats => {
+      if (!stats) {
+        this.clickData = undefined;
+        return;
+      }
+      this.clicks = stats.datetime_clicks.map(click => click.num_clicks);
+      this.timestamps = stats.datetime_clicks.map(click =>
+        new Date(click.datetime).getTime() * 1000); // Can just multiply by 1000 to convert to milliseconds
+      this.clickData = {
+        dataLabel: 'Clicks',
+        data: this.clicks.map((click, index) => {
+          return {x: this.timestamps[index], y: click};
+        })
+      }
+
+      this.numClicks = stats.total_num_clicks;
+      this.numFiles = stats.total_number_of_files;
+      this.numMinutes = stats.total_recorded_minutes;
+    });
+  }
+
+
+  protected readonly String = String;
 }

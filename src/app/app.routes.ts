@@ -14,6 +14,7 @@ import {
   DataCollectionConfigComponent
 } from "./sites/configuration-site/data-collection-config/data-collection-config.component";
 import {EpochConfigComponent} from "./sites/configuration-site/epoch-config/epoch-config.component";
+import {TestComponent} from "./sites/test/test.component";
 
 
 export const routes: Routes = [
@@ -46,6 +47,8 @@ export const routes: Routes = [
   },
   {path: 'steps-bar', component: ItemsBarComponent},
   {path: 'chart', component: LineChartComponent},
+
+  {path: 'test', component: TestComponent},
 
   // Create fake routes from step1 to step 4 that go to /steps-bar
   {path: '**', redirectTo: ''}
