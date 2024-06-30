@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
-import {SummaryCardComponent} from "../../components/summary-card/summary-card.component";
+import {SummaryCardComponent} from "../../components/cards/summary-card/summary-card.component";
 import {LineChartComponent} from "../../components/charts/line-chart/line-chart.component";
 import {StatsService} from "../../services/stats-service/stats.service";
+import {
+  RockBlockMessagesTableComponent
+} from "../../components/rock-block-messages-table/rock-block-messages-table.component";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -14,7 +17,8 @@ export interface ChartInputData {
   standalone: true,
   imports: [
     SummaryCardComponent,
-    LineChartComponent
+    LineChartComponent,
+    RockBlockMessagesTableComponent
   ],
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'

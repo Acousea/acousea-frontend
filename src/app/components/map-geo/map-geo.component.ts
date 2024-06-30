@@ -19,23 +19,32 @@ import {
 export class MapGeoComponent implements OnInit, OnDestroy {
   map: any;
   private drifterIcon: any;
+  private localizerIcon: any;
   private drifterMarker!: Marker<any>;
+  private localizerMarker!: Marker<any>;
   private latestCurrentData: SingleLatLonUVValues | undefined;
   private readonly LPGC_Coord = [28.1, -15.4];
   private intervalId: any; // Variable para almacenar el ID del setInterval
 
   constructor(private currentVectorParser: CurrentVectorsService){
     this.drifterIcon = L.icon({
-      iconUrl: '/assets/drifter-icon.png',
+      iconUrl: '/assets/icons/buoy.svg',
       iconSize: [32, 32],
       iconAnchor: [16, 16]
     });
+    this.localizerIcon = L.icon({
+      iconUrl: '/assets/icons/compass.svg',
+      iconSize: [32, 32],
+      iconAnchor: [16, 16]
+    });
+
   }
 
   ngOnInit(): void {
     this.initMap();
     this.addOceanDrifter();
-    this.simulateDrifterMovement();
+    this.addOceanLocalizer();
+    // this.simulateDrifterMovement();
   }
 
   ngOnDestroy(): void {
@@ -60,6 +69,14 @@ export class MapGeoComponent implements OnInit, OnDestroy {
       0, 0
     ]; // Coordenadas del derivador oceánico
     this.drifterMarker = L.marker(drifterLocation, {icon: this.drifterIcon}).addTo(this.map);
+  }
+
+  addOceanLocalizer(): void {
+    // Aquí puedes agregar un marcador para representar la ubicación del localizador oceánico
+    const localizerLocation: L.LatLngExpression = [
+      0, 0
+    ]; // Coordenadas del localizador oceánico
+    this.localizerMarker = L.marker(localizerLocation, {icon: this.localizerIcon}).addTo(this.map);
   }
 
   simulateDrifterMovement(): void {

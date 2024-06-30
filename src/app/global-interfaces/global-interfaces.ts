@@ -8,3 +8,5 @@ export interface BackendResponse<T> {
   error?: BackendError;
   success?: T;
 }
+
+

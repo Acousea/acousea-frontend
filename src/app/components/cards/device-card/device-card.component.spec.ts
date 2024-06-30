@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecordingSiteComponent } from './recording-site.component';
+import { DeviceCardComponent } from './device-card.component';
 
-describe('RecordingSiteComponent', () => {
-  let component: RecordingSiteComponent;
-  let fixture: ComponentFixture<RecordingSiteComponent>;
+describe('DeviceCardComponent', () => {
+  let component: DeviceCardComponent;
+  let fixture: ComponentFixture<DeviceCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RecordingSiteComponent]
+      imports: [DeviceCardComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RecordingSiteComponent);
+    fixture = TestBed.createComponent(DeviceCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

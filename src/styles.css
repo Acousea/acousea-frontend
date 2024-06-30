@@ -4,8 +4,14 @@
 
 :root {
   --main-color: #279AF1;
+  --main-color-light: rgba(0, 138, 255, 0.53);
   --unselected-color: #ADADAD;
   --unselected-dark-color: #7D7D7D;
+  --apply-button-color: #2E2E2E;
+  --activated-color: #18D737;
+  --discard-button-color: #F85151;
+  --text-black: #000000;
+  --text-white: #FFFFFF;
   --gray: #545454;
   --background-white: #FAFAFA;
   --background-lightgray: #F5F5F5;

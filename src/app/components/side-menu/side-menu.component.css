@@ -18,7 +18,7 @@
 }
 
 .header img.logo {
-  height: 50px; /* Altura del logo */
+  height: 70px; /* Altura del logo */
   cursor: pointer; /* Cambia el cursor al pasar sobre el logo */
 }
 

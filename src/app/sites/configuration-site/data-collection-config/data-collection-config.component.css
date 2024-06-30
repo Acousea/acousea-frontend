@@ -60,7 +60,7 @@ h1 {
   margin-top: 0;
 }
 .waveform {
-  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  background: var(--main-color-light);
 }
 .spectrum {
   background: linear-gradient(to right, #a18cd1, #fbc2eb);

@@ -1,17 +1,8 @@
-<div class="operation-mode-selector">
-  <label for="modeType">Select Type:</label>
-  <select id="modeType" [(ngModel)]="device">
-    <option value="LOCALIZER">LOCALIZER</option>
-    <option value="DRIFTER">DRIFTER</option>
-  </select>
-
-  <label for="operationMode">Select Mode:</label>
-  <select id="operationMode" [(ngModel)]="selectedMode">
-    <option *ngFor="let mode of operationModes | keyvalue" [value]="mode.value">
-      {{ mode.key }}
-    </option>
-  </select>
-
-  <button (click)="changeMode()">Change Mode</button>
+<div class="device-cards">
+  <app-device-card
+    [icon]="'compass'" [boldText]="'Localizer'" (openFunction)="deviceConfigPopUpService.showLocalizerPopup()">
+  </app-device-card>
+  <app-device-card
+    [icon]="'buoy'" [boldText]="'Drifter'" (openFunction)="deviceConfigPopUpService.showDrifterPopup()">
+  </app-device-card>
 </div>
-

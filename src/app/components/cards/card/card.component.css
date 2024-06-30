@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+  background-color: var(--background-white);
+  border-radius: 10px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  padding: 10px;
+  background-color: var(--main-color-transparent);
+  border-radius: 16%; /* Esto hace el borde redondeado */
+  margin-right: 10px;
+}
+
+.icon-placeholder {
+  font-size: 24px; /* Ajusta el tamaño del icono según sea necesario */
+}
+
+.card-name {
+  font-size: 16px;
+}
+
+.open-button{
+  margin-left: 5px;
+  padding: 10px;
+}

@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {MainLayoutComponent} from "./sites/main-layout/main-layout.component";
-import {RecordingSiteComponent} from "./sites/recording-site/recording-site.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
 import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
 import {DeviceInfoSiteComponent} from "./sites/device-info-site/device-info-site.component";
@@ -15,6 +14,10 @@ import {
 } from "./sites/configuration-site/data-collection-config/data-collection-config.component";
 import {EpochConfigComponent} from "./sites/configuration-site/epoch-config/epoch-config.component";
 import {TestComponent} from "./sites/test/test.component";
+import {DeviceConfigPopupComponent} from "./components/pop-ups/device-config-popup/device-config-popup.component";
+import {
+  RockBlockMessagesTableComponent
+} from "./components/rock-block-messages-table/rock-block-messages-table.component";
 
 
 export const routes: Routes = [
@@ -48,7 +51,7 @@ export const routes: Routes = [
   {path: 'steps-bar', component: ItemsBarComponent},
   {path: 'chart', component: LineChartComponent},
 
-  {path: 'test', component: TestComponent},
+  {path: 'test', component: RockBlockMessagesTableComponent},
 
   // Create fake routes from step1 to step 4 that go to /steps-bar
   {path: '**', redirectTo: ''}

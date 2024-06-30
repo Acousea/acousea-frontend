@@ -1,0 +1,50 @@
+<div *ngIf="display"><!-- localizer-config-popup.component.html -->
+  <div class="popup-backdrop" (click)="discardChanges() "></div> <!-- Añadir este contenedor para el fondo -->
+  <div class="popup-container">
+    <div class="popup-header">
+      <img [src]="icon" alt="Icon" class="header-icon">
+      <h2>{{ deviceName }}</h2>
+    </div>
+
+    <div class="section">
+      <h3>Operation Mode</h3>
+      <div class="operation-modes">
+        <button *ngFor="let mode of operationModes"
+                [ngClass]="{ 'selected': selectedMode === mode }"
+                (click)="selectedMode = mode">
+          {{ mode.name }}
+        </button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="direct-communication-header">
+        <h3>Direct Communication</h3>
+        <label class="toggle-switch">
+          <input type="checkbox" [(ngModel)]="directCommunicationEnabled">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="info-box" *ngIf="directCommunicationEnabled">
+        <p>In order to enable “Direct Communication”, the Localizer device must be USB connected to this device. Select
+          the USB port to which the Localizer is connected.</p>
+        <div class="usb-selection">
+          <select [(ngModel)]="selectedUsbPort">
+            <option *ngFor="let port of usbPorts" [value]="port">{{ port.productName }}</option>
+          </select>
+          <button (click)="requestUsbDevice()">
+            <img src="/src/assets/icons/connect_device.svg" alt="USB Icon">
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-footer">
+      <button class="discard-button" (click)="discardChanges()">Discard</button>
+      <button class="apply-button" (click)="applyChanges()">Apply</button>
+    </div>
+  </div>
+
+</div>
+

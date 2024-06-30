@@ -3,54 +3,32 @@ import {FormsModule} from "@angular/forms";
 import {KeyValuePipe, NgForOf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../app.config";
+import {SummaryCardComponent} from "../cards/summary-card/summary-card.component";
+import {DeviceCardComponent} from "../cards/device-card/device-card.component";
+import {AlertPopUpService} from "../../services/pop-ups-services/alert-popup/alert-pop-up.service";
+import {
+  DeviceConfigPopUpService
+} from "../../services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
 
-enum OPERATION_MODE {
-  IGNITION_MODE = 0,
-  LAUNCHING_MODE = 1,
-  WORKING_MODE = 2,
-  RECOVERY_MODE = 3
-}
+
 
 @Component({
-  selector: 'app-map-op-mode-selector',
+  selector: 'app-map-op-mode-selectors',
   standalone: true,
   imports: [
     FormsModule,
     KeyValuePipe,
-    NgForOf
+    NgForOf,
+    SummaryCardComponent,
+    DeviceCardComponent
   ],
   templateUrl: './map-op-mode-selector.component.html',
   styleUrl: './map-op-mode-selector.component.css'
 })
-export class MapOpModeSelectorComponent implements OnInit {
-  operationModes = OPERATION_MODE;
-  currentMode: OPERATION_MODE | undefined;
-  selectedMode: OPERATION_MODE | undefined;
-  device: 'Localizer' | 'Drifter' = 'Localizer'; // Default to LOCALIZER
+export class MapOpModeSelectorComponent  {
 
-  constructor(private http: HttpClient) {
-
-  }
-
-  ngOnInit(): void {
-    this.getCurrentMode();
-  }
-
-  getCurrentMode(): void {
-    this.http.get<{ mode: OPERATION_MODE }>(
-      `${environment.apiUrl}/${environment.apiVersion}/operation-mode/${this.device.toLowerCase()}`,
-    ).subscribe(response => {
-      this.currentMode = response.mode;
-      this.selectedMode = this.currentMode;
-    });
-  }
-
-  changeMode(): void {
-    this.http.put(
-      `${environment.apiUrl}/${environment.apiVersion}/operation-mode/${this.device.toLowerCase()}/${this.selectedMode}`, {})
-      .subscribe(response => {
-        this.currentMode = this.selectedMode;
-      });
-  }
-
+  constructor(private http: HttpClient,
+              protected alertPopUpService: AlertPopUpService,
+              protected deviceConfigPopUpService: DeviceConfigPopUpService
+              ) {}
 }

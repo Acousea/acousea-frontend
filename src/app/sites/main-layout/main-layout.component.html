@@ -5,8 +5,11 @@
 </head>
 <body>
 <div class="general-site">
+  <app-alert-popup></app-alert-popup>
   <app-side-menu></app-side-menu>
-  <router-outlet></router-outlet>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 </body>
 <!--<app-footer></app-footer>-->
