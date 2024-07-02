@@ -6,7 +6,7 @@
         <li>Unit Status: <span>{{ deviceInfo.device_status.unit_status }}</span></li>
         <li>Battery: <span>{{ deviceInfo.device_status.battery_status }}</span></li>
         <li>Unit Time: <span>{{ deviceInfo.device_status.unit_time }}</span></li>
-        <li>Time Sync: <span>{{ deviceInfo.device_status.time_sync }}</span></li>
+        <li>System Time Status: <span>{{ deviceInfo.device_status.system_time_status }}</span></li>
         <li>Temperature: <span>{{ deviceInfo.device_status.temperature }}</span></li>
         <li>Humidity: <span>{{ deviceInfo.device_status.humidity }}</span></li>
         <li>Hydrophone Sensitivity: <span>{{ deviceInfo.device_status.hydrophone_sensitivity }}</span></li>
@@ -38,5 +38,6 @@
 <ng-template #errorTemplate>
   <div class="error-message">
     Unable to retrieve complete device information.
+    <p> {{errorMessage}}</p>
   </div>
 </ng-template>

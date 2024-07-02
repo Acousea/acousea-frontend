@@ -8,12 +8,9 @@
   border-radius: 5px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  z-index: 1000;
+  z-index: 1003;
   max-width: 30%;
   word-wrap: break-word; /* Hace que el texto se ajuste a nuevas líneas automáticamente */
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Definir la transición */
 }
 
 .popup-header{
@@ -58,10 +55,8 @@ button {
 /* Animaciones para mostrar y ocultar */
 .popup-container.show {
   opacity: 1;
-  transform: scale(1);
 }
 
 .popup-container.hide {
   opacity: 0;
-  transform: scale(0.9);
 }

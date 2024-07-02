@@ -19,6 +19,11 @@
   --light-gray: #F2F2F2;
   --main-color-transparent: rgba(39, 154, 241, 0.08);
   --gray-stroke-light: rgba(217, 217, 217, 1);
+
+  --notification-info: #008cef;
+  --notification-success: var(--activated-color);
+  --notification-warning: #ff7d00;
+  --notification-error: var(--discard-button-color);
 }
 
 /* Reset CSS */

@@ -93,15 +93,10 @@ export class DeviceConfigPopUpService {
   }
 
   async updateConfiguration(device: string, configuration: DeviceConfiguration) {
-    const url: string = `${environment.apiUrl}/${environment.apiVersion}/operation-mode/${device.toLowerCase()}/${configuration.selectedMode}`;
+    const url: string = `${environment.apiUrl}/${environment.apiVersion}/operation-mode/${device.toLowerCase()}/${configuration.selectedMode.value}`;
     let backendResponse = await firstValueFrom(this.http.put<BackendResponse<any>>(url, {}));
     if (!backendResponse.success) {
       console.error('Error updating configuration: ', backendResponse.error?.error_message);
-      return;
-    }
-    const updatedMode = OPERATION_MODES.find(mode => mode.value === backendResponse.success.op_mode);
-    if (!updatedMode) {
-      console.error('Invalid operation mode received from server: ', backendResponse.success.op_mode);
       return;
     }
 
@@ -122,7 +117,7 @@ export class DeviceConfigPopUpService {
 
     // Create new DeviceConfiguration object with updated mode
     const updatedConfig: DeviceConfiguration = {
-      selectedMode: updatedMode,
+      selectedMode: this.deviceConfigSource.value.selectedMode,
       directCommunicationEnabled: !!(updatedDirectCommunicationSerial),
       directCommunicationSerialNumber: updatedDirectCommunicationSerial
     };

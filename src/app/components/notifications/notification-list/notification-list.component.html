@@ -1,0 +1,10 @@
+<div class="notification-list">
+  <div *ngFor="let notification of notifications"
+       [@fadeInOut]
+       cdkDrag
+       [cdkDragLockAxis]="'x'"
+       (cdkDragMoved)="onDragMove($event, notification)"
+       (cdkDragEnded)="onDragEnd($event, notification)">
+    <app-notification [notification]="notification"></app-notification>
+  </div>
+</div>

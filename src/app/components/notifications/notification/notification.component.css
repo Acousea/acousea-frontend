@@ -1,0 +1,37 @@
+.notification {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: white;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.notification.info {
+  background-color: var(--notification-info);
+}
+
+.notification.success {
+  background-color: var(--notification-success);
+}
+
+.notification.warning {
+  background-color: var(--notification-warning);
+}
+
+.notification.error {
+  background-color: var(--notification-error);
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.date-hour{
+  font-size: small;
+  margin-left: auto;
+}
+
+

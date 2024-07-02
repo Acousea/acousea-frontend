@@ -18,6 +18,7 @@ import {DeviceConfigPopupComponent} from "./components/pop-ups/device-config-pop
 import {
   RockBlockMessagesTableComponent
 } from "./components/rock-block-messages-table/rock-block-messages-table.component";
+import {NotificationListComponent} from "./components/notifications/notification-list/notification-list.component";
 
 
 export const routes: Routes = [
@@ -52,6 +53,7 @@ export const routes: Routes = [
   {path: 'chart', component: LineChartComponent},
 
   {path: 'test', component: RockBlockMessagesTableComponent},
+  {path: 'test2', component: NotificationListComponent},
 
   // Create fake routes from step1 to step 4 that go to /steps-bar
   {path: '**', redirectTo: ''}

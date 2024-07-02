@@ -6,6 +6,7 @@ import {StatsService} from "../../services/stats-service/stats.service";
 import {
   RockBlockMessagesTableComponent
 } from "../../components/rock-block-messages-table/rock-block-messages-table.component";
+import {NotificationListComponent} from "../../components/notifications/notification-list/notification-list.component";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -18,7 +19,8 @@ export interface ChartInputData {
   imports: [
     SummaryCardComponent,
     LineChartComponent,
-    RockBlockMessagesTableComponent
+    RockBlockMessagesTableComponent,
+    NotificationListComponent
   ],
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'

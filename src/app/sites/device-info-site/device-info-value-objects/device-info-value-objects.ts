@@ -2,7 +2,7 @@ export interface DeviceStatus {
   unit_status: string;
   battery_status: string;
   unit_time: string;
-  time_sync: string;
+  system_time_status: string;
   temperature: string;
   humidity: string;
   hydrophone_sensitivity: string;
