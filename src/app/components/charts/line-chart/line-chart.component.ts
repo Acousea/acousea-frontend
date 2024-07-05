@@ -73,16 +73,7 @@ export class LineChartComponent implements OnChanges {
     }
   };
 
-  constructor() {
-    console.log("Line Chart Data: ", this.lineChartData)
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("Changes chart Data: ", this.inputData?.data);
-    // Update the line chart data with the new input data
-    // FIXME: This works with an pre-initialized data array, but not with the parameter data array
-
-
     this.lineChartData = [
       {
         data: (this.inputData) ? this.inputData.data: [],
@@ -95,12 +86,6 @@ export class LineChartComponent implements OnChanges {
     if (this.chart) {
       this.chart.update();
     }
-
     console.log("Line Chart Data: ", this.lineChartData)
-
-
-
   }
-
-
 }

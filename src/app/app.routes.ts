@@ -13,12 +13,11 @@ import {
   DataCollectionConfigComponent
 } from "./sites/configuration-site/data-collection-config/data-collection-config.component";
 import {EpochConfigComponent} from "./sites/configuration-site/epoch-config/epoch-config.component";
-import {TestComponent} from "./sites/test/test.component";
-import {DeviceConfigPopupComponent} from "./components/pop-ups/device-config-popup/device-config-popup.component";
 import {
   RockBlockMessagesTableComponent
 } from "./components/rock-block-messages-table/rock-block-messages-table.component";
 import {NotificationListComponent} from "./components/notifications/notification-list/notification-list.component";
+import {HistorySiteComponent} from "./sites/history-site/history-site.component";
 
 
 export const routes: Routes = [
@@ -46,6 +45,7 @@ export const routes: Routes = [
           {path: 'network', component: NetworkConfigComponent}
         ]
       },
+      {path: 'history', component: HistorySiteComponent},
       {path: 'device-info', component: DeviceInfoSiteComponent},
     ]
   },

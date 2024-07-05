@@ -1,0 +1,18 @@
+<!-- message-details-popup.component.html -->
+<div *ngIf="display" class="popup-container">
+  <div class="popup-header">
+    <p>Message Details</p>
+    <button (click)="closePopup()">X</button>
+  </div>
+  <div class="popup-content" *ngIf="message">
+    <div><strong>Device:</strong> {{ message.device  }}</div>
+    <div><strong>IMEI:</strong> {{ message.imei }}</div>
+    <div><strong>Serial:</strong> {{ message.serial }}</div>
+    <div><strong>MOMSN:</strong> {{ message.momsn }}</div>
+    <div><strong>Transmit Time:</strong> {{ message.transmit_time }}</div>
+    <div><strong>Latitude:</strong> {{ message.iridium_latitude | number:'1.2-2' }}</div>
+    <div><strong>Longitude:</strong> {{ message.iridium_longitude | number:'1.2-2' }}</div>
+    <div><strong>CEP:</strong> {{ message.iridium_cep }}</div>
+    <div><strong>Data:</strong> {{ message.data }}</div>
+  </div>
+</div>

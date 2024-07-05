@@ -20,7 +20,6 @@ export class AlertPopupComponent {
 
   constructor(private popupService: AlertPopUpService) {
     this.popupService.currentPopupState.subscribe(state => {
-      console.log("Popup state", state);
       this.message = state.message;
       this.type = state.type;
       this.display = state.display;

@@ -3,6 +3,7 @@ import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {environment} from "../../../app.config";
 import {HttpClient} from "@angular/common/http";
 import {BackendResponse} from "../../../global-interfaces/global-interfaces";
+import {PopUpSettings, USBDevice} from '../../../components/pop-ups/device-config-popup/device-config-popup.component';
 
 interface OperationMode {
   name: string;
@@ -37,48 +38,79 @@ export interface DeviceConfiguration {
   providedIn: 'root'
 })
 export class DeviceConfigPopUpService {
+  // private displaySource = new BehaviorSubject<boolean>(false); // Show or hide popup
+  // private titleSource = new BehaviorSubject<string>(''); // Localizer or Drifter
+  // private iconSource = new BehaviorSubject<string>(''); // compass.svg or buoy.svg
 
-  private displaySource = new BehaviorSubject<boolean>(false);
-  private titleSource = new BehaviorSubject<string>('');
-  private iconSource = new BehaviorSubject<string>('');
+  private popUpSettingsSource : BehaviorSubject<PopUpSettings> = new BehaviorSubject<PopUpSettings>({
+    display: false,
+    deviceName: '',
+    icon: '',
+  });
+
   private deviceConfigSource = new BehaviorSubject<DeviceConfiguration>({
     selectedMode: OPERATION_MODES[1],
     directCommunicationEnabled: false,
     directCommunicationSerialNumber: ''
   });
 
-  display$ = this.displaySource.asObservable();
-  title$ = this.titleSource.asObservable();
-  icon$ = this.iconSource.asObservable();
+  popUpSettings$ = this.popUpSettingsSource.asObservable();
   deviceConfig$ = this.deviceConfigSource.asObservable();
 
   constructor(private http: HttpClient) {
+  }
 
+  async getUSBDevices() {
+    try {
+      const response = await firstValueFrom(this.http.get<BackendResponse<{ devices: USBDevice[] }>>(
+        `${environment.apiUrl}/${environment.apiVersion}/communication-system/available-usb-devices`));
+      if (!response.success) {
+        console.error('DeviceConfigPopUpService::getUSBDevices(): ', response.error?.error_message);
+        return [];
+      }
+      return response.success.devices;
+    } catch (error) {
+      console.error('Error getting USB devices:', error);
+      return [];
+    }
   }
 
   async showLocalizerPopup() {
-    await this.getCurrentMode('localizer').then((operationMode) => {
+    await this.getCurrentDeviceOpMode('localizer').then((operationMode) => {
       const currentConfig = this.deviceConfigSource.value;
       this.deviceConfigSource.next({...currentConfig, selectedMode: operationMode});
     });
-    this.titleSource.next('Localizer');
-    this.iconSource.next('compass.svg');
-    this.displaySource.next(true);
+    await this.getDirectCommunicationStatus().then((enabled) => {
+      const currentConfig = this.deviceConfigSource.value;
+      this.deviceConfigSource.next({...currentConfig, directCommunicationEnabled: enabled});
+    });
+    this.popUpSettingsSource.next({
+      display: true,
+      deviceName: 'Localizer',
+      icon: 'compass.svg'
+    });
   }
 
   async showDrifterPopup() {
-    await this.getCurrentMode('drifter').then((operationMode) => {
+    await this.getCurrentDeviceOpMode('drifter').then((operationMode) => {
       const currentConfig = this.deviceConfigSource.value;
       this.deviceConfigSource.next({...currentConfig, selectedMode: operationMode});
     });
-    this.titleSource.next('Drifter');
-    this.iconSource.next('buoy.svg');
-    this.displaySource.next(true);
+    await this.getDirectCommunicationStatus().then((enabled) => {
+      const currentConfig = this.deviceConfigSource.value;
+      this.deviceConfigSource.next({...currentConfig, directCommunicationEnabled: enabled});
+    });
+
+    this.popUpSettingsSource.next({
+      display: true,
+      deviceName: 'Drifter',
+      icon: 'buoy.svg'
+    });
   }
 
-  async getCurrentMode(device: string) {
+  async getCurrentDeviceOpMode(device: string) {
     let response = await firstValueFrom(this.http.get<BackendResponse<any>>(
-      `${environment.apiUrl}/${environment.apiVersion}/operation-mode/${device.toLowerCase()}`));
+      `${environment.apiUrl}/${environment.apiVersion}/communication-system/${device.toLowerCase()}/operation-mode`));
     if (response.success) {
       let operationMode = OPERATION_MODES.find(mode => mode.value === response.success.mode);
       if (!operationMode) {
@@ -92,19 +124,25 @@ export class DeviceConfigPopUpService {
     }
   }
 
-  async updateConfiguration(device: string, configuration: DeviceConfiguration) {
-    const url: string = `${environment.apiUrl}/${environment.apiVersion}/operation-mode/${device.toLowerCase()}/${configuration.selectedMode.value}`;
-    let backendResponse = await firstValueFrom(this.http.put<BackendResponse<any>>(url, {}));
-    if (!backendResponse.success) {
-      console.error('Error updating configuration: ', backendResponse.error?.error_message);
-      return;
+  async getDirectCommunicationStatus(){
+    let response = await firstValueFrom(this.http.get<BackendResponse<{ active: boolean }>>(
+      `${environment.apiUrl}/${environment.apiVersion}/communication-system/direct-communication/status`));
+    if (response.success) {
+      console.log("Direct communication status: ", response.success);
+      return response.success.active;
+    } else {
+      console.error('Error getting direct communication status: ', response.error?.error_message);
+      return false;
     }
+  }
 
+  async updateConfiguration(device: string, configuration: DeviceConfiguration) {
+    let backendResponse: BackendResponse<any>;
     if (configuration.directCommunicationEnabled) {
-      const url = `${environment.apiUrl}/${environment.apiVersion}/direct-communication/activate/${configuration.directCommunicationSerialNumber}`;
+      const url = `${environment.apiUrl}/${environment.apiVersion}/communication-system/direct-communication/activate/${configuration.directCommunicationSerialNumber}`;
       backendResponse = await firstValueFrom(this.http.put<BackendResponse<any>>(url, {}));
     } else {
-      const url = `${environment.apiUrl}/${environment.apiVersion}/direct-communication/deactivate`;
+      const url = `${environment.apiUrl}/${environment.apiVersion}/communication-system/direct-communication/deactivate`;
       backendResponse = await firstValueFrom(this.http.put<BackendResponse<any>>(url, {}));
     }
 
@@ -113,19 +151,28 @@ export class DeviceConfigPopUpService {
       return;
     }
 
-    const updatedDirectCommunicationSerial = backendResponse.success.serial_number;
-
     // Create new DeviceConfiguration object with updated mode
     const updatedConfig: DeviceConfiguration = {
       selectedMode: this.deviceConfigSource.value.selectedMode,
-      directCommunicationEnabled: !!(updatedDirectCommunicationSerial),
-      directCommunicationSerialNumber: updatedDirectCommunicationSerial
+      directCommunicationEnabled: true,
+      directCommunicationSerialNumber: configuration.directCommunicationSerialNumber
     };
     this.deviceConfigSource.next(updatedConfig);
+
+    const url: string = `${environment.apiUrl}/${environment.apiVersion}/communication-system/${device.toLowerCase()}/operation-mode/${configuration.selectedMode.value}`;
+    backendResponse = await firstValueFrom(this.http.put<BackendResponse<any>>(url, {}));
+    if (!backendResponse.success) {
+      console.error('Error updating configuration: ', backendResponse.error?.error_message);
+      return;
+    }
   }
 
   hidePopup() {
-    this.displaySource.next(false);
+    this.popUpSettingsSource.next({
+      display: false,
+      deviceName: '',
+      icon: ''
+    });
   }
 
   setDirectCommunicationEnabled(enabled: boolean) {
@@ -137,5 +184,6 @@ export class DeviceConfigPopUpService {
     const currentConfig = this.deviceConfigSource.value;
     this.deviceConfigSource.next({...currentConfig, directCommunicationSerialNumber: serialNumber});
   }
+
 
 }

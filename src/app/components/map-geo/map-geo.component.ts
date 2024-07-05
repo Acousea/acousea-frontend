@@ -6,6 +6,10 @@ import {
   CurrentVectorsService,
   SingleLatLonUVValues
 } from "../../services/current-vectors-service/current-vectors.service";
+import {
+  CommunicationSystemDeviceLocation,
+  CommunicationSystemService
+} from "../../services/communication-system-service/communication-system.service";
 
 
 @Component({
@@ -26,7 +30,9 @@ export class MapGeoComponent implements OnInit, OnDestroy {
   private readonly LPGC_Coord = [28.1, -15.4];
   private intervalId: any; // Variable para almacenar el ID del setInterval
 
-  constructor(private currentVectorParser: CurrentVectorsService){
+  constructor(private currentVectorParser: CurrentVectorsService,
+              private communicationSystemService: CommunicationSystemService
+              ){
     this.drifterIcon = L.icon({
       iconUrl: '/assets/icons/buoy.svg',
       iconSize: [32, 32],
@@ -37,14 +43,11 @@ export class MapGeoComponent implements OnInit, OnDestroy {
       iconSize: [32, 32],
       iconAnchor: [16, 16]
     });
-
   }
 
   ngOnInit(): void {
     this.initMap();
-    this.addOceanDrifter();
-    this.addOceanLocalizer();
-    // this.simulateDrifterMovement();
+    this.loadInitialLocations();
   }
 
   ngOnDestroy(): void {
@@ -63,42 +66,40 @@ export class MapGeoComponent implements OnInit, OnDestroy {
     }).addTo(this.map);
   }
 
-  addOceanDrifter(): void {
-    // Aquí puedes agregar un marcador para representar la ubicación del derivador oceánico
-    const drifterLocation: L.LatLngExpression = [
-      0, 0
-    ]; // Coordenadas del derivador oceánico
-    this.drifterMarker = L.marker(drifterLocation, {icon: this.drifterIcon}).addTo(this.map);
-  }
 
-  addOceanLocalizer(): void {
-    // Aquí puedes agregar un marcador para representar la ubicación del localizador oceánico
-    const localizerLocation: L.LatLngExpression = [
-      0, 0
-    ]; // Coordenadas del localizador oceánico
-    this.localizerMarker = L.marker(localizerLocation, {icon: this.localizerIcon}).addTo(this.map);
-  }
-
-  simulateDrifterMovement(): void {
-    // Simula el movimiento del derivador oceánico
-    const drifterLocation: L.LatLngExpression = [this.LPGC_Coord[0], this.LPGC_Coord[1]]; // Coordenadas del derivador oceánico
-
-    this.intervalId = setInterval(async () => {
-      // Randomly move the drifter
-      drifterLocation[0] += (Math.random() - 0.5);
-      drifterLocation[1] += (Math.random() - 0.5);
-
-      console.log("Moving to new location... = ", drifterLocation)
-      this.drifterMarker.setLatLng(drifterLocation);
-
-      // Obtener y guardar las corrientes oceánicas en latestCurrentData
-      this.latestCurrentData = await this.currentVectorParser.getOceanCurrents(drifterLocation[0], drifterLocation[1]);
-
-      // Dibujar los vectores de corriente
-      if (this.latestCurrentData) {
-        this.drawCurrentVector(this.latestCurrentData);
+  loadInitialLocations(): void {
+    this.communicationSystemService.getLocalizerLocation().subscribe({
+      next: localizerLocation => {
+        if (localizerLocation) {
+          this.addOceanLocalizer(localizerLocation);
+        }
+      },
+      error: error => {
+        console.error('Error fetching localizer location:', error);
       }
-    }, 5000);
+    });
+
+    this.communicationSystemService.getDrifterLocation().subscribe({
+      next: drifterLocation => {
+        if (drifterLocation) {
+          this.addOceanDrifter(drifterLocation);
+          // this.simulateDrifterMovement(drifterLocation);
+        }
+      },
+      error: error => {
+        console.error('Error fetching drifter location:', error);
+      }
+    });
+  }
+
+  addOceanDrifter(location: CommunicationSystemDeviceLocation): void {
+    const drifterLocation: L.LatLngExpression = [location.latitude, location.longitude];
+    this.drifterMarker = L.marker(drifterLocation, { icon: this.drifterIcon }).addTo(this.map);
+  }
+
+  addOceanLocalizer(location: CommunicationSystemDeviceLocation): void {
+    const localizerLocation: L.LatLngExpression = [location.latitude, location.longitude];
+    this.localizerMarker = L.marker(localizerLocation, { icon: this.localizerIcon }).addTo(this.map);
   }
 
   drawCurrentVector(currentData: SingleLatLonUVValues): void {
@@ -134,6 +135,24 @@ export class MapGeoComponent implements OnInit, OnDestroy {
       this.map.removeLayer(uVector);
       this.map.removeLayer(vVector);
 
+    }, 5000);
+  }
+
+
+  simulateDrifterMovement(initialLocation: CommunicationSystemDeviceLocation): void {
+    const drifterLocation: L.LatLngExpression = [initialLocation.latitude, initialLocation.longitude];
+
+    this.intervalId = setInterval(async () => {
+      drifterLocation[0] += (Math.random() - 0.5);
+      drifterLocation[1] += (Math.random() - 0.5);
+
+      this.drifterMarker.setLatLng(drifterLocation);
+
+      this.latestCurrentData = await this.currentVectorParser.getOceanCurrents(drifterLocation[0], drifterLocation[1]);
+
+      if (this.latestCurrentData) {
+        this.drawCurrentVector(this.latestCurrentData);
+      }
     }, 5000);
   }
 }

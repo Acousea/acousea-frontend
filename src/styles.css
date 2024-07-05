@@ -12,7 +12,8 @@
   --discard-button-color: #F85151;
   --text-black: #000000;
   --text-white: #FFFFFF;
-  --gray: #545454;
+  --text-gray: #4d4d4d;
+  --gray: #424242;
   --background-white: #FAFAFA;
   --background-lightgray: #F5F5F5;
   --graph-color-1: #FFA800;
@@ -24,6 +25,16 @@
   --notification-success: var(--activated-color);
   --notification-warning: #ff7d00;
   --notification-error: var(--discard-button-color);
+
+  --localizer-color: rgba(242, 78, 30, 1);
+  --localizer-color-transparent-50: rgba(242, 78, 30, 0.35);
+  --localizer-color-transparent-75: rgba(242, 78, 30, 0.45);
+  --drifter-color: rgba(255, 153, 0, 1);
+  --drifter-color-transparent-50: rgba(255, 153, 0, 0.35);
+  --drifter-color-transparent-75: rgba(255, 153, 0, 0.45);
+  --unknown-device-color: rgba(150, 150, 150, 1);
+  --unknown-device-color-transparent-50: rgba(150, 150, 150, 0.35);
+  --unknown-device-color-transparent-75: rgba(150, 150, 150, 0.45);
 }
 
 /* Reset CSS */
@@ -44,7 +55,7 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   vertical-align: baseline;
 }
 

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DeviceInfoService } from './device-info.service';
+import { IcListenDeviceService } from './ic-listen-device.service';
 
 describe('DeviceInfoServiceService', () => {
-  let service: DeviceInfoService;
+  let service: IcListenDeviceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DeviceInfoService);
+    service = TestBed.inject(IcListenDeviceService);
   });
 
   it('should be created', () => {

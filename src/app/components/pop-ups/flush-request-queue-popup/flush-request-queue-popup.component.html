@@ -1,0 +1,18 @@
+<div *ngIf="display" [ngClass]="['popup-container', display ? 'show' : 'hide']">
+  <div class="popup-header">
+    <p>
+      Request Queue
+    </p>
+  </div>
+  <div class="popup-content">
+    {{ message }}
+  </div>
+  <div class="popup-content">
+    <b>{{ boldMessage }} </b>
+  </div>
+
+  <div class="popup-footer">
+    <button class="popup-footer-button" (click)="flushRequestQueue(); closePopup()">Yes</button>
+    <button class="popup-footer-button" (click)="closePopup()">No</button>
+  </div>
+</div>

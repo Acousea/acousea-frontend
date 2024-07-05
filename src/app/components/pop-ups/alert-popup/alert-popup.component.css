@@ -45,11 +45,11 @@ button {
 }
 
 .popup-container.success {
-  border-top: 3px solid green;
+  border-top: 3px solid var(--notification-success);
 }
 
 .popup-container.error {
-  border-top: 3px solid red;
+  border-top: 3px solid var(--notification-error);
 }
 
 /* Animaciones para mostrar y ocultar */

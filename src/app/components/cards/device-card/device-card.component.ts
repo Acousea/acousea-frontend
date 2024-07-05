@@ -3,6 +3,7 @@ import {SummaryCardComponent} from "../summary-card/summary-card.component";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {CardComponent} from "../card/card.component";
 import {AlertPopUpService} from "../../../services/pop-ups-services/alert-popup/alert-pop-up.service";
+import {UpdateInfoButtonComponent} from "../../update-info-button/update-info-button.component";
 
 @Component({
   selector: 'app-device-card',
@@ -11,7 +12,8 @@ import {AlertPopUpService} from "../../../services/pop-ups-services/alert-popup/
     NgIf,
     NgOptimizedImage,
     SummaryCardComponent,
-    CardComponent
+    CardComponent,
+    UpdateInfoButtonComponent
   ],
   templateUrl: './device-card.component.html',
   styleUrl: './device-card.component.css'

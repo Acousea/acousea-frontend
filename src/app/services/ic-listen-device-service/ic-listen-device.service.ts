@@ -9,11 +9,15 @@ import {BackendResponse} from "../../global-interfaces/global-interfaces";
 @Injectable({
   providedIn: 'root'
 })
-export class DeviceInfoService {
+export class IcListenDeviceService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getDeviceInfo(ip: string): Observable<BackendResponse<DeviceInfo>> {
+  test(){
+    console.log("Test");
+  }
+
+  getICListenInfo(ip: string): Observable<BackendResponse<DeviceInfo>> {
     return this.httpClient.get<BackendResponse<DeviceInfo>>(`${environment.apiUrl}/${environment.apiVersion}/iclisten/info/${ip}`)
       .pipe(
         map((response: BackendResponse<DeviceInfo>) => {

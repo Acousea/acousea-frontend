@@ -10,7 +10,16 @@
 .device-info-site {
   width: 100%;
   max-width: 1200px;
-  font-family: Arial, sans-serif;
+  display: flex; /* Añadido para que los hijos usen flex correctamente */
+  flex-direction: column; /* Para alinear los hijos en una columna */
+}
+
+.meta-information {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between; /* Distribuir el espacio entre los elementos */
+  margin-bottom: 20px; /* Añadido para separación visual */
 }
 
 .grid-container {
