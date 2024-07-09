@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SystemInfoSiteComponent } from './system-info-site.component';
+import { StorageStatusComponent } from './storage-status.component';
 
-describe('DeviceInfoSiteComponent', () => {
-  let component: SystemInfoSiteComponent;
-  let fixture: ComponentFixture<SystemInfoSiteComponent>;
+describe('StorageStatusComponent', () => {
+  let component: StorageStatusComponent;
+  let fixture: ComponentFixture<StorageStatusComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SystemInfoSiteComponent]
+      imports: [StorageStatusComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(SystemInfoSiteComponent);
+    
+    fixture = TestBed.createComponent(StorageStatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

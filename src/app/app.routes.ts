@@ -2,7 +2,7 @@ import {Routes} from '@angular/router';
 import {MainLayoutComponent} from "./sites/main-layout/main-layout.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
 import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
-import {SystemInfoSiteComponent} from "./sites/device-info-site/system-info-site.component";
+import {SystemInfoSiteComponent} from "./sites/system-info-site/system-info-site.component";
 import {ItemsBarComponent} from "./components/side-menu/menu-element/steps-bar/items-bar.component";
 import {LineChartComponent} from "./components/charts/line-chart/line-chart.component";
 import {

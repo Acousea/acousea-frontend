@@ -5,11 +5,10 @@
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
+  background-color: var(--background-lightgray);
 }
 
-.device-info-site {
-  width: 100%;
-  max-width: 1200px;
+.system-info-site {
   display: flex; /* Añadido para que los hijos usen flex correctamente */
   flex-direction: column; /* Para alinear los hijos en una columna */
 }
@@ -22,18 +21,20 @@
   margin-bottom: 20px; /* Añadido para separación visual */
 }
 
-.grid-container {
+.information-container {
   display: grid;
+  align-content: center;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-.grid-item {
+.information-item {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;
+  align-content: space-between;
 }
 
 h2 {
@@ -45,7 +46,10 @@ h2 {
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
   list-style: none;
+  gap: 10px;
   padding: 0;
   margin: 0;
 }

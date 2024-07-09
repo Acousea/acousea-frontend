@@ -1,0 +1,44 @@
+<div class="system-info-site" *ngIf="systemInfo; else errorTemplate">
+  <div class="meta-information">
+    <h1>Last Updated: {{ systemInfo.last_updated_date }}</h1>
+    <app-update-info-button [tooltipPosition]="'left'"
+                            (buttonClick)="console.log('system-info-site update button clicked')"></app-update-info-button>
+  </div>
+
+  <div class="information-container">
+    <div class="information-item">
+      <h2>PAM System Status</h2>
+      <ul>
+        <app-pam-device-status [statusCode]="systemInfo.pam_device_status.unit_status"></app-pam-device-status>
+        <app-temperature-and-humidity [temperature]="systemInfo.pam_device_status.temperature"
+                                       [humidity]="systemInfo.pam_device_status.humidity"></app-temperature-and-humidity>
+        <app-battery-status [batteryPercentage]="systemInfo.pam_device_status.battery_percentage"
+                            [batteryStatus]="systemInfo.pam_device_status.battery_status"></app-battery-status>
+        <app-storage-status [free]="systemInfo.pam_device_status.storage.free"
+                            [total]="systemInfo.pam_device_status.storage.total"></app-storage-status>
+
+      </ul>
+    </div>
+
+    <div class="information-item">
+      <h2>Communication System Status</h2>
+      <ul>
+        <app-coordinates [latitude]="systemInfo.communication_system_status.latitude"
+                         [longitude]="systemInfo.communication_system_status.longitude"></app-coordinates>
+        <app-temperature-and-humidity [temperature]="systemInfo.communication_system_status.temperature"
+                                      [humidity]="systemInfo.communication_system_status.humidity"></app-temperature-and-humidity>
+        <app-battery-status [batteryPercentage]="systemInfo.communication_system_status.battery_percentage"
+                            [batteryStatus]="systemInfo.communication_system_status.battery_status"></app-battery-status>
+        <app-storage-status [free]="systemInfo.communication_system_status.storage.free"
+                            [total]="systemInfo.communication_system_status.storage.total"></app-storage-status>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #errorTemplate>
+  <div class="error-message">
+    Unable to retrieve complete device information.
+    <p>{{ errorMessage }}</p>
+  </div>
+</ng-template>

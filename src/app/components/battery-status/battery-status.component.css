@@ -1,0 +1,115 @@
+.battery-status-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: solid 1px #dfdfdf;
+  box-shadow: 0 7px 8px 3px rgba(0,0,0,0.05);
+}
+
+.battery-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.battery-info h2 {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.battery-info span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+}
+
+.battery-icon-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.battery-icon {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fff;
+}
+
+.battery-icon::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: -6px;
+  width: 6px;
+  height: 12px;
+  background-color: #000;
+  border-radius: 2px;
+}
+
+.battery-level {
+  height: 100%;
+  border-radius: 2px 0 0 2px;
+  transition: width 0.3s ease;
+}
+
+.battery-full {
+  background-color: #00c853; /* Green color */
+}
+
+.battery-three-quarters {
+  background-color: #aeea00; /* Lime color */
+}
+
+.battery-half {
+  background-color: #ffeb3b; /* Yellow color */
+}
+
+.battery-quarter {
+  background-color: #ff9800; /* Orange color */
+}
+
+.battery-empty {
+  background-color: #f44336; /* Red color */
+}
+
+.battery-percentage {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  color: #000;
+}
+
+.charging-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  animation: charging-animation 2s infinite;
+  z-index: 1;
+}
+
+@keyframes charging-animation {
+  0% {
+    left: 0;
+    width: 0%;
+  }
+  50% {
+    left: 0;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}

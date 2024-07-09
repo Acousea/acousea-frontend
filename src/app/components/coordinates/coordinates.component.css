@@ -1,0 +1,35 @@
+.location-display-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 1.5rem;
+  border: solid 1px #dfdfdf;
+  box-shadow: 0 7px 8px 3px rgba(0,0,0,0.05);
+}
+
+.coordinates {
+  display: flex;
+  gap: 20px;
+}
+
+.coordinate h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.coordinate p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.location-icon {
+  width: 34px;
+  height: 34px;
+  margin-left: 20px;
+}

@@ -1,0 +1,13 @@
+<div class="battery-status-component">
+  <div class="battery-info">
+    <h2>Battery</h2>
+    <p>Status: {{ batteryStatusText }}</p>
+  </div>
+  <div class="battery-icon-section">
+    <span class="battery-percentage">{{ batteryPercentage }}%</span>
+    <div class="battery-icon">
+      <div class="battery-level" [class]="getBatteryLevelClass()" [style.width.%]="batteryPercentage"></div>
+      <div *ngIf="isCharging()" class="charging-animation"></div>
+    </div>
+  </div>
+</div>

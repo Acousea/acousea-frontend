@@ -1,0 +1,38 @@
+.device-status-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 1.5rem;
+  border: solid 1px #dfdfdf;
+  box-shadow: 0 7px 8px 3px rgba(0,0,0,0.05);
+}
+
+.status-info {
+  display: flex;
+  border: solid 1px #dfdfdf;
+  border-radius: 30px;
+  padding: 3px 10px;
+  gap: 5px;
+  align-content: space-between;
+  align-items: center;
+}
+
+.status-icon {
+  width: 25px;
+  height: 25px;
+}
+
+
+.status-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.status-info p {
+  font-size: 14px;
+  font-weight: normal;
+  color: #000000;
+}

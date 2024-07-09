@@ -1,0 +1,47 @@
+.storage-status-component {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: solid 1px #dfdfdf;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 7px 8px 3px rgba(0,0,0,0.05);
+}
+
+.headline {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  font-family: serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.bars {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.bar, .bar_percent {
+  background-color: rgb(233 237 251);
+  height: 10px;
+  border-radius: 5px;
+}
+
+.bar_percent {
+  position: absolute;
+  background-color: #000;
+  top: 0;
+  width: 0;
+  max-width: 100%;
+}
+
+p.usage-text {
+  margin-bottom: 12px;
+  font-family: sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: rgb(107 114 128);
+}
