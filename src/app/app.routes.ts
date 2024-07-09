@@ -2,22 +2,21 @@ import {Routes} from '@angular/router';
 import {MainLayoutComponent} from "./sites/main-layout/main-layout.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
 import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
-import {DeviceInfoSiteComponent} from "./sites/device-info-site/device-info-site.component";
+import {SystemInfoSiteComponent} from "./sites/device-info-site/system-info-site.component";
 import {ItemsBarComponent} from "./components/side-menu/menu-element/steps-bar/items-bar.component";
 import {LineChartComponent} from "./components/charts/line-chart/line-chart.component";
-import {StreamRecordingComponent} from "./sites/recording-site/stream-recording/stream-recording.component";
-import {ExportRecordingComponent} from "./sites/recording-site/export-recording/export-recording.component";
-import {SetupRecordingComponent} from "./sites/recording-site/setup-recording/setup-recording.component";
-import {NetworkConfigComponent} from "./sites/configuration-site/network-config/network-config.component";
-import {
-  DataCollectionConfigComponent
-} from "./sites/configuration-site/data-collection-config/data-collection-config.component";
-import {EpochConfigComponent} from "./sites/configuration-site/epoch-config/epoch-config.component";
 import {
   RockBlockMessagesTableComponent
 } from "./components/rock-block-messages-table/rock-block-messages-table.component";
 import {NotificationListComponent} from "./components/notifications/notification-list/notification-list.component";
 import {HistorySiteComponent} from "./sites/history-site/history-site.component";
+import {PamSystemConfigComponent} from "./sites/configuration-site/pam-system-config/pam-system-config.component";
+import {
+  ControlSystemConfigComponent
+} from "./sites/configuration-site/control-system-config/control-system-config.component";
+import {
+  RecordingAndProcessingConfigComponent
+} from "./sites/configuration-site/recording-and-processing-config/recording-and-processing-config.component";
 
 
 export const routes: Routes = [
@@ -29,24 +28,24 @@ export const routes: Routes = [
     children: [
       {path: 'summary', component: SummarySiteComponent},
       {path: 'map', component: MapSiteComponent},
-      {path: 'recording', redirectTo: 'recording/stream', pathMatch: 'full'},
+      {path: 'history', redirectTo: 'history/iridium-messages', pathMatch: 'full'},
       {
-        path: 'recording', children: [
-          {path: 'stream', component: StreamRecordingComponent},
-          {path: 'setup', component: SetupRecordingComponent},
-          {path: 'export', component: ExportRecordingComponent}
+        path: 'history', children: [
+          {path: 'iridium-messages', component: HistorySiteComponent},
+          {path: 'control-system', component: HistorySiteComponent},
+          {path: 'pam-system', component: HistorySiteComponent},
+
         ]
       },
-      {path: 'configuration', redirectTo: 'configuration/data-collection', pathMatch: 'full'},
+      {path: 'configuration', redirectTo: 'configuration/recording-processing', pathMatch: 'full'},
       {
         path: 'configuration', children: [
-          {path: 'data-collection', component: DataCollectionConfigComponent},
-          {path: 'epoch', component: EpochConfigComponent},
-          {path: 'network', component: NetworkConfigComponent}
+          {path: 'recording-processing', component: RecordingAndProcessingConfigComponent},
+          {path: 'control-system', component: ControlSystemConfigComponent},
+          {path: 'pam-system', component: PamSystemConfigComponent},
         ]
       },
-      {path: 'history', component: HistorySiteComponent},
-      {path: 'device-info', component: DeviceInfoSiteComponent},
+      {path: 'system-info', component: SystemInfoSiteComponent},
     ]
   },
   {path: 'steps-bar', component: ItemsBarComponent},

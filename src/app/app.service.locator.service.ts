@@ -15,8 +15,6 @@ export class ServiceLocator {
 
   constructor(injector: Injector) {
     ServiceLocator.injector = injector;
-    console.log("ServiceLocator initialized.");
-    console.log("Injector:", ServiceLocator.injector);
   }
 
   static getService<T>(service: any): T {

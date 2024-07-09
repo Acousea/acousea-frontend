@@ -1,42 +1,25 @@
 <!-- Div with top left image -->
 <div class="side-menu">
   <div class="header" [routerLink]="'/summary'">
-<!--    <img src="assets/ocean-sonics-logo.svg" alt="Logo" class="logo">-->
-    <img src="assets/acousea-prev.svg" alt="Logo" class="logo">
+    <img src="../../../assets/acousea-new.svg" alt="Logo" class="logo">
   </div>
   <!-- Barra de búsqueda -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search" class="search-input">
-    <i class="fa-solid fa-search search-icon"></i>
+  <div class="search-bar-container">
+    <app-search-bar></app-search-bar>
   </div>
 
   <nav>
     <app-menu-element [link]="'/summary'" [icon]="'fa-solid fa-chart-line'" [text]="'Inicio'"></app-menu-element>
     <app-menu-element [link]="'/map'" [icon]="'fa-solid fa-location-dot'" [text]="'Mapa'"></app-menu-element>
-    <app-menu-element
-      [link]="'/recording'" [icon]="'fa-solid fa-microphone'" [text]="'Grabación'"
-      [subMenuItems]="recordingMenuItems"
-    >
-    </app-menu-element>
     <app-menu-element [link]="'/configuration'" [icon]="'fa-solid fa-gear'" [text]="'Configuración'"
                       [subMenuItems]="configurationMenuItems">
     </app-menu-element>
     <app-menu-element [link]="'/history'" [icon]="'fa-solid fa-clock-rotate-left'"
-                      [text]="'Historial'"></app-menu-element>
-    <app-menu-element [link]="'/device-info'" [icon]="'fa-solid fa-circle-info'"
-                      [text]="'Device info'"></app-menu-element>
+                      [text]="'History'"
+                      [subMenuItems]="historyMenuItems">
+    </app-menu-element>
+    <app-menu-element [link]="'/system-info'" [icon]="'fa-solid fa-circle-info'"
+                      [text]="'System Info'"></app-menu-element>
   </nav>
-
-
-  <div class="footer-button">
-    <button class="action-button">
-      <i class="fa-solid fa-clock"></i>
-      Sync Time
-    </button>
-    <button class="action-button" [ngStyle]="{'color': pingBtnColor}" (click)="onPing()">
-      <i class="fa-solid fa-wifi"></i>
-      Ping
-    </button>
-  </div>
 
 </div>
