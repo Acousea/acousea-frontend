@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {SystemStatusInformation} from "./system-info-value-objects/system-info-value-objects";
-import {IcListenDeviceService} from "../../services/ic-listen-device-service/ic-listen-device.service";
+import {CommunicationSystemInfoService} from "../../services/ic-listen-device-service/communication-system-info.service";
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
 import {UpdateInfoButtonComponent} from "../../components/update-info-button/update-info-button.component";
 import {StorageStatusComponent} from "../../components/storage-status/storage-status.component";
@@ -33,10 +33,10 @@ export class SystemInfoSiteComponent implements OnInit{
   systemInfo: SystemStatusInformation | undefined;
   errorMessage: string | undefined;
 
-  constructor(protected deviceInfoService: IcListenDeviceService) { }
+  constructor(protected deviceInfoService: CommunicationSystemInfoService) { }
 
   ngOnInit(): void {
-    this.deviceInfoService.getICListenInfo().subscribe((response: BackendResponse<SystemStatusInformation>) => {
+    this.deviceInfoService.getSystemStatusInfo().subscribe((response: BackendResponse<SystemStatusInformation>) => {
       if (response.success) {
         this.systemInfo = response.success;
         this.errorMessage = undefined;

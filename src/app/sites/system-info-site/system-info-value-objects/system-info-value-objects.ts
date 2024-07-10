@@ -10,12 +10,13 @@ export interface PAMDeviceStatus {
   };
 }
 export interface CommunicationSystemStatus {
+  epoch_time: string;
   latitude: number;
   longitude: number;
   battery_percentage: number;
   battery_status: number;
   temperature: number;
-  humidity: number;
+  operation_mode: number;
   storage: {
     total: number;
     free: number;

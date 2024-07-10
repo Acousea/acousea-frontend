@@ -20,7 +20,7 @@ export class StatsService {
 
   async getStats(): Promise<StatsReadModel | undefined> {
     const response: BackendResponse<StatsReadModel> = await firstValueFrom(
-      this.httpClient.get(`${environment.apiUrl}/${environment.apiVersion}/iclisten/latest-stats`)
+      this.httpClient.get(`${environment.apiUrl}/${environment.apiVersion}/pam-system/latest-stats`)
     );
     if (response.success) {
       console.log('Stats: ',  response.success);

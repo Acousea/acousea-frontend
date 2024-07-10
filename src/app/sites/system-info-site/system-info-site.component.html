@@ -26,7 +26,7 @@
         <app-coordinates [latitude]="systemInfo.communication_system_status.latitude"
                          [longitude]="systemInfo.communication_system_status.longitude"></app-coordinates>
         <app-temperature-and-humidity [temperature]="systemInfo.communication_system_status.temperature"
-                                      [humidity]="systemInfo.communication_system_status.humidity"></app-temperature-and-humidity>
+                                      [humidity]="systemInfo.communication_system_status.operation_mode"></app-temperature-and-humidity>
         <app-battery-status [batteryPercentage]="systemInfo.communication_system_status.battery_percentage"
                             [batteryStatus]="systemInfo.communication_system_status.battery_status"></app-battery-status>
         <app-storage-status [free]="systemInfo.communication_system_status.storage.free"
