@@ -4,10 +4,6 @@ export interface PAMDeviceStatus {
   battery_percentage: number;
   temperature: number;
   humidity: number;
-  storage: {
-    total: number;
-    free: number;
-  };
 }
 export interface CommunicationSystemStatus {
   epoch_time: string;

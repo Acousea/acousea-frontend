@@ -2,10 +2,11 @@
   display: grid;
   gap: 1rem;
   padding: 1.5rem;
-  border-radius: 1.5rem;
-  border: solid 1px #dfdfdf;
+  border-radius: 10px;
+
   background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 7px 8px 3px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
 }
 
 .headline {

@@ -10,6 +10,7 @@ import {NotificationListComponent} from "../../components/notifications/notifica
 import {
   RockblockMessageDetailsPopupComponent
 } from "../../components/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
+import {LoadingAnimationComponent} from "../../components/loading-animation/loading-animation.component";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -24,7 +25,8 @@ export interface ChartInputData {
     LineChartComponent,
     RockBlockMessagesTableComponent,
     NotificationListComponent,
-    RockblockMessageDetailsPopupComponent
+    RockblockMessageDetailsPopupComponent,
+    LoadingAnimationComponent
   ],
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'

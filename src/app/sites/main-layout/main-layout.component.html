@@ -10,8 +10,10 @@
   <app-flush-request-queue-popup></app-flush-request-queue-popup>
   <app-alert-popup></app-alert-popup>
   <app-side-menu></app-side-menu>
-  <div class="main-content">
-    <router-outlet></router-outlet>
+  <app-loading-animation></app-loading-animation>
+  <div class="main-content" [class.hidden]="isLoading | async">
+    <router-outlet
+    ></router-outlet>
   </div>
 </div>
 </body>

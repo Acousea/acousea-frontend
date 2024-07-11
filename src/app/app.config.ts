@@ -8,6 +8,8 @@ import {provideAnimations} from "@angular/platform-browser/animations";
 import {
   AlertPopUpInterceptorProvider
 } from "./interceptors/alert-pop-up-interceptor/alert-pop-up-interceptor.interceptor";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {LoadingInterceptorProvider} from "./interceptors/loading-animation-interceptor/loading-animation.interceptor";
 
 
 export const appConfig: ApplicationConfig = {
@@ -15,8 +17,9 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
     provideRouter(routes),
     provideCharts(withDefaultRegisterables()),
-    provideAnimations(),
+    provideAnimations(), provideAnimationsAsync(),
     AlertPopUpInterceptorProvider,
+    LoadingInterceptorProvider
   ]
 };
 

@@ -30,7 +30,7 @@ export class RockBlockMessagesService {
   }
 
   getMessages(page: number, rowsPerPage: number): Observable<BackendResponse<GetMessagesResponse>> {
-    const url = `${environment.apiUrl}/${environment.apiVersion}/rockblock/messages/paginated/?page=${page}&rows_per_page=${rowsPerPage}`;
+    const url = `${environment.apiUrl}/${environment.apiVersion}/rockblock/messages/paginated?page=${page}&rows_per_page=${rowsPerPage}`;
     return this.http.get<BackendResponse<GetMessagesResponse>>(url);
   }
 

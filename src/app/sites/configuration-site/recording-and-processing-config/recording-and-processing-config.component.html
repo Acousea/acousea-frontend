@@ -1,89 +1,126 @@
-<div class="top-container">
-  <h1>Audio Collection/Processing Settings</h1>
-</div>
-<div class="settings-container">
-  <div class="settings-box waveform">
-    <h2>Waveform Data</h2>
-    <div class="setting-group">
-      <label for="recording-wav" (mouseenter)="onMouseEnter('recording-wav')" (mouseleave)="onMouseLeave('recording-wav')">
-        Enable WAV Recording
-        <app-tooltip [text]="'Enable or disable recording of WAV audio data'" [show]="showTooltip['recording-wav']"></app-tooltip>
-      </label>
-      <input type="checkbox" id="recording-wav" [(ngModel)]="recordingWav">
-    </div>
-    <div class="setting-group">
-      <label for="processing-wav" (mouseenter)="onMouseEnter('processing-wav')" (mouseleave)="onMouseLeave('processing-wav')">
-        Enable WAV Processing
-        <app-tooltip [text]="'Enable or disable processing of WAV audio data'" [show]="showTooltip['processing-wav']"></app-tooltip>
-      </label>
-      <input type="checkbox" id="processing-wav" [(ngModel)]="processingWav">
-    </div>
-    <div class="setting-group">
-      <label for="wav-processing-type" (mouseenter)="onMouseEnter('wav-processing-type')" (mouseleave)="onMouseLeave('wav-processing-type')">
-        WAV Processing Type
-        <app-tooltip [text]="'Select the type of processing for WAV data'" [show]="showTooltip['wav-processing-type']"></app-tooltip>
-      </label>
-      <select id="wav-processing-type" [(ngModel)]="selectedWavProcessingType">
-        <option *ngFor="let type of wavProcessingTypes" [value]="type">{{ type }}</option>
-      </select>
-    </div>
-    <div class="setting-group">
-      <label for="wav-interval" (mouseenter)="onMouseEnter('wav-interval')" (mouseleave)="onMouseLeave('wav-interval')">
-        WAV Interval
-        <app-tooltip [text]="'Set the interval time (in seconds) between each WAV recording'" [show]="showTooltip['wav-interval']"></app-tooltip>
-      </label>
-      <input type="number" id="wav-interval" [(ngModel)]="wavInterval" min="1">
-    </div>
-    <div class="setting-group">
-      <label for="wav-duration" (mouseenter)="onMouseEnter('wav-duration')" (mouseleave)="onMouseLeave('wav-duration')">
-        WAV Duration
-        <app-tooltip [text]="'Set the duration (in seconds) for each WAV recording'" [show]="showTooltip['wav-duration']"></app-tooltip>
-      </label>
-      <input type="number" id="wav-duration" [(ngModel)]="wavDuration" min="1">
-    </div>
+<div class="recording-and-processing-site">
+  <div class="top-container">
+    <h1>Audio Recording/Processing Settings</h1>
   </div>
-  <div class="settings-box spectrum">
-    <h2>Spectrum (FFT)</h2>
-    <div class="setting-group">
-      <label for="recording-fft" (mouseenter)="onMouseEnter('recording-fft')" (mouseleave)="onMouseLeave('recording-fft')">
-        Enable FFT Recording
-        <app-tooltip [text]="'Enable or disable recording of FFT data'" [show]="showTooltip['recording-fft']"></app-tooltip>
-      </label>
-      <input type="checkbox" id="recording-fft" [(ngModel)]="recordingFft">
-    </div>
-    <div class="setting-group">
-      <label for="processing-fft" (mouseenter)="onMouseEnter('processing-fft')" (mouseleave)="onMouseLeave('processing-fft')">
-        Enable FFT Processing
-        <app-tooltip [text]="'Enable or disable processing of FFT data'" [show]="showTooltip['processing-fft']"></app-tooltip>
-      </label>
-      <input type="checkbox" id="processing-fft" [(ngModel)]="processingFft">
-    </div>
-    <div class="setting-group">
-      <label for="fft-processing-type" (mouseenter)="onMouseEnter('fft-processing-type')" (mouseleave)="onMouseLeave('fft-processing-type')">
-        FFT Processing Type
-        <app-tooltip [text]="'Select the type of processing for FFT data'" [show]="showTooltip['fft-processing-type']"></app-tooltip>
-      </label>
-      <select id="fft-processing-type" [(ngModel)]="selectedFftProcessingType">
-        <option *ngFor="let type of fftProcessingTypes" [value]="type">{{ type }}</option>
-      </select>
-    </div>
-    <div class="setting-group">
-      <label for="fft-interval" (mouseenter)="onMouseEnter('fft-interval')" (mouseleave)="onMouseLeave('fft-interval')">
-        FFT Interval
-        <app-tooltip [text]="'Set the interval time (in seconds) between each FFT recording'" [show]="showTooltip['fft-interval']"></app-tooltip>
-      </label>
-      <input type="number" id="fft-interval" [(ngModel)]="fftInterval" min="1">
-    </div>
-    <div class="setting-group">
-      <label for="fft-duration" (mouseenter)="onMouseEnter('fft-duration')" (mouseleave)="onMouseLeave('fft-duration')">
-        FFT Duration
-        <app-tooltip [text]="'Set the duration (in seconds) for each FFT recording'" [show]="showTooltip['fft-duration']"></app-tooltip>
-      </label>
-      <input type="number" id="fft-duration" [(ngModel)]="fftDuration" min="1">
-    </div>
-  </div>
-</div>
+  <div class="settings-container">
+    <div class="settings-box waveform">
+      <!------------------------------------------- WAVEFORM ------------------------------------------->
+      <h2>Waveform Data (WAV)</h2>
+      <div class="setting-group">
+        <label for="recording-wav" (mouseenter)="onMouseEnter('recording-wav')"
+               (mouseleave)="onMouseLeave('recording-wav')">
+          Recording
+          <app-tooltip [text]="'Enable or disable recording of WAV audio data'"
+                       [show]="showTooltip['recording-wav']"></app-tooltip>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="recording-wav" [(ngModel)]="waveformConfig.recording">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="setting-group">
+        <label for="processing-wav" (mouseenter)="onMouseEnter('processing-wav')"
+               (mouseleave)="onMouseLeave('processing-wav')">
+          Processing
+          <app-tooltip [text]="'Enable or disable processing of WAV audio data'"
+                       [show]="showTooltip['processing-wav']"></app-tooltip>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="processing-wav" [(ngModel)]="waveformConfig.processing">
+          <span class="slider round"></span>
+        </label>
 
-<div class="bottom-container">
-  <button class="apply-button" (click)="applySettings()">APPLY</button>
+      </div>
+      <div class="setting-group">
+        <label for="wav-processing-type" (mouseenter)="onMouseEnter('wav-processing-type')"
+               (mouseleave)="onMouseLeave('wav-processing-type')">
+          WAV Processing Type
+          <app-tooltip [text]="'Select the type of processing for WAV data'"
+                       [show]="showTooltip['wav-processing-type']"></app-tooltip>
+        </label>
+        <select id="wav-processing-type" [(ngModel)]="waveformConfig.processingType" class="fixed-width-select">
+          <option *ngFor="let type of wavProcessingTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="setting-group">
+        <label for="wav-interval" (mouseenter)="onMouseEnter('wav-interval')"
+               (mouseleave)="onMouseLeave('wav-interval')">
+          WAV Interval
+          <app-tooltip [text]="'Set the interval time (in seconds) between each WAV recording'"
+                       [show]="showTooltip['wav-interval']"></app-tooltip>
+        </label>
+        <input type="number" id="wav-interval" [(ngModel)]="waveformConfig.interval" min="1" max="65535" [class.invalid]="!isValid(waveformConfig.interval)">
+      </div>
+      <div class="setting-group">
+        <label for="wav-duration" (mouseenter)="onMouseEnter('wav-duration')"
+               (mouseleave)="onMouseLeave('wav-duration')">
+          WAV Duration
+          <app-tooltip [text]="'Set the duration (in seconds) for each WAV recording'"
+                       [show]="showTooltip['wav-duration']"></app-tooltip>
+        </label>
+        <input type="number" id="wav-duration" [(ngModel)]="waveformConfig.duration" min="1" max="65535" [class.invalid]="!isValid(waveformConfig.duration)">
+      </div>
+    </div>
+    <!------------------------------------------- SPECTRUM ------------------------------------------->
+    <div class="settings-box spectrum">
+      <h2>Spectrum Data (FFT)</h2>
+      <div class="setting-group">
+        <label for="recording-fft" (mouseenter)="onMouseEnter('recording-fft')"
+               (mouseleave)="onMouseLeave('recording-fft')">
+          Recording
+          <app-tooltip [text]="'Enable or disable recording of FFT data'"
+                       [show]="showTooltip['recording-fft']"></app-tooltip>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="recording-fft" [(ngModel)]="spectrumConfig.recording">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="setting-group">
+        <label for="processing-fft" (mouseenter)="onMouseEnter('processing-fft')"
+               (mouseleave)="onMouseLeave('processing-fft')">
+          Processing
+          <app-tooltip [text]="'Enable or disable processing of FFT data'"
+                       [show]="showTooltip['processing-fft']"></app-tooltip>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="processing-fft" [(ngModel)]="spectrumConfig.processing">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="setting-group">
+        <label for="fft-processing-type" (mouseenter)="onMouseEnter('fft-processing-type')"
+               (mouseleave)="onMouseLeave('fft-processing-type')">
+          FFT Processing Type
+          <app-tooltip [text]="'Select the type of processing for FFT data'"
+                       [show]="showTooltip['fft-processing-type']"></app-tooltip>
+        </label>
+        <select id="fft-processing-type" [(ngModel)]="spectrumConfig.processingType" class="fixed-width-select">
+          <option *ngFor="let type of fftProcessingTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="setting-group">
+        <label for="fft-interval" (mouseenter)="onMouseEnter('fft-interval')"
+               (mouseleave)="onMouseLeave('fft-interval')">
+          FFT Interval
+          <app-tooltip [text]="'Set the interval time (in seconds) between each FFT recording'"
+                       [show]="showTooltip['fft-interval']"></app-tooltip>
+        </label>
+        <input type="number" id="fft-interval" [(ngModel)]="spectrumConfig.interval" min="1" max="65535" [class.invalid]="!isValid(spectrumConfig.interval)">
+      </div>
+      <div class="setting-group">
+        <label for="fft-duration" (mouseenter)="onMouseEnter('fft-duration')"
+               (mouseleave)="onMouseLeave('fft-duration')">
+          FFT Duration
+          <app-tooltip [text]="'Set the duration (in seconds) for each FFT recording'"
+                       [show]="showTooltip['fft-duration']"></app-tooltip>
+        </label>
+        <input type="number" id="fft-duration" [(ngModel)]="spectrumConfig.duration" min="1" max="65535" [class.invalid]="!isValid(spectrumConfig.duration)">
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-container">
+    <button class="apply-button" (click)="applySettings()">APPLY</button>
+  </div>
 </div>

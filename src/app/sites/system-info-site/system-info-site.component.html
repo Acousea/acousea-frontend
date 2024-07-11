@@ -5,6 +5,11 @@
                             (buttonClick)="console.log('system-info-site update button clicked')"></app-update-info-button>
   </div>
 
+  <div class="storage-container">
+    <app-storage-status [free]="systemInfo.communication_system_status.storage.free"
+                        [total]="systemInfo.communication_system_status.storage.total"></app-storage-status>
+  </div>
+
   <div class="information-container">
     <div class="information-item">
       <h2>PAM System Status</h2>
@@ -14,8 +19,6 @@
                                        [humidity]="systemInfo.pam_device_status.humidity"></app-temperature-and-humidity>
         <app-battery-status [batteryPercentage]="systemInfo.pam_device_status.battery_percentage"
                             [batteryStatus]="systemInfo.pam_device_status.battery_status"></app-battery-status>
-        <app-storage-status [free]="systemInfo.pam_device_status.storage.free"
-                            [total]="systemInfo.pam_device_status.storage.total"></app-storage-status>
 
       </ul>
     </div>
@@ -29,8 +32,7 @@
                                       [humidity]="systemInfo.communication_system_status.operation_mode"></app-temperature-and-humidity>
         <app-battery-status [batteryPercentage]="systemInfo.communication_system_status.battery_percentage"
                             [batteryStatus]="systemInfo.communication_system_status.battery_status"></app-battery-status>
-        <app-storage-status [free]="systemInfo.communication_system_status.storage.free"
-                            [total]="systemInfo.communication_system_status.storage.total"></app-storage-status>
+
       </ul>
     </div>
   </div>

@@ -25,3 +25,7 @@ body {
   overflow: hidden;
 }
 
+.hidden {
+  visibility: hidden;
+  display: none;
+}

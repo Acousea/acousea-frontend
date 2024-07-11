@@ -21,6 +21,11 @@
   margin-bottom: 20px; /* Añadido para separación visual */
 }
 
+.storage-container {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
 .information-container {
   display: grid;
   align-content: center;
