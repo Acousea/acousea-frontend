@@ -27,11 +27,13 @@ export class UndoPopupService {
 
   undo() {
     this.undoSubject.next();
+    this.undoSource.next({display: false});
   }
 
   confirm() {
     console.log("Changes confirmed.")
     this.confirmSubject.next();
+    this.undoSource.next({display: false});
   }
 
 

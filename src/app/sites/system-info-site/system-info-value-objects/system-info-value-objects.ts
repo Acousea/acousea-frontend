@@ -6,6 +6,7 @@ export interface PAMDeviceStatus {
   humidity: number;
 }
 export interface CommunicationSystemStatus {
+  timestamp: string;
   epoch_time: string;
   latitude: number;
   longitude: number;
@@ -15,7 +16,7 @@ export interface CommunicationSystemStatus {
   operation_mode: number;
   storage: {
     total: number;
-    free: number;
+    used: number;
   };
 }
 

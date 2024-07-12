@@ -26,9 +26,9 @@ export class SideMenuComponent {
     {link: '/history/pam-system', text: 'PAM System', icon: ''}
   ];
   configurationMenuItems: MenuItem[] = [
-    {link: '/configuration/recording-processing', text: 'Recording & Processing', icon: ''},
-    {link: '/configuration/control-system', text: 'Control System', icon: ''},
-    {link: '/configuration/pam-system', text: 'PAM System', icon: ''},
+    {link: '/configuration/streaming', text: 'Streaming Settings', icon: ''},
+    {link: '/configuration/control-system', text: 'Control System Settings', icon: ''},
+    {link: '/configuration/pam-system', text: 'PAM System Settings', icon: ''},
 
   ];
 

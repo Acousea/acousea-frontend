@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecordingAndProcessingConfigComponent } from './recording-and-processing-config.component';
+import { StreamingConfigComponent } from './streaming-config.component';
 
 describe('RecordingAndProcessingConfigComponent', () => {
-  let component: RecordingAndProcessingConfigComponent;
-  let fixture: ComponentFixture<RecordingAndProcessingConfigComponent>;
+  let component: StreamingConfigComponent;
+  let fixture: ComponentFixture<StreamingConfigComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RecordingAndProcessingConfigComponent]
+      imports: [StreamingConfigComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(RecordingAndProcessingConfigComponent);
+
+    fixture = TestBed.createComponent(StreamingConfigComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

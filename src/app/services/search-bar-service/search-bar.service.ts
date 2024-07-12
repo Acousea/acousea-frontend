@@ -6,7 +6,7 @@ export const SEARCH_CONTENT: { [key: string]: { title: string, content: string }
   '/history/iridium-messages': { title: 'Iridium Messages History', content: 'Iridium messages communication history log changes' },
   '/history/control-system': { title: 'Control System History', content: 'Control system logs events history log changes' },
   '/history/pam-system': { title: 'PAM System History', content: 'Pam system data analysis history log changes' },
-  '/configuration/recording-processing': { title: 'Recording and Processing', content: 'Recording audio processing configuration settings' },
+  '/configuration/streaming': { title: 'Recording and Processing', content: 'Recording audio processing configuration settings' },
   '/configuration/control-system': { title: 'Control System Configuration', content: 'Control system configuration settings' },
   '/configuration/pam-system': { title: 'PAM System Configuration', content: 'PAM system configuration settings' },
   '/system-info': { title: 'System Info', content: 'System information details about' }

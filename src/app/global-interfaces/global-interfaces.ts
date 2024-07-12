@@ -9,4 +9,7 @@ export interface BackendResponse<T> {
   success?: T;
 }
 
-
+export interface CommunicationResultResponse {
+  status: string;
+  message: string;
+}

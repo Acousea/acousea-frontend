@@ -30,7 +30,7 @@ export class CommunicationSystemInfoService {
       map(({pamDeviceStatus, communicationSystemStatus}) => {
         if (pamDeviceStatus.success && communicationSystemStatus.success) {
           const systemStatus: SystemStatusInformation = {
-            last_updated_date: communicationSystemStatus.success.epoch_time,
+            last_updated_date: communicationSystemStatus.success.timestamp,
             pam_device_status: pamDeviceStatus.success,
             communication_system_status: communicationSystemStatus.success
           };

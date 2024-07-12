@@ -11,6 +11,9 @@ import {
 } from "../../components/temperature-and-humidity/temperature-and-humidity.component";
 import {CoordinatesComponent} from "../../components/coordinates/coordinates.component";
 import {PamDeviceStatusComponent} from "../../components/pam-device-status/pam-device-status.component";
+import {
+  CoreTemperatureAndOperationModeComponent
+} from "../../components/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
 
 
 @Component({
@@ -24,7 +27,8 @@ import {PamDeviceStatusComponent} from "../../components/pam-device-status/pam-d
     BatteryStatusComponent,
     TemperatureAndHumidityComponent,
     CoordinatesComponent,
-    PamDeviceStatusComponent
+    PamDeviceStatusComponent,
+    CoreTemperatureAndOperationModeComponent
   ],
   templateUrl: './system-info-site.component.html',
   styleUrl: './system-info-site.component.css'

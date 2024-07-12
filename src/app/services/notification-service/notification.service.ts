@@ -49,9 +49,9 @@ export class NotificationService {
     );
 
     // Wait for 3 seconds before sending the notifications
-    setTimeout(() => {
-      this.simulateNotifications();
-    }, 3000);
+    // setTimeout(() => {
+    //   this.simulateNotifications();
+    // }, 3000);
   }
 
   simulateNotifications() {

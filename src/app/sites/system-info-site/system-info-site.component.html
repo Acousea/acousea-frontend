@@ -6,7 +6,7 @@
   </div>
 
   <div class="storage-container">
-    <app-storage-status [free]="systemInfo.communication_system_status.storage.free"
+    <app-storage-status [used]="systemInfo.communication_system_status.storage.used"
                         [total]="systemInfo.communication_system_status.storage.total"></app-storage-status>
   </div>
 
@@ -28,8 +28,12 @@
       <ul>
         <app-coordinates [latitude]="systemInfo.communication_system_status.latitude"
                          [longitude]="systemInfo.communication_system_status.longitude"></app-coordinates>
-        <app-temperature-and-humidity [temperature]="systemInfo.communication_system_status.temperature"
-                                      [humidity]="systemInfo.communication_system_status.operation_mode"></app-temperature-and-humidity>
+
+        <app-core-temperature-and-operation-mode
+            [coreTemperature]="systemInfo.communication_system_status.temperature"
+            [operationModeIdx]="systemInfo.communication_system_status.operation_mode"></app-core-temperature-and-operation-mode>
+
+
         <app-battery-status [batteryPercentage]="systemInfo.communication_system_status.battery_percentage"
                             [batteryStatus]="systemInfo.communication_system_status.battery_status"></app-battery-status>
 

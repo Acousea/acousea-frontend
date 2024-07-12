@@ -15,8 +15,8 @@ import {
   ControlSystemConfigComponent
 } from "./sites/configuration-site/control-system-config/control-system-config.component";
 import {
-  RecordingAndProcessingConfigComponent
-} from "./sites/configuration-site/recording-and-processing-config/recording-and-processing-config.component";
+  StreamingConfigComponent
+} from "./sites/configuration-site/streaming-config/streaming-config.component";
 
 
 export const routes: Routes = [
@@ -37,10 +37,10 @@ export const routes: Routes = [
 
         ]
       },
-      {path: 'configuration', redirectTo: 'configuration/recording-processing', pathMatch: 'full'},
+      {path: 'configuration', redirectTo: 'configuration/streaming', pathMatch: 'full'},
       {
         path: 'configuration', children: [
-          {path: 'recording-processing', component: RecordingAndProcessingConfigComponent},
+          {path: 'streaming', component: StreamingConfigComponent},
           {path: 'control-system', component: ControlSystemConfigComponent},
           {path: 'pam-system', component: PamSystemConfigComponent},
         ]

@@ -7,7 +7,7 @@ function getServiceFromInstance(instance: any, serviceName: string): UndoPopupSe
   return instance[serviceName];
 }
 
-export function undoable(time: number) {
+export function undoable(time_millis: number) {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
 
@@ -25,7 +25,7 @@ export function undoable(time: number) {
         // If the time passes without undo, execute the original method
         originalMethod.apply(this, args);
         undoPopupService.confirm();
-      }, time);
+      }, time_millis);
 
       // Subscribe to the undo action
       const undoSubscription = undoPopupService.undo$.subscribe(() => {

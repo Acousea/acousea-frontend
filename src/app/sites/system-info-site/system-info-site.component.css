@@ -3,13 +3,14 @@
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px;
   box-sizing: border-box;
   background-color: var(--background-lightgray);
 }
 
 .system-info-site {
   display: flex; /* Añadido para que los hijos usen flex correctamente */
+  flex: 1;
   flex-direction: column; /* Para alinear los hijos en una columna */
 }
 
