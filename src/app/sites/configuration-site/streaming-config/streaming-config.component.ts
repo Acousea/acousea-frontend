@@ -75,7 +75,7 @@ export class StreamingConfigComponent implements OnInit {
     this.loadConfig();
   }
 
-  @undoable(3000)
+  @undoable(2000)
   applySettings() {
     console.log('Applying settings:', {
       waveformConfig: this.waveformConfig,

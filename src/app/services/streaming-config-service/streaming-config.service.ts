@@ -53,8 +53,8 @@ export class StreamingConfigService {
     );
   }
 
-  @undoable(3000)
-  getUpdatedConfig() {
+  @undoable(2000)
+  getUpdatedStreamingConfig() {
     console.log('Requesting updated config');
     const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/streaming-configuration/update`;
     this.http.get<BackendResponse<CommunicationResultResponse>>(apiUrl).subscribe({

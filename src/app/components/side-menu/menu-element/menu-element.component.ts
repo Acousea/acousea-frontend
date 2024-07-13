@@ -40,10 +40,17 @@ export class MenuElementComponent implements OnInit {
   }
 
   toggleDropdown(){
+    console.log("toggleDropdown")
     if(this.dropdownClosed) {
       this.dropdownClosed.next(!this.dropdownClosed.value);
     }
 
   }
 
+  toggleDropdownWithoutRedirect() {
+    console.log("toggleDropdownWithoutRedirect")
+    if(this.dropdownClosed) {
+      this.dropdownClosed.next(!this.dropdownClosed.value);
+    }
+  }
 }

@@ -77,7 +77,7 @@ export class DeviceConfigPopupComponent {
     this.deviceConfigPopUpService.hidePopup();
   }
 
-  @undoable(3000)
+  @undoable(2000)
   applyChanges() {
     console.log('========Applying changes========');
     // Lógica para aplicar cambios
