@@ -1,6 +1,6 @@
 # Acousea: Sistema de Control y Comunicaciones para el Derivador Oceánico
 
-Acousea es la interfaz frontend desarrollada con Angular para la gestión y monitoreo del derivador oceánico. Esta plataforma proporciona herramientas para la configuración y supervisión de los dispositivos `Localizer` y `Drifter`, permitiendo un control eficiente y preciso en tiempo real.
+Acousea es la interfaz frontend desarrollada con Angular para la gestión y monitoreo del derivador oceánico. Esta plataforma proporciona herramientas para la configuración y supervisión de los dispositivos `Localizer` y `Drifter`, y el correspondiente módulo PAM.
 
 ## Requisitos
 
