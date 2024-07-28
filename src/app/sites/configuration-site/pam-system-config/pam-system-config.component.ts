@@ -82,6 +82,7 @@ export class PamSystemConfigComponent implements OnInit {
   }
 
   applySettings() {
+    console.log("SELECTED BIT DEPTH COPONENT: ", this.selectedBitDepth)
     const waveformConfig: PAMDeviceWaveformLoggingConfig = {
       gain: this.gainDB,
       sample_rate: this.selectedWaveformSampleRate,
@@ -103,6 +104,8 @@ export class PamSystemConfigComponent implements OnInit {
       waveform_config: waveformConfig,
       fft_config: fftConfig
     };
+
+    console.log("SELECTED BIT DEPTH: ", this.selectedBitDepth.value);
 
     this.loggingConfigService.setLoggingConfig(params).subscribe(response => {
       if (response.success) {

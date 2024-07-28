@@ -20,7 +20,7 @@
       <div class="setting-group">
         <label for="max-waveform-frequency">Waveform Frequency (Hz)</label>
         <select id="max-waveform-frequency" [(ngModel)]="selectedWaveformSampleRate">
-          <option *ngFor="let rate of waveformSampleRates" [value]="rate">{{ rate }}</option>
+          <option *ngFor="let rate of waveformSampleRates" [ngValue]="rate">{{ rate }}</option>
         </select>
       </div>
       <div class="setting-group">
@@ -30,13 +30,13 @@
       <div class="setting-group">
         <label for="gain-db">Gain (dB)</label>
         <select id="gain-db" [(ngModel)]="gainDB">
-          <option *ngFor="let bit of gainsDB" [value]="bit">{{ bit }}</option>
+          <option *ngFor="let bit of gainsDB" [ngValue]="bit">{{ bit }}</option>
         </select>
       </div>
       <div class="setting-group">
         <label for="bit-depth">Bit Depth</label>
         <select id="bit-depth" [(ngModel)]="selectedBitDepth">
-          <option *ngFor="let bit of bitDepths" [value]="bit">{{ bit.label }}</option>
+          <option *ngFor="let bit of bitDepths" [ngValue]="bit">{{ bit.label }}</option>
         </select>
       </div>
     </div>
@@ -54,7 +54,7 @@
       <div class="setting-group">
         <label for="max-spectrum-frequency">Spectrum Frequency (Hz)</label>
         <select id="max-spectrum-frequency" [(ngModel)]="selectedSpectrumSampleRate">
-          <option *ngFor="let rate of spectrumSampleRates" [value]="rate">{{ rate }}</option>
+          <option *ngFor="let rate of spectrumSampleRates" [ngValue]="rate">{{ rate }}</option>
         </select>
       </div>
       <div class="setting-group">
@@ -64,7 +64,7 @@
       <div class="setting-group">
         <label for="spectrum-processing-mode">Processing Mode</label>
         <select id="spectrum-processing-mode" [(ngModel)]="selectedProcessingMode">
-          <option *ngFor="let mode of FFTProcessingModesOptions" [value]="mode">{{ mode.label }}</option>
+          <option *ngFor="let mode of FFTProcessingModesOptions" [ngValue]="mode">{{ mode.label }}</option>
         </select>
       </div>
 

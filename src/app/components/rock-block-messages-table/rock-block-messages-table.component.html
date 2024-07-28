@@ -3,33 +3,73 @@
     <div class="table-title">
       <h1 [textContent]="title"></h1>
     </div>
-
   </div>
 
   <div class="table-content">
-
     <div class="table-header">
       <div class="table-row">
-        <div class="table-cell cell-device">Device</div>
-        <div class="table-cell cell-transmit-time">Transmit Time</div>
-        <div class="table-cell cell-latitude">Latitude</div>
-        <div class="table-cell cell-longitude">Longitude</div>
+        <div class="table-cell cell-transmit-time">
+          Date
+          <button (click)="sortBy('transmit_time')">
+            <i class="fa fa-sort"></i>
+          </button>
+        </div>
+        <div class="table-cell cell-operation-code">
+          Operation
+          <button (click)="sortBy('opcode')">
+            <i class="fa fa-sort"></i>
+          </button>
+        </div>
+
+        <div class="table-cell cell-status">
+          Status
+          <button (click)="sortBy('error')">
+            <i class="fa fa-sort"></i>
+          </button>
+        </div>
+
+        <div class="table-cell cell-device">
+          Device
+          <button (click)="sortBy('device')">
+            <i class="fa fa-sort"></i>
+          </button>
+        </div>
       </div>
     </div>
 
+
     <div class="table-body">
       <div class="table-row" *ngFor="let message of messages" (click)="onMessageClick(message)">
+        <div class="table-cell cell-transmit-time">{{ formatTransmitTime(message.transmit_time) }}</div>
+        <div class="table-cell cell-operation-code">
+          <span [ngStyle]="{ 'color': getOperationColor(message.opcode), 'background-color': getOperationBackgroundColor(message.opcode) }">
+            {{ getOperationDescription(message.opcode) }}
+          </span>
+        </div>
+
+        <div class="table-cell cell-status">
+          <span *ngIf="message.message_type=='request'" class="pending-status">
+            <i class="fa" [ngClass]="'fa-info-circle'"></i>
+            {{ 'Pending' }}
+          </span>
+          <span *ngIf="message.message_type=='response'" [ngClass]="message.error ? 'error-status' : 'success-status'">
+            <i class="fa" [ngClass]="message.error ? 'fa-times-circle' : 'fa-check-circle'"></i>
+            {{ message.error ? 'Failed' : 'Completed' }}
+          </span>
+        </div>
+
         <div class="table-cell cell-device">
+          <img [src]="getDeviceImage(message.device)" alt="{{ message.device }}" class="device-icon">
           <span [ngClass]="{
             'device-drifter': message.device === 'drifter',
             'device-localizer': message.device === 'localizer',
+            'device-backend': message.device === 'backend',
             'device-unknown': message.device === 'unknown'}">
             {{ message.device | uppercase }}
           </span>
         </div>
-        <div class="table-cell cell-transmit-time">{{ formatTransmitTime(message.transmit_time) }}</div>
-        <div class="table-cell cell-latitude">{{ message.iridium_latitude | number:'1.2-2' }}</div>
-        <div class="table-cell cell-longitude">{{ message.iridium_longitude | number:'1.2-2' }}</div>
+
+
       </div>
     </div>
   </div>

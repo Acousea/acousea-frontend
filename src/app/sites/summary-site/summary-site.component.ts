@@ -39,7 +39,7 @@ export class SummarySiteComponent implements OnInit {
   numClicks: number = 0;
   numFiles: number = 0;
   numMinutes: number = 0;
-  numReports: number = 0;
+  numReports: number = 10;
 
   constructor(private statsService: StatsService) {
     this.clickData = {

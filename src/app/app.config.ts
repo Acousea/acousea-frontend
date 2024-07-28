@@ -38,4 +38,4 @@ export const production_environment = {
   webSocketUrl: 'ws://fedora-vpn-server.duckdns.org:8000'
 };
 
-export const environment = production_environment;
+export const environment = debug_environment;

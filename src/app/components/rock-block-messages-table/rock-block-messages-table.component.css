@@ -64,9 +64,24 @@
   font-weight: bold;
 }
 
+/*.table-header .table-cell {*/
+/*  position: relative;*/
+/*}*/
+
+.table-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  font-size: 1em;
+  vertical-align: middle;
+}
+
+
 .cell-device {
   cursor: pointer;
-  width: 50%;
+  width: 25%;
 }
 
 .cell-transmit-time {
@@ -74,15 +89,46 @@
   width: 30%;
 }
 
-.cell-latitude {
+.cell-operation-code {
   cursor: pointer;
-  width: 10%;
+  width: 25%;
 }
 
-.cell-longitude {
+.cell-status{
   cursor: pointer;
-  width: 10%;
+  width: 20%;
 }
+
+.table-cell .error-status {
+  background-color: rgba(255, 0, 0, 0.1); /* Semi-transparent red */
+  color: red;
+  border-radius: 15px;
+  padding: 5px 10px;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.table-cell .success-status {
+  background-color: rgba(0, 128, 0, 0.1); /* Semi-transparent green */
+  color: green;
+  border-radius: 15px;
+  padding: 5px 10px;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.table-cell .pending-status {
+  background-color:  rgba(0, 157, 255, 0.1); /* Semi-transparent orange */
+  color: rgba(0, 157, 255, 1);
+  border-radius: 15px;
+  padding: 5px 10px;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+
 
 .pagination {
   display: flex;
@@ -119,6 +165,14 @@
   align-items: center;
 }
 
+.table-cell.cell-operation-code span {
+  background-color: var(--drifter-color-transparent-50);
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
 .pagination-button.active {
   background-color: #303030;
   color: white;
@@ -147,11 +201,14 @@ select {
   border-radius: 4px;
   border: 1px solid #ddd;
 }
-
+.device-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 0px;
+  vertical-align: middle;
+}
 
 .device-drifter {
-  background-color: var(--drifter-color-transparent-50); /* Color para Drifter */
-  border: 2px solid var(--drifter-color-transparent-75);
   font-weight: bold;
   color: var(--drifter-color);
   padding: 5px 10px;
@@ -160,8 +217,6 @@ select {
 }
 
 .device-localizer {
-  background-color: var(--localizer-color-transparent-50);
-  border: 2px solid var(--localizer-color-transparent-75);
   font-weight: bold;
   color:  var(--localizer-color);
   padding: 5px 10px;
@@ -169,9 +224,17 @@ select {
   display: inline-block;
 }
 
+.device-backend {
+  font-weight: bold;
+  color:  var(--backend-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+
 .device-unknown {
   background-color: var(--unknown-device-color-transparent-50); /* Color para Unknown */
-  border: 2px solid var(--unknown-device-color-transparent-75);
   font-weight: bold;
   color: var(--unknown-device-color);
   padding: 5px 10px;

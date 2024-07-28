@@ -1,6 +1,6 @@
 <div class="reporting-periods-config-site">
   <div class="top-container">
-    <h1>Reporting Periods Configuration</h1>
+    <h1>Reporting Period Settings</h1>
     <app-update-info-button [tooltipPosition]="'right'"
                             (buttonClick)="communicationSystemService.getUpdatedReportingPeriods()"></app-update-info-button>
   </div>
@@ -9,33 +9,33 @@
       <div class="settings-box">
         <h2>Launching Mode</h2>
         <div class="setting-group">
-          <label for="launchingSbdPeriod">SBD Period:</label>
+          <label for="launchingSbdPeriod">Iridium Period <span>(minutes)</span></label>
           <input id="launchingSbdPeriod" formControlName="launchingSbdPeriod" type="number">
         </div>
         <div class="setting-group">
-          <label for="launchingLoraPeriod">LoRa Period:</label>
+          <label for="launchingLoraPeriod">LoRa Period <span>(minutes)</span></label>
           <input id="launchingLoraPeriod" formControlName="launchingLoraPeriod" type="number">
         </div>
       </div>
       <div class="settings-box">
         <h2>Working Mode</h2>
         <div class="setting-group">
-          <label for="workingSbdPeriod">SBD Period:</label>
+          <label for="workingSbdPeriod">Iridium Period <span>(minutes)</span></label>
           <input id="workingSbdPeriod" formControlName="workingSbdPeriod" type="number">
         </div>
         <div class="setting-group">
-          <label for="workingLoraPeriod">LoRa Period:</label>
+          <label for="workingLoraPeriod">LoRa Period <span>(minutes)</span></label>
           <input id="workingLoraPeriod" formControlName="workingLoraPeriod" type="number">
         </div>
       </div>
       <div class="settings-box">
         <h2>Recovering Mode</h2>
         <div class="setting-group">
-          <label for="recoveringSbdPeriod">SBD Period:</label>
+          <label for="recoveringSbdPeriod">Iridium Period <span>(minutes)</span></label>
           <input id="recoveringSbdPeriod" formControlName="recoveringSbdPeriod" type="number">
         </div>
         <div class="setting-group">
-          <label for="recoveringLoraPeriod">LoRa Period:</label>
+          <label for="recoveringLoraPeriod">LoRa Period <span>(minutes)</span></label>
           <input id="recoveringLoraPeriod" formControlName="recoveringLoraPeriod" type="number">
         </div>
       </div>

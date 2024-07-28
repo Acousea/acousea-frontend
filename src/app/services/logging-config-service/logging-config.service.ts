@@ -43,6 +43,7 @@ export class LoggingConfigService {
           throw new Error(response.error.error_message);
         }
         if (response.success) {
+          console.log("GET LOGGING CONFIG: ", response.success)
           return response.success;
         }
         throw new Error('Unexpected response format');
@@ -70,6 +71,7 @@ export class LoggingConfigService {
   }
 
   setLoggingConfig(params: PAMDeviceLoggingConfigReadModel): Observable<BackendResponse<CommunicationResultResponse>> {
+    console.log("PARAMS LOGGING CONFIG: ", params)
     const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/logging-configuration/set`;
     return this.httpClient.post<BackendResponse<CommunicationResultResponse>>(apiUrl, params).pipe(
       map((response: BackendResponse<CommunicationResultResponse>) => {

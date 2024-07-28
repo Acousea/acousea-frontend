@@ -59,7 +59,7 @@ export class NotificationService {
     this.mockNotifications.forEach((notification, index) => {
       setTimeout(() => {
         this.notificationsSubject.next(notification);
-      }, index * 2000);
+      }, index * 500);
     });
   }
 

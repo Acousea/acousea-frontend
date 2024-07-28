@@ -20,7 +20,7 @@ export const OPERATION_MODES: OperationMode[] = [
   {name: 'Keep current', value: 0},
   {name: 'Launching', value: 1},
   {name: 'Working', value: 2},
-  {name: 'Recovery', value: 3}
+  {name: 'Recovering', value: 3}
 ];
 const DEVICES: Device[] = [
   {name: 'Localizer', value: 'Localizer'},

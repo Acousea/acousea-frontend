@@ -1,10 +1,9 @@
 :host {
   display: flex;
-  flex: 1;
+  flex: 0.5;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  box-sizing: border-box;
+  padding: 10px 40px;
   background-color: var(--background-lightgray);
 }
 
@@ -14,12 +13,34 @@
   flex-direction: column; /* Para alinear los hijos en una columna */
 }
 
+.top-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 30px;
+  color: var(--text-black);
+  text-align: center;
+}
+
+.top-container h1 {
+  font-size: x-large;
+}
+
 .meta-information {
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: space-between; /* Distribuir el espacio entre los elementos */
   margin-bottom: 20px; /* Añadido para separación visual */
+}
+
+.meta-information label {
+  font-weight: bold;
+}
+
+.meta-information label span {
+  font-weight: normal;
 }
 
 .storage-container {

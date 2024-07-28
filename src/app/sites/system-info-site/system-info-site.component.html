@@ -1,8 +1,12 @@
 <div class="system-info-site" *ngIf="systemInfo; else errorTemplate">
-  <div class="meta-information">
-    <h1>Last Updated: {{ systemInfo.last_updated_date }}</h1>
+  <div class="top-container">
+    <h1>System Information</h1>
     <app-update-info-button [tooltipPosition]="'left'"
                             (buttonClick)="console.log('system-info-site update button clicked')"></app-update-info-button>
+  </div>
+  <div class="meta-information">
+    <label>Last Updated: <span>{{ systemInfo.last_updated_date }}</span></label>
+
   </div>
 
   <div class="storage-container">
@@ -16,7 +20,7 @@
       <ul>
         <app-pam-device-status [statusCode]="systemInfo.pam_device_status.unit_status"></app-pam-device-status>
         <app-temperature-and-humidity [temperature]="systemInfo.pam_device_status.temperature"
-                                       [humidity]="systemInfo.pam_device_status.humidity"></app-temperature-and-humidity>
+                                      [humidity]="systemInfo.pam_device_status.humidity"></app-temperature-and-humidity>
         <app-battery-status [batteryPercentage]="systemInfo.pam_device_status.battery_percentage"
                             [batteryStatus]="systemInfo.pam_device_status.battery_status"></app-battery-status>
 
@@ -30,8 +34,8 @@
                          [longitude]="systemInfo.communication_system_status.longitude"></app-coordinates>
 
         <app-core-temperature-and-operation-mode
-            [coreTemperature]="systemInfo.communication_system_status.temperature"
-            [operationModeIdx]="systemInfo.communication_system_status.operation_mode"></app-core-temperature-and-operation-mode>
+          [coreTemperature]="systemInfo.communication_system_status.temperature"
+          [operationModeIdx]="systemInfo.communication_system_status.operation_mode"></app-core-temperature-and-operation-mode>
 
 
         <app-battery-status [batteryPercentage]="systemInfo.communication_system_status.battery_percentage"

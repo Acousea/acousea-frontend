@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {RockBlockMessage} from "../../rock-block-messages-table/rock-block-messages-table.component";
-import {DecimalPipe, NgIf, UpperCasePipe} from "@angular/common";
+import {Message} from "../../rock-block-messages-table/rock-block-messages-table.component";
+import {DatePipe, DecimalPipe, NgIf, UpperCasePipe} from "@angular/common";
 import {
-  RockBlockMessageDetailsPopUpService
-} from "../../../services/pop-ups-services/rockblock-message-details-popup/rock-block-message-details-pop-up.service";
+  MessageDetailsPopUpService
+} from "../../../services/pop-ups-services/rockblock-message-details-popup/message-details-pop-up.service";
+import {OperationCode} from "../../../global-interfaces/global-interfaces";
 
 @Component({
   selector: 'app-rockblock-message-details-popup',
@@ -11,16 +12,17 @@ import {
   imports: [
     NgIf,
     DecimalPipe,
-    UpperCasePipe
+    UpperCasePipe,
+    DatePipe
   ],
   templateUrl: './rockblock-message-details-popup.component.html',
   styleUrl: './rockblock-message-details-popup.component.css'
 })
 export class RockblockMessageDetailsPopupComponent {
-  message: RockBlockMessage | null = null;
+  message: Message | null = null;
   display: boolean = false;
 
-  constructor(private messageDetailsPopupService: RockBlockMessageDetailsPopUpService) {}
+  constructor(private messageDetailsPopupService: MessageDetailsPopUpService) {}
 
   ngOnInit(): void {
     this.messageDetailsPopupService.currentMessage$.subscribe({
@@ -37,4 +39,5 @@ export class RockblockMessageDetailsPopupComponent {
   }
 
   protected readonly String = String;
+  protected readonly OperationCode = OperationCode;
 }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RockBlockMessagesService } from './rock-block-messages.service';
+import { MessagesService } from './messages.service';
 
 describe('RockblockMessagesService', () => {
-  let service: RockBlockMessagesService;
+  let service: MessagesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RockBlockMessagesService);
+    service = TestBed.inject(MessagesService);
   });
 
   it('should be created', () => {
