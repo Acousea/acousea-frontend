@@ -1,7 +1,7 @@
 <div class="storage-status-component">
   <div class="headline">
-    <h2>System storage</h2>
-    <img src="assets/icons/storage-icon.svg">
+    <h2>{{ "STORAGE_STATUS.TITLE" | translate }}</h2>
+    <img src="assets/icons/storage-icon.svg" alt="Storage Icon">
   </div>
   <div class="bar-section">
     <div class="bars">
@@ -10,7 +10,7 @@
     </div>
     <p class="usage-text">
       <span class="used-text">{{ (used / 1024) | number: '1.2-2' }}</span> GB of
-      <span class="capacity-text">{{ (total / 1024) | number: '1.2-2' }}</span> GB used
+      <span class="capacity-text">{{ (total / 1024) | number: '1.2-2' }}</span> GB {{"STORAGE_STATUS.USED" | translate}}
     </p>
   </div>
 </div>

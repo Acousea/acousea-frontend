@@ -1,11 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-battery-status',
   standalone: true,
   imports: [
-    NgIf
+    NgIf,
+    TranslateModule
   ],
   templateUrl: './battery-status.component.html',
   styleUrl: './battery-status.component.css'
@@ -23,16 +25,16 @@ export class BatteryStatusComponent implements OnInit {
   updateBatteryStatusText(): void {
     switch (this.batteryStatus) {
       case 1:
-        this.batteryStatusText = 'Charging';
+        this.batteryStatusText = 'BATTERY.STATUS.CHARGING';
         break;
       case 2:
-        this.batteryStatusText = 'Discharging';
+        this.batteryStatusText = 'BATTERY.STATUS.DISCHARGING';
         break;
       case 3:
-        this.batteryStatusText = 'Not Charging or Discharging';
+        this.batteryStatusText = 'BATTERY.STATUS.NOT_CHARGING_OR_DISCHARGING';
         break;
       default:
-        this.batteryStatusText = 'Unknown';
+        this.batteryStatusText = 'BATTERY.STATUS.UNKNOWN';
         break;
     }
   }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {NgForOf} from "@angular/common";
+import {NgForOf, UpperCasePipe} from "@angular/common";
 import {TooltipComponent} from '../../../components/tooltip/tooltip.component';
 import {
   StreamingConfigResponse,
@@ -10,6 +10,7 @@ import {
 } from "../../../services/streaming-config-service/streaming-config.service";
 import {UpdateInfoButtonComponent} from "../../../components/update-info-button/update-info-button.component";
 import {undoable} from "../../../services/pop-ups-services/undo-popup-service/undoable-decorator";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @Component({
@@ -19,7 +20,9 @@ import {undoable} from "../../../services/pop-ups-services/undo-popup-service/un
     FormsModule,
     NgForOf,
     TooltipComponent,
-    UpdateInfoButtonComponent
+    UpdateInfoButtonComponent,
+    TranslateModule,
+    UpperCasePipe
   ],
   templateUrl: './streaming-config.component.html',
   styleUrls: ['./streaming-config.component.css']

@@ -9,19 +9,19 @@
     </div>
 
     <div class="section">
-      <h3>Operation Mode</h3>
+      <h3>{{"NODE_STATUS.OPERATION_MODE" | translate}}</h3>
       <div class="operation-modes">
         <button *ngFor="let mode of operationModes"
                 [ngClass]="{ 'selected': deviceConfig.selectedMode === mode }"
                 (click)="deviceConfig.selectedMode = mode">
-          {{ mode.name }}
+          {{ "NODE_STATUS.OPERATION_MODES." + mode.name | translate }}
         </button>
       </div>
     </div>
 
     <div class="section">
       <div class="direct-communication-header">
-        <h3>Direct Communication</h3>
+        <h3>{{ "DIRECT_COMMUNICATION.TITLE" | translate }}</h3>
         <label class="toggle-switch">
           <input type="checkbox" [(ngModel)]="deviceConfig.directCommunicationEnabled">
           <span class="slider"></span>
@@ -29,8 +29,9 @@
       </div>
 
       <div class="info-box" *ngIf="deviceConfig.directCommunicationEnabled">
-        <p>In order to enable “Direct Communication”, the Localizer device must be USB connected to this device. Select
-          the USB port to which the Localizer is connected.</p>
+        <p>
+          {{ "DIRECT_COMMUNICATION.INFORMATION_TEXT" | translate }}
+        </p>
         <div class="usb-selection">
           <select [(ngModel)]="selectedUsbPort">
             <option *ngFor="let port of usbPorts" [ngValue]="port">{{ port.description }}</option>
@@ -40,8 +41,8 @@
     </div>
 
     <div class="popup-footer">
-      <button class="discard-button" (click)="discardChanges()">Discard</button>
-      <button class="apply-button" (click)="applyChanges()">Apply</button>
+      <button class="discard-button" (click)="discardChanges()">{{"BUTTONS.DISCARD" | translate}}</button>
+      <button class="apply-button" (click)="applyChanges()">{{"BUTTONS.APPLY" | translate}}</button>
     </div>
   </div>
 

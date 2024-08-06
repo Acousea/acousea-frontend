@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgForOf} from "@angular/common";
+import {NgForOf, UpperCasePipe} from "@angular/common";
 import {TooltipComponent} from '../../../components/tooltip/tooltip.component';
 import {CommunicationSystemService} from "../../../services/communication-system-service/communication-system.service";
 import {UpdateInfoButtonComponent} from "../../../components/update-info-button/update-info-button.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-control-system-config',
@@ -13,7 +14,9 @@ import {UpdateInfoButtonComponent} from "../../../components/update-info-button/
     NgForOf,
     TooltipComponent,
     ReactiveFormsModule,
-    UpdateInfoButtonComponent
+    UpdateInfoButtonComponent,
+    TranslateModule,
+    UpperCasePipe
   ],
   templateUrl: './control-system-config.component.html',
   styleUrl: './control-system-config.component.css'

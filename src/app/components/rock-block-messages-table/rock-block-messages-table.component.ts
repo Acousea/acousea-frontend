@@ -6,6 +6,7 @@ import {
   MessageDetailsPopUpService
 } from "../../services/pop-ups-services/rockblock-message-details-popup/message-details-pop-up.service";
 import {OperationCode} from "../../global-interfaces/global-interfaces";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 export interface Message {
@@ -35,7 +36,8 @@ export interface Message {
     NgClass,
     DatePipe,
     NgStyle,
-    NgIf
+    NgIf,
+    TranslateModule
   ],
   templateUrl: './rock-block-messages-table.component.html',
   styleUrl: './rock-block-messages-table.component.css',

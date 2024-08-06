@@ -1,16 +1,16 @@
 <div class="pam-system-config-site">
   <div class="top-container">
-    <h1>Data Collection Settings</h1>
+    <h1>{{"DATA_COLLECTION_SETTINGS.TITLE" | translate}}</h1>
     <app-update-info-button [tooltipPosition]="'right'"
                             (buttonClick)="loggingConfigService.getUpdatedLoggingConfig()"></app-update-info-button>
   </div>
   <div class="settings-container">
 
     <div class="settings-box waveform">
-      <h2>Waveform Data</h2>
+      <h2>{{ "DATA_COLLECTION_SETTINGS.WAVEFORM.TITLE" | translate }}</h2>
       <div class="switch-group">
         <label for="logging-wav">
-          Waveform Logging
+          {{ "DATA_COLLECTION_SETTINGS.WAVEFORM.LOGGING" | translate }}
         </label>
         <label class="switch">
           <input type="checkbox" id="logging-wav" [(ngModel)]="waveformDataLoggingEnabled">
@@ -18,33 +18,33 @@
         </label>
       </div>
       <div class="setting-group">
-        <label for="max-waveform-frequency">Waveform Frequency (Hz)</label>
+        <label for="max-waveform-frequency">{{ "DATA_COLLECTION_SETTINGS.WAVEFORM.FREQUENCY" | translate }}</label>
         <select id="max-waveform-frequency" [(ngModel)]="selectedWaveformSampleRate">
           <option *ngFor="let rate of waveformSampleRates" [ngValue]="rate">{{ rate }}</option>
         </select>
       </div>
       <div class="setting-group">
-        <label for="waveform-file-length">File Length (min)</label>
+        <label for="waveform-file-length">{{ "DATA_COLLECTION_SETTINGS.WAVEFORM.FILE_LENGTH" | translate }}</label>
         <input type="number" id="waveform-file-length" [(ngModel)]="fileLength" min="1" max="255">
       </div>
       <div class="setting-group">
-        <label for="gain-db">Gain (dB)</label>
+        <label for="gain-db">{{ "DATA_COLLECTION_SETTINGS.WAVEFORM.GAIN" | translate }}</label>
         <select id="gain-db" [(ngModel)]="gainDB">
           <option *ngFor="let bit of gainsDB" [ngValue]="bit">{{ bit }}</option>
         </select>
       </div>
       <div class="setting-group">
-        <label for="bit-depth">Bit Depth</label>
+        <label for="bit-depth">{{ "DATA_COLLECTION_SETTINGS.WAVEFORM.BIT_DEPTH" | translate }}</label>
         <select id="bit-depth" [(ngModel)]="selectedBitDepth">
           <option *ngFor="let bit of bitDepths" [ngValue]="bit">{{ bit.label }}</option>
         </select>
       </div>
     </div>
     <div class="settings-box spectrum">
-      <h2>Spectrum (FFT)</h2>
+      <h2>{{ "DATA_COLLECTION_SETTINGS.SPECTRUM.TITLE" | translate }}</h2>
       <div class="switch-group">
         <label for="logging-fft">
-          Spectrum Logging
+          {{ "DATA_COLLECTION_SETTINGS.SPECTRUM.LOGGING" | translate }}
         </label>
         <label class="switch">
           <input type="checkbox" id="logging-fft" [(ngModel)]="spectrumDataLoggingEnabled">
@@ -52,30 +52,30 @@
         </label>
       </div>
       <div class="setting-group">
-        <label for="max-spectrum-frequency">Spectrum Frequency (Hz)</label>
+        <label for="max-spectrum-frequency">{{ "DATA_COLLECTION_SETTINGS.SPECTRUM.FREQUENCY" | translate }}</label>
         <select id="max-spectrum-frequency" [(ngModel)]="selectedSpectrumSampleRate">
           <option *ngFor="let rate of spectrumSampleRates" [ngValue]="rate">{{ rate }}</option>
         </select>
       </div>
       <div class="setting-group">
-        <label for="max-log-length">Log Length (min)</label>
+        <label for="max-log-length">{{ "DATA_COLLECTION_SETTINGS.SPECTRUM.LOG_LENGTH" | translate }}</label>
         <input type="number" id="max-log-length" [(ngModel)]="maxLogLength" min="1" max="255">
       </div>
       <div class="setting-group">
-        <label for="spectrum-processing-mode">Processing Mode</label>
+        <label for="spectrum-processing-mode">{{ "DATA_COLLECTION_SETTINGS.SPECTRUM.PROCESSING_MODE" | translate }}</label>
         <select id="spectrum-processing-mode" [(ngModel)]="selectedProcessingMode">
           <option *ngFor="let mode of FFTProcessingModesOptions" [ngValue]="mode">{{ mode.label }}</option>
         </select>
       </div>
 
       <div class="setting-group">
-        <label for="accumulations-per-result">Accumulations Per Result</label>
+        <label for="accumulations-per-result">{{ "DATA_COLLECTION_SETTINGS.SPECTRUM.ACCUMULATIONS" | translate }}</label>
         <input type="number" id="accumulations-per-result" [(ngModel)]="accumulationsPerResult" min="1">
       </div>
     </div>
   </div>
 
   <div class="bottom-container">
-    <button class="apply-button" (click)="applySettings()">APPLY</button>
+    <button class="apply-button" (click)="applySettings()">{{ "BUTTONS.APPLY" | translate | uppercase }}</button>
   </div>
 </div>

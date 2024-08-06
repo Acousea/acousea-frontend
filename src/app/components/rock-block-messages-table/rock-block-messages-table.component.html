@@ -1,35 +1,29 @@
 <div class="table-container">
-  <div class="table-controls">
-    <div class="table-title">
-      <h1 [textContent]="title"></h1>
-    </div>
-  </div>
-
   <div class="table-content">
     <div class="table-header">
       <div class="table-row">
         <div class="table-cell cell-transmit-time">
-          Date
+          {{ "HISTORY_SITE.HISTORY_TABLE.DATE" | translate }}
           <button (click)="sortBy('transmit_time')">
             <i class="fa fa-sort"></i>
           </button>
         </div>
         <div class="table-cell cell-operation-code">
-          Operation
+          {{ "HISTORY_SITE.HISTORY_TABLE.OPERATION" | translate }}
           <button (click)="sortBy('opcode')">
             <i class="fa fa-sort"></i>
           </button>
         </div>
 
         <div class="table-cell cell-status">
-          Status
+          {{ "HISTORY_SITE.HISTORY_TABLE.STATUS" | translate }}
           <button (click)="sortBy('error')">
             <i class="fa fa-sort"></i>
           </button>
         </div>
 
         <div class="table-cell cell-device">
-          Device
+          {{ "HISTORY_SITE.HISTORY_TABLE.DEVICE" | translate }}
           <button (click)="sortBy('device')">
             <i class="fa fa-sort"></i>
           </button>
@@ -42,7 +36,8 @@
       <div class="table-row" *ngFor="let message of messages" (click)="onMessageClick(message)">
         <div class="table-cell cell-transmit-time">{{ formatTransmitTime(message.transmit_time) }}</div>
         <div class="table-cell cell-operation-code">
-          <span [ngStyle]="{ 'color': getOperationColor(message.opcode), 'background-color': getOperationBackgroundColor(message.opcode) }">
+          <span
+            [ngStyle]="{ 'color': getOperationColor(message.opcode), 'background-color': getOperationBackgroundColor(message.opcode) }">
             {{ getOperationDescription(message.opcode) }}
           </span>
         </div>
@@ -76,12 +71,12 @@
 
   <div class="pagination">
     <div class="total-messages">
-      <span>Total messages: {{ totalMessages }}</span>
+      <span>{{ "HISTORY_SITE.HISTORY_TABLE.TOTAL_MESSAGES" | translate }}: {{ totalMessages }}</span>
     </div>
 
     <div class="page-selector">
       <div class="rows-per-page-selector">
-        <label for="rowsPerPage">Rows per page:</label>
+        <label for="rowsPerPage">{{ "HISTORY_SITE.HISTORY_TABLE.ROWS_PER_PAGE" | translate }}:</label>
         <select id="rowsPerPage" [(ngModel)]="rowsPerPage" (change)="onRowsPerPageChange(rowsPerPage)">
           <option *ngFor="let rows of rowsOptions" [value]="rows">{{ rows }}</option>
         </select>

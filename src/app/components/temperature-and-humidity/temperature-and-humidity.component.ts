@@ -1,11 +1,13 @@
 import {Component, Input} from '@angular/core';
 import {NgStyle} from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-temperature-and-humidity',
   standalone: true,
   imports: [
-    NgStyle
+    NgStyle,
+    TranslateModule
   ],
   templateUrl: './temperature-and-humidity.component.html',
   styleUrl: './temperature-and-humidity.component.css'

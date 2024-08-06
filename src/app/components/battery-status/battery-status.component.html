@@ -1,7 +1,7 @@
 <div class="battery-status-component">
   <div class="battery-info">
-    <h2>Battery</h2>
-    <p>Status: {{ batteryStatusText }}</p>
+    <h2>{{ 'BATTERY.TITLE' | translate }}</h2>
+    <p>{{ 'BATTERY.STATUS_LABEL' | translate }}:  {{ batteryStatusText | translate }}</p>
   </div>
   <div class="battery-icon-section">
     <span class="battery-percentage">{{ batteryPercentage }}%</span>

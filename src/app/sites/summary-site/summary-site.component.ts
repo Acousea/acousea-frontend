@@ -11,6 +11,7 @@ import {
   RockblockMessageDetailsPopupComponent
 } from "../../components/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
 import {LoadingAnimationComponent} from "../../components/loading-animation/loading-animation.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -26,7 +27,8 @@ export interface ChartInputData {
     RockBlockMessagesTableComponent,
     NotificationListComponent,
     RockblockMessageDetailsPopupComponent,
-    LoadingAnimationComponent
+    LoadingAnimationComponent,
+    TranslateModule
   ],
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'
@@ -39,7 +41,7 @@ export class SummarySiteComponent implements OnInit {
   numClicks: number = 0;
   numFiles: number = 0;
   numMinutes: number = 0;
-  numReports: number = 10;
+  numReports: number = 0;
 
   constructor(private statsService: StatsService) {
     this.clickData = {

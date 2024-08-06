@@ -3,7 +3,7 @@
   <input
     type="text"
     #searchInput
-    placeholder="Search"
+    [placeholder]="'SEARCH_BAR.PLACEHOLDER' | translate"
     class="search-input"
     [(ngModel)]="searchText"
     (input)="onSearch()"

@@ -1,11 +1,14 @@
 import {Component, Input} from '@angular/core';
-import {NgStyle} from "@angular/common";
+import {NgStyle, SlicePipe} from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-core-temperature-and-operation-mode',
   standalone: true,
   imports: [
-    NgStyle
+    NgStyle,
+    TranslateModule,
+    SlicePipe
   ],
   templateUrl: './core-temperature-and-operation-mode.component.html',
   styleUrl: './core-temperature-and-operation-mode.component.css'

@@ -5,14 +5,14 @@
             [ngStyle]="{'fill': getTemperatureColor()}"/>
     </svg>
     <div class="climate-data">
-      <h3>Temperature</h3>
+      <h3>{{ "TEMPERATURE_HUMIDITY_STATUS.TEMPERATURE.TITLE" | translate }}</h3>
       <p>{{ temperature }}°C</p>
     </div>
   </div>
   <div class="climate-section humidity-section">
     <img src="assets/icons/water-drops.svg" class="icon" alt="humidity icon">
     <div class="climate-data">
-      <h3>Humidity</h3>
+      <h3>{{ "TEMPERATURE_HUMIDITY_STATUS.HUMIDITY.TITLE" | translate }}</h3>
       <p>{{ humidity }}%</p>
     </div>
   </div>

@@ -1,17 +1,17 @@
 <div class="recording-and-processing-site">
   <div class="top-container">
-    <h1>Streaming Settings</h1>
+    <h1>{{"RECORDING_PROCESSING_SETTINGS.TITLE" | translate}}</h1>
     <app-update-info-button [tooltipPosition]="'right'"
                             (buttonClick)="configService.getUpdatedStreamingConfig()"></app-update-info-button>
   </div>
   <div class="settings-container">
     <div class="settings-box waveform">
       <!------------------------------------------- WAVEFORM ------------------------------------------->
-      <h2>Waveform Data (WAV)</h2>
+      <h2>{{ "RECORDING_PROCESSING_SETTINGS.WAVEFORM.TITLE" | translate }}</h2>
       <div class="setting-group">
         <label for="recording-wav" (mouseenter)="onMouseEnter('recording-wav')"
                (mouseleave)="onMouseLeave('recording-wav')">
-          Recording
+          {{ "RECORDING_PROCESSING_SETTINGS.WAVEFORM.RECORDING" | translate }}
           <app-tooltip [text]="'Enable or disable recording of WAV audio data'"
                        [show]="showTooltip['recording-wav']"></app-tooltip>
         </label>
@@ -23,7 +23,7 @@
       <div class="setting-group">
         <label for="processing-wav" (mouseenter)="onMouseEnter('processing-wav')"
                (mouseleave)="onMouseLeave('processing-wav')">
-          Processing
+          {{ "RECORDING_PROCESSING_SETTINGS.WAVEFORM.PROCESSING" | translate }}
           <app-tooltip [text]="'Enable or disable processing of WAV audio data'"
                        [show]="showTooltip['processing-wav']"></app-tooltip>
         </label>
@@ -31,12 +31,11 @@
           <input type="checkbox" id="processing-wav" [(ngModel)]="waveformConfig.process_waveform">
           <span class="slider round"></span>
         </label>
-
       </div>
       <div class="setting-group">
         <label for="wav-processing-type" (mouseenter)="onMouseEnter('wav-processing-type')"
                (mouseleave)="onMouseLeave('wav-processing-type')">
-          WAV Processing Type
+          {{ "RECORDING_PROCESSING_SETTINGS.WAVEFORM.PROCESSING_TYPE" | translate }}
           <app-tooltip [text]="'Select the type of processing for WAV data'"
                        [show]="showTooltip['wav-processing-type']"></app-tooltip>
         </label>
@@ -47,7 +46,8 @@
       <div class="setting-group">
         <label for="wav-interval" (mouseenter)="onMouseEnter('wav-interval')"
                (mouseleave)="onMouseLeave('wav-interval')">
-          WAV Interval (min)
+          {{ "RECORDING_PROCESSING_SETTINGS.WAVEFORM.INTERVAL" | translate }}
+          ({{ "RECORDING_PROCESSING_SETTINGS.UNITS.MINUTES" | translate}})
           <app-tooltip [text]="'Set the interval time (in seconds) between each WAV recording'"
                        [show]="showTooltip['wav-interval']"></app-tooltip>
         </label>
@@ -56,7 +56,8 @@
       <div class="setting-group">
         <label for="wav-duration" (mouseenter)="onMouseEnter('wav-duration')"
                (mouseleave)="onMouseLeave('wav-duration')">
-          WAV Duration (min)
+          {{ "RECORDING_PROCESSING_SETTINGS.WAVEFORM.DURATION" | translate }}
+          ({{ "RECORDING_PROCESSING_SETTINGS.UNITS.MINUTES" | translate}})
           <app-tooltip [text]="'Set the duration (in seconds) for each WAV recording'"
                        [show]="showTooltip['wav-duration']"></app-tooltip>
         </label>
@@ -65,11 +66,11 @@
     </div>
     <!------------------------------------------- SPECTRUM ------------------------------------------->
     <div class="settings-box spectrum">
-      <h2>Spectrum Data (FFT)</h2>
+      <h2>{{ "RECORDING_PROCESSING_SETTINGS.SPECTRUM.TITLE" | translate }}</h2>
       <div class="setting-group">
         <label for="recording-fft" (mouseenter)="onMouseEnter('recording-fft')"
                (mouseleave)="onMouseLeave('recording-fft')">
-          Recording
+          {{ "RECORDING_PROCESSING_SETTINGS.SPECTRUM.RECORDING" | translate }}
           <app-tooltip [text]="'Enable or disable recording of FFT data'"
                        [show]="showTooltip['recording-fft']"></app-tooltip>
         </label>
@@ -81,7 +82,7 @@
       <div class="setting-group">
         <label for="processing-fft" (mouseenter)="onMouseEnter('processing-fft')"
                (mouseleave)="onMouseLeave('processing-fft')">
-          Processing
+          {{ "RECORDING_PROCESSING_SETTINGS.SPECTRUM.PROCESSING" | translate }}
           <app-tooltip [text]="'Enable or disable processing of FFT data'"
                        [show]="showTooltip['processing-fft']"></app-tooltip>
         </label>
@@ -93,7 +94,7 @@
       <div class="setting-group">
         <label for="fft-processing-type" (mouseenter)="onMouseEnter('fft-processing-type')"
                (mouseleave)="onMouseLeave('fft-processing-type')">
-          FFT Processing Type
+          {{ "RECORDING_PROCESSING_SETTINGS.SPECTRUM.PROCESSING_TYPE" | translate }}
           <app-tooltip [text]="'Select the type of processing for FFT data'"
                        [show]="showTooltip['fft-processing-type']"></app-tooltip>
         </label>
@@ -104,7 +105,8 @@
       <div class="setting-group">
         <label for="fft-interval" (mouseenter)="onMouseEnter('fft-interval')"
                (mouseleave)="onMouseLeave('fft-interval')">
-          FFT Interval (min)
+          {{ "RECORDING_PROCESSING_SETTINGS.SPECTRUM.INTERVAL" | translate }}
+          ({{ "RECORDING_PROCESSING_SETTINGS.UNITS.MINUTES" | translate}})
           <app-tooltip [text]="'Set the interval time (in seconds) between each FFT recording'"
                        [show]="showTooltip['fft-interval']"></app-tooltip>
         </label>
@@ -113,7 +115,8 @@
       <div class="setting-group">
         <label for="fft-duration" (mouseenter)="onMouseEnter('fft-duration')"
                (mouseleave)="onMouseLeave('fft-duration')">
-          FFT Duration (min)
+          {{ "RECORDING_PROCESSING_SETTINGS.SPECTRUM.DURATION" | translate }}
+          ({{ "RECORDING_PROCESSING_SETTINGS.UNITS.MINUTES" | translate}})
           <app-tooltip [text]="'Set the duration (in seconds) for each FFT recording'"
                        [show]="showTooltip['fft-duration']"></app-tooltip>
         </label>
@@ -123,6 +126,6 @@
   </div>
 
   <div class="bottom-container">
-    <button class="apply-button" (click)="applySettings()">APPLY</button>
+    <button class="apply-button" (click)="applySettings()">{{ "BUTTONS.APPLY" | translate | uppercase }}</button>
   </div>
 </div>

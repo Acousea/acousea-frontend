@@ -3,6 +3,7 @@ import {SearchBarService, SearchContent} from "../../services/search-bar-service
 import {Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-search-bar',
@@ -10,7 +11,8 @@ import {NgForOf, NgIf} from "@angular/common";
   imports: [
     FormsModule,
     NgIf,
-    NgForOf
+    NgForOf,
+    TranslateModule
   ],
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.css'

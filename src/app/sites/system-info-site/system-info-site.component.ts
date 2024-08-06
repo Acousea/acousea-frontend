@@ -14,6 +14,7 @@ import {PamDeviceStatusComponent} from "../../components/pam-device-status/pam-d
 import {
   CoreTemperatureAndOperationModeComponent
 } from "../../components/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @Component({
@@ -28,7 +29,8 @@ import {
     TemperatureAndHumidityComponent,
     CoordinatesComponent,
     PamDeviceStatusComponent,
-    CoreTemperatureAndOperationModeComponent
+    CoreTemperatureAndOperationModeComponent,
+    TranslateModule
   ],
   templateUrl: './system-info-site.component.html',
   styleUrl: './system-info-site.component.css'

@@ -1,47 +1,47 @@
 <div class="reporting-periods-config-site">
   <div class="top-container">
-    <h1>Reporting Period Settings</h1>
+    <h1>{{ "REPORTING_SETTINGS.TITLE" | translate }}</h1>
     <app-update-info-button [tooltipPosition]="'right'"
                             (buttonClick)="communicationSystemService.getUpdatedReportingPeriods()"></app-update-info-button>
   </div>
   <form [formGroup]="reportingPeriodsForm" (ngSubmit)="onSubmit()">
     <div class="settings-container">
       <div class="settings-box">
-        <h2>Launching Mode</h2>
+        <h2>{{ "NODE_STATUS.OPERATION_MODES.LAUNCHING_MODE" | translate }}</h2>
         <div class="setting-group">
-          <label for="launchingSbdPeriod">Iridium Period <span>(minutes)</span></label>
+          <label for="recoveringSbdPeriod">{{ "REPORTING_SETTINGS.PERIODS.IRIDIUM_PERIOD" | translate }} <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span></label>
           <input id="launchingSbdPeriod" formControlName="launchingSbdPeriod" type="number">
         </div>
         <div class="setting-group">
-          <label for="launchingLoraPeriod">LoRa Period <span>(minutes)</span></label>
+          <label for="workingLoraPeriod">{{ "REPORTING_SETTINGS.PERIODS.LORA_PERIOD" | translate }} <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span></label>
           <input id="launchingLoraPeriod" formControlName="launchingLoraPeriod" type="number">
         </div>
       </div>
       <div class="settings-box">
-        <h2>Working Mode</h2>
+        <h2>{{ "NODE_STATUS.OPERATION_MODES.WORKING_MODE" | translate }}</h2>
         <div class="setting-group">
-          <label for="workingSbdPeriod">Iridium Period <span>(minutes)</span></label>
+          <label for="recoveringSbdPeriod">{{ "REPORTING_SETTINGS.PERIODS.IRIDIUM_PERIOD" | translate }} <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span></label>
           <input id="workingSbdPeriod" formControlName="workingSbdPeriod" type="number">
         </div>
         <div class="setting-group">
-          <label for="workingLoraPeriod">LoRa Period <span>(minutes)</span></label>
+          <label for="workingLoraPeriod">{{ "REPORTING_SETTINGS.PERIODS.LORA_PERIOD" | translate }} <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span></label>
           <input id="workingLoraPeriod" formControlName="workingLoraPeriod" type="number">
         </div>
       </div>
       <div class="settings-box">
-        <h2>Recovering Mode</h2>
+        <h2>{{ "NODE_STATUS.OPERATION_MODES.RECOVERING_MODE" | translate }}</h2>
         <div class="setting-group">
-          <label for="recoveringSbdPeriod">Iridium Period <span>(minutes)</span></label>
+          <label for="recoveringSbdPeriod">{{ "REPORTING_SETTINGS.PERIODS.IRIDIUM_PERIOD" | translate }} <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span></label>
           <input id="recoveringSbdPeriod" formControlName="recoveringSbdPeriod" type="number">
         </div>
         <div class="setting-group">
-          <label for="recoveringLoraPeriod">LoRa Period <span>(minutes)</span></label>
+          <label for="workingLoraPeriod">{{ "REPORTING_SETTINGS.PERIODS.LORA_PERIOD" | translate }} <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span></label>
           <input id="recoveringLoraPeriod" formControlName="recoveringLoraPeriod" type="number">
         </div>
       </div>
     </div>
     <div class="bottom-container">
-      <button class="apply-button" type="submit">Apply</button>
+      <button class="apply-button" type="submit">{{ "BUTTONS.APPLY" | translate | uppercase }}</button>
     </div>
   </form>
 </div>

@@ -7,6 +7,7 @@ import {
   RockblockMessageDetailsPopupComponent
 } from "../../components/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
 import {SummaryCardComponent} from "../../components/cards/summary-card/summary-card.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-history-site',
@@ -15,7 +16,8 @@ import {SummaryCardComponent} from "../../components/cards/summary-card/summary-
     LineChartComponent,
     RockBlockMessagesTableComponent,
     RockblockMessageDetailsPopupComponent,
-    SummaryCardComponent
+    SummaryCardComponent,
+    TranslateModule
   ],
   templateUrl: './history-site.component.html',
   styleUrl: './history-site.component.css'

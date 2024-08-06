@@ -1,0 +1,186 @@
+{
+  "SUMMARY_SITE": {
+    "TITLE": "Resumen",
+    "WELCOME": "Bienvenido nuevamente",
+    "CLICKS": "Clics",
+    "REPORTS": "Informes",
+    "MINUTES": "Minutos",
+    "FILES": "Archivos"
+  },
+  "SIDE_MENU": {
+    "DASHBOARD": "Panel de Inicio",
+    "MAP": "Mapa",
+    "SETTINGS": "Configuración",
+    "HISTORY": "Historial",
+    "SYSTEM_INFO": "Información del sistema"
+  },
+  "SEARCH_BAR": {
+    "PLACEHOLDER": "Buscar"
+  },
+  "BATTERY": {
+    "TITLE": "Batería",
+    "STATUS_LABEL": "Estado",
+    "STATUS": {
+      "CHARGING": "Cargando",
+      "DISCHARGING": "Descargando",
+      "NOT_CHARGING_OR_DISCHARGING": "Ni cargando ni descargando",
+      "UNKNOWN": "Desconocido"
+    }
+  },
+  "NODE_STATUS": {
+    "TEMPERATURE": "Temperatura del Núcleo",
+    "OPERATION_MODE": "Modo de Operación",
+    "OPERATION_MODES": {
+      "NONE": "Ninguno",
+      "LAUNCHING": "Lanzando",
+      "LAUNCHING_MODE": "Modo de Lanzamiento",
+      "WORKING": "Trabajando",
+      "WORKING_MODE": "Modo de Trabajo",
+      "RECOVERING": "Recuperando",
+      "RECOVERING_MODE": "Modo de Recuperación"
+    }
+  },
+  "BUTTONS": {
+    "SAVE": "Guardar",
+    "CANCEL": "Cancelar",
+    "CLOSE": "Cerrar",
+    "DISCARD": "Descartar",
+    "APPLY": "Aplicar",
+    "UPDATE_NOW": "Actualizar ahora"
+
+  },
+  "COORDINATES_STATUS": {
+    "LATITUDE": "Latitud",
+    "LONGITUDE": "Longitud"
+  },
+  "PAM_DEVICE": {
+    "TITLE": "Dispositivo PAM",
+    "STATUS": "Estado del Dispositivo",
+    "SETTINGS": {
+      "TITLE": "Configuración del Dispositivo PAM",
+      "STREAMING_SETTINGS": {
+        "TITLE": "Configuración de Streaming",
+        "STREAMING": "Streaming"
+      }
+    },
+    "STATUSES": {
+      "READY": "Listo",
+      "DATA_ACQUISITION_NOT_READY": "Adquisición de Datos No Lista",
+      "NOT_READY": "No Listo",
+      "START_UP_CONFIGURATION_FAILED": "Inicio de Configuración Fallido",
+      "BAUD_RATE_RECONFIGURING": "Reconfigurando Velocidad de Transmisión",
+      "FILE_SYSTEM_FAULT": "Fallo del Sistema de Archivos",
+      "OFFLINE": "Desconectado",
+      "UNKNOWN": "Desconocido"
+    }
+  },
+  "STORAGE_STATUS": {
+    "TITLE": "Almacenamiento",
+    "USED": "usado",
+    "FREE": "libre",
+    "TOTAL": "total"
+  },
+  "SYSTEM_INFO_SITE": {
+    "TITLE": "Información del Sistema",
+    "TITLE_FULL": "Información del Sistema",
+    "LAST_UPDATE": "Última Actualización"
+  },
+  "COMMUNICATION_SYSTEM": {
+    "TITLE": "Sistema de Comunicación",
+    "SETTINGS": {
+      "TITLE": "Configuración del Sistema de Comunicación"
+    }
+  },
+  "REPORTING_SETTINGS": {
+    "TITLE": "Configuración de Periodos de Reporte",
+    "PERIODS": {
+      "IRIDIUM_PERIOD": "Periodo Iridium",
+      "LORA_PERIOD": "Periodo LoRa"
+    },
+    "UNITS": {
+      "MINUTES": "minutos"
+    }
+  },
+  "RECORDING_PROCESSING_SETTINGS": {
+    "TITLE": "Configuración de Grabación y Procesamiento en Streaming",
+    "WAVEFORM": {
+      "TITLE": "Datos de Forma de Onda (WAV)",
+      "RECORDING": "Grabación",
+      "PROCESSING": "Procesamiento",
+      "PROCESSING_TYPE": "Tipo de Procesamiento WAV",
+      "INTERVAL": "Intervalo WAV",
+      "DURATION": "Duración WAV"
+    },
+    "SPECTRUM": {
+      "TITLE": "Datos de Espectro (FFT)",
+      "RECORDING": "Grabación",
+      "PROCESSING": "Procesamiento",
+      "PROCESSING_TYPE": "Tipo de Procesamiento FFT",
+      "INTERVAL": "Intervalo FFT",
+      "DURATION": "Duración FFT"
+    },
+    "UNITS": {
+      "MINUTES": "minutos"
+    }
+  },
+  "DATA_COLLECTION_SETTINGS": {
+    "TITLE": "Configuración de Recolección de Datos",
+    "WAVEFORM": {
+      "TITLE": "Datos de Forma de Onda",
+      "LOGGING": "Registro de Forma de Onda",
+      "FREQUENCY": "Frecuencia de Forma de Onda (Hz)",
+      "FILE_LENGTH": "Longitud del Archivo (min)",
+      "GAIN": "Ganancia (dB)",
+      "BIT_DEPTH": "Profundidad de Bits"
+    },
+    "SPECTRUM": {
+      "TITLE": "Espectro (FFT)",
+      "LOGGING": "Registro de Espectro",
+      "FREQUENCY": "Frecuencia de Espectro (Hz)",
+      "LOG_LENGTH": "Longitud del Registro (min)",
+      "PROCESSING_MODE": "Modo de Procesamiento",
+      "ACCUMULATIONS": "Acumulaciones por Resultado"
+    }
+  },
+  "TEMPERATURE_HUMIDITY_STATUS": {
+    "TITLE": "Temperatura y Humedad",
+    "TEMPERATURE": {
+      "TITLE": "Temperatura"
+    },
+    "HUMIDITY": {
+      "TITLE": "Humedad"
+    }
+  },
+  "DIRECT_COMMUNICATION": {
+    "TITLE": "Comunicación Directa",
+    "INFORMATION_TEXT": "Para habilitar la “Comunicación directa”, el dispositivo Localizador debe estar conectado por USB a este dispositivo. Seleccione el puerto USB al que está conectado el Localizador."
+  },
+  "HISTORY_SITE": {
+    "TITLE": "Historial",
+    "HISTORY_TABLE": {
+      "TITLE": "Historial",
+      "DATE": "Fecha",
+      "OPERATION": "Operación",
+      "STATUS": "Estado",
+      "DEVICE": "Dispositivo",
+      "TOTAL_MESSAGES": "Total de mensajes",
+      "ROWS_PER_PAGE": "Filas por página",
+      "PENDING": "Pendiente",
+      "FAILED": "Fallido",
+      "COMPLETED": "Completado"
+    },
+    "POPUP": {
+      "TITLE": "Detalles del Historial",
+      "DATE": "Fecha",
+      "OPERATION": "Operación",
+      "STATUS": "Estado",
+      "DEVICE": "Dispositivo",
+      "TOTAL_MESSAGES": "Total de mensajes",
+      "PENDING": "Pendiente",
+      "FAILED": "Fallido",
+      "COMPLETED": "Completado",
+      "CLOSE": "Cerrar"
+    }
+  }
+
+}

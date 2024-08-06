@@ -1,11 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DecimalPipe} from "@angular/common";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-storage-status',
   standalone: true,
   imports: [
-    DecimalPipe
+    DecimalPipe,
+    TranslateModule
   ],
   templateUrl: './storage-status.component.html',
   styleUrl: './storage-status.component.css'

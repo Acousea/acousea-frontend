@@ -1,9 +1,12 @@
 import {Component, Input} from '@angular/core';
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-coordinates',
   standalone: true,
-  imports: [],
+  imports: [
+    TranslateModule
+  ],
   templateUrl: './coordinates.component.html',
   styleUrl: './coordinates.component.css'
 })
