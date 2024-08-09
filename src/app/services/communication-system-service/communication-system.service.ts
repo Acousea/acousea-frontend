@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../app.config";
 import {catchError, Observable, throwError} from "rxjs";
 import {BackendError, BackendResponse, CommunicationResultResponse} from "../../global-interfaces/global-interfaces";
 import {AlertPopUpService} from "../pop-ups-services/alert-popup/alert-pop-up.service";
 import {map} from "rxjs/operators";
 import {undoable} from "../pop-ups-services/undo-popup-service/undoable-decorator";
+import {BackendRoutePaths} from "../../app.route.paths";
 
 
 export interface ReportingPeriods {
@@ -34,7 +34,7 @@ export class CommunicationSystemService {
 
   getLocalizerLocation(): Observable<CommunicationSystemDeviceLocation | null> {
     return this.httpClient.get<BackendResponse<CommunicationSystemDeviceLocation>>(
-      `${environment.apiUrl}/${environment.apiVersion}/communication-system/localizer/location`)
+      BackendRoutePaths.communicationSystem.location('localizer'))
       .pipe(
         map(response => {
           if (response.success) {
@@ -53,7 +53,7 @@ export class CommunicationSystemService {
 
   getDrifterLocation(): Observable<CommunicationSystemDeviceLocation | null> {
     return this.httpClient.get<BackendResponse<CommunicationSystemDeviceLocation>>(
-      `${environment.apiUrl}/${environment.apiVersion}/communication-system/drifter/location`)
+      BackendRoutePaths.communicationSystem.location('drifter'))
       .pipe(
         map(response => {
           if (response.success) {
@@ -76,8 +76,9 @@ export class CommunicationSystemService {
       this.alertPopUpService.showErrorMessage(errorMessage);
     }
   }
+
   setReportingPeriods(periods: ReportingPeriods): void {
-    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/communication-system/drifter/reporting-periods`;
+    const apiUrl = BackendRoutePaths.communicationSystem.reportingPeriods('drifter');
     this.httpClient.post<BackendResponse<CommunicationResultResponse>>(apiUrl, periods).subscribe(
       response => {
         if (response.success) {
@@ -94,7 +95,7 @@ export class CommunicationSystemService {
 
 
   getReportingPeriods(): Observable<ReportingPeriods> {
-    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/communication-system/drifter/reporting-periods`;
+    const apiUrl = BackendRoutePaths.communicationSystem.reportingPeriods('drifter');
     return this.httpClient.get<BackendResponse<ReportingPeriods>>(apiUrl).pipe(
       map(response => {
         if (response.success) {
@@ -121,7 +122,7 @@ export class CommunicationSystemService {
 
   @undoable(2000)
   getUpdatedReportingPeriods(): void {
-    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/communication-system/drifter/reporting-periods/update`;
+    const apiUrl = BackendRoutePaths.update(BackendRoutePaths.communicationSystem.reportingPeriods('drifter'));
     this.httpClient.post<BackendResponse<CommunicationResultResponse>>(apiUrl, {}).subscribe(
       response => {
         if (response.success) {

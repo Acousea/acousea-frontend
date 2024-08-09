@@ -19,6 +19,8 @@ export class LanguageService {
   private languages: Language[] = [
     { code: 'us', label: 'English', flagUrl: `${this.FLAG_URL}US.svg` },
     { code: 'es', label: 'Español', flagUrl: `${this.FLAG_URL}ES.svg` },
+    { code: 'de', label: 'Deutsch', flagUrl: `${this.FLAG_URL}DE.svg` },
+
   ];
   private currentLanguage = 'us';
 

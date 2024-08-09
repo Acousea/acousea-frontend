@@ -47,7 +47,6 @@
     "DISCARD": "Descartar",
     "APPLY": "Aplicar",
     "UPDATE_NOW": "Actualizar ahora"
-
   },
   "COORDINATES_STATUS": {
     "LATITUDE": "Latitud",
@@ -181,6 +180,22 @@
       "COMPLETED": "Completado",
       "CLOSE": "Cerrar"
     }
+  },
+  "USERS": {
+    "REGISTER": "Registrarse",
+    "LOGIN": "Iniciar Sesión",
+    "LOGOUT": "Cerrar Sesión",
+    "HAVE_NO_ACCOUNT?": "¿No tienes una cuenta?",
+    "ALREADY_HAVE_ACCOUNT?": "¿Ya tienes una cuenta?",
+    "PROFILE": {
+      "TITLE": "Perfil",
+      "EMAIL": "Correo Electrónico",
+      "USERNAME": "Nombre de Usuario",
+      "PASSWORD": "Contraseña"
+    }
+  },
+  "NOT-AVAILABLE": {
+    "TITLE": "Recurso No Disponible",
+    "MESSAGE": "Lo sentimos, esta página no está disponible en este momento. \n Para acceder a esta página, por favor inicie sesión o regístrese."
   }
-
 }

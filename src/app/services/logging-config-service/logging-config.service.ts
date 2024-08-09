@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import {environment} from "../../app.config";
 import {BackendResponse, CommunicationResultResponse} from "../../global-interfaces/global-interfaces";
 import {undoable} from "../pop-ups-services/undo-popup-service/undoable-decorator";
+import {BackendRoutePaths} from "../../app.route.paths";
 
 export interface PAMDeviceFFTLoggingConfig {
   sample_rate: number;
@@ -33,10 +33,11 @@ export interface PAMDeviceLoggingConfigReadModel {
   providedIn: 'root'
 })
 export class LoggingConfigService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+  }
 
   getLoggingConfig(): Observable<PAMDeviceLoggingConfigReadModel> {
-    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/logging-configuration`;
+    const apiUrl = BackendRoutePaths.pamSystem.loggingConfiguration
     return this.httpClient.get<BackendResponse<PAMDeviceLoggingConfigReadModel>>(apiUrl).pipe(
       map((response: BackendResponse<PAMDeviceLoggingConfigReadModel>) => {
         if (response.error) {
@@ -54,7 +55,7 @@ export class LoggingConfigService {
   @undoable(2000)
   getUpdatedLoggingConfig() {
     console.log('Requesting updated logging config');
-    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/logging-configuration/update`;
+    const apiUrl = BackendRoutePaths.update(BackendRoutePaths.pamSystem.loggingConfiguration)
     this.httpClient.post<BackendResponse<CommunicationResultResponse>>(apiUrl, {}).subscribe({
       next: (response: BackendResponse<CommunicationResultResponse>) => {
         if (response.error) {
@@ -72,7 +73,7 @@ export class LoggingConfigService {
 
   setLoggingConfig(params: PAMDeviceLoggingConfigReadModel): Observable<BackendResponse<CommunicationResultResponse>> {
     console.log("PARAMS LOGGING CONFIG: ", params)
-    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/logging-configuration/set`;
+    const apiUrl = BackendRoutePaths.set(BackendRoutePaths.pamSystem.loggingConfiguration)
     return this.httpClient.post<BackendResponse<CommunicationResultResponse>>(apiUrl, params).pipe(
       map((response: BackendResponse<CommunicationResultResponse>) => {
         if (response.error) {

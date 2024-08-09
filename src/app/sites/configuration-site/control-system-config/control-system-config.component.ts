@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgForOf, UpperCasePipe} from "@angular/common";
-import {TooltipComponent} from '../../../components/tooltip/tooltip.component';
+import {TooltipComponent} from '../../../components/addons/tooltip/tooltip.component';
 import {CommunicationSystemService} from "../../../services/communication-system-service/communication-system.service";
-import {UpdateInfoButtonComponent} from "../../../components/update-info-button/update-info-button.component";
+import {UpdateInfoButtonComponent} from "../../../components/addons/update-info-button/update-info-button.component";
 import {TranslateModule} from "@ngx-translate/core";
 
 @Component({

@@ -1,0 +1,17 @@
+.profile-bubble {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.window-bubble-submenu {
+  position: absolute;
+  top: 125%; /* Esto coloca el submenu justo debajo del profile-bubble */
+  right: 0;
+  z-index: 1000; /* Asegúrate de que el z-index sea mayor que el de otros elementos en la página */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

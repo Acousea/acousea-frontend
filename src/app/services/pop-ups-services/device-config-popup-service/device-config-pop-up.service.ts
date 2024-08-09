@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
-import {environment} from "../../../app.config";
 import {HttpClient} from "@angular/common/http";
 import {BackendResponse} from "../../../global-interfaces/global-interfaces";
-import {PopUpSettings, USBDevice} from '../../../components/pop-ups/device-config-popup/device-config-popup.component';
+import {PopUpSettings, USBDevice} from '../../../components/map-site/device-config-popup/device-config-popup.component';
+import {BackendRoutePaths} from "../../../app.route.paths";
 
 interface OperationMode {
   name: string;
@@ -63,7 +63,7 @@ export class DeviceConfigPopUpService {
   async getUSBDevices() {
     try {
       const response = await firstValueFrom(this.http.get<BackendResponse<{ devices: USBDevice[] }>>(
-        `${environment.apiUrl}/${environment.apiVersion}/communication-system/available-usb-devices`));
+        BackendRoutePaths.communicationSystem.availableUsbDevices));
       if (!response.success) {
         console.error('DeviceConfigPopUpService::getUSBDevices(): ', response.error?.error_message);
         return [];
@@ -110,7 +110,7 @@ export class DeviceConfigPopUpService {
 
   async getCurrentDeviceOpMode(device: string) {
     let response = await firstValueFrom(this.http.get<BackendResponse<any>>(
-      `${environment.apiUrl}/${environment.apiVersion}/communication-system/${device.toLowerCase()}/operation-mode`));
+      BackendRoutePaths.communicationSystem.operationMode(device)));
     if (response.success) {
       let operationMode = OPERATION_MODES.find(mode => mode.value === response.success.mode);
       if (!operationMode) {
@@ -126,7 +126,7 @@ export class DeviceConfigPopUpService {
 
   async getDirectCommunicationStatus(){
     let response = await firstValueFrom(this.http.get<BackendResponse<{ active: boolean }>>(
-      `${environment.apiUrl}/${environment.apiVersion}/communication-system/direct-communication/status`));
+      BackendRoutePaths.communicationSystem.directCommunicationStatus));
     if (response.success) {
       console.log("Direct communication status: ", response.success);
       return response.success.active;
@@ -139,10 +139,10 @@ export class DeviceConfigPopUpService {
   async updateConfiguration(device: string, configuration: DeviceConfiguration) {
     let backendResponse: BackendResponse<any>;
     if (configuration.directCommunicationEnabled) {
-      const url = `${environment.apiUrl}/${environment.apiVersion}/communication-system/direct-communication/activate/${configuration.directCommunicationSerialNumber}`;
+      const url = BackendRoutePaths.communicationSystem.directCommunicationEnable(configuration.directCommunicationSerialNumber);
       backendResponse = await firstValueFrom(this.http.put<BackendResponse<any>>(url, {}));
     } else {
-      const url = `${environment.apiUrl}/${environment.apiVersion}/communication-system/direct-communication/deactivate`;
+      const url = BackendRoutePaths.communicationSystem.directCommunicationDisable;
       backendResponse = await firstValueFrom(this.http.put<BackendResponse<any>>(url, {}));
     }
 
@@ -158,8 +158,7 @@ export class DeviceConfigPopUpService {
       directCommunicationSerialNumber: configuration.directCommunicationSerialNumber
     };
     this.deviceConfigSource.next(updatedConfig);
-
-    const url: string = `${environment.apiUrl}/${environment.apiVersion}/communication-system/${device.toLowerCase()}/operation-mode/${configuration.selectedMode.value}`;
+    const url: string = BackendRoutePaths.communicationSystem.operationMode(device, configuration.selectedMode.value);
     backendResponse = await firstValueFrom(this.http.put<BackendResponse<any>>(url, {}));
     if (!backendResponse.success) {
       console.error('Error updating configuration: ', backendResponse.error?.error_message);

@@ -180,5 +180,22 @@
       "COMPLETED": "Completed",
       "CLOSE": "Close"
     }
+  },
+  "USERS": {
+    "REGISTER": "Register",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "HAVE_NO_ACCOUNT?": "Haven't got an account?",
+    "ALREADY_HAVE_ACCOUNT?": "Already have an account?",
+    "PROFILE": {
+      "TITLE": "Profile",
+      "EMAIL": "Email",
+      "USERNAME": "Username",
+      "PASSWORD": "Password"
+    }
+  },
+  "NOT-AVAILABLE": {
+    "TITLE": "Resource Not Available",
+    "MESSAGE": "Sorry, this page is not available at the moment. \n To access this page, please log in or register."
   }
 }

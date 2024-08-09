@@ -1,0 +1,31 @@
+/* not-available.component.css */
+.not-available-container {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--background-lightgray);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.not-available-container h1 {
+  color: var(--text-black);
+}
+
+.not-available-container p {
+  color: var(--text-gray);
+}
+
+.not-available-container button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.not-available-container button:hover {
+  background-color: var(--main-color-light);
+}

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Message} from "../../components/rock-block-messages-table/rock-block-messages-table.component";
+import {Message} from "../../components/history-site/rock-block-messages-table/rock-block-messages-table.component";
 import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
-import {environment} from "../../app.config";
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
+import {BackendRoutePaths} from "../../app.route.paths";
 
 interface GetMessagesResponse {
   data: Message[];
@@ -21,7 +21,7 @@ export class MessagesService {
 
 
   constructor(private http: HttpClient) {
-    this.websocket = new WebSocket(`${environment.webSocketUrl}/${environment.apiVersion}/ws/rockblock/messages`);
+    this.websocket = new WebSocket(BackendRoutePaths.websocket.notifications);
     this.websocket.onmessage = (event) => {
       console.log("New message received: " + event.data);
       const newMessage: Message = JSON.parse(event.data);
@@ -30,7 +30,7 @@ export class MessagesService {
   }
 
   getMessages(page: number, rowsPerPage: number): Observable<BackendResponse<GetMessagesResponse>> {
-    const url = `${environment.apiUrl}/${environment.apiVersion}/rockblock/messages/paginated?page=${page}&rows_per_page=${rowsPerPage}`;
+    const url = BackendRoutePaths.history.paginatedMessages(page, rowsPerPage);
     return this.http.get<BackendResponse<GetMessagesResponse>>(url);
   }
 

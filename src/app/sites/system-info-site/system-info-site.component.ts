@@ -3,17 +3,17 @@ import {NgForOf, NgIf} from "@angular/common";
 import {SystemStatusInformation} from "./system-info-value-objects/system-info-value-objects";
 import {CommunicationSystemInfoService} from "../../services/ic-listen-device-service/communication-system-info.service";
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
-import {UpdateInfoButtonComponent} from "../../components/update-info-button/update-info-button.component";
-import {StorageStatusComponent} from "../../components/storage-status/storage-status.component";
-import {BatteryStatusComponent} from "../../components/battery-status/battery-status.component";
+import {UpdateInfoButtonComponent} from "../../components/addons/update-info-button/update-info-button.component";
+import {StorageStatusComponent} from "../../components/system-info/storage-status/storage-status.component";
+import {BatteryStatusComponent} from "../../components/system-info/battery-status/battery-status.component";
 import {
   TemperatureAndHumidityComponent
-} from "../../components/temperature-and-humidity/temperature-and-humidity.component";
-import {CoordinatesComponent} from "../../components/coordinates/coordinates.component";
-import {PamDeviceStatusComponent} from "../../components/pam-device-status/pam-device-status.component";
+} from "../../components/system-info/temperature-and-humidity/temperature-and-humidity.component";
+import {CoordinatesComponent} from "../../components/system-info/coordinates/coordinates.component";
+import {PamDeviceStatusComponent} from "../../components/system-info/pam-device-status/pam-device-status.component";
 import {
   CoreTemperatureAndOperationModeComponent
-} from "../../components/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
+} from "../../components/system-info/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
 import {TranslateModule} from "@ngx-translate/core";
 
 

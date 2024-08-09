@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {NgForOf, UpperCasePipe} from "@angular/common";
-import {UpdateInfoButtonComponent} from "../../../components/update-info-button/update-info-button.component";
-import {TooltipComponent} from "../../../components/tooltip/tooltip.component";
+import {UpdateInfoButtonComponent} from "../../../components/addons/update-info-button/update-info-button.component";
+import {TooltipComponent} from "../../../components/addons/tooltip/tooltip.component";
 import {
   LoggingConfigService,
   PAMDeviceFFTLoggingConfig,

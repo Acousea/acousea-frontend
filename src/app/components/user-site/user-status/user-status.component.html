@@ -1,0 +1,11 @@
+<!-- user-status.component.html -->
+<div class="settings-box">
+  <h2>Account Status</h2>
+  <p><strong>Active:</strong> {{ status?.active ? 'Yes' : 'No' }}</p>
+  <p><strong>Email Verified:</strong> {{ status?.emailVerified ? 'Yes' : 'No' }}</p>
+  <p><strong>Phone Verified:</strong> {{ status?.phoneVerified ? 'Yes' : 'No' }}</p>
+  <p><strong>Created At:</strong> {{ status?.createdAt | date }}</p>
+  <p><strong>Last Login:</strong> {{ status?.lastLogin | date }}</p>
+  <p><strong>Login Attempts:</strong> {{ status?.loginAttempts }}</p>
+  <p><strong>Password Changed At:</strong> {{ status?.passwordChangedAt | date }}</p>
+</div>

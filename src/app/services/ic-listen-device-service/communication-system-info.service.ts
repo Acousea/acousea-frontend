@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../app.config";
 import {
   CommunicationSystemStatus,
   PAMDeviceStatus,
@@ -9,6 +8,7 @@ import {
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {map} from 'rxjs/operators';
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
+import {BackendRoutePaths} from "../../app.route.paths";
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,6 @@ import {BackendResponse} from "../../global-interfaces/global-interfaces";
 export class CommunicationSystemInfoService {
 
   constructor(private httpClient: HttpClient) {
-  }
-
-  test() {
-    console.log("Test");
   }
 
   getSystemStatusInfo(): Observable<BackendResponse<SystemStatusInformation>> {
@@ -52,7 +48,7 @@ export class CommunicationSystemInfoService {
   }
 
   getPamSystemStatusInfo(): Observable<BackendResponse<PAMDeviceStatus>> {
-    return this.httpClient.get<BackendResponse<PAMDeviceStatus>>(`${environment.apiUrl}/${environment.apiVersion}/pam-system/info`)
+    return this.httpClient.get<BackendResponse<PAMDeviceStatus>>(BackendRoutePaths.pamSystem.pamSystemInfo)
       .pipe(
         map((response: BackendResponse<PAMDeviceStatus>) => {
           if (response.success) {
@@ -74,7 +70,7 @@ export class CommunicationSystemInfoService {
   }
 
   getCommunicationSystemStatusInfo(): Observable<BackendResponse<CommunicationSystemStatus>> {
-    return this.httpClient.get<BackendResponse<CommunicationSystemStatus>>(`${environment.apiUrl}/${environment.apiVersion}/communication-system/all-status-information`)
+    return this.httpClient.get<BackendResponse<CommunicationSystemStatus>>(BackendRoutePaths.communicationSystem.allStatusInformation)
       .pipe(
         map((response: BackendResponse<CommunicationSystemStatus>) => {
           if (response.success) {
