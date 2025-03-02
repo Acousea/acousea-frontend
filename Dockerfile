@@ -20,7 +20,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy built Angular files to Nginx static directory
-COPY --from=build /app/dist/web-iclisten /usr/share/nginx/html
+COPY --from=build /app/dist/web-iclisten/browser /usr/share/nginx/html
 
 # Expose port 80 for Koyeb
 EXPOSE 80
