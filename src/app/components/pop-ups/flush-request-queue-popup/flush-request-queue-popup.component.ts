@@ -34,4 +34,8 @@ export class FlushRequestQueuePopupComponent {
     // Flush the request queue
     this.flushRequestQueuePopupService.flushRequestQueue();
   }
+
+  discardChanges() {
+    this.closePopup();
+  }
 }

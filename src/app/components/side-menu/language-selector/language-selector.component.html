@@ -1,0 +1,12 @@
+<div class="language-selector">
+  <div class="selected-language" (click)="toggleDropdown()">
+    <img [src]="getFlagUrl(currentLanguage)" [alt]="currentLanguage" class="flag-icon"/>
+    {{ getCurrentLanguageLabel() }}
+    <span class="dropdown-arrow">&#9662;</span>
+  </div>
+  <div class="dropdown-menu" *ngIf="dropdownOpen">
+    <div *ngFor="let lang of languages" class="dropdown-item" (click)="switchLanguage(lang.code)">
+      <img [src]="getFlagUrl(lang.code)" [alt]="lang.label" class="flag-icon"/> {{ lang.label }}
+    </div>
+  </div>
+</div>

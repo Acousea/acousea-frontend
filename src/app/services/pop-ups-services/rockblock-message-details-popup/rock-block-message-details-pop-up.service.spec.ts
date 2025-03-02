@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RockBlockMessageDetailsPopUpService } from './rock-block-message-details-pop-up.service';
+import { MessageDetailsPopUpService } from './message-details-pop-up.service';
 
 describe('RockBlockMessageDetailsPopUpService', () => {
-  let service: RockBlockMessageDetailsPopUpService;
+  let service: MessageDetailsPopUpService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RockBlockMessageDetailsPopUpService);
+    service = TestBed.inject(MessageDetailsPopUpService);
   });
 
   it('should be created', () => {

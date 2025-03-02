@@ -5,12 +5,13 @@ import {LineChartComponent} from "../../components/charts/line-chart/line-chart.
 import {StatsService} from "../../services/stats-service/stats.service";
 import {
   RockBlockMessagesTableComponent
-} from "../../components/rock-block-messages-table/rock-block-messages-table.component";
+} from "../../components/history-site/rock-block-messages-table/rock-block-messages-table.component";
 import {NotificationListComponent} from "../../components/notifications/notification-list/notification-list.component";
 import {
   RockblockMessageDetailsPopupComponent
-} from "../../components/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
-import {LoadingAnimationComponent} from "../../components/loading-animation/loading-animation.component";
+} from "../../components/history-site/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
+import {LoadingAnimationComponent} from "../../components/addons/loading-animation/loading-animation.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -26,7 +27,8 @@ export interface ChartInputData {
     RockBlockMessagesTableComponent,
     NotificationListComponent,
     RockblockMessageDetailsPopupComponent,
-    LoadingAnimationComponent
+    LoadingAnimationComponent,
+    TranslateModule
   ],
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'

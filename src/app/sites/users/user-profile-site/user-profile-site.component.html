@@ -1,0 +1,19 @@
+<!-- user-profile.component.html -->
+<ng-container *ngIf="user != undefined else loadingTemplate">
+  <div class="pam-system-config-site">
+    <div class="top-container">
+      <app-user-profile-picture [profileImageUrl]="user.profile.profileImageUrl"></app-user-profile-picture>
+      <h1>{{ user.personalInfo.firstName }} {{ user.personalInfo.lastName }}</h1>
+    </div>
+    <div class="settings-container">
+      <app-user-personal-info [userInfo]="user.personalInfo"></app-user-personal-info>
+      <app-user-address [address]="user.address"></app-user-address>
+    </div>
+    <div class="bottom-container">
+      <app-user-status [status]="user.accountStatus"></app-user-status>
+    </div>
+  </div>
+</ng-container>
+<ng-template #loadingTemplate>
+  <p>Loading...</p>
+</ng-template>

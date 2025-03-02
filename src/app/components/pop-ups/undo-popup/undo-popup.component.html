@@ -1,5 +1,5 @@
 <div *ngIf="display" class="undo-notification">
-  <div class="loader"></div>
-  <p>{{ message }}</p>
-  <button (click)="undo()">UNDO</button>
+  <div class="loader" *ngIf="!successMessage"></div>
+  <p>{{ successMessage || message }}</p>
+  <button *ngIf="!successMessage" (click)="undo()">UNDO</button>
 </div>

@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {MapGeoComponent} from "../../components/map-geo/map-geo.component";
+import {MapGeoComponent} from "../../components/map-site/map-geo/map-geo.component";
 import {FormsModule} from "@angular/forms";
 import {KeyValuePipe} from "@angular/common";
 
-import {DeviceConfigPopupComponent} from "../../components/pop-ups/device-config-popup/device-config-popup.component";
+import {DeviceConfigPopupComponent} from "../../components/map-site/device-config-popup/device-config-popup.component";
 import {
   DrifterLocalizerCardsComponent
-} from "../../components/drifter-localizer-cards-component/drifter-localizer-cards.component";
+} from "../../components/map-site/drifter-localizer-cards-component/drifter-localizer-cards.component";
 
 
 @Component({

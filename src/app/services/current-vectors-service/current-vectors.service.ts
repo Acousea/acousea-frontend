@@ -1,7 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
-import {environment} from "../../app.config";
 import {Injectable} from "@angular/core";
+import {BackendRoutePaths} from "../../app.route.paths";
 
 export interface SingleLatLonUVValues {
   lat: number;
@@ -20,7 +20,7 @@ export class CurrentVectorsService {
 
   async getOceanCurrents(lat: number, lon: number): Promise<SingleLatLonUVValues> {
     const data = await firstValueFrom(this.httpClient.get(
-      `${environment.apiUrl}/${environment.apiVersion}/surface-fields/latest/${lat}/${lon}/`
+      BackendRoutePaths.surfaceFields.latest(lat, lon)
     ));
     return this.parseCurrentVectors(data);
 

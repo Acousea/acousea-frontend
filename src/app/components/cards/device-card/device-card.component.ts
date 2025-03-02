@@ -3,7 +3,7 @@ import {SummaryCardComponent} from "../summary-card/summary-card.component";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {CardComponent} from "../card/card.component";
 import {AlertPopUpService} from "../../../services/pop-ups-services/alert-popup/alert-pop-up.service";
-import {UpdateInfoButtonComponent} from "../../update-info-button/update-info-button.component";
+import {UpdateInfoButtonComponent} from "../../addons/update-info-button/update-info-button.component";
 
 @Component({
   selector: 'app-device-card',

@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {NgForOf} from "@angular/common";
-import {UpdateInfoButtonComponent} from "../../../components/update-info-button/update-info-button.component";
-import {TooltipComponent} from "../../../components/tooltip/tooltip.component";
+import {NgForOf, UpperCasePipe} from "@angular/common";
+import {UpdateInfoButtonComponent} from "../../../components/addons/update-info-button/update-info-button.component";
+import {TooltipComponent} from "../../../components/addons/tooltip/tooltip.component";
 import {
   LoggingConfigService,
   PAMDeviceFFTLoggingConfig,
   PAMDeviceLoggingConfigReadModel,
   PAMDeviceWaveformLoggingConfig
 } from "../../../services/logging-config-service/logging-config.service";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-data-collection-config',
@@ -17,7 +18,9 @@ import {
     FormsModule,
     NgForOf,
     UpdateInfoButtonComponent,
-    TooltipComponent
+    TooltipComponent,
+    TranslateModule,
+    UpperCasePipe
   ],
   templateUrl: './pam-system-config.component.html',
   styleUrl: './pam-system-config.component.css'
@@ -82,6 +85,7 @@ export class PamSystemConfigComponent implements OnInit {
   }
 
   applySettings() {
+    console.log("SELECTED BIT DEPTH COPONENT: ", this.selectedBitDepth)
     const waveformConfig: PAMDeviceWaveformLoggingConfig = {
       gain: this.gainDB,
       sample_rate: this.selectedWaveformSampleRate,
@@ -103,6 +107,8 @@ export class PamSystemConfigComponent implements OnInit {
       waveform_config: waveformConfig,
       fft_config: fftConfig
     };
+
+    console.log("SELECTED BIT DEPTH: ", this.selectedBitDepth.value);
 
     this.loggingConfigService.setLoggingConfig(params).subscribe(response => {
       if (response.success) {
