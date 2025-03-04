@@ -1,4 +1,8 @@
 {
+  "CONNECTION": {
+    "LOST": "⚠ Connection lost! Trying to reconnect...",
+    "REESTABLISHED": "✔ Reconnected to the server"
+  },
   "SUMMARY_SITE": {
     "TITLE": "Summary",
     "WELCOME": "Welcome again",
@@ -198,7 +202,7 @@
     "TITLE": "Resource Not Available",
     "MESSAGE": "Sorry, this page is not available at the moment. \n To access this page, please log in or register."
   },
-  "ERROR_MESSAGES" : {
+  "ERROR_MESSAGES": {
     "NO_NODE_SELECTED": "No node selected"
   }
 }

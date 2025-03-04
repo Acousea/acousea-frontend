@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
-import {BackendRoutePaths} from "../../app.route.paths";
+import {Observable} from 'rxjs';
+import {WebSocketService} from "@/app/services/websocket-service/websocket.service";
 
 export interface Notification {
   type: 'info' | 'success' | 'warning' | 'error';
@@ -15,8 +14,7 @@ export interface Notification {
   providedIn: 'root'
 })
 export class NotificationService {
-  private socket$: WebSocketSubject<Notification>;
-  private notificationsSubject = new Subject<Notification>();
+  private readonly _notifications$: Observable<Notification>;
   mockNotifications: Notification[] = [
 
     {
@@ -41,37 +39,30 @@ export class NotificationService {
     }
   ];
 
-  constructor() {
-    this.socket$ = webSocket(BackendRoutePaths.websocket.notifications);
-    this.socket$.subscribe({
-      next: (notification: Notification) => {
-        console.log("Received notification: ", notification);
-        this.notificationsSubject.next(notification);
-      },
-      error: (error) => {
-        console.error("Error receiving notification: ", error);
-      },
-      complete: () => {
-        console.log("Connection closed");
-      }
-    });
 
+  constructor(private wsService: WebSocketService) {
+    this._notifications$ = this.wsService.subscribeToMessageType<Notification>('notification');
     // Wait for 3 seconds before sending the notifications
     // setTimeout(() => {
     //   this.simulateNotifications();
     // }, 3000);
   }
 
+
+  get notifications$(): Observable<Notification> {
+    return this._notifications$;
+  }
+
   simulateNotifications() {
     // Wait for 2 seconds between sending each notification
     this.mockNotifications.forEach((notification, index) => {
       setTimeout(() => {
-        this.notificationsSubject.next(notification);
+        this.mockNotifications.forEach((notification: Notification) => this.wsService.sendMessage({
+          type: 'notification',
+          payload: notification
+        }));
       }, index * 500);
     });
   }
 
-  get notifications$(): Observable<Notification> {
-    return this.notificationsSubject.asObservable();
-  }
 }

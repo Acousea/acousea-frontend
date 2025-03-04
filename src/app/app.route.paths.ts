@@ -93,7 +93,9 @@ export const BackendRoutePaths = {
     paginatedMessages: (page: number, rowsPerPage: number) => `${apiUrl}/${apiVersion}/rockblock/messages/paginated?page=${page}&rows_per_page=${rowsPerPage}`
   },
   websocket: {
+    main: `${websocketUrl}/${apiVersion}/ws`,
     rockBlockMessages: `${websocketUrl}/${apiVersion}/ws/rockblock/messages`,
-    notifications: `${websocketUrl}/${apiVersion}/ws/notifications`
+    notifications: `${websocketUrl}/${apiVersion}/ws/notifications`,
+    status: `${websocketUrl}/${apiVersion}/ws/notifications`,
   }
 };

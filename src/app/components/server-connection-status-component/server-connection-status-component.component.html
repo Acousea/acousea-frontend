@@ -1,0 +1,19 @@
+<div class="overlay" *ngIf="!status.isConnected && !status.topNotificationDisplayed">
+  <div class="content">
+    <i class="fas fa-exclamation-triangle"></i>
+    <p>{{ "CONNECTION.LOST" | translate }}</p>
+    <button (click)="acknowledge()">OK</button>
+  </div>
+</div>
+
+<!-- Minimized notification bar -->
+<div class="notification-bar"
+     *ngIf="status.topNotificationDisplayed"
+     [ngClass]="status.isConnected ? 'connected' : 'disconnected'">
+  <p *ngIf="!status.showReconnectedMessage">
+    {{ "CONNECTION.LOST" | translate }}
+  </p>
+  <p *ngIf="status.showReconnectedMessage">
+    {{ "CONNECTION.REESTABLISHED" | translate }}
+  </p>
+</div>

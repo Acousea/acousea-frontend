@@ -1,4 +1,4 @@
-<div class="notification" [ngClass]="notification?.type">
+<div class="notification" [ngClass]="notification?.type?.toLowerCase()">
   <div class="icon" [ngClass]="getIcon()"></div>
   <div class="message">{{ notification?.message }}</div>
   <div class="date-hour">{{ notification?.date | date: 'HH:mm' }}</div>

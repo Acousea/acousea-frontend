@@ -1,4 +1,4 @@
-import {ApplicationConfig, importProvidersFrom, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, isDevMode} from '@angular/core';
 import {provideRouter, withComponentInputBinding} from '@angular/router';
 
 import {routes} from './app.routes';
@@ -13,6 +13,7 @@ import {LoadingInterceptorProvider} from "./interceptors/loading-animation-inter
 import {TranslateModule} from "@ngx-translate/core";
 import {provideTranslation} from "./translation.provider";
 import {authInterceptor} from "./interceptors/auth-interceptor/auth.interceptor";
+import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({eventCoalescing: true}),

@@ -3,9 +3,9 @@ import {MainLayoutComponent} from "./sites/main-layout/main-layout.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
 import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
 import {HistorySiteComponent} from "./sites/history-site/history-site.component";
-import {UserProfileSiteComponent} from "./sites/users/user-profile-site/user-profile-site.component";
+import {UserProfileSiteComponent} from "@/app/sites/user-profile-site/user-profile-site.component";
 import {NotAvailableSiteComponent} from "./sites/not-available-site/not-available-site.component";
-import {RegisterSiteComponent} from "./sites/users/register-site/register-site.component";
+import {RegisterSiteComponent} from "@/app/sites/auth-site/register-site/register-site.component";
 import {AuthGuard} from "./guard/AuthGuard/authGuard";
 import {AppRoutePaths} from "./app.route.paths";
 import {
@@ -14,8 +14,8 @@ import {
 import {
   RegisterStepProfileComponent
 } from "./components/register-site/register-step-profile/register-step-profile.component";
-import {LoginSiteComponent} from "./sites/users/login-site/login-site.component";
-import {AuthSiteComponent} from "./sites/users/auth-site/auth-site.component";
+import {LoginSiteComponent} from "@/app/sites/auth-site/login-site/login-site.component";
+import {AuthSiteComponent} from "@/app/sites/auth-site/auth-site/auth-site.component";
 import {
   SummaryStatsComponentComponent
 } from "./components/summary-site/summary-stats-component/summary-stats-component.component";

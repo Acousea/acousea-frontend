@@ -13,6 +13,9 @@ import {LoadingAnimationService} from "../../services/loading-animation-service/
 import {Observable} from "rxjs";
 import {AsyncPipe} from "@angular/common";
 import {map} from "rxjs/operators";
+import {
+  ServerConnectionStatusComponentComponent
+} from "@/app/components/server-connection-status-component/server-connection-status-component.component";
 
 @Component({
   selector: 'app-main-layout',
@@ -25,7 +28,8 @@ import {map} from "rxjs/operators";
     FlushRequestQueuePopupComponent,
     UndoPopupComponent,
     LoadingAnimationComponent,
-    AsyncPipe
+    AsyncPipe,
+    ServerConnectionStatusComponentComponent
   ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'

@@ -3,6 +3,7 @@ import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {User} from "../users/user.interfaces";
 import {BackendRoutePaths} from "../../app.route.paths";
 import {ApiService} from "../api-service/api.service";
+import {mockUser} from "@/app/services/users/mockUser";
 
 
 @Injectable({
@@ -27,6 +28,14 @@ export class AuthService {
   login(username: string, password: string) {
     // Implementa tu lógica de autenticación aquí
     const loginUrl = BackendRoutePaths.user.login;
+
+    if (username=="mock123" && password=="mock123") {
+      this.user = mockUser;
+      this.setAuthStatus(true);
+      // Refresh site
+      window.location.reload();
+      return;
+    }
 
     this.apiService.post<User>(loginUrl, {username, password}).subscribe({
       next: (response) => {

@@ -1,4 +1,8 @@
 {
+  "CONNECTION": {
+    "LOST": "⚠ Conexión perdida. Intentando reconectar...",
+    "REESTABLISHED": "✔ Conexión restablecida"
+  },
   "SUMMARY_SITE": {
     "TITLE": "Resumen",
     "WELCOME": "Bienvenido nuevamente",
