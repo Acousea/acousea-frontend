@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
+import {NgIf} from "@angular/common";
 import {SystemStatusInformation} from "./system-info-value-objects/system-info-value-objects";
 import {CommunicationSystemInfoService} from "../../services/ic-listen-device-service/communication-system-info.service";
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
@@ -20,7 +20,6 @@ import {
   selector: 'app-system-info-site',
   standalone: true,
   imports: [
-    NgForOf,
     NgIf,
     UpdateInfoButtonComponent,
     StorageStatusComponent,

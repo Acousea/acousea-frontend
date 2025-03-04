@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../app.config";
+
 import {catchError, Observable, throwError} from "rxjs";
 import {BackendError, BackendResponse, CommunicationResultResponse} from "../../global-interfaces/global-interfaces";
 import {AlertPopUpService} from "../pop-ups-services/alert-popup/alert-pop-up.service";
 import {map} from "rxjs/operators";
 import {undoable} from "../pop-ups-services/undo-popup-service/undoable-decorator";
+import { environment } from '@/environments/environment';
 
 
 export interface ReportingPeriods {

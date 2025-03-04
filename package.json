@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration production",
-    "start:development": "ng serve --configuration development",
     "debug": "ng serve --configuration development",
     "build": "ng build --configuration production",
+    "start": "npx serve -s dist/web-iclisten/browser -l 4200",
+    "start:production": "ng serve --configuration production",
+    "start:development": "ng serve --configuration development",
+    "build:and:start": "npm run build && npm run start",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -35,11 +37,13 @@
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.2",
+    "@angular-devkit/build-angular": "^19.2.0",
     "@angular/cli": "^18.0.2",
     "@angular/compiler-cli": "^18.0.0",
     "@types/d3": "^7.4.3",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^22.13.9",
+    "dotenv-webpack": "^8.1.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

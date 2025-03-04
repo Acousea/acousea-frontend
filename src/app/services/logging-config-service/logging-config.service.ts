@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import {environment} from "../../app.config";
+import { environment } from '@/environments/environment';
 import {BackendResponse, CommunicationResultResponse} from "../../global-interfaces/global-interfaces";
 import {undoable} from "../pop-ups-services/undo-popup-service/undoable-decorator";
 

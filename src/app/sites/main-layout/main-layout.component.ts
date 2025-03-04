@@ -1,7 +1,6 @@
-import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 
 import {RouterOutlet} from "@angular/router";
-import {FooterComponent} from "../../components/footer/footer.component";
 import {SideMenuComponent} from "../../components/side-menu/side-menu.component";
 import {AlertPopupComponent} from "../../components/pop-ups/alert-popup/alert-popup.component";
 import {NotificationListComponent} from "../../components/notifications/notification-list/notification-list.component";
@@ -12,7 +11,7 @@ import {UndoPopupComponent} from "../../components/pop-ups/undo-popup/undo-popup
 import {LoadingAnimationComponent} from "../../components/loading-animation/loading-animation.component";
 import {LoadingAnimationService} from "../../services/loading-animation-service/loading-animation.service";
 import {Observable} from "rxjs";
-import {AsyncPipe, NgIf} from "@angular/common";
+import {AsyncPipe} from "@angular/common";
 import {map} from "rxjs/operators";
 
 @Component({
@@ -21,14 +20,12 @@ import {map} from "rxjs/operators";
   imports: [
     SideMenuComponent,
     RouterOutlet,
-    FooterComponent,
     AlertPopupComponent,
     NotificationListComponent,
     FlushRequestQueuePopupComponent,
     UndoPopupComponent,
     LoadingAnimationComponent,
-    AsyncPipe,
-    NgIf
+    AsyncPipe
   ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'

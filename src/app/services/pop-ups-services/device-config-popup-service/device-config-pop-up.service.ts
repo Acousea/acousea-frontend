@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
-import {environment} from "../../../app.config";
+import { environment } from '@/environments/environment';
 import {HttpClient} from "@angular/common/http";
-import {BackendResponse} from "../../../global-interfaces/global-interfaces";
-import {PopUpSettings, USBDevice} from '../../../components/pop-ups/device-config-popup/device-config-popup.component';
+import {BackendResponse} from "@/app/global-interfaces/global-interfaces";
+import {PopUpSettings, USBDevice} from '@/app/components/pop-ups/device-config-popup/device-config-popup.component';
 
 interface OperationMode {
   name: string;

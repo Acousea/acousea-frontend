@@ -5,9 +5,9 @@ import {
   DeviceConfigPopUpService,
   DeviceConfiguration,
   OPERATION_MODES
-} from "../../../services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
+} from "@/app/services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
 import {UpdateInfoButtonComponent} from "../../update-info-button/update-info-button.component";
-import {undoable} from "../../../services/pop-ups-services/undo-popup-service/undoable-decorator";
+import {undoable} from "@/app/services/pop-ups-services/undo-popup-service/undoable-decorator";
 
 export interface USBDevice {
   device: string;

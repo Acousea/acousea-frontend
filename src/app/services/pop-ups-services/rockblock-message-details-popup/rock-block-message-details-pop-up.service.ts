@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {RockBlockMessage} from "../../../components/rock-block-messages-table/rock-block-messages-table.component";
+import {RockBlockMessage} from "@/app/components/rock-block-messages-table/rock-block-messages-table.component";
 
 @Injectable({
   providedIn: 'root'

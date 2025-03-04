@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
-import {environment} from "../../app.config";
+import { environment } from '@/environments/environment';
 
 export interface Notification {
   type: 'info' | 'success' | 'warning' | 'error';

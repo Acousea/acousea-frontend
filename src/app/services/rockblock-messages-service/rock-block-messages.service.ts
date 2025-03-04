@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {RockBlockMessage} from "../../components/rock-block-messages-table/rock-block-messages-table.component";
 import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
-import {environment} from "../../app.config";
+import { environment } from '@/environments/environment';
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
 
 interface GetMessagesResponse {

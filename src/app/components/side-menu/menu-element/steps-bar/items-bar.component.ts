@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgClass, NgForOf} from "@angular/common";
+import {Component, Input} from '@angular/core';
+import {NgForOf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 
 export interface BarStep {
@@ -12,7 +12,6 @@ export interface BarStep {
   standalone: true,
   imports: [
     NgForOf,
-    NgClass,
     RouterLink,
     RouterLinkActive
   ],

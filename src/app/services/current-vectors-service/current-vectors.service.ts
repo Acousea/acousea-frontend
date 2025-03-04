@@ -1,6 +1,6 @@
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
-import {environment} from "../../app.config";
+import { environment } from '@/environments/environment';
 import {Injectable} from "@angular/core";
 
 export interface SingleLatLonUVValues {

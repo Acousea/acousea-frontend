@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {KeyValuePipe, NgForOf} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
-import {SummaryCardComponent} from "../cards/summary-card/summary-card.component";
 import {DeviceCardComponent} from "../cards/device-card/device-card.component";
 import {AlertPopUpService} from "../../services/pop-ups-services/alert-popup/alert-pop-up.service";
 import {
@@ -15,9 +13,6 @@ import {
   standalone: true,
   imports: [
     FormsModule,
-    KeyValuePipe,
-    NgForOf,
-    SummaryCardComponent,
     DeviceCardComponent
   ],
   templateUrl: './drifter-localizer-cards.component.html',

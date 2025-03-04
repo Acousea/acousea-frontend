@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
-import {UpdateInfoButtonComponent} from "../../../components/update-info-button/update-info-button.component";
-import {TooltipComponent} from "../../../components/tooltip/tooltip.component";
+import {UpdateInfoButtonComponent} from "@/app/components/update-info-button/update-info-button.component";
 import {
   LoggingConfigService,
   PAMDeviceFFTLoggingConfig,
   PAMDeviceLoggingConfigReadModel,
   PAMDeviceWaveformLoggingConfig
-} from "../../../services/logging-config-service/logging-config.service";
+} from "@/app/services/logging-config-service/logging-config.service";
 
 @Component({
   selector: 'app-data-collection-config',
@@ -16,8 +15,7 @@ import {
   imports: [
     FormsModule,
     NgForOf,
-    UpdateInfoButtonComponent,
-    TooltipComponent
+    UpdateInfoButtonComponent
   ],
   templateUrl: './pam-system-config.component.html',
   styleUrl: './pam-system-config.component.css'

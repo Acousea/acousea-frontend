@@ -1,17 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgForOf} from "@angular/common";
-import {TooltipComponent} from '../../../components/tooltip/tooltip.component';
-import {CommunicationSystemService} from "../../../services/communication-system-service/communication-system.service";
-import {UpdateInfoButtonComponent} from "../../../components/update-info-button/update-info-button.component";
+import {CommunicationSystemService} from "@/app/services/communication-system-service/communication-system.service";
+import {UpdateInfoButtonComponent} from "@/app/components/update-info-button/update-info-button.component";
 
 @Component({
   selector: 'app-control-system-config',
   standalone: true,
   imports: [
     FormsModule,
-    NgForOf,
-    TooltipComponent,
     ReactiveFormsModule,
     UpdateInfoButtonComponent
   ],

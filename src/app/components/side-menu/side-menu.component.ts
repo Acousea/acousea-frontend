@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {NgClass, NgStyle} from "@angular/common";
+import {RouterLink} from "@angular/router";
 import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.component";
 import {SearchBarComponent} from "../search-bar/search-bar.component";
 
@@ -9,11 +8,7 @@ import {SearchBarComponent} from "../search-bar/search-bar.component";
   standalone: true,
   imports: [
     RouterLink,
-    RouterOutlet,
-    RouterLinkActive,
-    NgClass,
     MenuElementComponent,
-    NgStyle,
     SearchBarComponent
   ],
   templateUrl: './side-menu.component.html',

@@ -3,14 +3,6 @@ import {Component, OnInit} from '@angular/core';
 import {SummaryCardComponent} from "../../components/cards/summary-card/summary-card.component";
 import {LineChartComponent} from "../../components/charts/line-chart/line-chart.component";
 import {StatsService} from "../../services/stats-service/stats.service";
-import {
-  RockBlockMessagesTableComponent
-} from "../../components/rock-block-messages-table/rock-block-messages-table.component";
-import {NotificationListComponent} from "../../components/notifications/notification-list/notification-list.component";
-import {
-  RockblockMessageDetailsPopupComponent
-} from "../../components/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
-import {LoadingAnimationComponent} from "../../components/loading-animation/loading-animation.component";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -22,11 +14,7 @@ export interface ChartInputData {
   standalone: true,
   imports: [
     SummaryCardComponent,
-    LineChartComponent,
-    RockBlockMessagesTableComponent,
-    NotificationListComponent,
-    RockblockMessageDetailsPopupComponent,
-    LoadingAnimationComponent
+    LineChartComponent
   ],
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'

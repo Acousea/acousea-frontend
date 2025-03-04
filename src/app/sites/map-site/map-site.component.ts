@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {MapGeoComponent} from "../../components/map-geo/map-geo.component";
 import {FormsModule} from "@angular/forms";
-import {KeyValuePipe} from "@angular/common";
 
 import {DeviceConfigPopupComponent} from "../../components/pop-ups/device-config-popup/device-config-popup.component";
 import {
@@ -15,7 +14,6 @@ import {
   imports: [
     MapGeoComponent,
     FormsModule,
-    KeyValuePipe,
     DrifterLocalizerCardsComponent,
     DeviceConfigPopupComponent,
   ],

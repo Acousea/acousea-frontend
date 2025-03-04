@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {environment} from "../../app.config";
+import { environment } from '@/environments/environment';
 import {BackendResponse, CommunicationResultResponse} from "../../global-interfaces/global-interfaces";
 import {map} from "rxjs/operators";
 import {undoable} from "../pop-ups-services/undo-popup-service/undoable-decorator";

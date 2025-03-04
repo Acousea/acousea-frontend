@@ -28,8 +28,7 @@ export interface RockBlockMessage {
     FormsModule,
     DecimalPipe,
     UpperCasePipe,
-    NgClass,
-    DatePipe
+    NgClass
   ],
   templateUrl: './rock-block-messages-table.component.html',
   styleUrl: './rock-block-messages-table.component.css',
