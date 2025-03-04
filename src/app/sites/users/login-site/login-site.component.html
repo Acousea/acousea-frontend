@@ -1,21 +1,21 @@
-<!-- login.component.html -->
-<div class="login-container">
-  <div class="header">
-    <img src="../../../assets/acousea-new.svg" alt="Logo" class="logo">
-  </div>
-  <div class="form-container">
-    <h2>{{ "USERS.LOGIN" | translate }}</h2>
-    <form (submit)="onSubmit()">
-      <div class="form-group">
-        <label for="username">{{ "USERS.PROFILE.USERNAME" | translate }}</label>
-        <input type="text" id="username" [(ngModel)]="username" name="username" required>
-      </div>
-      <div class="form-group">
-        <label for="password">{{ "USERS.PROFILE.PASSWORD" | translate }}</label>
-        <input type="password" id="password" [(ngModel)]="password" name="password" required>
-      </div>
-      <button type="submit" class="submit-button">{{ "USERS.LOGIN" | translate }}</button>
-      <p>{{ "USERS.HAVE_NO_ACCOUNT?" | translate }} <a routerLink="{{AppRoutePaths.fullPath(AppRoutePaths.auth.register)}}">{{ "USERS.REGISTER" | translate }}</a></p>
-    </form>
-  </div>
-</div>
+<form (ngSubmit)="submitForm()">
+  <app-custom-input
+    [label]="'Username or Email'"
+    [placeholder]="'Enter your username or email'"
+    [leftIcon]="'fa-user'"
+    [inputType]="'text'"
+    [(content)]="usernameOrEmail"
+    [validationRules]="usernameValidations">
+  </app-custom-input>
+
+  <app-custom-input
+    [label]="'Password'"
+    [placeholder]="'Enter your password'"
+    [rightIcon]="'fa-eye'"
+    [leftIcon]="'fa-key'"
+    [(content)]="userPassword"
+    [validationRules]="passwordValidations">
+  </app-custom-input>
+
+  <button type="submit">Log In</button>
+</form>

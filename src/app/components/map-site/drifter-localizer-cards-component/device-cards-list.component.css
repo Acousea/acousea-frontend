@@ -1,0 +1,45 @@
+/* Contenedor Principal del Dropdown */
+.dropdown-container {
+  position: relative;
+  width: min-content;
+}
+
+/* Nodo Seleccionado y Flecha */
+.selected-node {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.selected-node .arrow-icon {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Lista de Dropdown (superpuesta) */
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  max-height: 300px; /* Limita la altura si hay muchos elementos */
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding: 5px 0;
+}
+
+/* Elementos de la lista */
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}

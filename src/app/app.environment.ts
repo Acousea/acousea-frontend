@@ -7,9 +7,9 @@ export const debug_environment = {
 
 export const production_environment = {
   production: true,
-  apiUrl: 'http://fedora-vpn-server.duckdns.org:8000',
+  apiUrl: 'http://fedora-vpn-server.duckdns.org:8080',
   apiVersion: 'api/v1',
-  webSocketUrl: 'ws://fedora-vpn-server.duckdns.org:8000'
+  webSocketUrl: 'ws://fedora-vpn-server.duckdns.org:8080'
 };
 
 export const environment = debug_environment;

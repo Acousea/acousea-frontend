@@ -1,7 +1,4 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   background-color: var(--background-lightgray);
 }
 
@@ -9,8 +6,5 @@
   margin-top: 30px;
 }
 
-.map-container {
-  display: flex;
-  flex: 1;
-}
+
 

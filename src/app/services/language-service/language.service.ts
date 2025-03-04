@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import {hasFlag} from "country-flag-icons";
 
@@ -8,18 +8,25 @@ export interface Language {
   flagUrl: string;
 }
 
+const FLAG_URL = 'https://purecatamphetamine.github.io/country-flag-icons/1x1/';
+
+export const AVAILABLE_LANGUAGES = [
+
+  {code: 'us', label: 'English', flagUrl: `${FLAG_URL}US.svg`},
+  {code: 'es', label: 'Español', flagUrl: `${FLAG_URL}ES.svg`},
+  {code: 'de', label: 'Deutsch', flagUrl: `${FLAG_URL}DE.svg`}
+]
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
 
-  private readonly FLAG_URL = 'https://purecatamphetamine.github.io/country-flag-icons/1x1/';
 
   private languages: Language[] = [
-    { code: 'us', label: 'English', flagUrl: `${this.FLAG_URL}US.svg` },
-    { code: 'es', label: 'Español', flagUrl: `${this.FLAG_URL}ES.svg` },
-    { code: 'de', label: 'Deutsch', flagUrl: `${this.FLAG_URL}DE.svg` },
+    {code: 'us', label: 'English', flagUrl: `${FLAG_URL}US.svg`},
+    {code: 'es', label: 'Español', flagUrl: `${FLAG_URL}ES.svg`},
+    {code: 'de', label: 'Deutsch', flagUrl: `${FLAG_URL}DE.svg`},
 
   ];
   private currentLanguage = 'us';
@@ -44,7 +51,7 @@ export class LanguageService {
 
   getFlagUrl(code: string): string {
     if (hasFlag(code.toUpperCase())) {
-      const url= `${this.FLAG_URL}${code.toUpperCase()}.svg`;
+      const url = `${FLAG_URL}${code.toUpperCase()}.svg`;
       // console.log(`Flag for country code ${code} found at ${url}`);
       return url;
     }

@@ -1,0 +1,18 @@
+<!-- src/app/gender-selection/gender-selection.component.html -->
+<div class="gender-selection-container">
+  <button
+    class="gender-button male"
+    [class.selected]="selectedGender === 'MALE'"
+    (click)="selectGender('MALE')"
+  >
+    <i class="fas fa-mars"></i> <!-- Ícono para Masculino -->
+  </button>
+
+  <button
+    class="gender-button female"
+    [class.selected]="selectedGender === 'FEMALE'"
+    (click)="selectGender('FEMALE')"
+  >
+    <i class="fas fa-venus"></i> <!-- Ícono para Femenino -->
+  </button>
+</div>

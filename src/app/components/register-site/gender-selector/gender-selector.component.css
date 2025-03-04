@@ -1,0 +1,45 @@
+/* src/app/gender-selection/gender-selection.component.css */
+.gender-selection-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espacio entre los botones */
+}
+
+.gender-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-size: 24px;
+  aspect-ratio: 1; /* Mantiene una proporción de 1:1 entre ancho y alto */
+  width: 60px; /* Ancho del botón */
+  border: 2px solid transparent;
+  border-radius: 100%; /* Hace que el contenedor sea circular */
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.gender-button:hover {
+  transform: scale(1.1); /* Aumentar un poco el tamaño al hacer hover */
+}
+
+.gender-button.male {
+  color: rgba(0, 123, 255, 0.6); /* Color azul con transparencia */
+}
+
+.gender-button.female {
+  color: rgba(255, 105, 180, 0.6); /* Color rosa con transparencia */
+}
+
+.gender-button.selected.male {
+  background-color: rgba(0, 123, 255, 0.3); /* Fondo azul claro con transparencia */
+  border-color: rgba(0, 123, 255, 0.8); /* Borde azul más oscuro */
+  color: rgba(0, 123, 255, 1); /* Ícono completamente opaco */
+}
+
+.gender-button.selected.female {
+  background-color: rgba(255, 105, 180, 0.3); /* Fondo rosa claro con transparencia */
+  border-color: rgba(255, 105, 180, 0.8); /* Borde rosa más oscuro */
+  color: rgba(255, 105, 180, 1); /* Ícono completamente opaco */
+}

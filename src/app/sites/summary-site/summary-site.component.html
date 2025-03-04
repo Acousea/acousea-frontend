@@ -3,23 +3,30 @@
   <title>{{ 'SUMMARY_SITE.TITLE' | translate }}</title>
 </head>
 
-<div class="summary-site">
-  <div class="summary-header">
-    <h1>{{ 'SUMMARY_SITE.WELCOME' | translate }}</h1>
+<header>
+  <h1>{{ 'SUMMARY_SITE.WELCOME' | translate }},
+    <span>{{ authService.getCurrentUser()!.personalInfo.firstName | titlecase }}</span>
+  </h1>
+  <div class="device-and-section-selection">
+    <app-device-cards-list [nodes]="nodes" [(selectedNode)]="selectedNode"/>
+    <div class="nav-tabs">
+      <div class="nav-item" [routerLink]="['/' + AppRoutePaths.summary.stats]" routerLinkActive="active-tab">
+        <a>Stats</a>
+        <app-update-info-button [tooltipPosition]="'left'"
+                                (buttonClick)="console.warn('Update not implemented');"></app-update-info-button>
+      </div>
+      <div class="nav-item" [routerLink]="['/' + AppRoutePaths.summary.info]" routerLinkActive="active-tab">
+        <a>Information</a>
+        <app-update-info-button [tooltipPosition]="'left'"
+                                (buttonClick)="console.warn('Update not implemented');"></app-update-info-button>
+      </div>
+      <div class="nav-item" [routerLink]="['/' + AppRoutePaths.summary.settings]" routerLinkActive="active-tab">
+        <a>Settings</a>
+        <app-update-info-button [tooltipPosition]="'left'"
+                                (buttonClick)="console.warn('Update not implemented');"></app-update-info-button>
+      </div>
+    </div>
   </div>
-  <div class="summary-cards">
-    <app-summary-card
-      [icon]="'dolphin'" [boldText]="String(numClicks)" [lightText]="'SUMMARY_SITE.CLICKS' | translate">
-    </app-summary-card>
-    <app-summary-card
-      [icon]="'foundation-sound'" [boldText]="String(numReports)" [lightText]="'SUMMARY_SITE.REPORTS' | translate">
-    </app-summary-card>
-    <app-summary-card
-      [icon]="'time-clock'" [boldText]="String(numMinutes)" [lightText]="'SUMMARY_SITE.MINUTES' | translate">
-    </app-summary-card>
-    <app-summary-card
-      [icon]="'audio-file'" [boldText]="String(numFiles)" [lightText]="'SUMMARY_SITE.FILES' | translate">
-    </app-summary-card>
-  </div>
-  <app-line-chart [inputData]="clickData" [timeMode]="'hours'" [scaleType]="'linear'"></app-line-chart>
-</div>
+</header>
+<router-outlet></router-outlet>
+

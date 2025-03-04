@@ -1,29 +1,36 @@
-<!-- Div with top left image -->
-<div class="side-menu">
-  <div class="header" [routerLink]="'/summary'">
-    <img src="../../../assets/acousea-new.svg" alt="Logo" class="logo">
+<div class="side-menu" [ngClass]="{'collapsed': isCollapsed}">
+  <div class="header" (click)="toggleMenu()">
+    <img [src]="isCollapsed ? '../../../assets/acousea-collapsed.svg' : '../../../assets/acousea-new.svg'"
+         alt="Logo"
+         class="logo">
   </div>
-  <!-- Barra de búsqueda -->
-  <div class="search-bar-container">
-    <app-search-bar></app-search-bar>
-  </div>
+
 
   <nav>
-    <app-menu-element [link]="'/summary'" [icon]="'fa-solid fa-chart-line'" [text]="'SIDE_MENU.DASHBOARD' | translate"></app-menu-element>
-    <app-menu-element [link]="'/map'" [icon]="'fa-solid fa-location-dot'" [text]="'SIDE_MENU.MAP'| translate"></app-menu-element>
-    <app-menu-element [link]="'/configuration'" [icon]="'fa-solid fa-gear'" [text]="'SIDE_MENU.SETTINGS'| translate"
-                      [subMenuItems]="configurationMenuItems">
-    </app-menu-element>
-    <app-menu-element [link]="'/history'" [icon]="'fa-solid fa-clock-rotate-left'"
+    <app-menu-element [link]="'/summary'"
+                      [icon]="'fa-solid fa-chart-line'"
+                      [collapsed]="isCollapsed"
+                      [text]="'SIDE_MENU.DASHBOARD' | translate"></app-menu-element>
+    <app-menu-element [link]="'/map'"
+                      [icon]="'fa-solid fa-location-dot'"
+                      [collapsed]="isCollapsed"
+                      [text]="'SIDE_MENU.MAP'| translate"></app-menu-element>
+    <app-menu-element [link]="'/history'"
+                      [icon]="'fa-solid fa-clock-rotate-left'"
+                      [collapsed]="isCollapsed"
                       [text]="'SIDE_MENU.HISTORY'| translate">
-<!--                      [subMenuItems]="historyMenuItems">-->
     </app-menu-element>
-    <app-menu-element [link]="'/system-info'" [icon]="'fa-solid fa-circle-info'"
-                      [text]="'SIDE_MENU.SYSTEM_INFO'| translate"></app-menu-element>
   </nav>
 
+  <!-- Selector de idioma, visible solo en modo expandido -->
+  <!-- Barra de búsqueda, visible solo en modo expandido -->
   <div class="footer">
-    <app-language-selector></app-language-selector>
+    <div class="search-bar-container">
+      <app-user-window-bubble></app-user-window-bubble>
+      <app-search-bar *ngIf="!isCollapsed"></app-search-bar>
+    </div>
+    <app-language-selector *ngIf="!isCollapsed"></app-language-selector>
   </div>
+
 
 </div>

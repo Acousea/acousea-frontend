@@ -1,0 +1,27 @@
+<div class="dropdown-container">
+  <!-- Nodo Seleccionado con Icono de Flecha -->
+  <div class="selected-node" (click)="toggleDropdown()">
+    <app-summary-card
+      *ngIf="selectedNode; else noNodeSelected"
+      [icon]="selectedNode.icon"
+      [boldText]="selectedNode.name">
+    </app-summary-card>
+    <ng-template #noNodeSelected>
+      <span>Selecciona un nodo</span>
+    </ng-template>
+    <span class="arrow-icon">&#9660;</span> <!-- Flecha para el desplegable -->
+  </div>
+
+  <!-- Lista de Nodos -->
+  <div *ngIf="dropdownVisible" class="dropdown-list">
+    <div
+      *ngFor="let node of nodes"
+      class="dropdown-item"
+      (click)="selectNode(node)">
+      <app-summary-card
+        [icon]="node.icon"
+        [boldText]="node.name">
+      </app-summary-card>
+    </div>
+  </div>
+</div>

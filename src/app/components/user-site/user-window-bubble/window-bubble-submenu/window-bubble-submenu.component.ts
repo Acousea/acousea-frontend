@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {AppRoutePaths} from "../../../../app.route.paths";
 import {Router} from "@angular/router";
+import {AuthService} from "../../../../services/auth-service/auth.service";
 
 interface SubmenuItem{
   title: string;
@@ -22,7 +23,8 @@ interface SubmenuItem{
 export class WindowBubbleSubmenuComponent {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   menuItems: SubmenuItem[] = [
@@ -48,6 +50,7 @@ export class WindowBubbleSubmenuComponent {
       icon: 'logout',
       action: () => {
         console.log('Logout clicked');
+        this.authService.logout();
       }
     }
   ];

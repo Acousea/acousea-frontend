@@ -20,7 +20,8 @@
 }
 
 .icon-placeholder {
-  font-size: 24px; /* Ajusta el tamaño del icono según sea necesario */
+  font-size: 12px; /* Ajusta el tamaño del icono según sea necesario */
+  height: 40px;
 }
 
 .card-name {

@@ -1,0 +1,75 @@
+<form>
+  <div class="profile-image-container">
+    <div class="profile-image" (click)="onSelectImage()">
+      <ng-container *ngIf="selectedImage; else noImage">
+        <img [src]="selectedImage" alt="Profile Image"/>
+      </ng-container>
+      <ng-template #noImage>
+        <span class="profile-initial">{{ getInitial() }}</span>
+      </ng-template>
+    </div>
+    <div class="profile-image-pencil">
+      <i class="fas fa-pencil-alt"></i>
+    </div>
+    <input type="file" id="imageUpload" (change)="onImageSelected($event)" style="display: none;">
+  </div>
+
+  <div class="paired-user-info-input">
+    <div>
+      <app-custom-input
+        [label]="'First Name'"
+        [placeholder]="'Enter your first name'"
+        [leftIcon]="'fa-user'"
+        [inputType]="'text'"
+        [(content)]="firstName"
+        [validationRules]="firstNameValidations">
+      </app-custom-input>
+    </div>
+
+    <div>
+      <app-custom-input
+        [label]="'Last Name'"
+        [placeholder]="'Enter your last name'"
+        [leftIcon]="'fa-user'"
+        [inputType]="'text'"
+        [(content)]="lastName"
+        [validationRules]="lastNameValidations">
+      </app-custom-input>
+    </div>
+  </div>
+
+  <div class="paired-user-info-input">
+    <div>
+      <app-custom-input
+        [label]="'Phone Number'"
+        [placeholder]="'Enter your phone number'"
+        [leftIcon]="'fa-phone'"
+        [inputType]="'text'"
+        [(content)]="phone"
+        [validationRules]="phoneValidations">
+      </app-custom-input>
+    </div>
+
+    <div>
+      <app-custom-input
+        [label]="'Date of Birth'"
+        [inputType]="'date'"
+        [leftIcon]="'fa-calendar'"
+        [(content)]="dateOfBirth"
+        [validationRules]="dobValidations">
+      </app-custom-input>
+    </div>
+  </div>
+
+  <div class="paired-user-info-input">
+    <div>
+      <label>Address</label>
+      <app-address-selector></app-address-selector>
+    </div>
+
+    <div>
+      <label>Preferred Language</label>
+      <app-language-selector></app-language-selector>
+    </div>
+  </div>
+</form>

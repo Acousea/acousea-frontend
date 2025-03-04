@@ -1,15 +1,17 @@
 <div class="manu-element-container">
-  <div class="menu-element" routerLinkActive="active">
+  <div class="menu-element" routerLinkActive="active" [attr.data-text]="collapsed ? text : null">
     <div [routerLink]="link" routerLinkActive="active" (click)="toggleDropdown()">
       <i [ngClass]="icon"></i>
-      <a>{{ text }}</a>
+      <a *ngIf="!collapsed">{{ text }}</a> <!-- Texto visible solo si el menú no está colapsado -->
     </div>
-    <i *ngIf="subMenuItems.length != 0" class="up-down-arrow fa-solid" (click)="toggleDropdownWithoutRedirect()"
+    <i *ngIf="subMenuItems.length != 0 && !collapsed" class="up-down-arrow fa-solid"
+       (click)="toggleDropdownWithoutRedirect()"
        [ngClass]="{'fa-angle-down': dropdownClosed?.value, 'fa-angle-up': !dropdownClosed?.value}"
-       aria-hidden="true"
-    ></i>
+       aria-hidden="true">
+    </i>
   </div>
-  <div *ngIf="subMenuItems.length != 0" class="dropdown-menu-items-container" [class.closed]="dropdownClosed?.value">
+  <div *ngIf="subMenuItems.length != 0 && !collapsed" class="dropdown-menu-items-container"
+       [class.closed]="dropdownClosed?.value">
     <app-items-bar [items]="subMenuItems"></app-items-bar>
   </div>
 </div>

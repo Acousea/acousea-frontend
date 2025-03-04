@@ -1,0 +1,58 @@
+<div class="system-info-site" *ngIf="extModules || pamModule; else errorTemplate">
+  <div class="meta-information" *ngIf="pamModule">
+    <label>{{ 'SYSTEM_INFO_SITE.LAST_UPDATE' | translate }}:
+      <span>{{ pamModule.recordingStats.epochTime }}</span></label>
+
+  </div>
+
+  <div class="storage-container" *ngIf="extModules">
+    <app-storage-status
+      *ngIf="extModules.storage"
+      [used]="extModules.storage.capacity - extModules.storage.available"
+      [total]="extModules.storage!.capacity"></app-storage-status>
+  </div>
+
+  <div class="information-container">
+    <div class="information-item" *ngIf="pamModule">
+      <h2>{{ 'PAM_DEVICE.TITLE' | translate }}</h2>
+      <ul>
+        <app-pam-device-status [statusCode]="pamModule.status.unitStatus"></app-pam-device-status>
+        <app-temperature-and-humidity [temperature]="pamModule.status.temperature"
+                                      [humidity]="pamModule.status.humidity"></app-temperature-and-humidity>
+        <app-battery-status [batteryPercentage]="pamModule.status.batteryPercentage"
+                            [batteryStatus]=" pamModule.status.batteryStatus"></app-battery-status>
+
+      </ul>
+    </div>
+
+    <div class="information-item" *ngIf="extModules">
+      <h2>{{ 'COMMUNICATION_SYSTEM.TITLE' | translate }}</h2>
+      <ul>
+        <app-coordinates
+          *ngIf="extModules.location"
+          [latitude]="extModules.location.latitude"
+          [longitude]="extModules.location.longitude"
+        ></app-coordinates>
+
+        <app-core-temperature-and-operation-mode
+          *ngIf="extModules.temperature"
+          [coreTemperature]="extModules.temperature.temperature"
+          [operationModeIdx]="2">
+        </app-core-temperature-and-operation-mode>
+
+        <app-battery-status
+          *ngIf="extModules.battery"
+          [batteryPercentage]="extModules.battery.batteryPercentage"
+          [batteryStatus]="1">
+        </app-battery-status>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #errorTemplate>
+  <div class="error-message">
+    Unable to retrieve complete device information.
+    <p>{{ errorMessage }}</p>
+  </div>
+</ng-template>

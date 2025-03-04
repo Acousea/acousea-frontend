@@ -26,13 +26,14 @@
 
 .popup-header {
   display: flex;
+  gap: 10px;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
 }
 
 .header-icon {
-  margin-right: 10px;
+  height: 30px;
 }
 
 .section {

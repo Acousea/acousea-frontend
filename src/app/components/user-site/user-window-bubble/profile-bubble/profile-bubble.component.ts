@@ -8,17 +8,18 @@ import {AuthService} from "../../../../services/auth-service/auth.service";
 @Component({
   selector: 'app-profile-bubble',
   standalone: true,
-    imports: [
-        NgIf,
-        WindowBubbleSubmenuComponent
-    ],
+  imports: [
+    NgIf,
+    WindowBubbleSubmenuComponent
+  ],
   templateUrl: './profile-bubble.component.html',
   styleUrl: './profile-bubble.component.css'
 })
-export class ProfileBubbleComponent  implements OnInit{
+export class ProfileBubbleComponent implements OnInit {
 
-  user: User = {} as User;
 
+  user: User | undefined = undefined;
+  imageError: boolean = false; // Nueva variable para controlar errores de imagen
 
   constructor(private authService: AuthService) {
   }
@@ -31,6 +32,9 @@ export class ProfileBubbleComponent  implements OnInit{
     return this.user?.personalInfo.firstName.charAt(0).toUpperCase() || '';
   }
 
+  onImageError(): void {
+    this.imageError = true; // Cambia el estado si ocurre un error en la carga de la imagen
+  }
 
 
 }

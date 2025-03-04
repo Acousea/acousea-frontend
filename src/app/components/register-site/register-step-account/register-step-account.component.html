@@ -1,0 +1,35 @@
+
+<form>
+  <app-custom-input
+    [label]="'Username'"
+    [placeholder]="'Enter your username '"
+    [leftIcon]="'fa-user'"
+    [inputType]="'text'"
+    [(content)]="username"
+    [validationRules]="usernameValidations"
+    [validationFunctions]="[registerService.validateUsername.bind(registerService)]"
+  >
+  </app-custom-input>
+
+  <app-custom-input
+    [label]="'Email'"
+    [placeholder]="'Enter your email '"
+    [leftIcon]="'fa-envelope'"
+    [inputType]="'text'"
+    [(content)]="email"
+    [validationRules]="emailValidations"
+    [validationFunctions]="[registerService.validateEmail.bind(registerService)]"
+  >
+  </app-custom-input>
+
+  <app-custom-input
+    [label]="'Password'"
+    [placeholder]="'Enter your password'"
+    [rightIcon]="'fa-eye'"
+    [leftIcon]="'fa-key'"
+    [(content)]="userPassword"
+    [validationRules]="passwordValidations"
+    [successMessage]="'Password is valid'"
+  >
+  </app-custom-input>
+</form>

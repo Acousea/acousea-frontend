@@ -1,0 +1,21 @@
+<!-- src/app/address-selector/address-selector.component.html -->
+<div class="address-selector-container">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="onSearchQueryChange()"
+    placeholder="Enter your address"
+    class="address-input"
+  />
+
+  <div *ngIf="suggestions.length > 0 && showSuggestions" class="suggestions-list">
+    <div
+      *ngFor="let suggestion of suggestions"
+      (click)="selectSuggestion(suggestion)"
+      class="suggestion-item"
+    >
+      <i class="fas fa-map-marker-alt"></i> <!-- Ícono relacionado con la ubicación -->
+      {{ suggestion.displayName }}
+    </div>
+  </div>
+</div>

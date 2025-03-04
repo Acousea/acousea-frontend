@@ -62,7 +62,7 @@ export class DeviceConfigPopupComponent {
     this.deviceConfigPopUpService.deviceConfig$.subscribe(deviceConfig => {
       this.deviceConfig = deviceConfig;
     });
-    this.listUsbDevices();
+    // this.listUsbDevices();
   }
 
   listUsbDevices() {

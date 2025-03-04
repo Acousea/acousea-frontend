@@ -25,5 +25,7 @@ export class DeviceCardComponent {
   @Output() openFunction: EventEmitter<void> = new EventEmitter<void>();
 
 
+
+
 }
 

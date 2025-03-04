@@ -2,7 +2,7 @@
   <div class="popup-backdrop" (click)="discardChanges() "></div> <!-- Añadir este contenedor para el fondo -->
   <div class="popup-container">
     <div class="popup-header">
-      <img [src]="'/assets/icons/' +popUpSettings.icon" alt="Icon" class="header-icon">
+      <img [src]=popUpSettings.icon alt="Icon" class="header-icon">
       <h2>{{ popUpSettings.deviceName }}</h2>
       <app-update-info-button [tooltipPosition]="'right'"
                               (buttonClick)="console.log('Update info button clicked')"></app-update-info-button>

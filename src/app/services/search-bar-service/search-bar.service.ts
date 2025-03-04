@@ -25,7 +25,6 @@ export class SearchBarService {
 
   constructor() {
     this.indexContent();
-    console.log("CONTENT INDEX", this.contentIndex);
   }
 
   private indexContent() {

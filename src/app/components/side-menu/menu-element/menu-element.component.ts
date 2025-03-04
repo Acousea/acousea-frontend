@@ -30,6 +30,7 @@ export class MenuElementComponent implements OnInit {
   @Input() link: string = '';
   @Input() text: string = '';
   @Input() icon: string = '';
+  @Input() collapsed: boolean = false;
   @Input() subMenuItems: MenuItem[] = [];
   dropdownClosed: BehaviorSubject<boolean> | undefined = undefined;
 

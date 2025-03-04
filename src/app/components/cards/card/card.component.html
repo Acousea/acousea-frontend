@@ -1,6 +1,6 @@
 <div class="card" (click)="openFunction && triggerOpenFunction()" [ngStyle]="{ 'cursor': openFunction ? 'pointer' : 'default' }">
   <div class="icon-container">
-    <img *ngIf="mainIcon" src="/assets/icons/{{mainIcon}}.svg" alt="{{ mainIcon }} icon" class="icon-placeholder" fill/>
+    <img *ngIf="mainIcon" src="{{mainIcon}}" alt="{{ mainIcon }}" class="icon-placeholder"/>
   </div>
   <div class="card-name">
     <strong> {{ boldText }} </strong> {{ lightText }}

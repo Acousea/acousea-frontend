@@ -1,75 +1,83 @@
-/* login.component.css */
-.login-container {
+:host{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
-  background-color: var(--background-lightgray);
-  height: 100vh;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-}
-
-.logo {
-  max-width: 150px;
-}
-
-.form-container {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%;
-  max-width: 400px;
-}
-
-h2 {
-  margin-bottom: 20px;
-  text-align: center;
-  color: var(--text-black);
-}
-
-.form-group {
-  margin-bottom: 15px;
+  gap: 20px;
+  padding: 10px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: bold;
   color: var(--text-gray);
 }
 
 input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px 40px 12px 15px;
+  font-size: 16px;
+  color: var(--text-black);
+  background-color: transparent;
+  box-shadow: 0px 4px 2px -2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.submit-button {
-  background-color: var(--main-color);
-  color: #ffffff;
-  border: none;
+.password-input-wrapper {
+  position: relative;
+}
+
+.eye-passwd {
+  position: absolute;
+  right: 10px; /* Ajusta la posición del ícono dentro del input */
+  top: 0;
+  bottom: 0;
+  margin: auto; /* Centra el ícono verticalmente dentro del input */
+  height: 16px; /* Asegúrate de que este valor coincida con el tamaño de la fuente */
+  line-height: 16px; /* Igual que el height para centrar el texto/icono */
+  cursor: pointer;
+  color: var(--text-gray); /* Ajusta el color del ícono si es necesario */
+  z-index: 1; /* Asegura que el ícono esté por encima del input */
+  font-size: 16px; /* Tamaño del ícono */
+}
+
+
+
+input:focus {
+  border-color: var(--main-color);
+  box-shadow: 0px 4px 4px -2px rgba(39, 154, 241, 0.6);
+  outline: none;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: var(--discard-button-color);
+  box-shadow: 0px 4px 4px -2px rgba(248, 81, 81, 0.6);
+}
+
+.error-message {
+  color: var(--discard-button-color);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+button {
   padding: 10px 20px;
+  font-size: 16px;
+  color: var(--text-white);
+  background-color: var(--main-color);
+  border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
-.submit-button:hover {
-  background-color: var(--main-color-light);
-}
-
-p {
-  text-align: center;
-  margin-top: 15px;
-}
-
-a {
-  color: var(--main-color);
+button:disabled {
+  background-color: var(--background-lightgray);
+  cursor: not-allowed;
 }

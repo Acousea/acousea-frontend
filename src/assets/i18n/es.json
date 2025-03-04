@@ -197,5 +197,8 @@
   "NOT-AVAILABLE": {
     "TITLE": "Recurso No Disponible",
     "MESSAGE": "Lo sentimos, esta página no está disponible en este momento. \n Para acceder a esta página, por favor inicie sesión o regístrese."
+  },
+  "ERROR_MESSAGES": {
+    "NO_NODE_SELECTED": "No se ha seleccionado ningún nodo"
   }
 }

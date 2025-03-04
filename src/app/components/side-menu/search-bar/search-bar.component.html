@@ -1,4 +1,9 @@
 <div class="search-bar">
+  <div *ngIf="suggestions.length > 0" class="suggestions">
+    <div *ngFor="let suggestion of suggestions" class="suggestion" (click)="onSuggestionClick(suggestion.route)">
+      {{ suggestion.title }}
+    </div>
+  </div>
   <i class="fa-solid fa-search search-icon"></i>
   <input
     type="text"
@@ -9,9 +14,4 @@
     (input)="onSearch()"
   >
   <div class="shortcut">Ctrl+P</div>
-</div>
-<div *ngIf="suggestions.length > 0" class="suggestions">
-  <div *ngFor="let suggestion of suggestions" class="suggestion" (click)="onSuggestionClick(suggestion.route)">
-    {{ suggestion.title }}
-  </div>
 </div>

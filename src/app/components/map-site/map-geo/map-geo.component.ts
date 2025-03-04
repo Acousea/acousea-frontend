@@ -1,159 +1,95 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import * as L from "leaflet";
 import {Marker} from "leaflet";
-import * as L from 'leaflet';
 import 'leaflet-arrowheads';
-import {
-  CurrentVectorsService,
-  SingleLatLonUVValues
-} from "../../../services/current-vectors-service/current-vectors.service";
-import {
-  CommunicationSystemDeviceLocation,
-  CommunicationSystemService
-} from "../../../services/communication-system-service/communication-system.service";
+import {CurrentVectorsService} from "../../../services/current-vectors-service/current-vectors.service";
 
+import {NodeDevice} from "../../../global-interfaces/nodes/NodeDevice";
+import {
+  DeviceConfigPopUpService
+} from "../../../services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
+import {NodeDevicesService} from "../../../services/node-devices-service/node-devices.service";
 
 @Component({
   selector: 'app-map-geo',
   standalone: true,
   imports: [],
   templateUrl: './map-geo.component.html',
-  styleUrls: [
-    './map-geo.component.css'] // Add this line to the file
+  styleUrls: ['./map-geo.component.css']
 })
-export class MapGeoComponent implements OnInit, OnDestroy {
+export class MapGeoComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() nodes: NodeDevice[] = []; // Recibe los nodos desde fuera
   map: any;
-  private drifterIcon: any;
-  private localizerIcon: any;
-  private drifterMarker!: Marker<any>;
-  private localizerMarker!: Marker<any>;
-  private latestCurrentData: SingleLatLonUVValues | undefined;
+  private markers: { [key: string]: Marker } = {}; // Almacena los marcadores por ID
   private readonly LPGC_Coord = [28.1, -15.4];
-  private intervalId: any; // Variable para almacenar el ID del setInterval
+  private intervalId: any;
 
-  constructor(private currentVectorParser: CurrentVectorsService,
-              private communicationSystemService: CommunicationSystemService
-              ){
-    this.drifterIcon = L.icon({
-      iconUrl: '/assets/icons/buoy.svg',
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
-    });
-    this.localizerIcon = L.icon({
-      iconUrl: '/assets/icons/compass.svg',
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
-    });
+  constructor(
+    private currentVectorParser: CurrentVectorsService,
+    private communicationSystemService: NodeDevicesService,
+    protected deviceConfigPopUpService: DeviceConfigPopUpService
+  ) {
   }
 
   ngOnInit(): void {
     this.initMap();
-    this.loadInitialLocations();
+    this.loadNodeMarkers(); // Carga los nodos al iniciar el componente
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['nodes'] && !changes['nodes'].firstChange) {
+      this.updateNodeMarkers(); // Actualiza los nodos al detectar cambios
+    }
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.intervalId); // Limpiar el intervalo de simulación
+    clearInterval(this.intervalId);
   }
 
   initMap(): void {
-    this.map = L.map('map',
-      {
-        maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)) // Limita los límites del mapa
-      })
-      .setView([0, 0], 2);
+    this.map = L.map('map', {
+      maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180))
+    }).setView([0, 0], 5);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map);
+
   }
 
+  loadNodeMarkers(): void {
+    this.clearMarkers(); // Limpiar marcadores existentes antes de cargar nuevos
 
-  loadInitialLocations(): void {
-    this.communicationSystemService.getLocalizerLocation().subscribe({
-      next: localizerLocation => {
-        if (localizerLocation) {
-          this.addOceanLocalizer(localizerLocation);
-        }
-      },
-      error: error => {
-        console.error('Error fetching localizer location:', error);
-      }
+    // Añade marcadores para cada nodo
+    this.nodes.forEach((node) => {
+      const icon = L.icon({
+        iconUrl: node.icon || 'https://cdn-icons-png.flaticon.com/512/0/14.png', // URL por defecto
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
+      });
+
+      if (!node.extModules.location) return; // Verifica que el módulo de localización esté presente
+
+      const marker = L.marker([node.extModules.location.latitude, node.extModules.location.longitude], {icon})
+        .addTo(this.map)
+
+      marker.bindPopup(`${node.name}<br>Lat: ${node.extModules.location.latitude}, Lng: ${node.extModules.location.longitude}`)
+        .on('mouseover', () => marker.openPopup()) // Mostrar popup en hover
+        .on('mouseout', () => marker.closePopup())  // Ocultar popup al salir del hover
+        .on('click', () => this.deviceConfigPopUpService.showNodePopup(node)) // Llama al servicio en click
+
+      this.markers[node.id] = marker; // Asigna el marcador al nodo por su ID
     });
-
-    this.communicationSystemService.getDrifterLocation().subscribe({
-      next: drifterLocation => {
-        if (drifterLocation) {
-          this.addOceanDrifter(drifterLocation);
-          // this.simulateDrifterMovement(drifterLocation);
-        }
-      },
-      error: error => {
-        console.error('Error fetching drifter location:', error);
-      }
-    });
   }
 
-  addOceanDrifter(location: CommunicationSystemDeviceLocation): void {
-    const drifterLocation: L.LatLngExpression = [location.latitude, location.longitude];
-    this.drifterMarker = L.marker(drifterLocation, { icon: this.drifterIcon }).addTo(this.map);
+  updateNodeMarkers(): void {
+    this.clearMarkers(); // Limpia todos los marcadores existentes antes de actualizar
+    this.loadNodeMarkers(); // Vuelve a cargar los marcadores con los nuevos datos de nodes
   }
 
-  addOceanLocalizer(location: CommunicationSystemDeviceLocation): void {
-    const localizerLocation: L.LatLngExpression = [location.latitude, location.longitude];
-    this.localizerMarker = L.marker(localizerLocation, { icon: this.localizerIcon }).addTo(this.map);
-  }
-
-  drawCurrentVector(currentData: SingleLatLonUVValues): void {
-    const scaleFactor = 10; // Factor de escala para los vectores de velocidad
-
-    // Calcular el punto final del vector u_velocity (este-oeste)
-    const endPointU: L.LatLngExpression = [
-      this.drifterMarker.getLatLng().lat + currentData.u! * scaleFactor,
-      this.drifterMarker.getLatLng().lng
-    ];
-
-    // Calcular el punto final del vector v_velocity (norte-sur)
-    const endPointV: L.LatLngExpression = [
-      this.drifterMarker.getLatLng().lat,
-      this.drifterMarker.getLatLng().lng + currentData.v! * scaleFactor
-    ];
-
-    // Dibujar el vector u_velocity (este-oeste)
-    const uVector = L.polyline(
-      [this.drifterMarker.getLatLng(), endPointU], { color: 'blue' })
-      .arrowheads({size: '10px', frequency: 'endonly'})
-      .addTo(this.map);
-
-    // Dibujar el vector v_velocity (norte-sur)
-    const vVector = L.polyline(
-      [this.drifterMarker.getLatLng(), endPointV], { color: 'red' })
-      .arrowheads({size: '10px', frequency: 'endonly'})
-      .addTo(this.map);
-
-    console.log("Drawing vectors u and v...");
-    // Opción para eliminar los vectores después de un tiempo (opcional)
-    setTimeout(() => {
-      this.map.removeLayer(uVector);
-      this.map.removeLayer(vVector);
-
-    }, 5000);
-  }
-
-
-  simulateDrifterMovement(initialLocation: CommunicationSystemDeviceLocation): void {
-    const drifterLocation: L.LatLngExpression = [initialLocation.latitude, initialLocation.longitude];
-
-    this.intervalId = setInterval(async () => {
-      drifterLocation[0] += (Math.random() - 0.5);
-      drifterLocation[1] += (Math.random() - 0.5);
-
-      this.drifterMarker.setLatLng(drifterLocation);
-
-      this.latestCurrentData = await this.currentVectorParser.getOceanCurrents(drifterLocation[0], drifterLocation[1]);
-
-      if (this.latestCurrentData) {
-        this.drawCurrentVector(this.latestCurrentData);
-      }
-    }, 5000);
+  clearMarkers(): void {
+    // Remueve cada marcador del mapa y limpia el objeto markers
+    Object.values(this.markers).forEach(marker => this.map.removeLayer(marker));
+    this.markers = {};
   }
 }
-

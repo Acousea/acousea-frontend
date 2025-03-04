@@ -4,9 +4,8 @@ import {FormsModule} from "@angular/forms";
 import {KeyValuePipe} from "@angular/common";
 
 import {DeviceConfigPopupComponent} from "../../components/map-site/device-config-popup/device-config-popup.component";
-import {
-  DrifterLocalizerCardsComponent
-} from "../../components/map-site/drifter-localizer-cards-component/drifter-localizer-cards.component";
+import {NodeDevice} from '../../global-interfaces/nodes/NodeDevice';
+import {NodeDevicesService} from "../../services/node-devices-service/node-devices.service";
 
 
 @Component({
@@ -16,7 +15,6 @@ import {
     MapGeoComponent,
     FormsModule,
     KeyValuePipe,
-    DrifterLocalizerCardsComponent,
     DeviceConfigPopupComponent,
   ],
   templateUrl: './map-site.component.html',
@@ -24,5 +22,18 @@ import {
 })
 export class MapSiteComponent {
 
+  nodes: NodeDevice[] = [];
 
+  constructor(private communicationSystemService: NodeDevicesService) {
+    this.communicationSystemService.getNodes()
+      .subscribe({
+        next: nodes => {
+          this.nodes = nodes;
+          console.log('Nodes:', this.nodes);
+        },
+        error: error => {
+          console.error('Error fetching nodes:', error);
+        }
+      });
+  }
 }

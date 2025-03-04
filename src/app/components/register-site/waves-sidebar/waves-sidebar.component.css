@@ -1,0 +1,88 @@
+.wave-sidebar-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.wave-sidebar-container img {
+  width: 75%;
+  margin-top: 25%;
+  z-index: 10;
+  animation: float 4s ease-in-out infinite;
+}
+
+.waves {
+  position: absolute;
+  bottom: 0;
+  width: 200%; /* Ajusta para contener dos olas completas */
+  height: 65%;
+  overflow: hidden;
+  line-height: 0;
+  display: flex; /* Flexbox para colocar las olas una al lado de la otra */
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 300%;
+  height: 100%;
+  z-index: 9;
+  background: linear-gradient(135deg, #279AF1, #73BFE2);
+  clip-path: path("M0 90.1328V563.385H404H840V90.1328C774.5 90.1328 690 23.8848 650 15.3848C610 6.88482 563.214 5.98503 506.5 25.8848C478 35.8849 461 46.885 404 41.1324C341.983 34.8735 274.5 -14.3672 195 4.13278C115.5 22.6328 60.5 90.1328 0 90.1328Z");
+  animation: wave-animation 8s infinite ease-in-out;
+}
+
+
+.waves .wave:nth-child(1) {
+  opacity: 0.3;
+  animation-duration: 8s;
+}
+
+.waves .wave:nth-child(2) {
+  opacity: 0.5;
+  animation-duration: 10s;
+  animation-delay: 1s;
+}
+
+.waves .wave:nth-child(3) {
+  opacity: 0.6;
+  animation-duration: 12s;
+  animation-delay: 2s;
+}
+
+.waves .wave:nth-child(4) {
+  opacity: 0.7;
+  animation-duration: 14s;
+  animation-delay: 3s;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0%); /* Inicio en posición 0 */
+  }
+  25% {
+    transform: translateX(-5%); /* Mueve ligeramente hacia la izquierda */
+  }
+  50% {
+    transform: translateX(0%); /* Regresa al centro */
+  }
+  75% {
+    transform: translateX(5%); /* Mueve ligeramente hacia la derecha */
+  }
+  100% {
+    transform: translateX(0%); /* Regresa al centro */
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

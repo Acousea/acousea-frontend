@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
+import {Injectable} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
 import {BackendRoutePaths} from "../../app.route.paths";
 
 export interface Notification {
@@ -43,10 +43,18 @@ export class NotificationService {
 
   constructor() {
     this.socket$ = webSocket(BackendRoutePaths.websocket.notifications);
-    this.socket$.subscribe(
-      (notification: Notification) => this.notificationsSubject.next(notification),
-      err => console.error(err)
-    );
+    this.socket$.subscribe({
+      next: (notification: Notification) => {
+        console.log("Received notification: ", notification);
+        this.notificationsSubject.next(notification);
+      },
+      error: (error) => {
+        console.error("Error receiving notification: ", error);
+      },
+      complete: () => {
+        console.log("Connection closed");
+      }
+    });
 
     // Wait for 3 seconds before sending the notifications
     // setTimeout(() => {

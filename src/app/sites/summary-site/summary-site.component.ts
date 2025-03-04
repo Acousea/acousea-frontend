@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 import {SummaryCardComponent} from "../../components/cards/summary-card/summary-card.component";
 import {LineChartComponent} from "../../components/charts/line-chart/line-chart.component";
-import {StatsService} from "../../services/stats-service/stats.service";
 import {
   RockBlockMessagesTableComponent
 } from "../../components/history-site/rock-block-messages-table/rock-block-messages-table.component";
@@ -12,6 +11,21 @@ import {
 } from "../../components/history-site/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
 import {LoadingAnimationComponent} from "../../components/addons/loading-animation/loading-animation.component";
 import {TranslateModule} from "@ngx-translate/core";
+import {AppRoutePaths, BackendRoutePaths} from "../../app.route.paths";
+import {NodeDevice} from "../../global-interfaces/nodes/NodeDevice";
+import {
+  DeviceCardsListComponent
+} from "../../components/map-site/drifter-localizer-cards-component/device-cards-list.component";
+import {NgIf, TitleCasePipe} from "@angular/common";
+import {
+  SummaryStatsComponentComponent
+} from "../../components/summary-site/summary-stats-component/summary-stats-component.component";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {AuthService} from "../../services/auth-service/auth.service";
+import {SelectedNodeService} from "../../services/selected-node-service/selected-node.service";
+import {NodeInfoComponent} from "../../components/summary-site/node-info-component/node-info.component";
+import {UpdateInfoButtonComponent} from "../../components/addons/update-info-button/update-info-button.component";
+import {NodeDevicesService} from "../../services/node-devices-service/node-devices.service";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -28,52 +42,53 @@ export interface ChartInputData {
     NotificationListComponent,
     RockblockMessageDetailsPopupComponent,
     LoadingAnimationComponent,
-    TranslateModule
+    TranslateModule,
+    NodeInfoComponent,
+    DeviceCardsListComponent,
+    NgIf,
+    SummaryStatsComponentComponent,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+    TitleCasePipe,
+    UpdateInfoButtonComponent
   ],
   templateUrl: './summary-site.component.html',
   styleUrl: './summary-site.component.css'
 })
-export class SummarySiteComponent implements OnInit {
-  clickData: ChartInputData | undefined = undefined;
+export class SummarySiteComponent {
+  nodes: NodeDevice[] = [];
+  private _selectedNode: NodeDevice | undefined = undefined;
+  get selectedNode(): NodeDevice | undefined {
+    return this._selectedNode;
+  }
 
-  clicks: number[] = [];
-  timestamps: number[] = []
-  numClicks: number = 0;
-  numFiles: number = 0;
-  numMinutes: number = 0;
-  numReports: number = 0;
-
-  constructor(private statsService: StatsService) {
-    this.clickData = {
-      dataLabel: 'Clicks',
-      data: this.clicks.map((click, index) => {
-        return {x: this.timestamps[index], y: click};
-      })
+  set selectedNode(value: NodeDevice | undefined) {
+    this._selectedNode = value;
+    console.warn('selectedNode ha cambiado:', this._selectedNode);
+    if (value) {
+      this.selectedNodeService.setSelectedNode(value);
     }
   }
 
-  ngOnInit(): void {
-    this.statsService.getStats().then(stats => {
-      if (!stats) {
-        this.clickData = undefined;
+  constructor(
+    protected authService: AuthService,
+    private nodeDevicesService: NodeDevicesService,
+    private selectedNodeService: SelectedNodeService
+  ) {
+    this.nodeDevicesService.getNodes().subscribe(nodes => {
+      if (!nodes) {
+        console.error('Error fetching nodes');
         return;
       }
-      this.clicks = stats.datetime_clicks.map(click => click.num_clicks);
-      this.timestamps = stats.datetime_clicks.map(click =>
-        new Date(click.datetime).getTime() * 1000); // Can just multiply by 1000 to convert to milliseconds
-      this.clickData = {
-        dataLabel: 'Clicks',
-        data: this.clicks.map((click, index) => {
-          return {x: this.timestamps[index], y: click};
-        })
-      }
+      console.log("SummarySiteComponent() => Nodes fetched: ", nodes);
+      this.nodes = nodes;
+      this.selectedNode = nodes[0];
 
-      this.numClicks = stats.total_num_clicks;
-      this.numFiles = stats.total_number_of_files;
-      this.numMinutes = stats.total_recorded_minutes;
     });
   }
 
-
-  protected readonly String = String;
+  protected readonly BackendRoutePaths = BackendRoutePaths;
+  protected readonly AppRoutePaths = AppRoutePaths;
+  protected readonly console = console;
 }

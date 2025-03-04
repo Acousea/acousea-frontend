@@ -1,0 +1,42 @@
+<div class="custom-input-container">
+  <label *ngIf="label" for="{{label}}">{{ label }}</label>
+  <div class="custom-input-wrapper">
+    <i
+      *ngIf="leftIcon"
+      class="left-icon fas"
+      [ngClass]="leftIcon"
+      aria-hidden="true"
+    ></i>
+    <input
+      class="custom-input"
+      id="{{label}}"
+      [type]="inputType"
+      [formControl]="inputControl"
+      [placeholder]="placeholder"
+      [ngClass]="{'ng-valid': inputControl.valid, 'ng-invalid': inputControl.invalid}"
+    />
+    <i
+      *ngIf="rightIcon"
+      class="right-icon fas"
+      [ngClass]="rightIcon"
+      aria-hidden="true"
+    ></i>
+  </div>
+  <div *ngIf="(inputControl.invalid && inputControl.touched) || inputControl.errors?.['custom'] != undefined"
+       class="error-message">
+
+    <small *ngFor="let customErrorKey of getCustomErrors()">
+      {{ inputControl.errors?.[customErrorKey] }}
+    </small>
+
+    <small *ngFor="let validation of validationRules">
+      <ng-container *ngIf="inputControl.hasError(validation.name)">
+        {{ validation.message }}
+      </ng-container>
+    </small>
+  </div>
+
+  <div *ngIf="!inputControl.invalid && inputControl.touched && successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+</div>

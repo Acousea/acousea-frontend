@@ -1,0 +1,22 @@
+<div class="auth-container">
+  <div class="auth-sidebar">
+    <app-alert-popup></app-alert-popup>
+    <app-waves-sidebar></app-waves-sidebar>
+    <app-loading-animation></app-loading-animation>
+  </div>
+  <div class="auth-section">
+    <ul>
+      <li>
+        <a [routerLink]="AppRoutePaths.fullPath(AppRoutePaths.auth.login)" routerLinkActive="active">
+          Log In
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="AppRoutePaths.fullPath(AppRoutePaths.auth.register.base)" routerLinkActive="active">
+          Register
+        </a>
+      </li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
+</div>

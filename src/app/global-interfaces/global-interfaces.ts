@@ -1,12 +1,13 @@
-export interface BackendError {
+export interface ApiError {
   error_code: number;
   error_message: string;
   error_field?: string[];
 }
 
-export interface BackendResponse<T> {
-  error?: BackendError;
-  success?: T;
+export interface ApiResponse<T> {
+  error?: ApiError;
+  success: boolean;
+  value?: T;
 }
 
 export interface CommunicationResultResponse {

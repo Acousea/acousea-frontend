@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
-import {Router, RouterLink} from "@angular/router";
-import {AuthService} from "../../../services/auth-service/auth.service";
+import {Component, OnInit} from '@angular/core';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {TranslateModule} from "@ngx-translate/core";
 import {AppRoutePaths} from "../../../app.route.paths";
+import {NgForOf, NgIf} from "@angular/common";
+import {RegisterService} from "../../../services/auth-service/register-service/register-service.service";
+import {WavesSidebarComponent} from "../../../components/register-site/waves-sidebar/waves-sidebar.component";
+import {FormValidationService} from "../../../services/form-validation-service/form-validation.service";
+import {take} from "rxjs";
+
 
 @Component({
   selector: 'app-register-site',
@@ -11,23 +16,70 @@ import {AppRoutePaths} from "../../../app.route.paths";
   imports: [
     FormsModule,
     RouterLink,
-    TranslateModule
+    TranslateModule,
+    RouterOutlet,
+    NgForOf,
+    RouterLinkActive,
+    NgIf,
+    WavesSidebarComponent
   ],
   templateUrl: './register-site.component.html',
   styleUrl: './register-site.component.css'
 })
-export class RegisterSiteComponent {
-  username: string = '';
-  email: string = '';
-  password: string = '';
+export class RegisterSiteComponent implements OnInit {
+  steps = [
+    {label: 'Account', route: AppRoutePaths.auth.register.account},
+    {label: 'Profile', route: AppRoutePaths.auth.register.profile},
+  ];
 
-  constructor(private authService: AuthService, private router: Router) {}
+  currentStep = 0;
 
-  onSubmit(): void {
-    // Aquí deberías implementar la lógica para registrar al usuario
-    this.authService.register(this.username, this.email, this.password);
-    this.router.navigate([AppRoutePaths.fullPath(AppRoutePaths.auth.login)]);
+  constructor(protected registerService: RegisterService,
+              private formValidationService: FormValidationService,
+              private router: Router
+  ) {
+    this.registerService.currentStep$.subscribe(
+      (step) => {
+        console.log("Step changed to: ", step)
+        this.currentStep = step
+      }
+    );
   }
 
-  protected readonly AppRoutePaths = AppRoutePaths;
+  ngOnInit() {
+    // Set step based on the current route
+    const currentRoute = this.router.url;
+    const currentStep = this.steps.findIndex((step) => currentRoute.includes(step.route));
+    if (currentStep !== -1) {
+      this.registerService.setStep(currentStep);
+    }
+  }
+
+
+  nextStep() {
+    console.log("Next step clicked");
+    this.formValidationService.resetValidation();
+
+    const sub=  this.formValidationService.getValidationResponse()
+      .subscribe(
+        (isValid) => {
+          if (!isValid) {
+            console.log("Form is not valid-------->");
+            return;
+          }
+          console.log("Form is valid-------->");
+          this.registerService.setStep(((this.currentStep + 1) < this.steps.length) ? (this.currentStep + 1) : (this.currentStep));
+          this.router.navigate([this.steps[this.currentStep].route]);
+        }
+      );
+
+    this.formValidationService.requestValidation();
+    sub.unsubscribe();
+
+  }
+
+  previousStep() {
+    this.registerService.setStep(((this.currentStep - 1) >= 0) ? (this.currentStep - 1) : (this.currentStep));
+    this.router.navigate([this.steps[this.currentStep].route]);
+  }
 }

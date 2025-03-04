@@ -27,7 +27,7 @@ import {CdkDrag, CdkDragEnd, CdkDragMove} from '@angular/cdk/drag-drop';
 })
 export class NotificationListComponent implements OnInit {
   notifications: Notification[] = [];
-  private audioFiles: { [key: string]: HTMLAudioElement };
+  private readonly audioFiles: { [key: string]: HTMLAudioElement };
 
 
   constructor(private notificationService: NotificationService) {

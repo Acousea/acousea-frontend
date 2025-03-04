@@ -1,20 +1,23 @@
 import {environment} from "./app.environment";
+import {NodeDevice} from "./global-interfaces/nodes/NodeDevice";
 
 export const AppRoutePaths = {
   fullPath: (path: string) => `/${path}`,
-  summary: 'summary',
+  summary: {
+    base: 'summary',
+    stats: 'summary/stats',
+    info: 'summary/info',
+    settings: 'summary/settings',
+    statsForNode: (node: NodeDevice) => `summary/stats/${node.id}`,
+    infoForNode: (node: NodeDevice) => `summary/info/${node.id}`,
+    settingsForNode: (node: NodeDevice) => `summary/settings/${node.id}`
+  },
   map: 'map',
   history: {
     base: 'history',
     iridiumMessages: 'history/iridium-messages',
     controlSystem: 'history/control-system',
     pamSystem: 'history/pam-system'
-  },
-  configuration: {
-    base: 'configuration',
-    streaming: 'configuration/streaming',
-    controlSystem: 'configuration/control-system',
-    pamSystem: 'configuration/pam-system'
   },
   systemInfo: 'system-info',
   user: {
@@ -24,7 +27,11 @@ export const AppRoutePaths = {
   auth: {
     base: 'auth',
     login: 'auth/login',
-    register: 'auth/register'
+    register: {
+      base: 'auth/register',
+      account: 'auth/register/step1',
+      profile: 'auth/register/step2'
+    }
   },
   notAvailable: 'not-available',
 };
@@ -39,6 +46,7 @@ console.log("API VERSION: ", apiVersion)
 
 
 export const BackendRoutePaths = {
+  files: (path: string)  => `${apiUrl}/files/${path}`,
   update: (path: string) => `${path}/update`,
   set: (path: string) => `${path}/set`,
   base: `${apiUrl}/${apiVersion}`,
@@ -52,6 +60,10 @@ export const BackendRoutePaths = {
   },
   communicationSystem: {
     allStatusInformation: `${apiUrl}/${apiVersion}/communication-system/all-status-information`,
+    nodeConfiguration: `${apiUrl}/${apiVersion}/communication-system/node-device`,
+    allNodes: `${apiUrl}/${apiVersion}/communication-system/node-device/all`,
+    node: (nodeId: string) => `${apiUrl}/${apiVersion}/communication-system/node-device?id=${nodeId}`,
+
     operationMode: (device: string, operationMode?: number) => `${apiUrl}/${apiVersion}/communication-system/${device.toLowerCase()}/operation-mode/${operationMode}`,
     directCommunicationEnable: (serialId: string) => `${apiUrl}/${apiVersion}/communication-system/direct-communication/activate/${serialId}`,
     directCommunicationDisable: `${apiUrl}/${apiVersion}/communication-system/direct-communication/deactivate`,
@@ -61,11 +73,13 @@ export const BackendRoutePaths = {
     location: (device: string) => `${apiUrl}/${apiVersion}/communication-system/${device.toLowerCase()}/location`
   },
   user: {
-    base: `${apiUrl}/${apiVersion}/user`,
-    profile: `${apiUrl}/${apiVersion}/user/profile`,
-    login: `${apiUrl}/${apiVersion}/user/login`,
-    register: `${apiUrl}/${apiVersion}/user/register`,
-    logout: `${apiUrl}/${apiVersion}/user/logout`
+    base: `${apiUrl}/${apiVersion}/users`,
+    profile: `${apiUrl}/${apiVersion}/users/profile`,
+    login: `${apiUrl}/${apiVersion}/users/auth/login`,
+    register: `${apiUrl}/${apiVersion}/users/auth/register`,
+    logout: `${apiUrl}/${apiVersion}/users/auth/logout`,
+    validateUsername: (username: string) => `${apiUrl}/${apiVersion}/users/validate-username?username=${username}`,
+    validateEmail: (email: string) => `${apiUrl}/${apiVersion}/users/validate-email?email=${email}`,
   },
   systemInfo: `${apiUrl}/${apiVersion}/system-info`,
   requestQueue: {

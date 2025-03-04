@@ -34,7 +34,7 @@
 
     <div class="table-body">
       <div class="table-row" *ngFor="let message of messages" (click)="onMessageClick(message)">
-        <div class="table-cell cell-transmit-time">{{ formatTransmitTime(message.transmit_time) }}</div>
+        <div class="table-cell cell-transmit-time">{{ formatTransmitTime(message.transmitTime) }}</div>
         <div class="table-cell cell-operation-code">
           <span
             [ngStyle]="{ 'color': getOperationColor(message.opcode), 'background-color': getOperationBackgroundColor(message.opcode) }">

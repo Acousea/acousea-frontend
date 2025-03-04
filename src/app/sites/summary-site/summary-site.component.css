@@ -1,29 +1,68 @@
 :host {
   display: flex;
   flex-direction: column;
-
 }
 
-.summary-site {
+header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 0;
   background-color: var(--background-lightgray);
-  padding: 40px;
-  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
 
 }
 
-.summary-header h1 {
-  margin-top: 30px;
+h1 {
+  align-self: center;
   font-size: x-large;
   font-weight: 600;
-  margin-bottom: 20px;
 }
 
-.summary-cards {
+
+h1 span {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.device-and-section-selection {
   display: flex;
+  flex-direction: column;
+  align-content: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  align-items: flex-end;
 }
 
+.nav-tabs {
+  display: flex;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-item a {
+  text-decoration: none;
+  padding: 10px;
+  color: #333;
+  font-weight: 400;
+}
+
+.nav-item.active-tab {
+  border-bottom: 2px solid #007bff;
+}
+
+.nav-item.active-tab a {
+  font-weight: bold;
+}
+
+.nav-item.active-tab:hover app-update-info-button {
+  display: inline-block;
+}
+
+app-update-info-button {
+  display: none;
+}

@@ -1,12 +1,10 @@
-<div class="profile-bubble" >
+<div class="profile-bubble" *ngIf="user != undefined">
   <div class="user-avatar">
-    <ng-container *ngIf="user.profile.profileImageUrl; else defaultAvatar">
-      <img [src]="user.profile.profileImageUrl" alt="User Profile"/>
+    <ng-container *ngIf="!imageError && user.profile.profileImageUrl; else defaultAvatar">
+      <img [src]="user.profile.profileImageUrl" alt="User Profile" (error)="onImageError()" />
     </ng-container>
     <ng-template #defaultAvatar>
       <div class="avatar-initial">{{ getInitial() }}</div>
     </ng-template>
   </div>
 </div>
-
-

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {BackendResponse} from "../../../global-interfaces/global-interfaces";
+import {ApiResponse} from "../../../global-interfaces/global-interfaces";
 import {BackendRoutePaths} from "../../../app.route.paths";
 
 interface FlushRequestQueuePopUpState {
@@ -29,9 +29,9 @@ export class FlushRequestQueuePopupService {
 
   async flushRequestQueue() {
     console.log("Sending flush request to the server...")
-    const response = await firstValueFrom(this.httpClient.post<BackendResponse<any>>(BackendRoutePaths.requestQueue.flush, {}))
+    const response = await firstValueFrom(this.httpClient.post<ApiResponse<any>>(BackendRoutePaths.requestQueue.flush, {}))
     console.log("Flush request response: ", response);
-    if (response.success) {
+    if (response.value) {
       console.log("Flush request was successful.")
       this.hidePopUp();
     } else {

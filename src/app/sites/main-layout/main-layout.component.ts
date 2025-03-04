@@ -37,7 +37,8 @@ export class MainLayoutComponent implements AfterViewInit {
   isLoading: Observable<boolean>;
   isNotLoading: Observable<boolean>;
 
-  constructor(private loadingService: LoadingAnimationService, private cdr: ChangeDetectorRef) {
+  constructor(private loadingService: LoadingAnimationService,
+              private cdr: ChangeDetectorRef) {
     this.isLoading = this.loadingService.isLoading;
     this.isNotLoading = this.loadingService.isLoading.pipe(map(loading => !loading));
   }

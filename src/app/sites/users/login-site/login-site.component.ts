@@ -1,31 +1,49 @@
-import { Component } from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {Component, EventEmitter, Output} from '@angular/core';
+import {FormsModule, Validators} from "@angular/forms";
+
+import {
+  CustomInputComponent,
+  FieldContent
+} from "../../../components/addons/custom-inputs/custom-input/custom-input.component";
+import {ValidationRule} from "../../../components/addons/custom-inputs/validation.rule";
 import {AuthService} from "../../../services/auth-service/auth.service";
-import {Router, RouterLink} from "@angular/router";
-import {TranslateModule} from "@ngx-translate/core";
-import {AppRoutePaths} from "../../../app.route.paths";
 
 @Component({
   selector: 'app-login-site',
   standalone: true,
   imports: [
-    FormsModule,
-    TranslateModule,
-    RouterLink
+    CustomInputComponent,
+    FormsModule
   ],
   templateUrl: './login-site.component.html',
-  styleUrl: './login-site.component.css'
+  styleUrls: ['./login-site.component.css']
 })
 export class LoginSiteComponent {
-  username: string = '';
-  password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  userPassword: FieldContent = {value: '', isValid: false};
+  usernameOrEmail: FieldContent = {value: '', isValid: false};
 
-  onSubmit(): void {
-    this.authService.login(this.username, this.password);
-    this.router.navigate([AppRoutePaths.fullPath(AppRoutePaths.summary)]);
+  passwordValidations: ValidationRule[] = [
+    {name: 'required', validator: Validators.required, message: 'Password is required'},
+    {name: 'minlength', validator: Validators.minLength(6), message: 'Password must be at least 6 characters long'},
+  ];
+
+  usernameValidations: ValidationRule[] = [
+    {name: 'required', validator: Validators.required, message: 'Username or Email is required'}
+  ];
+
+  constructor(private authService: AuthService) {
+
   }
 
-  protected readonly AppRoutePaths = AppRoutePaths;
+  submitForm() {
+    console.log("Submitting form")
+    console.log("Username or Email: " + this.usernameOrEmail)
+    console.log("Password: " + this.userPassword)
+    if (!(this.usernameOrEmail.isValid && this.userPassword.isValid)) {
+      console.error("Login Form is invalid");
+      return;
+    }
+    this.authService.login(this.usernameOrEmail.value, this.userPassword.value);
+  }
 }

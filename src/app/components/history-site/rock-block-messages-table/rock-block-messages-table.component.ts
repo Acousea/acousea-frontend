@@ -16,7 +16,7 @@ export interface Message {
   recipient_address: number;
   packet_type: number;
   communication_infrastructure: string;
-  transmit_time: string;
+  transmitTime: string;
   opcode: string;
   data: string;
   error: boolean;
@@ -72,13 +72,9 @@ export class RockBlockMessagesTableComponent implements OnInit {
 
   loadMessages() {
     this.messagesService.getMessages(this.currentPage, this.rowsPerPage).subscribe(response => {
-      if (!response.success) {
-        console.error('Failed to load messages: ' + response.error?.error_message);
-        return;
-      }
-      this.messages = response.success.data;
+      this.messages = response
+      this.totalMessages = response.length;
       console.log("Messages: ", this.messages);
-      this.totalMessages = response.success.total;
       this.calculateTotalPages();
     });
   }

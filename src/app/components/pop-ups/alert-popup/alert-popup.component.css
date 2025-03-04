@@ -20,6 +20,7 @@
 }
 
 .popup-content {
+  color: black;
   padding: 20px 30px; /* Top-bottom, right-left */
   white-space: pre-line; /* Hace que el texto se ajuste a nuevas líneas automáticamente */
 }

@@ -8,10 +8,21 @@ export const AuthGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (authService.isLoggedIn()) {
+    console.log("AuthGuard()::isLoggedIn() -> user is logged in.");
+    console.log("Route state: ", state, "Route: ", route)
+    // Solo redirige si la ruta actual no es la ruta de resumen
+    if (state.url.includes(AppRoutePaths.auth.login) || state.url.includes(AppRoutePaths.auth.register.base)) {
+      state.url = AppRoutePaths.summary.base;
+      router.navigate([AppRoutePaths.summary]);
+    }
     return true;
   } else {
-    router.navigate([AppRoutePaths.auth.login]);
-    return false;
+    console.log("AuthGuard()::isLoggedIn() -> user is not logged in.");
+    // Solo redirige si la ruta actual no es la ruta de login
+    if (!state.url.includes(AppRoutePaths.auth.login) || state.url.includes(AppRoutePaths.auth.register.base)) {
+      router.navigate([AppRoutePaths.auth.login]);
+    }
+    return true;
   }
 };
 

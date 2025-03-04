@@ -1,0 +1,9 @@
+<div>
+  <app-control-system-config [selectedNode]="selectedNode"/>
+<!--  <app-control-system-config [(selectedNode)]="selectedNode"/>-->
+  <app-streaming-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>
+  <app-pam-system-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>
+  <div class="bottom-container">
+    <button class="apply-button" (click)="applySettings()">{{ "BUTTONS.APPLY" | translate | uppercase }}</button>
+  </div>
+</div>

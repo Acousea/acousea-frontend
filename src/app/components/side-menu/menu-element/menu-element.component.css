@@ -10,13 +10,39 @@
 .menu-element {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   font-size: 18px;
   color: var(--unselected-dark-color);
   cursor: pointer;
-  padding: 10px 15px;
   border-radius: 5px;
   transition: color 0.3s ease, background-color 0.3s ease;
+  position: relative; /* Necesario para posicionar el bocadillo */
+}
+
+/* Bocadillo de texto al hacer hover */
+.menu-element:hover::after {
+  content: attr(data-text); /* Utiliza el texto proporcionado en el atributo data-text */
+  position: absolute;
+  left: 100%; /* Muestra el bocadillo a la derecha del elemento */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--background-white);
+  color: var(--main-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap; /* Evita que el texto se rompa en múltiples líneas */
+  margin-left: 10px; /* Espacio entre el bocadillo y el elemento */
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-element:hover[data-text]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1000
 }
 
 .menu-element a {
@@ -24,7 +50,6 @@
   margin-left: 10px;
   flex-grow: 1;
 }
-
 .menu-element:hover {
   color: var(--main-color);
 }

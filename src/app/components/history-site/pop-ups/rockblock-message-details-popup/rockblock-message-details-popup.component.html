@@ -8,7 +8,7 @@
     </div>
     <div class="popup-content" *ngIf="message">
       <div><strong>Device:</strong> {{ message.device }}</div>
-      <div><strong>Date:</strong> {{ message.transmit_time | date:'MMM d, y, h:mm:ss a'}}</div>
+      <div><strong>Date:</strong> {{ message.transmitTime | date:'MMM d, y, h:mm:ss a'}}</div>
       <div><strong>Description:</strong> {{ OperationCode.getDescription(message.opcode) }}</div>
       <div><strong>Sender Address:</strong> {{ message.sender_address }}</div>
       <div><strong>Recipient Address:</strong> {{ message.recipient_address }}</div>

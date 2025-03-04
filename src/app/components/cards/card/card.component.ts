@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgClass, NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
+import {environment} from "../../../app.environment";
 
 @Component({
   selector: 'app-card',
@@ -26,6 +27,8 @@ export class CardComponent {
       this.openFunction.emit();
     }
   }
+
+  protected readonly environment = environment;
 }
 
 
