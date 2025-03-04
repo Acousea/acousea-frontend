@@ -1,32 +1,30 @@
 import {Component} from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {NgClass, NgStyle} from "@angular/common";
+import {RouterLink} from "@angular/router";
 import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.component";
-import {SearchBarComponent} from "./search-bar/search-bar.component";
-import {LanguageSelectorComponent} from "./language-selector/language-selector.component";
-import {TranslateModule} from "@ngx-translate/core";
+import {SearchBarComponent} from "../search-bar/search-bar.component";
 
 @Component({
-  selector: 'app-side-menu',
-  standalone: true,
-  imports: [
-    RouterLink,
-    RouterOutlet,
-    RouterLinkActive,
-    NgClass,
-    MenuElementComponent,
-    NgStyle,
-    SearchBarComponent,
-    LanguageSelectorComponent,
-    TranslateModule
-  ],
-  templateUrl: './side-menu.component.html',
-  styleUrl: './side-menu.component.css'
+    selector: 'app-side-menu',
+    imports: [
+        RouterLink,
+        MenuElementComponent,
+        SearchBarComponent
+    ],
+    templateUrl: './side-menu.component.html',
+    styleUrl: './side-menu.component.css'
 })
 export class SideMenuComponent {
-  configurationMenuItems: MenuItem[] = [
-    {link: '/configuration/streaming', text: 'PAM_DEVICE.SETTINGS.STREAMING_SETTINGS.TITLE', icon: ''},
-    {link: '/configuration/control-system', text: 'COMMUNICATION_SYSTEM.SETTINGS.TITLE', icon: ''},
-    {link: '/configuration/pam-system', text: 'PAM_DEVICE.SETTINGS.TITLE', icon: ''},
+  historyMenuItems: MenuItem[] = [
+    {link: '/history/iridium-messages', text: 'Iridium Messages', icon: ''},
+    {link: '/history/control-system', text: 'Control System', icon: ''},
+    {link: '/history/pam-system', text: 'PAM System', icon: ''}
   ];
+  configurationMenuItems: MenuItem[] = [
+    {link: '/configuration/streaming', text: 'Streaming Settings', icon: ''},
+    {link: '/configuration/control-system', text: 'Control System Settings', icon: ''},
+    {link: '/configuration/pam-system', text: 'PAM System Settings', icon: ''},
+
+  ];
+
+
 }

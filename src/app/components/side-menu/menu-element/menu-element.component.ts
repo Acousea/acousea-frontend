@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 import {BehaviorSubject} from "rxjs";
 import {ItemsBarComponent} from "./steps-bar/items-bar.component";
 
@@ -13,18 +13,16 @@ export interface MenuItem {
 
 
 @Component({
-  selector: 'app-menu-element',
-  standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    NgClass,
-    NgIf,
-    NgForOf,
-    ItemsBarComponent
-  ],
-  templateUrl: './menu-element.component.html',
-  styleUrl: './menu-element.component.css'
+    selector: 'app-menu-element',
+    imports: [
+        RouterLink,
+        RouterLinkActive,
+        NgClass,
+        NgIf,
+        ItemsBarComponent
+    ],
+    templateUrl: './menu-element.component.html',
+    styleUrl: './menu-element.component.css'
 })
 export class MenuElementComponent implements OnInit {
   @Input() link: string = '';

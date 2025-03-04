@@ -3,9 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+import { environment } from '@/environments/environment';
 import {BackendResponse, CommunicationResultResponse} from "../../global-interfaces/global-interfaces";
 import {undoable} from "../pop-ups-services/undo-popup-service/undoable-decorator";
-import {BackendRoutePaths} from "../../app.route.paths";
 
 export interface PAMDeviceFFTLoggingConfig {
   sample_rate: number;
@@ -33,18 +33,16 @@ export interface PAMDeviceLoggingConfigReadModel {
   providedIn: 'root'
 })
 export class LoggingConfigService {
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   getLoggingConfig(): Observable<PAMDeviceLoggingConfigReadModel> {
-    const apiUrl = BackendRoutePaths.pamSystem.loggingConfiguration
+    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/logging-configuration`;
     return this.httpClient.get<BackendResponse<PAMDeviceLoggingConfigReadModel>>(apiUrl).pipe(
       map((response: BackendResponse<PAMDeviceLoggingConfigReadModel>) => {
         if (response.error) {
           throw new Error(response.error.error_message);
         }
         if (response.success) {
-          console.log("GET LOGGING CONFIG: ", response.success)
           return response.success;
         }
         throw new Error('Unexpected response format');
@@ -55,7 +53,7 @@ export class LoggingConfigService {
   @undoable(2000)
   getUpdatedLoggingConfig() {
     console.log('Requesting updated logging config');
-    const apiUrl = BackendRoutePaths.update(BackendRoutePaths.pamSystem.loggingConfiguration)
+    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/logging-configuration/update`;
     this.httpClient.post<BackendResponse<CommunicationResultResponse>>(apiUrl, {}).subscribe({
       next: (response: BackendResponse<CommunicationResultResponse>) => {
         if (response.error) {
@@ -72,8 +70,7 @@ export class LoggingConfigService {
   }
 
   setLoggingConfig(params: PAMDeviceLoggingConfigReadModel): Observable<BackendResponse<CommunicationResultResponse>> {
-    console.log("PARAMS LOGGING CONFIG: ", params)
-    const apiUrl = BackendRoutePaths.set(BackendRoutePaths.pamSystem.loggingConfiguration)
+    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/logging-configuration/set`;
     return this.httpClient.post<BackendResponse<CommunicationResultResponse>>(apiUrl, params).pipe(
       map((response: BackendResponse<CommunicationResultResponse>) => {
         if (response.error) {

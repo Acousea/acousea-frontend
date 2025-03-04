@@ -1,6 +1,4 @@
-<div *ngIf="display" >
-  <div class="popup-backdrop" (click)="discardChanges() "></div> <!-- Añadir este contenedor para el fondo -->
-  <div [ngClass]="['popup-container', display ? 'show' : 'hide']">
+<div *ngIf="display" [ngClass]="['popup-container', display ? 'show' : 'hide']">
   <div class="popup-header">
     <p>
       Request Queue
@@ -16,6 +14,5 @@
   <div class="popup-footer">
     <button class="popup-footer-button" (click)="flushRequestQueue(); closePopup()">Yes</button>
     <button class="popup-footer-button" (click)="closePopup()">No</button>
-  </div>
   </div>
 </div>

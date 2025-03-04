@@ -1,0 +1,45 @@
+/* message-details-popup.component.css */
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--gray-stroke-light);
+  background-color: var(--background-white);
+  z-index: 1004;
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.popup-header p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.popup-content {
+  font-size: 18px;
+}
+
+.popup-content div {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}

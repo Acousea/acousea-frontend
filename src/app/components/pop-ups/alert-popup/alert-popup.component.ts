@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import {NgClass, NgIf} from "@angular/common";
-import {AlertPopUpService} from "../../../services/pop-ups-services/alert-popup/alert-pop-up.service";
+import {AlertPopUpService} from "@/app/services/pop-ups-services/alert-popup/alert-pop-up.service";
 
 
 @Component({
-  selector: 'app-alert-popup',
-  standalone: true,
-  imports: [
-    NgIf,
-    NgClass
-  ],
-  templateUrl: './alert-popup.component.html',
-  styleUrl: './alert-popup.component.css'
+    selector: 'app-alert-popup',
+    imports: [
+        NgIf,
+        NgClass
+    ],
+    templateUrl: './alert-popup.component.html',
+    styleUrl: './alert-popup.component.css'
 })
 export class AlertPopupComponent {
   message: string = '';

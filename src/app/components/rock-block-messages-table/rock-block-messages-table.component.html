@@ -1,0 +1,61 @@
+<div class="table-container">
+  <div class="table-controls">
+    <div class="table-title">
+      <h1 [textContent]="title"></h1>
+    </div>
+
+  </div>
+
+  <div class="table-content">
+
+    <div class="table-header">
+      <div class="table-row">
+        <div class="table-cell cell-device">Device</div>
+        <div class="table-cell cell-transmit-time">Transmit Time</div>
+        <div class="table-cell cell-latitude">Latitude</div>
+        <div class="table-cell cell-longitude">Longitude</div>
+      </div>
+    </div>
+
+    <div class="table-body">
+      <div class="table-row" *ngFor="let message of messages" (click)="onMessageClick(message)">
+        <div class="table-cell cell-device">
+          <span [ngClass]="{
+            'device-drifter': message.device === 'drifter',
+            'device-localizer': message.device === 'localizer',
+            'device-unknown': message.device === 'unknown'}">
+            {{ message.device | uppercase }}
+          </span>
+        </div>
+        <div class="table-cell cell-transmit-time">{{ formatTransmitTime(message.transmit_time) }}</div>
+        <div class="table-cell cell-latitude">{{ message.iridium_latitude | number:'1.2-2' }}</div>
+        <div class="table-cell cell-longitude">{{ message.iridium_longitude | number:'1.2-2' }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <div class="total-messages">
+      <span>Total messages: {{ totalMessages }}</span>
+    </div>
+
+    <div class="page-selector">
+      <div class="rows-per-page-selector">
+        <label for="rowsPerPage">Rows per page:</label>
+        <select id="rowsPerPage" [(ngModel)]="rowsPerPage" (change)="onRowsPerPageChange(rowsPerPage)">
+          <option *ngFor="let rows of rowsOptions" [value]="rows">{{ rows }}</option>
+        </select>
+      </div>
+      <button class="arrow-button" (click)="onPageChange(currentPage-1)">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="pagination-button" *ngFor="let page of getPaginationButtons()"
+              [ngClass]="{'active': page === currentPage}" (click)="onPageChange(page)">
+        {{ page }}
+      </button>
+      <button class="arrow-button" (click)="onPageChange(currentPage+1)">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

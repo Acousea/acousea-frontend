@@ -3,15 +3,6 @@ import {Component, OnInit} from '@angular/core';
 import {SummaryCardComponent} from "../../components/cards/summary-card/summary-card.component";
 import {LineChartComponent} from "../../components/charts/line-chart/line-chart.component";
 import {StatsService} from "../../services/stats-service/stats.service";
-import {
-  RockBlockMessagesTableComponent
-} from "../../components/history-site/rock-block-messages-table/rock-block-messages-table.component";
-import {NotificationListComponent} from "../../components/notifications/notification-list/notification-list.component";
-import {
-  RockblockMessageDetailsPopupComponent
-} from "../../components/history-site/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
-import {LoadingAnimationComponent} from "../../components/addons/loading-animation/loading-animation.component";
-import {TranslateModule} from "@ngx-translate/core";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -19,19 +10,13 @@ export interface ChartInputData {
 }
 
 @Component({
-  selector: 'app-summary-site',
-  standalone: true,
-  imports: [
-    SummaryCardComponent,
-    LineChartComponent,
-    RockBlockMessagesTableComponent,
-    NotificationListComponent,
-    RockblockMessageDetailsPopupComponent,
-    LoadingAnimationComponent,
-    TranslateModule
-  ],
-  templateUrl: './summary-site.component.html',
-  styleUrl: './summary-site.component.css'
+    selector: 'app-summary-site',
+    imports: [
+        SummaryCardComponent,
+        LineChartComponent
+    ],
+    templateUrl: './summary-site.component.html',
+    styleUrl: './summary-site.component.css'
 })
 export class SummarySiteComponent implements OnInit {
   clickData: ChartInputData | undefined = undefined;

@@ -1,0 +1,17 @@
+<div class="storage-status-component">
+  <div class="headline">
+    <h2>System storage</h2>
+    <img src="assets/icons/storage-icon.svg">
+  </div>
+  <div class="bar-section">
+    <div class="bars">
+      <div class="bar"></div>
+      <div class="bar_percent" [style.width.%]="usedPercentage"></div>
+    </div>
+    <p class="usage-text">
+      <span class="used-text">{{ (used / 1024) | number: '1.2-2' }}</span> GB of
+      <span class="capacity-text">{{ (total / 1024) | number: '1.2-2' }}</span> GB used
+    </p>
+  </div>
+</div>
+

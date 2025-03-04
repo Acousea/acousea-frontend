@@ -1,0 +1,180 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: var(--background-white);
+  overflow-x: auto; /* Not overflow the table */
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.table-content {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.table-header, .table-body {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+}
+
+.table-row {
+  display: flex;
+  /*  Border on top and bottom only*/
+  border-top: 1px solid #F2F2F2;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.table-header .table-row{
+  font-size: large;
+  border-radius: 8px;
+  background-color: #dfdfdf;
+  border-top: none;
+  border-bottom: none;
+}
+
+.table-cell {
+  padding: 8px;
+  margin: 10px;
+  text-align: center;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  color: var(--text-gray);
+}
+
+
+.table-header .table-cell {
+  border-radius: 100px;
+  color: var(--text-gray);
+  font-weight: bold;
+}
+
+.cell-device {
+  cursor: pointer;
+  width: 50%;
+}
+
+.cell-transmit-time {
+  cursor: pointer;
+  width: 30%;
+}
+
+.cell-latitude {
+  cursor: pointer;
+  width: 10%;
+}
+
+.cell-longitude {
+  cursor: pointer;
+  width: 10%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.page-selector{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.rows-per-page-selector {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.pagination-button {
+  display: flex;
+  padding: 12px 12px;
+  border: none;
+  background-color: var(--unselected-color);
+  color: #303030;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-button.active {
+  background-color: #303030;
+  color: white;
+}
+
+button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.arrow-button{
+  display: flex;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: #303030;
+  width: 30px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+
+.device-drifter {
+  background-color: var(--drifter-color-transparent-50); /* Color para Drifter */
+  border: 2px solid var(--drifter-color-transparent-75);
+  font-weight: bold;
+  color: var(--drifter-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.device-localizer {
+  background-color: var(--localizer-color-transparent-50);
+  border: 2px solid var(--localizer-color-transparent-75);
+  font-weight: bold;
+  color:  var(--localizer-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.device-unknown {
+  background-color: var(--unknown-device-color-transparent-50); /* Color para Unknown */
+  border: 2px solid var(--unknown-device-color-transparent-75);
+  font-weight: bold;
+  color: var(--unknown-device-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}

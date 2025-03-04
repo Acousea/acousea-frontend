@@ -1,12 +1,8 @@
 <div class="system-info-site" *ngIf="systemInfo; else errorTemplate">
-  <div class="top-container">
-    <h1>{{ 'SYSTEM_INFO_SITE.TITLE_FULL' | translate  }}</h1>
-    <app-update-info-button [tooltipPosition]="'right'"
-                            (buttonClick)="console.log('system-info-site update button clicked')"></app-update-info-button>
-  </div>
   <div class="meta-information">
-    <label>{{ 'SYSTEM_INFO_SITE.LAST_UPDATE' | translate  }}: <span>{{ systemInfo.last_updated_date }}</span></label>
-
+    <h1>Last Updated: {{ systemInfo.last_updated_date }}</h1>
+    <app-update-info-button [tooltipPosition]="'left'"
+                            (buttonClick)="console.log('system-info-site update button clicked')"></app-update-info-button>
   </div>
 
   <div class="storage-container">
@@ -16,11 +12,11 @@
 
   <div class="information-container">
     <div class="information-item">
-      <h2>{{ 'PAM_DEVICE.TITLE' | translate  }}</h2>
+      <h2>PAM System Status</h2>
       <ul>
         <app-pam-device-status [statusCode]="systemInfo.pam_device_status.unit_status"></app-pam-device-status>
         <app-temperature-and-humidity [temperature]="systemInfo.pam_device_status.temperature"
-                                      [humidity]="systemInfo.pam_device_status.humidity"></app-temperature-and-humidity>
+                                       [humidity]="systemInfo.pam_device_status.humidity"></app-temperature-and-humidity>
         <app-battery-status [batteryPercentage]="systemInfo.pam_device_status.battery_percentage"
                             [batteryStatus]="systemInfo.pam_device_status.battery_status"></app-battery-status>
 
@@ -28,14 +24,14 @@
     </div>
 
     <div class="information-item">
-      <h2>{{ 'COMMUNICATION_SYSTEM.TITLE' | translate  }}</h2>
+      <h2>Communication System Status</h2>
       <ul>
         <app-coordinates [latitude]="systemInfo.communication_system_status.latitude"
                          [longitude]="systemInfo.communication_system_status.longitude"></app-coordinates>
 
         <app-core-temperature-and-operation-mode
-          [coreTemperature]="systemInfo.communication_system_status.temperature"
-          [operationModeIdx]="systemInfo.communication_system_status.operation_mode"></app-core-temperature-and-operation-mode>
+            [coreTemperature]="systemInfo.communication_system_status.temperature"
+            [operationModeIdx]="systemInfo.communication_system_status.operation_mode"></app-core-temperature-and-operation-mode>
 
 
         <app-battery-status [batteryPercentage]="systemInfo.communication_system_status.battery_percentage"

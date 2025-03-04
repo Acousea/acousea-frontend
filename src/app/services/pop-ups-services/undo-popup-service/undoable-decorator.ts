@@ -1,5 +1,5 @@
 import {UndoPopupService} from "./undo-popup.service";
-import {ServiceLocator} from "../../../app.service.locator.service";
+import {ServiceLocator} from "@/app/app.service.locator.service";
 
 
 

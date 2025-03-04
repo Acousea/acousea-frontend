@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
-import {BackendRoutePaths} from "../../app.route.paths";
+import { environment } from '@/environments/environment';
 
 export interface Notification {
   type: 'info' | 'success' | 'warning' | 'error';
@@ -42,7 +42,7 @@ export class NotificationService {
   ];
 
   constructor() {
-    this.socket$ = webSocket(BackendRoutePaths.websocket.notifications);
+    this.socket$ = webSocket(`${environment.webSocketUrl}/${environment.apiVersion}/ws/notifications`);
     this.socket$.subscribe(
       (notification: Notification) => this.notificationsSubject.next(notification),
       err => console.error(err)
@@ -59,7 +59,7 @@ export class NotificationService {
     this.mockNotifications.forEach((notification, index) => {
       setTimeout(() => {
         this.notificationsSubject.next(notification);
-      }, index * 500);
+      }, index * 2000);
     });
   }
 

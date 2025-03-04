@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { environment } from '@/environments/environment';
 import {firstValueFrom} from "rxjs";
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
-import {BackendRoutePaths} from "../../app.route.paths";
-
 
 interface StatsReadModel {
   datetime_clicks: { datetime: number, num_clicks: number }[];
@@ -21,7 +20,7 @@ export class StatsService {
 
   async getStats(): Promise<StatsReadModel | undefined> {
     const response: BackendResponse<StatsReadModel> = await firstValueFrom(
-      this.httpClient.get(BackendRoutePaths.pamSystem.latestStats)
+      this.httpClient.get(`${environment.apiUrl}/${environment.apiVersion}/pam-system/latest-stats`)
     );
     if (response.success) {
       console.log('Stats: ',  response.success);

@@ -1,25 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgForOf, UpperCasePipe} from "@angular/common";
-import {TooltipComponent} from '../../../components/addons/tooltip/tooltip.component';
-import {CommunicationSystemService} from "../../../services/communication-system-service/communication-system.service";
-import {UpdateInfoButtonComponent} from "../../../components/addons/update-info-button/update-info-button.component";
-import {TranslateModule} from "@ngx-translate/core";
+import {CommunicationSystemService} from "@/app/services/communication-system-service/communication-system.service";
+import {UpdateInfoButtonComponent} from "@/app/components/update-info-button/update-info-button.component";
 
 @Component({
-  selector: 'app-control-system-config',
-  standalone: true,
-  imports: [
-    FormsModule,
-    NgForOf,
-    TooltipComponent,
-    ReactiveFormsModule,
-    UpdateInfoButtonComponent,
-    TranslateModule,
-    UpperCasePipe
-  ],
-  templateUrl: './control-system-config.component.html',
-  styleUrl: './control-system-config.component.css'
+    selector: 'app-control-system-config',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        UpdateInfoButtonComponent
+    ],
+    templateUrl: './control-system-config.component.html',
+    styleUrl: './control-system-config.component.css'
 })
 export class ControlSystemConfigComponent implements OnInit {
   reportingPeriodsForm: FormGroup;

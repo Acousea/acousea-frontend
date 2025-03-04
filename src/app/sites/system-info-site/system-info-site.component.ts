@@ -1,39 +1,35 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
+import {NgIf} from "@angular/common";
 import {SystemStatusInformation} from "./system-info-value-objects/system-info-value-objects";
 import {CommunicationSystemInfoService} from "../../services/ic-listen-device-service/communication-system-info.service";
 import {BackendResponse} from "../../global-interfaces/global-interfaces";
-import {UpdateInfoButtonComponent} from "../../components/addons/update-info-button/update-info-button.component";
-import {StorageStatusComponent} from "../../components/system-info/storage-status/storage-status.component";
-import {BatteryStatusComponent} from "../../components/system-info/battery-status/battery-status.component";
+import {UpdateInfoButtonComponent} from "../../components/update-info-button/update-info-button.component";
+import {StorageStatusComponent} from "../../components/storage-status/storage-status.component";
+import {BatteryStatusComponent} from "../../components/battery-status/battery-status.component";
 import {
   TemperatureAndHumidityComponent
-} from "../../components/system-info/temperature-and-humidity/temperature-and-humidity.component";
-import {CoordinatesComponent} from "../../components/system-info/coordinates/coordinates.component";
-import {PamDeviceStatusComponent} from "../../components/system-info/pam-device-status/pam-device-status.component";
+} from "../../components/temperature-and-humidity/temperature-and-humidity.component";
+import {CoordinatesComponent} from "../../components/coordinates/coordinates.component";
+import {PamDeviceStatusComponent} from "../../components/pam-device-status/pam-device-status.component";
 import {
   CoreTemperatureAndOperationModeComponent
-} from "../../components/system-info/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
-import {TranslateModule} from "@ngx-translate/core";
+} from "../../components/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
 
 
 @Component({
-  selector: 'app-system-info-site',
-  standalone: true,
-  imports: [
-    NgForOf,
-    NgIf,
-    UpdateInfoButtonComponent,
-    StorageStatusComponent,
-    BatteryStatusComponent,
-    TemperatureAndHumidityComponent,
-    CoordinatesComponent,
-    PamDeviceStatusComponent,
-    CoreTemperatureAndOperationModeComponent,
-    TranslateModule
-  ],
-  templateUrl: './system-info-site.component.html',
-  styleUrl: './system-info-site.component.css'
+    selector: 'app-system-info-site',
+    imports: [
+        NgIf,
+        UpdateInfoButtonComponent,
+        StorageStatusComponent,
+        BatteryStatusComponent,
+        TemperatureAndHumidityComponent,
+        CoordinatesComponent,
+        PamDeviceStatusComponent,
+        CoreTemperatureAndOperationModeComponent
+    ],
+    templateUrl: './system-info-site.component.html',
+    styleUrl: './system-info-site.component.css'
 })
 export class SystemInfoSiteComponent implements OnInit{
   systemInfo: SystemStatusInformation | undefined;

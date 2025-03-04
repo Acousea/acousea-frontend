@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { environment } from '@/environments/environment';
 import {BackendResponse, CommunicationResultResponse} from "../../global-interfaces/global-interfaces";
 import {map} from "rxjs/operators";
 import {undoable} from "../pop-ups-services/undo-popup-service/undoable-decorator";
-import {BackendRoutePaths} from "../../app.route.paths";
 
 export interface StreamingWaveformConfig {
   record_waveform: boolean;
@@ -39,7 +39,8 @@ export class StreamingConfigService {
   }
 
   getConfig(): Observable<StreamingConfigResponse> {
-    return this.http.get<BackendResponse<StreamingConfigResponse>>( BackendRoutePaths.pamSystem.streamingConfiguration).pipe(
+    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/streaming-configuration`;
+    return this.http.get<BackendResponse<StreamingConfigResponse>>(apiUrl).pipe(
       map((response: BackendResponse<StreamingConfigResponse>) => {
         if (response.error) {
           throw new Error(response.error.error_message);
@@ -55,7 +56,8 @@ export class StreamingConfigService {
   @undoable(2000)
   getUpdatedStreamingConfig() {
     console.log('Requesting updated config');
-    this.http.get<BackendResponse<CommunicationResultResponse>>(BackendRoutePaths.update( BackendRoutePaths.pamSystem.streamingConfiguration)).subscribe({
+    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/streaming-configuration/update`;
+    this.http.get<BackendResponse<CommunicationResultResponse>>(apiUrl).subscribe({
       next: (response: BackendResponse<CommunicationResultResponse>) => {
         if (response.error) {
           throw new Error(response.error.error_message);
@@ -69,7 +71,8 @@ export class StreamingConfigService {
 
 
   setConfig(waveformConfig: StreamingWaveformConfig, spectrumConfig: StreamingSpectrumConfig): Observable<BackendResponse<CommunicationResultResponse>> {
-    return this.http.post<BackendResponse<CommunicationResultResponse>>(BackendRoutePaths.set( BackendRoutePaths.pamSystem.streamingConfiguration), {
+    const apiUrl = `${environment.apiUrl}/${environment.apiVersion}/pam-system/streaming-configuration/set`;
+    return this.http.post<BackendResponse<CommunicationResultResponse>>(apiUrl, {
       wav_config: waveformConfig,
       fft_config: spectrumConfig
     }).pipe(

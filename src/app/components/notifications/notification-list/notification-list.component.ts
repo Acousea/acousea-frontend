@@ -1,29 +1,28 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationComponent} from "../notification/notification.component";
 import {NgForOf} from "@angular/common";
-import {NotificationService} from "../../../services/notification-service/notification.service";
-import {Notification} from "../../../services/notification-service/notification.service";
+import {NotificationService} from "@/app/services/notification-service/notification.service";
+import {Notification} from "@/app/services/notification-service/notification.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {CdkDrag, CdkDragEnd, CdkDragMove} from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-notification-list',
-  standalone: true,
-  imports: [
-    NotificationComponent,
-    NgForOf,
-    CdkDrag
-  ],
-  templateUrl: './notification-list.component.html',
-  styleUrl: './notification-list.component.css',
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0, transform: 'translateY(-20px)' })),
-      transition(':enter, :leave', [
-        animate('0.3s ease-in-out')
-      ])
-    ])
-  ]
+    selector: 'app-notification-list',
+    imports: [
+        NotificationComponent,
+        NgForOf,
+        CdkDrag
+    ],
+    templateUrl: './notification-list.component.html',
+    styleUrl: './notification-list.component.css',
+    animations: [
+        trigger('fadeInOut', [
+            state('void', style({ opacity: 0, transform: 'translateY(-20px)' })),
+            transition(':enter, :leave', [
+                animate('0.3s ease-in-out')
+            ])
+        ])
+    ]
 })
 export class NotificationListComponent implements OnInit {
   notifications: Notification[] = [];

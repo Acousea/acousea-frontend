@@ -75,13 +75,13 @@ h1 {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  gap: 20px;
+  gap: 10px;
   width: 300px;
   text-align: left;
 }
 
 .settings-box h2 {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   align-self: center;
 }
 
@@ -94,11 +94,6 @@ h1 {
 .setting-group label {
   font-weight: bold;
   margin-bottom: 5px;
-}
-
-.setting-group label span {
-  font-weight: normal; /* Cambia el estilo del span dentro del label */
-  font-size: 0.8em;
 }
 
 .setting-group input {
