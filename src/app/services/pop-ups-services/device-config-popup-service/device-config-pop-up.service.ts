@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {ApiResponse, OperationCode} from "../../../global-interfaces/global-interfaces";
-import {PopUpSettings, USBDevice} from '../../../components/map-site/device-config-popup/device-config-popup.component';
-import {BackendRoutePaths} from "../../../app.route.paths";
-import {NodeDevice} from "../../../global-interfaces/nodes/NodeDevice";
+import {ApiResponse} from "@/app/global-interfaces/global-interfaces";
+import {PopUpSettings, USBDevice} from '@/app/components/map-site/device-config-popup/device-config-popup.component';
+import {BackendRoutePaths} from "@/app/app.route.paths";
+import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 
 interface OperationMode {
   name: string;

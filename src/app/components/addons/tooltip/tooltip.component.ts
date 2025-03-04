@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgIf } from "@angular/common";
 
 @Component({
   selector: 'app-tooltip',
   standalone: true,
-  imports: [NgIf],
+  imports: [],
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.css']
 })

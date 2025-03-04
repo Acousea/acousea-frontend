@@ -1,20 +1,17 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { KeyValuePipe, NgForOf, NgIf } from "@angular/common";
+import { NgForOf, NgIf } from "@angular/common";
 import { SummaryCardComponent } from "../../cards/summary-card/summary-card.component";
-import { DeviceCardComponent } from "../../cards/device-card/device-card.component";
-import { DeviceConfigPopUpService } from "../../../services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
-import { NodeDevice } from "../../../global-interfaces/nodes/NodeDevice";
+import { DeviceConfigPopUpService } from "@/app/services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
+import { NodeDevice } from "@/app/global-interfaces/nodes/NodeDevice";
 
 @Component({
   selector: 'app-device-cards-list',
   standalone: true,
   imports: [
     FormsModule,
-    KeyValuePipe,
     NgForOf,
     SummaryCardComponent,
-    DeviceCardComponent,
     NgIf
   ],
   templateUrl: './device-cards-list.component.html',

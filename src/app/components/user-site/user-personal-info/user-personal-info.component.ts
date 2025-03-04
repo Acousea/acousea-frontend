@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {UserInfo} from "../../../services/users/user.interfaces";
+import {UserInfo} from "@/app/services/users/user.interfaces";
 import {DatePipe} from "@angular/common";
 
 @Component({

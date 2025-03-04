@@ -3,14 +3,12 @@ import {ReactiveFormsModule, Validators} from "@angular/forms";
 import {RegisterStepComponent} from "../register-step-component.interface";
 import {NgIf} from "@angular/common";
 import {AddressSelectorComponent} from "../address-selector/address-selector.component";
-import {GenderSelectorComponent} from "../gender-selector/gender-selector.component";
 import {LanguageSelectorComponent} from "../../side-menu/language-selector/language-selector.component";
 import {CustomInputComponent, FieldContent} from "../../addons/custom-inputs/custom-input/custom-input.component";
-import {RegisterService} from '../../../services/auth-service/register-service/register-service.service';
-import {AVAILABLE_LANGUAGES, Language} from "../../../services/language-service/language.service";
+import {RegisterService} from '@/app/services/auth-service/register-service/register-service.service';
+import {AVAILABLE_LANGUAGES, Language} from "@/app/services/language-service/language.service";
 import {ValidationRule} from "../../addons/custom-inputs/validation.rule";
-import {FormValidationService} from "../../../services/form-validation-service/form-validation.service";
-import {take} from "rxjs";
+import {FormValidationService} from "@/app/services/form-validation-service/form-validation.service";
 
 @Component({
   selector: 'app-register-step2-profile',
@@ -19,7 +17,6 @@ import {take} from "rxjs";
     ReactiveFormsModule,
     NgIf,
     AddressSelectorComponent,
-    GenderSelectorComponent,
     LanguageSelectorComponent,
     CustomInputComponent
   ],

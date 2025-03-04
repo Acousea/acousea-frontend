@@ -1,7 +1,5 @@
-import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {AuthService} from "../../../services/auth-service/auth.service";
-import {User} from "../../../services/users/user.interfaces";
 import {WindowBubbleSubmenuComponent} from "./window-bubble-submenu/window-bubble-submenu.component";
 import {BehaviorSubject} from "rxjs";
 import {ProfileBubbleComponent} from "./profile-bubble/profile-bubble.component";

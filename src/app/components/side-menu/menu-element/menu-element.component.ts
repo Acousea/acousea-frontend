@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 import {BehaviorSubject} from "rxjs";
 import {ItemsBarComponent} from "./steps-bar/items-bar.component";
 
@@ -20,7 +20,6 @@ export interface MenuItem {
     RouterLinkActive,
     NgClass,
     NgIf,
-    NgForOf,
     ItemsBarComponent
   ],
   templateUrl: './menu-element.component.html',

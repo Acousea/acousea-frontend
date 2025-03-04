@@ -1,14 +1,12 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgClass, NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
-import {environment} from "../../../app.environment";
+import {Component, EventEmitter, Input} from '@angular/core';
+import {NgIf, NgStyle} from "@angular/common";
+import {environment} from "@/app/app.environment";
 
 @Component({
   selector: 'app-card',
   standalone: true,
   imports: [
     NgIf,
-    NgOptimizedImage,
-    NgClass,
     NgStyle
   ],
   templateUrl: './card.component.html',

@@ -2,13 +2,13 @@ import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@an
 import * as L from "leaflet";
 import {Marker} from "leaflet";
 import 'leaflet-arrowheads';
-import {CurrentVectorsService} from "../../../services/current-vectors-service/current-vectors.service";
+import {CurrentVectorsService} from "@/app/services/current-vectors-service/current-vectors.service";
 
-import {NodeDevice} from "../../../global-interfaces/nodes/NodeDevice";
+import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {
   DeviceConfigPopUpService
-} from "../../../services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
-import {NodeDevicesService} from "../../../services/node-devices-service/node-devices.service";
+} from "@/app/services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
+import {NodeDevicesService} from "@/app/services/node-devices-service/node-devices.service";
 
 @Component({
   selector: 'app-map-geo',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
-import {AppRoutePaths} from "../../../../app.route.paths";
+import {NgForOf} from "@angular/common";
+import {AppRoutePaths} from "@/app/app.route.paths";
 import {Router} from "@angular/router";
-import {AuthService} from "../../../../services/auth-service/auth.service";
+import {AuthService} from "@/app/services/auth-service/auth.service";
 
 interface SubmenuItem{
   title: string;
@@ -14,7 +14,6 @@ interface SubmenuItem{
   selector: 'app-window-bubble-submenu',
   standalone: true,
   imports: [
-    NgIf,
     NgForOf
   ],
   templateUrl: './window-bubble-submenu.component.html',

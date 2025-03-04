@@ -3,8 +3,8 @@ import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {
   NominatimLocationService
-} from "../../../services/location-services/nominatim-location-service/nominatim-location-service.service";
-import {LocationResult} from "../../../services/location-services/location-interfaces";
+} from "@/app/services/location-services/nominatim-location-service/nominatim-location-service.service";
+import {LocationResult} from "@/app/services/location-services/location-interfaces";
 
 @Component({
   selector: 'app-address-selector',

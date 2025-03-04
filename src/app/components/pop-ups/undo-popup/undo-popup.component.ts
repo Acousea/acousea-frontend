@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {UndoMessages, UndoPopupService} from '../../../services/pop-ups-services/undo-popup-service/undo-popup.service';
+import {UndoMessages, UndoPopupService} from '@/app/services/pop-ups-services/undo-popup-service/undo-popup.service';
 import { NgIf } from '@angular/common';
 
 

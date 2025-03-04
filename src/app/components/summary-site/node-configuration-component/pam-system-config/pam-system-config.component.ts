@@ -1,11 +1,9 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {NgForOf, UpperCasePipe} from "@angular/common";
+import {NgForOf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {UpdateInfoButtonComponent} from "../../../addons/update-info-button/update-info-button.component";
-import {TooltipComponent} from "../../../addons/tooltip/tooltip.component";
-import {NodeDevice} from "../../../../global-interfaces/nodes/NodeDevice";
-import {ICListenLoggingConfig, pamModuleTypes} from "../../../../global-interfaces/nodes/PamModules";
+import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
+import {ICListenLoggingConfig, pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
 
 @Component({
   selector: 'app-pam-system-config',
@@ -13,10 +11,7 @@ import {ICListenLoggingConfig, pamModuleTypes} from "../../../../global-interfac
   imports: [
     FormsModule,
     NgForOf,
-    UpdateInfoButtonComponent,
-    TooltipComponent,
-    TranslateModule,
-    UpperCasePipe
+    TranslateModule
   ],
   templateUrl: './pam-system-config.component.html',
   styleUrl: '../node-config.component.css'
