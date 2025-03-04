@@ -4,15 +4,14 @@ import {CommunicationSystemService} from "@/app/services/communication-system-se
 import {UpdateInfoButtonComponent} from "@/app/components/update-info-button/update-info-button.component";
 
 @Component({
-  selector: 'app-control-system-config',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    UpdateInfoButtonComponent
-  ],
-  templateUrl: './control-system-config.component.html',
-  styleUrl: './control-system-config.component.css'
+    selector: 'app-control-system-config',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        UpdateInfoButtonComponent
+    ],
+    templateUrl: './control-system-config.component.html',
+    styleUrl: './control-system-config.component.css'
 })
 export class ControlSystemConfigComponent implements OnInit {
   reportingPeriodsForm: FormGroup;

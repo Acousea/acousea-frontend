@@ -21,18 +21,17 @@ export interface RockBlockMessage {
 
 
 @Component({
-  selector: 'app-rock-block-messages-table',
-  standalone: true,
-  imports: [
-    NgForOf,
-    FormsModule,
-    DecimalPipe,
-    UpperCasePipe,
-    NgClass
-  ],
-  templateUrl: './rock-block-messages-table.component.html',
-  styleUrl: './rock-block-messages-table.component.css',
-  providers: [DatePipe]
+    selector: 'app-rock-block-messages-table',
+    imports: [
+        NgForOf,
+        FormsModule,
+        DecimalPipe,
+        UpperCasePipe,
+        NgClass
+    ],
+    templateUrl: './rock-block-messages-table.component.html',
+    styleUrl: './rock-block-messages-table.component.css',
+    providers: [DatePipe]
 })
 export class RockBlockMessagesTableComponent implements OnInit {
   title: string = 'Iridium Message History';

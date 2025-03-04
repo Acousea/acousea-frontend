@@ -5,15 +5,14 @@ import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
-  selector: 'app-search-bar',
-  standalone: true,
-  imports: [
-    FormsModule,
-    NgIf,
-    NgForOf
-  ],
-  templateUrl: './search-bar.component.html',
-  styleUrl: './search-bar.component.css'
+    selector: 'app-search-bar',
+    imports: [
+        FormsModule,
+        NgIf,
+        NgForOf
+    ],
+    templateUrl: './search-bar.component.html',
+    styleUrl: './search-bar.component.css'
 })
 export class SearchBarComponent {
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;

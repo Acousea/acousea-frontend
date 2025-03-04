@@ -3,14 +3,13 @@ import {Notification} from "@/app/services/notification-service/notification.ser
 import {DatePipe, NgClass} from "@angular/common";
 
 @Component({
-  selector: 'app-notification',
-  standalone: true,
-  imports: [
-    NgClass,
-    DatePipe
-  ],
-  templateUrl: './notification.component.html',
-  styleUrl: './notification.component.css'
+    selector: 'app-notification',
+    imports: [
+        NgClass,
+        DatePipe
+    ],
+    templateUrl: './notification.component.html',
+    styleUrl: './notification.component.css'
 })
 export class NotificationComponent {
   @Input() notification: Notification | undefined;

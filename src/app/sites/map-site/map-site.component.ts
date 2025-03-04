@@ -9,16 +9,15 @@ import {
 
 
 @Component({
-  selector: 'app-map-site',
-  standalone: true,
-  imports: [
-    MapGeoComponent,
-    FormsModule,
-    DrifterLocalizerCardsComponent,
-    DeviceConfigPopupComponent,
-  ],
-  templateUrl: './map-site.component.html',
-  styleUrl: './map-site.component.css'
+    selector: 'app-map-site',
+    imports: [
+        MapGeoComponent,
+        FormsModule,
+        DrifterLocalizerCardsComponent,
+        DeviceConfigPopupComponent,
+    ],
+    templateUrl: './map-site.component.html',
+    styleUrl: './map-site.component.css'
 })
 export class MapSiteComponent {
 

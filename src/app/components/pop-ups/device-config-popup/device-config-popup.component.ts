@@ -23,17 +23,16 @@ export interface PopUpSettings {
 }
 
 @Component({
-  selector: 'app-device-config-popup',
-  standalone: true,
-  imports: [
-    NgIf,
-    FormsModule,
-    NgClass,
-    NgForOf,
-    UpdateInfoButtonComponent
-  ],
-  templateUrl: './device-config-popup.component.html',
-  styleUrls: ['./device-config-popup.component.css']
+    selector: 'app-device-config-popup',
+    imports: [
+        NgIf,
+        FormsModule,
+        NgClass,
+        NgForOf,
+        UpdateInfoButtonComponent
+    ],
+    templateUrl: './device-config-popup.component.html',
+    styleUrls: ['./device-config-popup.component.css']
 })
 export class DeviceConfigPopupComponent {
   popUpSettings: PopUpSettings = {

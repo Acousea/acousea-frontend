@@ -17,20 +17,19 @@ import {
 
 
 @Component({
-  selector: 'app-system-info-site',
-  standalone: true,
-  imports: [
-    NgIf,
-    UpdateInfoButtonComponent,
-    StorageStatusComponent,
-    BatteryStatusComponent,
-    TemperatureAndHumidityComponent,
-    CoordinatesComponent,
-    PamDeviceStatusComponent,
-    CoreTemperatureAndOperationModeComponent
-  ],
-  templateUrl: './system-info-site.component.html',
-  styleUrl: './system-info-site.component.css'
+    selector: 'app-system-info-site',
+    imports: [
+        NgIf,
+        UpdateInfoButtonComponent,
+        StorageStatusComponent,
+        BatteryStatusComponent,
+        TemperatureAndHumidityComponent,
+        CoordinatesComponent,
+        PamDeviceStatusComponent,
+        CoreTemperatureAndOperationModeComponent
+    ],
+    templateUrl: './system-info-site.component.html',
+    styleUrl: './system-info-site.component.css'
 })
 export class SystemInfoSiteComponent implements OnInit{
   systemInfo: SystemStatusInformation | undefined;

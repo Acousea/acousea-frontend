@@ -1,11 +1,10 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-coordinates',
-  standalone: true,
-  imports: [],
-  templateUrl: './coordinates.component.html',
-  styleUrl: './coordinates.component.css'
+    selector: 'app-coordinates',
+    imports: [],
+    templateUrl: './coordinates.component.html',
+    styleUrl: './coordinates.component.css'
 })
 export class CoordinatesComponent {
   @Input() latitude: number = 0;

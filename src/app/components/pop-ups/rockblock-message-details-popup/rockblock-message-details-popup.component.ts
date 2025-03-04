@@ -6,14 +6,13 @@ import {
 } from "@/app/services/pop-ups-services/rockblock-message-details-popup/rock-block-message-details-pop-up.service";
 
 @Component({
-  selector: 'app-rockblock-message-details-popup',
-  standalone: true,
-  imports: [
-    NgIf,
-    DecimalPipe
-  ],
-  templateUrl: './rockblock-message-details-popup.component.html',
-  styleUrl: './rockblock-message-details-popup.component.css'
+    selector: 'app-rockblock-message-details-popup',
+    imports: [
+        NgIf,
+        DecimalPipe
+    ],
+    templateUrl: './rockblock-message-details-popup.component.html',
+    styleUrl: './rockblock-message-details-popup.component.css'
 })
 export class RockblockMessageDetailsPopupComponent {
   message: RockBlockMessage | null = null;

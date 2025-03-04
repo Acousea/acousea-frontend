@@ -9,14 +9,13 @@ import {
 
 
 @Component({
-  selector: 'app-drifter-localizer-cards',
-  standalone: true,
-  imports: [
-    FormsModule,
-    DeviceCardComponent
-  ],
-  templateUrl: './drifter-localizer-cards.component.html',
-  styleUrl: './drifter-localizer-cards.component.css'
+    selector: 'app-drifter-localizer-cards',
+    imports: [
+        FormsModule,
+        DeviceCardComponent
+    ],
+    templateUrl: './drifter-localizer-cards.component.html',
+    styleUrl: './drifter-localizer-cards.component.css'
 })
 export class DrifterLocalizerCardsComponent {
 

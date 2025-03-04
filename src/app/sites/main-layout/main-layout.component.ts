@@ -15,20 +15,19 @@ import {AsyncPipe} from "@angular/common";
 import {map} from "rxjs/operators";
 
 @Component({
-  selector: 'app-main-layout',
-  standalone: true,
-  imports: [
-    SideMenuComponent,
-    RouterOutlet,
-    AlertPopupComponent,
-    NotificationListComponent,
-    FlushRequestQueuePopupComponent,
-    UndoPopupComponent,
-    LoadingAnimationComponent,
-    AsyncPipe
-  ],
-  templateUrl: './main-layout.component.html',
-  styleUrl: './main-layout.component.css'
+    selector: 'app-main-layout',
+    imports: [
+        SideMenuComponent,
+        RouterOutlet,
+        AlertPopupComponent,
+        NotificationListComponent,
+        FlushRequestQueuePopupComponent,
+        UndoPopupComponent,
+        LoadingAnimationComponent,
+        AsyncPipe
+    ],
+    templateUrl: './main-layout.component.html',
+    styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent implements AfterViewInit {
   isLoading: Observable<boolean>;

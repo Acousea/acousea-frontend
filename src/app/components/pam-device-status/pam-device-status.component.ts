@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-pam-device-status',
-  standalone: true,
-  imports: [],
-  templateUrl: './pam-device-status.component.html',
-  styleUrl: './pam-device-status.component.css'
+    selector: 'app-pam-device-status',
+    imports: [],
+    templateUrl: './pam-device-status.component.html',
+    styleUrl: './pam-device-status.component.css'
 })
 export class PamDeviceStatusComponent implements OnInit {
   @Input() statusCode: number = 0;

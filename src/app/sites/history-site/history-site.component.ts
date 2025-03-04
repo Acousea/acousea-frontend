@@ -7,14 +7,13 @@ import {
 } from "../../components/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
 
 @Component({
-  selector: 'app-history-site',
-  standalone: true,
-  imports: [
-    RockBlockMessagesTableComponent,
-    RockblockMessageDetailsPopupComponent
-  ],
-  templateUrl: './history-site.component.html',
-  styleUrl: './history-site.component.css'
+    selector: 'app-history-site',
+    imports: [
+        RockBlockMessagesTableComponent,
+        RockblockMessageDetailsPopupComponent
+    ],
+    templateUrl: './history-site.component.html',
+    styleUrl: './history-site.component.css'
 })
 export class HistorySiteComponent {
 

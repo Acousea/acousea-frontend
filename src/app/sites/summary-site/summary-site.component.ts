@@ -10,14 +10,13 @@ export interface ChartInputData {
 }
 
 @Component({
-  selector: 'app-summary-site',
-  standalone: true,
-  imports: [
-    SummaryCardComponent,
-    LineChartComponent
-  ],
-  templateUrl: './summary-site.component.html',
-  styleUrl: './summary-site.component.css'
+    selector: 'app-summary-site',
+    imports: [
+        SummaryCardComponent,
+        LineChartComponent
+    ],
+    templateUrl: './summary-site.component.html',
+    styleUrl: './summary-site.component.css'
 })
 export class SummarySiteComponent implements OnInit {
   clickData: ChartInputData | undefined = undefined;

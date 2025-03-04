@@ -3,13 +3,12 @@ import {UndoPopupService} from "@/app/services/pop-ups-services/undo-popup-servi
 import {NgIf} from "@angular/common";
 
 @Component({
-  selector: 'app-undo-popup',
-  standalone: true,
-  imports: [
-    NgIf
-  ],
-  templateUrl: './undo-popup.component.html',
-  styleUrl: './undo-popup.component.css'
+    selector: 'app-undo-popup',
+    imports: [
+        NgIf
+    ],
+    templateUrl: './undo-popup.component.html',
+    styleUrl: './undo-popup.component.css'
 })
 export class UndoPopupComponent {
   message = 'Requesting changes...';

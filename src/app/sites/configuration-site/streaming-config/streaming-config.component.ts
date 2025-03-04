@@ -13,16 +13,15 @@ import {undoable} from "@/app/services/pop-ups-services/undo-popup-service/undoa
 
 
 @Component({
-  selector: 'app-streaming',
-  standalone: true,
-  imports: [
-    FormsModule,
-    NgForOf,
-    TooltipComponent,
-    UpdateInfoButtonComponent
-  ],
-  templateUrl: './streaming-config.component.html',
-  styleUrls: ['./streaming-config.component.css']
+    selector: 'app-streaming',
+    imports: [
+        FormsModule,
+        NgForOf,
+        TooltipComponent,
+        UpdateInfoButtonComponent
+    ],
+    templateUrl: './streaming-config.component.html',
+    styleUrls: ['./streaming-config.component.css']
 })
 export class StreamingConfigComponent implements OnInit {
   waveformSampleRates = [1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000, 512000];

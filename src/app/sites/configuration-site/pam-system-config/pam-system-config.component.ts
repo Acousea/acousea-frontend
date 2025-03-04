@@ -10,15 +10,14 @@ import {
 } from "@/app/services/logging-config-service/logging-config.service";
 
 @Component({
-  selector: 'app-data-collection-config',
-  standalone: true,
-  imports: [
-    FormsModule,
-    NgForOf,
-    UpdateInfoButtonComponent
-  ],
-  templateUrl: './pam-system-config.component.html',
-  styleUrl: './pam-system-config.component.css'
+    selector: 'app-data-collection-config',
+    imports: [
+        FormsModule,
+        NgForOf,
+        UpdateInfoButtonComponent
+    ],
+    templateUrl: './pam-system-config.component.html',
+    styleUrl: './pam-system-config.component.css'
 })
 export class PamSystemConfigComponent implements OnInit {
   waveformSampleRates = [1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000, 512000];

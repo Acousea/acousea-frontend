@@ -13,12 +13,12 @@ import {
 
 
 @Component({
-  selector: 'app-map-geo',
-  standalone: true,
-  imports: [],
-  templateUrl: './map-geo.component.html',
-  styleUrls: [
-    './map-geo.component.css'] // Add this line to the file
+    selector: 'app-map-geo',
+    imports: [],
+    templateUrl: './map-geo.component.html',
+    styleUrls: [
+        './map-geo.component.css'
+    ] // Add this line to the file
 })
 export class MapGeoComponent implements OnInit, OnDestroy {
   map: any;

@@ -13,17 +13,16 @@ export interface MenuItem {
 
 
 @Component({
-  selector: 'app-menu-element',
-  standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    NgClass,
-    NgIf,
-    ItemsBarComponent
-  ],
-  templateUrl: './menu-element.component.html',
-  styleUrl: './menu-element.component.css'
+    selector: 'app-menu-element',
+    imports: [
+        RouterLink,
+        RouterLinkActive,
+        NgClass,
+        NgIf,
+        ItemsBarComponent
+    ],
+    templateUrl: './menu-element.component.html',
+    styleUrl: './menu-element.component.css'
 })
 export class MenuElementComponent implements OnInit {
   @Input() link: string = '';

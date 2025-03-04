@@ -4,15 +4,14 @@ import {MenuElementComponent, MenuItem} from "./menu-element/menu-element.compon
 import {SearchBarComponent} from "../search-bar/search-bar.component";
 
 @Component({
-  selector: 'app-side-menu',
-  standalone: true,
-  imports: [
-    RouterLink,
-    MenuElementComponent,
-    SearchBarComponent
-  ],
-  templateUrl: './side-menu.component.html',
-  styleUrl: './side-menu.component.css'
+    selector: 'app-side-menu',
+    imports: [
+        RouterLink,
+        MenuElementComponent,
+        SearchBarComponent
+    ],
+    templateUrl: './side-menu.component.html',
+    styleUrl: './side-menu.component.css'
 })
 export class SideMenuComponent {
   historyMenuItems: MenuItem[] = [

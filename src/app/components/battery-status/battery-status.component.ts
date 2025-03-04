@@ -2,13 +2,12 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
 
 @Component({
-  selector: 'app-battery-status',
-  standalone: true,
-  imports: [
-    NgIf
-  ],
-  templateUrl: './battery-status.component.html',
-  styleUrl: './battery-status.component.css'
+    selector: 'app-battery-status',
+    imports: [
+        NgIf
+    ],
+    templateUrl: './battery-status.component.html',
+    styleUrl: './battery-status.component.css'
 })
 export class BatteryStatusComponent implements OnInit {
   @Input() batteryPercentage: number = 0;

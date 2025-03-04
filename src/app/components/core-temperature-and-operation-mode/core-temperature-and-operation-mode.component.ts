@@ -2,13 +2,12 @@ import {Component, Input} from '@angular/core';
 import {NgStyle} from "@angular/common";
 
 @Component({
-  selector: 'app-core-temperature-and-operation-mode',
-  standalone: true,
-  imports: [
-    NgStyle
-  ],
-  templateUrl: './core-temperature-and-operation-mode.component.html',
-  styleUrl: './core-temperature-and-operation-mode.component.css'
+    selector: 'app-core-temperature-and-operation-mode',
+    imports: [
+        NgStyle
+    ],
+    templateUrl: './core-temperature-and-operation-mode.component.html',
+    styleUrl: './core-temperature-and-operation-mode.component.css'
 })
 export class CoreTemperatureAndOperationModeComponent {
   @Input() coreTemperature: number = 0; // Celsius

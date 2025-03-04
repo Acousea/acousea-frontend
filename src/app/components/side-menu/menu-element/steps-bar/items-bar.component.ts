@@ -8,15 +8,14 @@ export interface BarStep {
 }
 
 @Component({
-  selector: 'app-items-bar',
-  standalone: true,
-  imports: [
-    NgForOf,
-    RouterLink,
-    RouterLinkActive
-  ],
-  templateUrl: './items-bar.component.html',
-  styleUrl: './items-bar.component.css'
+    selector: 'app-items-bar',
+    imports: [
+        NgForOf,
+        RouterLink,
+        RouterLinkActive
+    ],
+    templateUrl: './items-bar.component.html',
+    styleUrl: './items-bar.component.css'
 })
 export class ItemsBarComponent {
   @Input() items: BarStep[] = [];
