@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {MapGeoComponent} from "../../components/map-site/map-geo/map-geo.component";
 import {FormsModule} from "@angular/forms";
-import {KeyValuePipe} from "@angular/common";
 
 import {DeviceConfigPopupComponent} from "../../components/map-site/device-config-popup/device-config-popup.component";
 import {NodeDevice} from '../../global-interfaces/nodes/NodeDevice';
@@ -14,7 +13,6 @@ import {NodeDevicesService} from "../../services/node-devices-service/node-devic
   imports: [
     MapGeoComponent,
     FormsModule,
-    KeyValuePipe,
     DeviceConfigPopupComponent,
   ],
   templateUrl: './map-site.component.html',

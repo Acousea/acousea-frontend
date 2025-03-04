@@ -1,16 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {WindowBubbleSubmenuComponent} from "../window-bubble-submenu/window-bubble-submenu.component";
-import {User} from "../../../../services/users/user.interfaces";
-import {BehaviorSubject} from "rxjs";
-import {AuthService} from "../../../../services/auth-service/auth.service";
+import {User} from "@/app/services/users/user.interfaces";
+import {AuthService} from "@/app/services/auth-service/auth.service";
 
 @Component({
   selector: 'app-profile-bubble',
   standalone: true,
   imports: [
-    NgIf,
-    WindowBubbleSubmenuComponent
+    NgIf
   ],
   templateUrl: './profile-bubble.component.html',
   styleUrl: './profile-bubble.component.css'

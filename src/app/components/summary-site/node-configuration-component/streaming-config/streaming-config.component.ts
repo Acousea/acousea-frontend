@@ -1,12 +1,11 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {NgForOf, UpperCasePipe} from "@angular/common";
+import {NgForOf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
 import {TooltipComponent} from "../../../addons/tooltip/tooltip.component";
-import {UpdateInfoButtonComponent} from "../../../addons/update-info-button/update-info-button.component";
-import {undoable} from "../../../../services/pop-ups-services/undo-popup-service/undoable-decorator";
-import {NodeDevice} from "../../../../global-interfaces/nodes/NodeDevice";
-import {pamModuleTypes} from "../../../../global-interfaces/nodes/PamModules";
+import {undoable} from "@/app/services/pop-ups-services/undo-popup-service/undoable-decorator";
+import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
+import {pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
 
 
 @Component({
@@ -16,9 +15,7 @@ import {pamModuleTypes} from "../../../../global-interfaces/nodes/PamModules";
     FormsModule,
     NgForOf,
     TooltipComponent,
-    UpdateInfoButtonComponent,
-    TranslateModule,
-    UpperCasePipe
+    TranslateModule
   ],
   templateUrl: './streaming-config.component.html',
   styleUrls: ['../node-config.component.css']

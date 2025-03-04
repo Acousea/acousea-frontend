@@ -1,29 +1,15 @@
 import {Component} from '@angular/core';
 
-import {SummaryCardComponent} from "../../components/cards/summary-card/summary-card.component";
-import {LineChartComponent} from "../../components/charts/line-chart/line-chart.component";
-import {
-  RockBlockMessagesTableComponent
-} from "../../components/history-site/rock-block-messages-table/rock-block-messages-table.component";
-import {NotificationListComponent} from "../../components/notifications/notification-list/notification-list.component";
-import {
-  RockblockMessageDetailsPopupComponent
-} from "../../components/history-site/pop-ups/rockblock-message-details-popup/rockblock-message-details-popup.component";
-import {LoadingAnimationComponent} from "../../components/addons/loading-animation/loading-animation.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {AppRoutePaths, BackendRoutePaths} from "../../app.route.paths";
 import {NodeDevice} from "../../global-interfaces/nodes/NodeDevice";
 import {
   DeviceCardsListComponent
 } from "../../components/map-site/drifter-localizer-cards-component/device-cards-list.component";
-import {NgIf, TitleCasePipe} from "@angular/common";
-import {
-  SummaryStatsComponentComponent
-} from "../../components/summary-site/summary-stats-component/summary-stats-component.component";
+import {TitleCasePipe} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {SelectedNodeService} from "../../services/selected-node-service/selected-node.service";
-import {NodeInfoComponent} from "../../components/summary-site/node-info-component/node-info.component";
 import {UpdateInfoButtonComponent} from "../../components/addons/update-info-button/update-info-button.component";
 import {NodeDevicesService} from "../../services/node-devices-service/node-devices.service";
 
@@ -36,17 +22,8 @@ export interface ChartInputData {
   selector: 'app-summary-site',
   standalone: true,
   imports: [
-    SummaryCardComponent,
-    LineChartComponent,
-    RockBlockMessagesTableComponent,
-    NotificationListComponent,
-    RockblockMessageDetailsPopupComponent,
-    LoadingAnimationComponent,
     TranslateModule,
-    NodeInfoComponent,
     DeviceCardsListComponent,
-    NgIf,
-    SummaryStatsComponentComponent,
     RouterLink,
     RouterLinkActive,
     RouterOutlet,

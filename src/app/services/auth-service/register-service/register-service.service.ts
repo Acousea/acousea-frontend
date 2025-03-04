@@ -4,7 +4,7 @@ import {BehaviorSubject, catchError, firstValueFrom, Observable, of} from 'rxjs'
 import {User, ValidateFieldResult} from "../user.interfaces";
 import {map} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
-import {BackendRoutePaths} from "../../../app.route.paths";
+import {BackendRoutePaths} from "@/app/app.route.paths";
 
 @Injectable({
   providedIn: 'root',

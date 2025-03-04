@@ -1,5 +1,6 @@
-import {environment} from "./app.environment";
+
 import {NodeDevice} from "./global-interfaces/nodes/NodeDevice";
+import {environment} from "@/environments/environment";
 
 export const AppRoutePaths = {
   fullPath: (path: string) => `/${path}`,

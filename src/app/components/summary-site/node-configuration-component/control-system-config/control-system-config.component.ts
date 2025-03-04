@@ -1,19 +1,14 @@
 import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {TooltipComponent} from "../../../addons/tooltip/tooltip.component";
-import {UpdateInfoButtonComponent} from "../../../addons/update-info-button/update-info-button.component";
-import {NodeDevice} from "../../../../global-interfaces/nodes/NodeDevice";
+import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {FormsModule} from "@angular/forms";
-import {OperationMode} from "../../../../global-interfaces/nodes/ExtModules";
 
 @Component({
   selector: 'app-control-system-config',
   standalone: true,
   imports: [
     NgForOf,
-    TooltipComponent,
-    UpdateInfoButtonComponent,
     TranslateModule,
     FormsModule,
     NgIf

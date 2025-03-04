@@ -1,19 +1,16 @@
 import {Component} from '@angular/core';
 import {RegisterStepComponent} from "../register-step-component.interface";
 import {CustomInputComponent, FieldContent} from "../../addons/custom-inputs/custom-input/custom-input.component";
-import {RegisterService} from "../../../services/auth-service/register-service/register-service.service";
+import {RegisterService} from "@/app/services/auth-service/register-service/register-service.service";
 import {ValidationRule} from "../../addons/custom-inputs/validation.rule";
-import {FormValidationService} from "../../../services/form-validation-service/form-validation.service";
+import {FormValidationService} from "@/app/services/form-validation-service/form-validation.service";
 import {ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-register-step1',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgIf,
-    NgClass,
     CustomInputComponent
   ],
   templateUrl: './register-step-account.component.html',

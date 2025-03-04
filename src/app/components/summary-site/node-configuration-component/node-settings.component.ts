@@ -2,19 +2,17 @@ import {Component} from '@angular/core';
 import {ControlSystemConfigComponent} from "./control-system-config/control-system-config.component";
 import {PamSystemConfigComponent} from "./pam-system-config/pam-system-config.component";
 import {StreamingConfigComponent} from "./streaming-config/streaming-config.component";
-import {PamDeviceStatusComponent} from "../../system-info/pam-device-status/pam-device-status.component";
-import {NodeDevice} from "../../../global-interfaces/nodes/NodeDevice";
-import {SelectedNodeService} from "../../../services/selected-node-service/selected-node.service";
+import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
+import {SelectedNodeService} from "@/app/services/selected-node-service/selected-node.service";
 import {TranslateModule} from "@ngx-translate/core";
 import {NgIf, UpperCasePipe} from "@angular/common";
-import {NodeDevicesService} from "../../../services/node-devices-service/node-devices.service";
+import {NodeDevicesService} from "@/app/services/node-devices-service/node-devices.service";
 
 @Component({
   selector: 'app-settings-site',
   standalone: true,
   imports: [
     ControlSystemConfigComponent,
-    PamDeviceStatusComponent,
     PamSystemConfigComponent,
     StreamingConfigComponent,
     TranslateModule,

@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
-import {UpdateInfoButtonComponent} from "../../addons/update-info-button/update-info-button.component";
+import {NgIf} from "@angular/common";
 import {StorageStatusComponent} from "../../system-info/storage-status/storage-status.component";
 import {BatteryStatusComponent} from "../../system-info/battery-status/battery-status.component";
 import {
@@ -12,18 +11,16 @@ import {
   CoreTemperatureAndOperationModeComponent
 } from "../../system-info/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
 import {TranslateModule} from "@ngx-translate/core";
-import {ICListenHF, pamModuleTypes} from "../../../global-interfaces/nodes/PamModules";
-import {ExtModule} from "../../../global-interfaces/nodes/ExtModules";
-import {SelectedNodeService} from "../../../services/selected-node-service/selected-node.service";
+import {ICListenHF, pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
+import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
+import {SelectedNodeService} from "@/app/services/selected-node-service/selected-node.service";
 
 
 @Component({
   selector: 'app-node-info',
   standalone: true,
   imports: [
-    NgForOf,
     NgIf,
-    UpdateInfoButtonComponent,
     StorageStatusComponent,
     BatteryStatusComponent,
     TemperatureAndHumidityComponent,

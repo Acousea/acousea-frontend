@@ -2,7 +2,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ApiResponse} from "../../global-interfaces/global-interfaces";
 import {User} from "./user.interfaces";
 import {map} from "rxjs/operators";
 import {BackendRoutePaths} from "../../app.route.paths";

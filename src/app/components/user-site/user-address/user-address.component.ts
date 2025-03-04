@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {UserAddress} from "../../../services/users/user.interfaces";
+import {UserAddress} from "@/app/services/users/user.interfaces";
 
 @Component({
   selector: 'app-user-address',

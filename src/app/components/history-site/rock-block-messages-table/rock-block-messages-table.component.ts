@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {DatePipe, DecimalPipe, NgClass, NgForOf, NgIf, NgStyle, UpperCasePipe} from "@angular/common";
-import {MessagesService} from "../../../services/rockblock-messages-service/messages.service";
+import {DatePipe, NgClass, NgForOf, NgIf, NgStyle, UpperCasePipe} from "@angular/common";
+import {MessagesService} from "@/app/services/rockblock-messages-service/messages.service";
 import {FormsModule} from "@angular/forms";
 import {
   MessageDetailsPopUpService
-} from "../../../services/pop-ups-services/rockblock-message-details-popup/message-details-pop-up.service";
-import {OperationCode} from "../../../global-interfaces/global-interfaces";
+} from "@/app/services/pop-ups-services/rockblock-message-details-popup/message-details-pop-up.service";
+import {OperationCode} from "@/app/global-interfaces/global-interfaces";
 import {TranslateModule} from "@ngx-translate/core";
 
 
@@ -31,10 +31,8 @@ export interface Message {
   imports: [
     NgForOf,
     FormsModule,
-    DecimalPipe,
     UpperCasePipe,
     NgClass,
-    DatePipe,
     NgStyle,
     NgIf,
     TranslateModule

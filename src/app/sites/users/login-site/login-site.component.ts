@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule, Validators} from "@angular/forms";
 
 import {
   CustomInputComponent,
   FieldContent
-} from "../../../components/addons/custom-inputs/custom-input/custom-input.component";
-import {ValidationRule} from "../../../components/addons/custom-inputs/validation.rule";
-import {AuthService} from "../../../services/auth-service/auth.service";
+} from "@/app/components/addons/custom-inputs/custom-input/custom-input.component";
+import {ValidationRule} from "@/app/components/addons/custom-inputs/validation.rule";
+import {AuthService} from "@/app/services/auth-service/auth.service";
 
 @Component({
   selector: 'app-login-site',

@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {SummaryCardComponent} from "../../cards/summary-card/summary-card.component";
 import {LineChartComponent} from "../../charts/line-chart/line-chart.component";
 import {TranslateModule} from "@ngx-translate/core";
-import {NodeDevice} from "../../../global-interfaces/nodes/NodeDevice";
-import {ChartInputData} from "../../../sites/summary-site/summary-site.component";
-import {BackendRoutePaths} from "../../../app.route.paths";
-import {SelectedNodeService} from "../../../services/selected-node-service/selected-node.service";
-import {pamModuleTypes} from "../../../global-interfaces/nodes/PamModules";
-import {NodeDevicesService} from "../../../services/node-devices-service/node-devices.service";
+import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
+import {ChartInputData} from "@/app/sites/summary-site/summary-site.component";
+import {BackendRoutePaths} from "@/app/app.route.paths";
+import {SelectedNodeService} from "@/app/services/selected-node-service/selected-node.service";
+import {pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
+import {NodeDevicesService} from "@/app/services/node-devices-service/node-devices.service";
 
 @Component({
   selector: 'app-summary-stats-component',

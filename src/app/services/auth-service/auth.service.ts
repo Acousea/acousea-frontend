@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {User} from "../users/user.interfaces";
-import {HttpClient} from "@angular/common/http";
 import {BackendRoutePaths} from "../../app.route.paths";
-import {ApiResponse} from "../../global-interfaces/global-interfaces";
 import {ApiService} from "../api-service/api.service";
 
 

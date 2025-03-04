@@ -5,7 +5,7 @@ import {
 } from 'chart.js';
 import {BaseChartDirective} from "ng2-charts";
 import 'chartjs-adapter-date-fns';
-import {ChartInputData} from "../../../sites/summary-site/summary-site.component";
+import {ChartInputData} from "@/app/sites/summary-site/summary-site.component";
 
 
 @Component({

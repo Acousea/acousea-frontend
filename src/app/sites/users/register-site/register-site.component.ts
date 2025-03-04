@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {TranslateModule} from "@ngx-translate/core";
-import {AppRoutePaths} from "../../../app.route.paths";
+import {AppRoutePaths} from "@/app/app.route.paths";
 import {NgForOf, NgIf} from "@angular/common";
-import {RegisterService} from "../../../services/auth-service/register-service/register-service.service";
-import {WavesSidebarComponent} from "../../../components/register-site/waves-sidebar/waves-sidebar.component";
-import {FormValidationService} from "../../../services/form-validation-service/form-validation.service";
-import {take} from "rxjs";
+import {RegisterService} from "@/app/services/auth-service/register-service/register-service.service";
+import {FormValidationService} from "@/app/services/form-validation-service/form-validation.service";
 
 
 @Component({
@@ -15,13 +13,10 @@ import {take} from "rxjs";
   standalone: true,
   imports: [
     FormsModule,
-    RouterLink,
     TranslateModule,
     RouterOutlet,
     NgForOf,
-    RouterLinkActive,
-    NgIf,
-    WavesSidebarComponent
+    NgIf
   ],
   templateUrl: './register-site.component.html',
   styleUrl: './register-site.component.css'

@@ -1,16 +1,14 @@
 import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
-import {Language, LanguageService} from "../../../services/language-service/language.service";
-import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {Language, LanguageService} from "@/app/services/language-service/language.service";
+import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-language-selector',
   standalone: true,
   imports: [
-    NgClass,
     NgForOf,
     FormsModule,
-    NgOptimizedImage,
     NgIf
   ],
   templateUrl: './language-selector.component.html',

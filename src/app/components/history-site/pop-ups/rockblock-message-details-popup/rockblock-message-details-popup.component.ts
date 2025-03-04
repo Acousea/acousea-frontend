@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import {Message} from "../../rock-block-messages-table/rock-block-messages-table.component";
-import {DatePipe, DecimalPipe, NgIf, UpperCasePipe} from "@angular/common";
+import {DatePipe, NgIf} from "@angular/common";
 import {
   MessageDetailsPopUpService
-} from "../../../../services/pop-ups-services/rockblock-message-details-popup/message-details-pop-up.service";
-import {OperationCode} from "../../../../global-interfaces/global-interfaces";
+} from "@/app/services/pop-ups-services/rockblock-message-details-popup/message-details-pop-up.service";
+import {OperationCode} from "@/app/global-interfaces/global-interfaces";
 
 @Component({
   selector: 'app-rockblock-message-details-popup',
   standalone: true,
   imports: [
     NgIf,
-    DecimalPipe,
-    UpperCasePipe,
     DatePipe
   ],
   templateUrl: './rockblock-message-details-popup.component.html',
