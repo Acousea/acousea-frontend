@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import * as L from "leaflet";
 import {Marker} from "leaflet";
 import 'leaflet-arrowheads';
@@ -10,6 +10,7 @@ import {
 } from "@/app/services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
 import {NodeDevicesService} from "@/app/services/node-devices-service/node-devices.service";
 
+
 @Component({
   selector: 'app-map-geo',
   standalone: true,
@@ -17,7 +18,9 @@ import {NodeDevicesService} from "@/app/services/node-devices-service/node-devic
   templateUrl: './map-geo.component.html',
   styleUrls: ['./map-geo.component.css']
 })
-export class MapGeoComponent implements OnInit, OnDestroy, OnChanges {
+export class MapGeoComponent implements OnDestroy, OnChanges, AfterViewInit {
+
+
   @Input() nodes: NodeDevice[] = []; // Recibe los nodos desde fuera
   map: any;
   private markers: { [key: string]: Marker } = {}; // Almacena los marcadores por ID
@@ -31,10 +34,12 @@ export class MapGeoComponent implements OnInit, OnDestroy, OnChanges {
   ) {
   }
 
-  ngOnInit(): void {
+
+  ngAfterViewInit(): void {
     this.initMap();
-    this.loadNodeMarkers(); // Carga los nodos al iniciar el componente
+    this.loadNodeMarkers();
   }
+
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['nodes'] && !changes['nodes'].firstChange) {
@@ -47,14 +52,22 @@ export class MapGeoComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   initMap(): void {
-    this.map = L.map('map', {
-      maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180))
-    }).setView([0, 0], 5);
+    this.map = L.map('map')
+      .setView([0, 0], 4)
+      .setMaxBounds(L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)));
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map);
 
+    // Automatically resize when the map container changes size (avoids the need to manually call invalidateSize)
+    const mapContainer = document.getElementById('map');
+    if (mapContainer) {
+      new ResizeObserver(() => this.map.invalidateSize()).observe(mapContainer);
+      // setTimeout(() => {
+      //   this.map.invalidateSize()
+      // }, 100);
+    }
   }
 
   loadNodeMarkers(): void {
