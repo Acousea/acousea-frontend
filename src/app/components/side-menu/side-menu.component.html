@@ -1,6 +1,11 @@
-<div class="side-menu" [ngClass]="{'collapsed': isCollapsed}">
-  <div class="header" (click)="toggleMenu()">
-    <img [src]="isCollapsed ? '../../../assets/acousea-collapsed.svg' : '../../../assets/acousea-new.svg'"
+<div
+  class="side-menu"
+  [@menuState]="properties.isCollapsed ? 'collapsed' : 'expanded'"
+  [ngClass]="{'collapsed': properties.isCollapsed}"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()">
+  <div class="header" (click)="toggleMenu()" (dblclick)="toggleFix()">
+    <img [src]="properties.isCollapsed ? '../../../assets/acousea-collapsed.svg' : '../../../assets/acousea-new.svg'"
          alt="Logo"
          class="logo">
   </div>
@@ -9,15 +14,15 @@
   <nav>
     <app-menu-element [link]="'/summary'"
                       [icon]="'fa-solid fa-chart-line'"
-                      [collapsed]="isCollapsed"
+                      [collapsed]="properties.isCollapsed"
                       [text]="'SIDE_MENU.DASHBOARD' | translate"></app-menu-element>
     <app-menu-element [link]="'/map'"
                       [icon]="'fa-solid fa-location-dot'"
-                      [collapsed]="isCollapsed"
+                      [collapsed]="properties.isCollapsed"
                       [text]="'SIDE_MENU.MAP'| translate"></app-menu-element>
     <app-menu-element [link]="'/history'"
                       [icon]="'fa-solid fa-clock-rotate-left'"
-                      [collapsed]="isCollapsed"
+                      [collapsed]="properties.isCollapsed"
                       [text]="'SIDE_MENU.HISTORY'| translate">
     </app-menu-element>
   </nav>
@@ -27,9 +32,9 @@
   <div class="footer">
     <div class="search-bar-container">
       <app-user-window-bubble></app-user-window-bubble>
-      <app-search-bar *ngIf="!isCollapsed"></app-search-bar>
+      <app-search-bar *ngIf="!properties.isCollapsed"></app-search-bar>
     </div>
-    <app-language-selector *ngIf="!isCollapsed"></app-language-selector>
+    <app-language-selector *ngIf="!properties.isCollapsed"></app-language-selector>
   </div>
 
 

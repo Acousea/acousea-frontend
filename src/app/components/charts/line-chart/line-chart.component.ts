@@ -1,8 +1,5 @@
 import {Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
-import {
-  ChartDataset, ChartOptions, ChartType,
-  ScaleType,
-} from 'chart.js';
+import {ChartDataset, ChartOptions, ChartType, ScaleType,} from 'chart.js';
 import {BaseChartDirective} from "ng2-charts";
 import 'chartjs-adapter-date-fns';
 import {ChartInputData} from "@/app/sites/summary-site/summary-site.component";
@@ -26,7 +23,7 @@ export class LineChartComponent implements OnChanges {
   @Input() public yAxisTitle = 'Data';
   public lineChartLegend = true;
 
-  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+  @ViewChild(BaseChartDirective) myChart: BaseChartDirective | undefined;
 
   public lineChartData: ChartDataset[] = [
     {
@@ -39,6 +36,8 @@ export class LineChartComponent implements OnChanges {
 
   public lineChartOptions: ChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
+
     scales: {
       y: {
         min: 0,
@@ -73,6 +72,7 @@ export class LineChartComponent implements OnChanges {
     }
   };
 
+
   ngOnChanges(changes: SimpleChanges): void {
     this.lineChartData = [
       {
@@ -83,8 +83,8 @@ export class LineChartComponent implements OnChanges {
       }
     ];
 
-    if (this.chart) {
-      this.chart.update();
+    if (this.myChart) {
+      this.myChart.update();
     }
     console.log("Line Chart Data: ", this.lineChartData)
   }
