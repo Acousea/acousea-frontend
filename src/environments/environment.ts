@@ -1,5 +1,3 @@
-import * as process from "node:process";
-
 const production_environment = {
   production: true,
   apiUrl: process.env['API_URL'],
