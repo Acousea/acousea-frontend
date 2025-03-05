@@ -15,7 +15,7 @@ export class WebSocketService {
   private socket$: WebSocketSubject<WebSocketMessage> | null = null;
   private readonly connectionDetails = {
     url: BackendRoutePaths.websocket.notifications,
-    isConnectedSubject: new BehaviorSubject<boolean>(false),
+    isConnectedSubject: new BehaviorSubject<boolean>(true),
     RECONNECT_DELAY: 5000, // Default reconnect delay
     reconnectTimeout: null as any
   };

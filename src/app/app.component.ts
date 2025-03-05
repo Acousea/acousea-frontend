@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {ServiceLocator} from "./app.service.locator.service";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {ServiceLocator} from "@/app/app.service.locator.service";
 
 @Component({
   selector: 'app-root',
@@ -12,14 +12,10 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
 })
 export class AppComponent {
 
-  constructor(private serviceLocator: ServiceLocator) {
+  constructor(
+    private serviceLocator: ServiceLocator,
+    private translateService: TranslateService) {
+    translateService.addLangs(['us', 'fr', 'es']);
+    translateService.setDefaultLang('us');
   }
-
-  title = 'web-iclisten';
-
-  ngOnInit() {
-    ServiceLocator.getService<TranslateService>(TranslateService).addLangs(['us', 'fr', 'es']);
-  }
-
-
 }

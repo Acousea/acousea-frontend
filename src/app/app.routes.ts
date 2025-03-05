@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {MainLayoutComponent} from "./sites/main-layout/main-layout.component";
+import {MainLayoutComponent} from "@/app/main-layout/main-layout.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
 import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
 import {HistorySiteComponent} from "./sites/history-site/history-site.component";

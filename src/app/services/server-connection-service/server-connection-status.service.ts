@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {WebSocketSubject} from 'rxjs/webSocket';
+import {Observable} from 'rxjs';
 import {WebSocketService} from "@/app/services/websocket-service/websocket.service";
 
 
@@ -8,10 +7,6 @@ import {WebSocketService} from "@/app/services/websocket-service/websocket.servi
   providedIn: 'root'
 })
 export class ServerConnectionStatusService {
-  private socket$: WebSocketSubject<Object> | null = null;
-  private connectedSubject = new BehaviorSubject<boolean>(false);
-  private readonly RECONNECT_DELAY = 5000; // Try reconnecting every 5 seconds
-
   constructor(private wsService: WebSocketService) {
   }
 

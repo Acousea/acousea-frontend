@@ -5,8 +5,6 @@ const production_environment = {
   webSocketUrl: process.env['WEBSOCKET_URL']
 };
 
-
 console.warn("This is a production build. The environment production are: ", production_environment);
-console.warn("Environment variables: ", process.env)
 
 export const environment = production_environment;
