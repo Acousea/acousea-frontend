@@ -1,13 +1,9 @@
+
 const production_environment = {
   production: true,
-  apiUrl: process.env['API_URL'],
-  apiVersion: process.env['API_VERSION'],
-  webSocketUrl: process.env['WEBSOCKET_URL']
+  apiUrl: 'https://inclined-ellette-antapagon-labs-71b96869.koyeb.app',
+  apiVersion: 'api/v1',
+  webSocketUrl: 'ws://inclined-ellette-antapagon-labs-71b96869.koyeb.app'
 };
-
-
-console.warn("This is a production build. The environment production are: ", production_environment);
-console.warn("Environment variables: ", process.env)
-console.warn("Environment variables: ", process)
 
 export const environment = production_environment;
