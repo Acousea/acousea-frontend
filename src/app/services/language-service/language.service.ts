@@ -11,7 +11,6 @@ export interface Language {
 const FLAG_URL = 'https://purecatamphetamine.github.io/country-flag-icons/1x1/';
 
 export const AVAILABLE_LANGUAGES = [
-
   {code: 'us', label: 'English', flagUrl: `${FLAG_URL}US.svg`},
   {code: 'es', label: 'Español', flagUrl: `${FLAG_URL}ES.svg`},
   {code: 'de', label: 'Deutsch', flagUrl: `${FLAG_URL}DE.svg`}
@@ -22,13 +21,7 @@ export const AVAILABLE_LANGUAGES = [
 })
 export class LanguageService {
 
-
-  private languages: Language[] = [
-    {code: 'us', label: 'English', flagUrl: `${FLAG_URL}US.svg`},
-    {code: 'es', label: 'Español', flagUrl: `${FLAG_URL}ES.svg`},
-    {code: 'de', label: 'Deutsch', flagUrl: `${FLAG_URL}DE.svg`},
-
-  ];
+  private languages: Language[] = AVAILABLE_LANGUAGES;
   private currentLanguage = 'us';
 
   constructor(private translate: TranslateService) {
