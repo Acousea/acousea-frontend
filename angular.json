@@ -14,9 +14,6 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "main": "src/main.ts",
-            "customWebpackConfig": {
-              "path": "custom-webpack.config.ts"
-            },
             "outputPath": "dist/web-iclisten",
             "index": "src/index.html",
             "polyfills": [
