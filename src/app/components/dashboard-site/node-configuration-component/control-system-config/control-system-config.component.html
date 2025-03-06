@@ -8,13 +8,13 @@
       <h2>{{ "REPORTING_SETTINGS.PERIODS.LORA_PERIOD" | translate }}</h2>
       <div class="setting-group" *ngFor="let entry of selectedNode.extModules.loRaReporting.reportingPeriods">
         <label>
-          {{ entry.key.name }}
+          {{ selectedNode.extModules.operationModes?.modes?.[entry.operationModeIdx] ?? 'Unknown Mode' }}
           <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span>
         </label>
         <input
           type="number"
           [(ngModel)]="entry.value">
-<!--          (ngModelChange)="updateLoRaReportingPeriod(entry.key, $event)">-->
+        <!--          (ngModelChange)="updateLoRaReportingPeriod(entry.key, $event)">-->
       </div>
     </div>
 
@@ -23,13 +23,13 @@
       <h2>{{ "REPORTING_SETTINGS.PERIODS.IRIDIUM_PERIOD" | translate }}</h2>
       <div class="setting-group" *ngFor="let entry of selectedNode.extModules.iridiumReporting.reportingPeriods">
         <label>
-          {{ entry.key.name }}
+          {{ selectedNode.extModules.operationModes?.modes?.[entry.operationModeIdx] ?? 'Unknown Mode' }}
           <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span>
         </label>
         <input
           type="number"
           [(ngModel)]="entry.value">
-<!--          (ngModelChange)="updateIridiumReportingPeriod(entry.key, $event)">-->
+        <!--          (ngModelChange)="updateIridiumReportingPeriod(entry.key, $event)">-->
       </div>
     </div>
   </div>

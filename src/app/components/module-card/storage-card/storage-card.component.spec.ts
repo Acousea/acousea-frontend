@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BatteryStatusComponent } from './battery-status.component';
+import { StorageCardComponent } from './storage-card.component';
 
-describe('BatteryStatusComponent', () => {
-  let component: BatteryStatusComponent;
-  let fixture: ComponentFixture<BatteryStatusComponent>;
+describe('StorageStatusComponent', () => {
+  let component: StorageCardComponent;
+  let fixture: ComponentFixture<StorageCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BatteryStatusComponent]
+      imports: [StorageCardComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(BatteryStatusComponent);
+
+    fixture = TestBed.createComponent(StorageCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

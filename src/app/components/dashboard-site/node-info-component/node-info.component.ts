@@ -1,19 +1,17 @@
 import {Component} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {StorageStatusComponent} from "../../system-info/storage-status/storage-status.component";
-import {BatteryStatusComponent} from "../../system-info/battery-status/battery-status.component";
-import {
-  TemperatureAndHumidityComponent
-} from "../../system-info/temperature-and-humidity/temperature-and-humidity.component";
-import {CoordinatesComponent} from "../../system-info/coordinates/coordinates.component";
-import {PamDeviceStatusComponent} from "../../system-info/pam-device-status/pam-device-status.component";
+import {PamDeviceStatusComponent} from "@/app/components/module-card/pam-device-status/pam-device-status.component";
 import {
   CoreTemperatureAndOperationModeComponent
-} from "../../system-info/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
+} from "@/app/components/module-card/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {ICListenHF, pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
 import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
 import {SelectedNodeService} from "@/app/services/selected-node-service/selected-node.service";
+import {LocationCardComponent} from "@/app/components/module-card/location-card/location-card.component";
+import {BatteryCardComponent} from "@/app/components/module-card/battery-card/battery-card.component";
+import {AmbientComponent} from "@/app/components/module-card/ambient-card/ambient.component";
+import {StorageCardComponent} from "@/app/components/module-card/storage-card/storage-card.component";
 
 
 @Component({
@@ -21,13 +19,14 @@ import {SelectedNodeService} from "@/app/services/selected-node-service/selected
   standalone: true,
   imports: [
     NgIf,
-    StorageStatusComponent,
-    BatteryStatusComponent,
-    TemperatureAndHumidityComponent,
-    CoordinatesComponent,
+    StorageCardComponent,
+    LocationCardComponent,
     PamDeviceStatusComponent,
     CoreTemperatureAndOperationModeComponent,
-    TranslateModule
+    TranslateModule,
+    LocationCardComponent,
+    BatteryCardComponent,
+    AmbientComponent
   ],
   templateUrl: './node-info.component.html',
   styleUrl: './node-info.component.css'

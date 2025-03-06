@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TemperatureAndHumidityComponent } from './temperature-and-humidity.component';
+import { AmbientComponent } from './ambient.component';
 
 describe('TemperatureAndHumidityComponent', () => {
-  let component: TemperatureAndHumidityComponent;
-  let fixture: ComponentFixture<TemperatureAndHumidityComponent>;
+  let component: AmbientComponent;
+  let fixture: ComponentFixture<AmbientComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TemperatureAndHumidityComponent]
+      imports: [AmbientComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(TemperatureAndHumidityComponent);
+
+    fixture = TestBed.createComponent(AmbientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

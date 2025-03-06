@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StorageStatusComponent } from './storage-status.component';
+import { LocationCardComponent } from './location-card.component';
 
-describe('StorageStatusComponent', () => {
-  let component: StorageStatusComponent;
-  let fixture: ComponentFixture<StorageStatusComponent>;
+describe('CoordinatesComponent', () => {
+  let component: LocationCardComponent;
+  let fixture: ComponentFixture<LocationCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StorageStatusComponent]
+      imports: [LocationCardComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(StorageStatusComponent);
+
+    fixture = TestBed.createComponent(LocationCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

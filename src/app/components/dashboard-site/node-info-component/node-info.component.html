@@ -6,10 +6,10 @@
   </div>
 
   <div class="storage-container" *ngIf="extModules">
-    <app-storage-status
+    <app-storage-card
       *ngIf="extModules.storage"
-      [used]="extModules.storage.capacity - extModules.storage.available"
-      [total]="extModules.storage!.capacity"></app-storage-status>
+      [data]="extModules.storage"
+    ></app-storage-card>
   </div>
 
   <div class="information-container">
@@ -17,10 +17,12 @@
       <h2>{{ 'PAM_DEVICE.TITLE' | translate }}</h2>
       <ul>
         <app-pam-device-status [statusCode]="pamModule.status.unitStatus"></app-pam-device-status>
-        <app-temperature-and-humidity [temperature]="pamModule.status.temperature"
-                                      [humidity]="pamModule.status.humidity"></app-temperature-and-humidity>
-        <app-battery-status [batteryPercentage]="pamModule.status.batteryPercentage"
-                            [batteryStatus]=" pamModule.status.batteryStatus"></app-battery-status>
+        <app-temperature-and-humidity
+          [data]="{ temperature: pamModule.status.temperature, humidity: pamModule.status.humidity }"
+        ></app-temperature-and-humidity>
+        <app-battery-card
+          [data]="{batteryPercentage: pamModule.status.batteryPercentage, batteryStatus: pamModule.status.batteryStatus}"
+        ></app-battery-card>
 
       </ul>
     </div>
@@ -28,11 +30,10 @@
     <div class="information-item" *ngIf="extModules">
       <h2>{{ 'COMMUNICATION_SYSTEM.TITLE' | translate }}</h2>
       <ul>
-        <app-coordinates
+        <app-location-card
           *ngIf="extModules.location"
-          [latitude]="extModules.location.latitude"
-          [longitude]="extModules.location.longitude"
-        ></app-coordinates>
+          [data]="extModules.location"
+        ></app-location-card>
 
         <app-core-temperature-and-operation-mode
           *ngIf="extModules.temperature"
@@ -40,11 +41,11 @@
           [operationModeIdx]="2">
         </app-core-temperature-and-operation-mode>
 
-        <app-battery-status
+        <app-battery-card
           *ngIf="extModules.battery"
-          [batteryPercentage]="extModules.battery.batteryPercentage"
-          [batteryStatus]="1">
-        </app-battery-status>
+          [data]="extModules.battery"
+        >
+        </app-battery-card>
       </ul>
     </div>
   </div>

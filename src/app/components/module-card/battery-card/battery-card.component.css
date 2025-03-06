@@ -93,7 +93,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 0%;
+  width: 0;
   height: 100%;
   background: rgba(255, 255, 255, 0.3);
   animation: charging-animation 2s infinite;
@@ -103,7 +103,7 @@
 @keyframes charging-animation {
   0% {
     left: 0;
-    width: 0%;
+    width: 0;
   }
   50% {
     left: 0;
@@ -111,6 +111,6 @@
   }
   100% {
     left: 100%;
-    width: 0%;
+    width: 0;
   }
 }

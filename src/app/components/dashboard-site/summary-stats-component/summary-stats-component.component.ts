@@ -3,7 +3,7 @@ import {SummaryCardComponent} from "../../cards/summary-card/summary-card.compon
 import {LineChartComponent} from "../../charts/line-chart/line-chart.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
-import {ChartInputData} from "@/app/sites/summary-site/summary-site.component";
+import {ChartInputData} from "@/app/sites/dashboard-site/summary-site.component";
 import {BackendRoutePaths} from "@/app/app.route.paths";
 import {SelectedNodeService} from "@/app/services/selected-node-service/selected-node.service";
 import {pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";

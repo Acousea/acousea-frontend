@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CoordinatesComponent } from './coordinates.component';
+import { BatteryCardComponent } from './battery-card.component';
 
-describe('CoordinatesComponent', () => {
-  let component: CoordinatesComponent;
-  let fixture: ComponentFixture<CoordinatesComponent>;
+describe('BatteryStatusComponent', () => {
+  let component: BatteryCardComponent;
+  let fixture: ComponentFixture<BatteryCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CoordinatesComponent]
+      imports: [BatteryCardComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(CoordinatesComponent);
+
+    fixture = TestBed.createComponent(BatteryCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

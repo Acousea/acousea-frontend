@@ -6,7 +6,7 @@ export interface RTCModule {
 // BatteryModule - Representa el módulo de la batería
 export interface BatteryModule {
   batteryPercentage: number;        // Nivel de la batería en porcentaje
-  batteryStatus: string;       // Estado de la batería (e.g., "charging", "discharging")
+  batteryStatus: number;       // Estado de la batería (e.g., "charging", "discharging")
 }
 
 // LocationModule - Representa el módulo de localización
@@ -16,7 +16,7 @@ export interface LocationModule {
 }
 
 // TemperatureModule - Representa el módulo de temperatura
-export interface TemperatureModule {
+export interface AmbientModule {
   temperature: number;  // Temperatura en grados Celsius
   humidity: number;     // Humedad en porcentaje
 }
@@ -27,15 +27,19 @@ export interface StorageModule {
   available: number;    // Espacio de almacenamiento disponible
 }
 
-export interface OperationMode {
-  id: number;
-  name: string;
+export interface OperationModes {
+  modes: { [key: number]: string }; // Dictionary of operation mode ID → Name
+  activeOperationModeIdx: number; // Active mode index
+}
+
+export interface OperationModesGraph {
+  graph: { [key: number]: { targetMode: number; duration: number } };
 }
 
 // It has a sorted map of key: OperationMode - value: ReportingPeriod
 export interface ReportingModule {
   // reportingPeriods: Map<OperationMode, number>;
-  reportingPeriods: { key: OperationMode, value: number }[];
+  reportingPeriods: { operationModeIdx: number, value: number }[];
 }
 
 // LoraReportingModule.ts
@@ -52,8 +56,10 @@ export interface ExtModule {
   rtc?: RTCModule;
   battery?: BatteryModule;
   location?: LocationModule;
-  temperature?: TemperatureModule;
+  temperature?: AmbientModule;
   storage?: StorageModule;
+  operationModes?: OperationModes;
+  operationModesGraph?: OperationModesGraph;
   loRaReporting?: LoraReportingModule;
   iridiumReporting?: IridiumReportingModule;
 }

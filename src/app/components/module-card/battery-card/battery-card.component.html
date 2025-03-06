@@ -4,9 +4,9 @@
     <p>{{ 'BATTERY.STATUS_LABEL' | translate }}:  {{ batteryStatusText | translate }}</p>
   </div>
   <div class="battery-icon-section">
-    <span class="battery-percentage">{{ batteryPercentage }}%</span>
+    <span class="battery-percentage">{{ data.batteryPercentage }}%</span>
     <div class="battery-icon">
-      <div class="battery-level" [class]="getBatteryLevelClass()" [style.width.%]="batteryPercentage"></div>
+      <div class="battery-level" [class]="getBatteryLevelClass()" [style.width.%]="data.batteryPercentage"></div>
       <div *ngIf="isCharging()" class="charging-animation"></div>
     </div>
   </div>

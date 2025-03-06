@@ -1,20 +1,26 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
+import {ModuleCardComponent} from "@/app/components/module-card/Module.card.component";
+import {BatteryModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
-  selector: 'app-battery-status',
+  selector: 'app-battery-card',
   standalone: true,
   imports: [
     NgIf,
     TranslateModule
   ],
-  templateUrl: './battery-status.component.html',
-  styleUrl: './battery-status.component.css'
+  templateUrl: './battery-card.component.html',
+  styleUrl: './battery-card.component.css'
 })
-export class BatteryStatusComponent implements OnInit {
-  @Input() batteryPercentage: number = 0;
-  @Input() batteryStatus: number = 0;
+export class BatteryCardComponent implements OnInit, ModuleCardComponent<BatteryModule> {
+  @Input() data: BatteryModule = {batteryStatus: 0, batteryPercentage: 0};
+  readonly mutable: boolean = false;
+
+  getTitle(): string {
+    return "batteryModule";
+  }
 
   batteryStatusText: string = '';
 
@@ -23,7 +29,7 @@ export class BatteryStatusComponent implements OnInit {
   }
 
   updateBatteryStatusText(): void {
-    switch (this.batteryStatus) {
+    switch (this.data.batteryStatus) {
       case 1:
         this.batteryStatusText = 'BATTERY.STATUS.CHARGING';
         break;
@@ -40,13 +46,13 @@ export class BatteryStatusComponent implements OnInit {
   }
 
   getBatteryLevelClass(): string {
-    if (this.batteryPercentage > 75) {
+    if (this.data.batteryPercentage > 75) {
       return 'battery-full';
-    } else if (this.batteryPercentage > 50) {
+    } else if (this.data.batteryPercentage > 50) {
       return 'battery-three-quarters';
-    } else if (this.batteryPercentage > 25) {
+    } else if (this.data.batteryPercentage > 25) {
       return 'battery-half';
-    } else if (this.batteryPercentage > 10) {
+    } else if (this.data.batteryPercentage > 10) {
       return 'battery-quarter';
     } else {
       return 'battery-empty';
@@ -54,6 +60,6 @@ export class BatteryStatusComponent implements OnInit {
   }
 
   isCharging(): boolean {
-    return this.batteryStatus === 1;
+    return this.data.batteryStatus === 1;
   }
 }

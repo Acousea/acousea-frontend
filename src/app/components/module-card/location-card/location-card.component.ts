@@ -1,25 +1,31 @@
 import {Component, Input} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
+import {IModuleCardComponent} from "@/app/components/module-card/Module.card.component";
+import {LocationModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
-  selector: 'app-coordinates',
+  selector: 'app-location-card',
   standalone: true,
   imports: [
     TranslateModule
   ],
-  templateUrl: './coordinates.component.html',
-  styleUrl: './coordinates.component.css'
+  templateUrl: './location-card.component.html',
+  styleUrl: './location-card.component.css'
 })
-export class CoordinatesComponent {
-  @Input() latitude: number = 0;
-  @Input() longitude: number = 0;
+export class LocationCardComponent implements IModuleCardComponent<LocationModule> {
+  @Input() data: LocationModule = {latitude: 0, longitude: 0};
+  readonly mutable: boolean = false;
+
+  getTitle(): string {
+    return "location";
+  }
 
   latitudeDMS: string = '';
   longitudeDMS: string = '';
 
   ngOnInit(): void {
-    this.latitudeDMS = this.convertToDMS(this.latitude, 'latitude');
-    this.longitudeDMS = this.convertToDMS(this.longitude, 'longitude');
+    this.latitudeDMS = this.convertToDMS(this.data.latitude, 'latitude');
+    this.longitudeDMS = this.convertToDMS(this.data.longitude, 'longitude');
   }
 
   convertToDMS(deg: number, type: string): string {

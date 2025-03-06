@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 import {MainLayoutComponent} from "@/app/main-layout/main-layout.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
-import {SummarySiteComponent} from "./sites/summary-site/summary-site.component";
+import {SummarySiteComponent} from "./sites/dashboard-site/summary-site.component";
 import {HistorySiteComponent} from "./sites/history-site/history-site.component";
 import {UserProfileSiteComponent} from "@/app/sites/user-profile-site/user-profile-site.component";
 import {NotAvailableSiteComponent} from "./sites/not-available-site/not-available-site.component";
@@ -18,11 +18,11 @@ import {LoginSiteComponent} from "@/app/sites/auth-site/login-site/login-site.co
 import {AuthSiteComponent} from "@/app/sites/auth-site/auth-site/auth-site.component";
 import {
   SummaryStatsComponentComponent
-} from "./components/summary-site/summary-stats-component/summary-stats-component.component";
-import {NodeInfoComponent} from "./components/summary-site/node-info-component/node-info.component";
+} from "./components/dashboard-site/summary-stats-component/summary-stats-component.component";
+import {NodeInfoComponent} from "./components/dashboard-site/node-info-component/node-info.component";
 import {
   NodeSettingsComponent
-} from "./components/summary-site/node-configuration-component/node-settings.component";
+} from "./components/dashboard-site/node-configuration-component/node-settings.component";
 
 
 export const routes: Routes = [

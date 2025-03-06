@@ -9,8 +9,8 @@
       <div class="bar_percent" [style.width.%]="usedPercentage"></div>
     </div>
     <p class="usage-text">
-      <span class="used-text">{{ (used / 1024) | number: '1.2-2' }}</span> GB of
-      <span class="capacity-text">{{ (total / 1024) | number: '1.2-2' }}</span> GB {{"STORAGE_STATUS.USED" | translate}}
+      <span class="used-text">{{ ((data.capacity-data.available) / 1024) | number: '1.2-2' }}</span> GB of
+      <span class="capacity-text">{{ (data.capacity / 1024) | number: '1.2-2' }}</span> GB {{"STORAGE_STATUS.USED" | translate}}
     </p>
   </div>
 </div>

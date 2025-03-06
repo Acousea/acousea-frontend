@@ -11,6 +11,7 @@ import {ServiceLocator} from "@/app/app.service.locator.service";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title: string = "web-iclisten";
 
   constructor(
     private serviceLocator: ServiceLocator,
