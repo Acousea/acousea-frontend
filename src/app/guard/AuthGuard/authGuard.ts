@@ -13,7 +13,9 @@ export const AuthGuard: CanActivateFn = (route, state) => {
     // Solo redirige si la ruta actual no es la ruta de resumen
     if (state.url.includes(AppRoutePaths.auth.login) || state.url.includes(AppRoutePaths.auth.register.base)) {
       state.url = AppRoutePaths.summary.base;
-      router.navigate([AppRoutePaths.summary]);
+      router.navigate([AppRoutePaths.summary.base]).catch(
+        (error) => console.error("Error navigating to summary: ", error)
+      );
     }
     return true;
   } else {
