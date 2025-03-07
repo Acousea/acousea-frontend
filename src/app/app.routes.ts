@@ -10,10 +10,10 @@ import {AuthGuard} from "./guard/AuthGuard/authGuard";
 import {AppRoutePaths} from "./app.route.paths";
 import {
   RegisterStepAccountComponent
-} from "./components/register-site/register-step-account/register-step-account.component";
+} from "./components/auth-site/register-step-account/register-step-account.component";
 import {
   RegisterStepProfileComponent
-} from "./components/register-site/register-step-profile/register-step-profile.component";
+} from "./components/auth-site/register-step-profile/register-step-profile.component";
 import {LoginSiteComponent} from "@/app/sites/auth-site/login-site/login-site.component";
 import {AuthSiteComponent} from "@/app/sites/auth-site/auth-site/auth-site.component";
 import {
