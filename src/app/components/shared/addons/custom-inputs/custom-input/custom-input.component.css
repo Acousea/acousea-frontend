@@ -1,21 +1,21 @@
-.password-container {
+.custom-input-container {
   position: relative;
   width: 100%;
   margin-bottom: 15px; /* Espacio opcional debajo del input */
 }
 
-.password-input-wrapper {
+.custom-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.password-input {
+.custom-input {
   padding: 12px 40px 12px 40px; /* Espacio para los íconos */
   font-size: 16px;
   color: var(--text-black);
   background-color: transparent;
-  box-shadow: 0px 4px 2px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s, box-shadow 0.3s;
   width: 100%;
   box-sizing: border-box;
@@ -28,17 +28,17 @@ label {
   color: var(--text-gray);
 }
 
-.password-input-wrapper i {
+.custom-input-wrapper i {
   position: absolute;
   font-size: 16px;
   color: var(--text-gray); /* Ajusta el color del ícono si es necesario */
 }
 
-.password-input-wrapper i.left-icon {
+.custom-input-wrapper i.left-icon {
   left: 10px;
 }
 
-.password-input-wrapper i.eye-passwd {
+.custom-input-wrapper i.right-icon {
   right: 10px;
   cursor: pointer;
 }
@@ -46,17 +46,35 @@ label {
 input:focus {
   outline: none; /* Elimina el borde por defecto en foco */
   border-color: var(--main-color);
-  box-shadow: 0px 4px 4px -2px rgba(39, 154, 241, 0.6);
+  box-shadow: 0 5px 4px -4px rgba(39, 154, 241, 0.6);
 }
 
 input.ng-invalid.ng-touched {
   border-color: var(--discard-button-color);
-  box-shadow: 0px 4px 4px -2px rgba(248, 81, 81, 0.6);
+  box-shadow: 0 5px 4px -4px rgb(248, 81, 81);
 }
+
+input.ng-valid.ng-touched {
+  border-color: var(--notification-success);
+  box-shadow: 0 5px 4px -4px rgb(24, 215, 55);
+}
+
 
 .error-message {
   color: var(--discard-button-color);
   font-size: 12px;
   margin-top: 5px;
+}
+
+.success-message {
+  color: var(--notification-success); /* Color verde para mensaje positivo */
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.custom-input-wrapper i {
+  position: absolute;
+  font-size: 16px;
+  color: var(--text-gray); /* Ajusta el color del ícono si es necesario */
 }
 

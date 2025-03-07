@@ -4,8 +4,9 @@ import {MenuElementComponent} from "./menu-element/menu-element.component";
 import {SearchBarComponent} from "./search-bar/search-bar.component";
 import {LanguageSelectorComponent} from "./language-selector/language-selector.component";
 import {TranslateModule} from "@ngx-translate/core";
-import {UserWindowBubbleComponent} from "../user-site/user-window-bubble/user-window-bubble.component";
+
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {UserWindowBubbleComponent} from "@/app/components/user-site/user-window-bubble/user-window-bubble.component";
 
 @Component({
   selector: 'app-side-menu',

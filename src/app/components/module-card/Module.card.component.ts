@@ -1,4 +1,4 @@
-import { Input, Directive } from '@angular/core';
+import {Directive, Input} from '@angular/core';
 
 export interface IModuleCardComponent<T> {
   data: T; // Module-specific data
@@ -10,7 +10,14 @@ export interface IModuleCardComponent<T> {
 @Directive() // Can be used as a base class for components
 export abstract class ModuleCardComponent<T> implements IModuleCardComponent<T> {
   @Input() data!: T; // Module-specific data
-  @Input() mutable!: boolean; // Defines if the module is configurable
+  @Input() readonly mutable: boolean; // Defines if the module is configurable
+
+  protected constructor(mutable: boolean = false) {
+    this.mutable = mutable;
+  }
 
   abstract getTitle(): string; // Each module should define a title
+
+
 }
+

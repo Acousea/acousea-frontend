@@ -6,7 +6,7 @@ import {
   DeviceConfiguration,
   OPERATION_MODES
 } from "@/app/services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
-import {UpdateInfoButtonComponent} from "../../addons/update-info-button/update-info-button.component";
+import {UpdateInfoButtonComponent} from "../../shared/addons/update-info-button/update-info-button.component";
 import {undoable} from "@/app/services/pop-ups-services/undo-popup-service/undoable-decorator";
 import {TranslateModule} from "@ngx-translate/core";
 

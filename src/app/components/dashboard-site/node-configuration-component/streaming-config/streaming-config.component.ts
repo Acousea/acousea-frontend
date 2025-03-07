@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {TooltipComponent} from "../../../addons/tooltip/tooltip.component";
+import {TooltipComponent} from "../../../shared/addons/tooltip/tooltip.component";
 import {undoable} from "@/app/services/pop-ups-services/undo-popup-service/undoable-decorator";
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";

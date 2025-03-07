@@ -1,21 +1,21 @@
 import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 
 import {RouterOutlet} from "@angular/router";
-import {SideMenuComponent} from "../components/side-menu/side-menu.component";
+import {SideMenuComponent} from "../components/shared/side-menu/side-menu.component";
 import {AlertPopupComponent} from "../components/pop-ups/alert-popup/alert-popup.component";
-import {NotificationListComponent} from "../components/notifications/notification-list/notification-list.component";
+import {NotificationListComponent} from "../components/shared/notifications/notification-list/notification-list.component";
 import {
   FlushRequestQueuePopupComponent
 } from "../components/pop-ups/flush-request-queue-popup/flush-request-queue-popup.component";
 import {UndoPopupComponent} from "../components/pop-ups/undo-popup/undo-popup.component";
-import {LoadingAnimationComponent} from "../components/addons/loading-animation/loading-animation.component";
+import {LoadingAnimationComponent} from "../components/shared/addons/loading-animation/loading-animation.component";
 import {LoadingAnimationService} from "../services/loading-animation-service/loading-animation.service";
 import {Observable} from "rxjs";
 import {AsyncPipe} from "@angular/common";
 import {map} from "rxjs/operators";
 import {
   ServerConnectionStatusComponentComponent
-} from "@/app/components/server-connection-status-component/server-connection-status-component.component";
+} from "@/app/components/shared/server-connection-status-component/server-connection-status-component.component";
 
 @Component({
   selector: 'app-main-layout',

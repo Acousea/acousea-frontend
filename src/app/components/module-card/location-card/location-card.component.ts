@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
-import {IModuleCardComponent} from "@/app/components/module-card/Module.card.component";
+import {ModuleCardComponent} from "@/app/components/module-card/Module.card.component";
 import {LocationModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
@@ -12,9 +12,10 @@ import {LocationModule} from "@/app/global-interfaces/nodes/ExtModules";
   templateUrl: './location-card.component.html',
   styleUrl: './location-card.component.css'
 })
-export class LocationCardComponent implements IModuleCardComponent<LocationModule> {
-  @Input() data: LocationModule = {latitude: 0, longitude: 0};
-  readonly mutable: boolean = false;
+export class LocationCardComponent extends ModuleCardComponent<LocationModule> {
+  constructor() {
+    super();
+  }
 
   getTitle(): string {
     return "location";

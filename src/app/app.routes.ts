@@ -20,9 +20,8 @@ import {
   SummaryStatsComponentComponent
 } from "./components/dashboard-site/summary-stats-component/summary-stats-component.component";
 import {NodeInfoComponent} from "./components/dashboard-site/node-info-component/node-info.component";
-import {
-  NodeSettingsComponent
-} from "./components/dashboard-site/node-configuration-component/node-settings.component";
+import {NodeSettingsComponent} from "./components/dashboard-site/node-configuration-component/node-settings.component";
+import {TestSiteComponent} from "@/app/sites/test-site/test-site.component";
 
 
 export const routes: Routes = [
@@ -78,6 +77,7 @@ export const routes: Routes = [
       },
     ]
   },
+  {path: 'test', component: TestSiteComponent},
   {path: AppRoutePaths.notAvailable, component: NotAvailableSiteComponent},
   {path: '**', redirectTo: AppRoutePaths.notAvailable}
 ];

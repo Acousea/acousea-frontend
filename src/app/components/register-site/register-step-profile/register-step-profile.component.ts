@@ -3,11 +3,11 @@ import {ReactiveFormsModule, Validators} from "@angular/forms";
 import {RegisterStepComponent} from "../register-step-component.interface";
 import {NgIf} from "@angular/common";
 import {AddressSelectorComponent} from "../address-selector/address-selector.component";
-import {LanguageSelectorComponent} from "../../side-menu/language-selector/language-selector.component";
-import {CustomInputComponent, FieldContent} from "../../addons/custom-inputs/custom-input/custom-input.component";
+import {LanguageSelectorComponent} from "../../shared/side-menu/language-selector/language-selector.component";
+import {CustomInputComponent, FieldContent} from "../../shared/addons/custom-inputs/custom-input/custom-input.component";
 import {RegisterService} from '@/app/services/auth-service/register-service/register-service.service';
 import {AVAILABLE_LANGUAGES, Language} from "@/app/services/language-service/language.service";
-import {ValidationRule} from "../../addons/custom-inputs/validation.rule";
+import {ValidationRule} from "../../shared/addons/custom-inputs/validation.rule";
 import {FormValidationService} from "@/app/services/form-validation-service/form-validation.service";
 
 @Component({

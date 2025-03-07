@@ -10,7 +10,7 @@ import {TitleCasePipe} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AuthService} from "../../services/auth-service/auth.service";
 import {SelectedNodeService} from "../../services/selected-node-service/selected-node.service";
-import {UpdateInfoButtonComponent} from "../../components/addons/update-info-button/update-info-button.component";
+import {UpdateInfoButtonComponent} from "../../components/shared/addons/update-info-button/update-info-button.component";
 import {NodeDevicesService} from "../../services/node-devices-service/node-devices.service";
 
 export interface ChartInputData {

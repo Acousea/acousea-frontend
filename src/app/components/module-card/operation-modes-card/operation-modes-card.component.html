@@ -1,0 +1,22 @@
+<div class="module-card">
+  <h3>Operation Modes Graph</h3>
+  <div class="graph-controls">
+    <button (click)="addNode()">➕ Add Node</button>
+  </div>
+  <div id="cy"></div>
+
+  <!-- Context Menu -->
+  <div
+    id="context-menu"
+    class="context-menu"
+    [style.top.px]="contextMenuPosition.y"
+    [style.left.px]="contextMenuPosition.x"
+    [class.visible]="contextMenuVisible"
+  >
+    <ul>
+      <li (click)="editNode()">✏ Edit Node</li>
+      <li (click)="deleteNode()">❌ Delete Node</li>
+      <li (click)="startEdgeCreation()">🔗 Add Edge</li>
+    </ul>
+  </div>
+</div>

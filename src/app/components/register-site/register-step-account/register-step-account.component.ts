@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {RegisterStepComponent} from "../register-step-component.interface";
-import {CustomInputComponent, FieldContent} from "../../addons/custom-inputs/custom-input/custom-input.component";
+import {CustomInputComponent, FieldContent} from "../../shared/addons/custom-inputs/custom-input/custom-input.component";
 import {RegisterService} from "@/app/services/auth-service/register-service/register-service.service";
-import {ValidationRule} from "../../addons/custom-inputs/validation.rule";
+import {ValidationRule} from "../../shared/addons/custom-inputs/validation.rule";
 import {FormValidationService} from "@/app/services/form-validation-service/form-validation.service";
 import {ReactiveFormsModule, Validators} from "@angular/forms";
 

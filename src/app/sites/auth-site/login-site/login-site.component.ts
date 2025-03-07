@@ -4,8 +4,8 @@ import {FormsModule, Validators} from "@angular/forms";
 import {
   CustomInputComponent,
   FieldContent
-} from "@/app/components/addons/custom-inputs/custom-input/custom-input.component";
-import {ValidationRule} from "@/app/components/addons/custom-inputs/validation.rule";
+} from "@/app/components/shared/addons/custom-inputs/custom-input/custom-input.component";
+import {ValidationRule} from "@/app/components/shared/addons/custom-inputs/validation.rule";
 import {AuthService} from "@/app/services/auth-service/auth.service";
 
 @Component({
