@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/core';
-import { ModuleCardComponent } from "@/app/components/module-card/Module.card.component";
-import { OperationModes, OperationModesGraph } from "@/app/global-interfaces/nodes/ExtModules";
-import {GraphService} from "@/app/components/module-card/operation-modes-card/graph.service";
+import {AfterViewInit, Component, ElementRef, HostListener} from '@angular/core';
+import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {OperationModes, OperationModesGraph} from "@/app/global-interfaces/nodes/ExtModules";
+import {GraphService} from "@/app/components/node-monitor-panel/operation-modes-card/graph.service";
 
 
 @Component({
@@ -9,9 +9,12 @@ import {GraphService} from "@/app/components/module-card/operation-modes-card/gr
   templateUrl: './operation-modes-card.component.html',
   styleUrls: ['./operation-modes-card.component.scss']
 })
-export class OperationModesGraphComponent extends ModuleCardComponent<{ modes: OperationModes; graph: OperationModesGraph }> implements AfterViewInit {
+export class OperationModesGraphComponent extends NodeMonitorPanelComponent<{
+  modes: OperationModes;
+  graph: OperationModesGraph
+}> implements AfterViewInit {
   contextMenuVisible = false;
-  contextMenuPosition = { x: 0, y: 0 };
+  contextMenuPosition = {x: 0, y: 0};
 
   constructor(private el: ElementRef, private graphService: GraphService) {
     super();
@@ -38,7 +41,7 @@ export class OperationModesGraphComponent extends ModuleCardComponent<{ modes: O
 
   /** Show the context menu at cursor position */
   private showContextMenu(event: MouseEvent, nodeId: string) {
-    this.contextMenuPosition = { x: event.clientX, y: event.clientY };
+    this.contextMenuPosition = {x: event.clientX, y: event.clientY};
     this.contextMenuVisible = true;
     this.graphService.selectedNodeId = nodeId;
   }

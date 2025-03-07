@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {ModuleCardComponent} from "@/app/components/module-card/Module.card.component";
+
 import {BatteryModule} from "@/app/global-interfaces/nodes/ExtModules";
+import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
 @Component({
   selector: 'app-battery-card',
@@ -14,7 +15,7 @@ import {BatteryModule} from "@/app/global-interfaces/nodes/ExtModules";
   templateUrl: './battery-card.component.html',
   styleUrl: './battery-card.component.css'
 })
-export class BatteryCardComponent implements OnInit, ModuleCardComponent<BatteryModule> {
+export class BatteryCardComponent implements OnInit, NodeMonitorPanelComponent<BatteryModule> {
   @Input() data: BatteryModule = {batteryStatus: 0, batteryPercentage: 0};
   readonly mutable: boolean = false;
 

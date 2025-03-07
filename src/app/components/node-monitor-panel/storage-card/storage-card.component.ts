@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DecimalPipe} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {ModuleCardComponent} from "@/app/components/module-card/Module.card.component";
+import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {StorageModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
@@ -14,7 +14,7 @@ import {StorageModule} from "@/app/global-interfaces/nodes/ExtModules";
   templateUrl: './storage-card.component.html',
   styleUrl: './storage-card.component.css'
 })
-export class StorageCardComponent extends ModuleCardComponent<StorageModule> implements OnInit {
+export class StorageCardComponent extends  NodeMonitorPanelComponent<StorageModule> implements OnInit {
 
   constructor() {
     super();

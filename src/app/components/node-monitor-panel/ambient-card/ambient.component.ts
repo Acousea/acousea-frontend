@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NgStyle} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {ModuleCardComponent} from "@/app/components/module-card/Module.card.component";
+import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {AmbientModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
@@ -14,7 +14,7 @@ import {AmbientModule} from "@/app/global-interfaces/nodes/ExtModules";
   templateUrl: './ambient.component.html',
   styleUrl: './ambient.component.css'
 })
-export class AmbientComponent extends ModuleCardComponent<AmbientModule> {
+export class AmbientComponent extends NodeMonitorPanelComponent<AmbientModule> {
 
   constructor() {
     super();

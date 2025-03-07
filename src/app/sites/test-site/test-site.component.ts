@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {
   OperationModesGraphComponent
-} from "@/app/components/module-card/operation-modes-card/operation-modes-card.component";
+} from "@/app/components/node-monitor-panel/operation-modes-card/operation-modes-card.component";
 import {OperationModes, OperationModesGraph} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({

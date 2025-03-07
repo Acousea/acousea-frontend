@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
 
-export interface IModuleCardComponent<T> {
+export interface INodeMonitorPanelComponent<T> {
   data: T; // Module-specific data
   mutable: boolean; // Defines if the module is configurable
 
@@ -8,7 +8,7 @@ export interface IModuleCardComponent<T> {
 }
 
 @Directive() // Can be used as a base class for components
-export abstract class ModuleCardComponent<T> implements IModuleCardComponent<T> {
+export abstract class NodeMonitorPanelComponent<T> implements INodeMonitorPanelComponent<T> {
   @Input() data!: T; // Module-specific data
   @Input() readonly mutable: boolean; // Defines if the module is configurable
 

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
-import {ModuleCardComponent} from "@/app/components/module-card/Module.card.component";
+import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {LocationModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
@@ -12,7 +12,7 @@ import {LocationModule} from "@/app/global-interfaces/nodes/ExtModules";
   templateUrl: './location-card.component.html',
   styleUrl: './location-card.component.css'
 })
-export class LocationCardComponent extends ModuleCardComponent<LocationModule> {
+export class LocationCardComponent extends NodeMonitorPanelComponent<LocationModule> {
   constructor() {
     super();
   }

@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {PamDeviceStatusComponent} from "@/app/components/module-card/pam-device-status/pam-device-status.component";
+import {PamDeviceStatusComponent} from "@/app/components/node-monitor-panel/pam-device-status/pam-device-status.component";
 import {
   CoreTemperatureAndOperationModeComponent
-} from "@/app/components/module-card/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
+} from "@/app/components/node-monitor-panel/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {ICListenHF, pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
 import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
 import {SelectedNodeService} from "@/app/services/selected-node-service/selected-node.service";
-import {LocationCardComponent} from "@/app/components/module-card/location-card/location-card.component";
-import {BatteryCardComponent} from "@/app/components/module-card/battery-card/battery-card.component";
-import {AmbientComponent} from "@/app/components/module-card/ambient-card/ambient.component";
-import {StorageCardComponent} from "@/app/components/module-card/storage-card/storage-card.component";
+import {LocationCardComponent} from "@/app/components/node-monitor-panel/location-card/location-card.component";
+import {BatteryCardComponent} from "@/app/components/node-monitor-panel/battery-card/battery-card.component";
+import {AmbientComponent} from "@/app/components/node-monitor-panel/ambient-card/ambient.component";
+import {StorageCardComponent} from "@/app/components/node-monitor-panel/storage-card/storage-card.component";
 
 
 @Component({
