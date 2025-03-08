@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/co
 import {ChartDataset, ChartOptions, ChartType, ScaleType,} from 'chart.js';
 import {BaseChartDirective} from "ng2-charts";
 import 'chartjs-adapter-date-fns';
-import {ChartInputData} from "@/app/sites/dashboard-site/summary-site.component";
+import {ChartInputData} from "@/app/sites/dashboard-site/dashboard-site.component";
 
 
 @Component({

@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 import {MainLayoutComponent} from "@/app/main-layout/main-layout.component";
 import {MapSiteComponent} from "./sites/map-site/map-site.component";
-import {SummarySiteComponent} from "./sites/dashboard-site/summary-site.component";
+import {DashboardSiteComponent} from "./sites/dashboard-site/dashboard-site.component";
 import {HistorySiteComponent} from "./sites/history-site/history-site.component";
 import {UserProfileSiteComponent} from "@/app/sites/user-profile-site/user-profile-site.component";
 import {NotAvailableSiteComponent} from "./sites/not-available-site/not-available-site.component";
@@ -16,12 +16,17 @@ import {
 } from "./components/auth-site/register-step-profile/register-step-profile.component";
 import {LoginSiteComponent} from "@/app/sites/auth-site/login-site/login-site.component";
 import {AuthSiteComponent} from "@/app/sites/auth-site/auth-site/auth-site.component";
-import {
-  SummaryStatsComponentComponent
-} from "./components/dashboard-site/summary-stats-component/summary-stats-component.component";
-import {NodeInfoComponent} from "./components/dashboard-site/node-info-component/node-info.component";
-import {NodeSettingsComponent} from "./components/dashboard-site/node-configuration-component/node-settings.component";
+
 import {TestSiteComponent} from "@/app/sites/test-site/test-site.component";
+import {
+  SummaryStatsSectionComponent
+} from "@/app/components/dashboard-site/summary-stats-section-component/summary-stats-section.component";
+import {
+  NodeInformationSectionComponent
+} from "@/app/components/dashboard-site/node-information-section-component/node-information-section.component";
+import {
+  NodeSettingsSectionComponent
+} from "@/app/components/dashboard-site/node-settings-section-component/node-settings-section.component";
 
 
 export const routes: Routes = [
@@ -33,11 +38,11 @@ export const routes: Routes = [
     children: [
       {
         path: AppRoutePaths.summary.base,
-        component: SummarySiteComponent,
+        component: DashboardSiteComponent,
         children: [
-          {path: 'stats', component: SummaryStatsComponentComponent},
-          {path: 'info', component: NodeInfoComponent},
-          {path: 'settings', component: NodeSettingsComponent},
+          {path: 'stats', component: SummaryStatsSectionComponent},
+          {path: 'info', component: NodeInformationSectionComponent},
+          {path: 'settings', component: NodeSettingsSectionComponent},
           {path: '', redirectTo: 'stats', pathMatch: 'full'}
         ]
       },
@@ -50,7 +55,7 @@ export const routes: Routes = [
           {path: 'pam-system', component: HistorySiteComponent},
         ]
       },
-      {path: AppRoutePaths.systemInfo, component: NodeInfoComponent},
+      {path: AppRoutePaths.systemInfo, component: NodeInformationSectionComponent},
 
     ],
   },

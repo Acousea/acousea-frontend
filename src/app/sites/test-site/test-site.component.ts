@@ -1,13 +1,14 @@
 import {Component} from '@angular/core';
-import {
-  OperationModesGraphComponent
-} from "@/app/components/node-monitor-panel/operation-modes-card/operation-modes-card.component";
+
 import {OperationModes, OperationModesGraph} from "@/app/global-interfaces/nodes/ExtModules";
+import {
+  OperationModesMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/operation-modes-monitor-panel/operation-modes-card.component";
 
 @Component({
   selector: 'app-test-site',
   imports: [
-    OperationModesGraphComponent
+    OperationModesMonitorPanelComponent
   ],
   templateUrl: './test-site.component.html',
   styleUrl: './test-site.component.css',

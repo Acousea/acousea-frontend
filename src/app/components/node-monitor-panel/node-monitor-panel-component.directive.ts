@@ -10,7 +10,7 @@ export interface INodeMonitorPanelComponent<T> {
 @Directive() // Can be used as a base class for components
 export abstract class NodeMonitorPanelComponent<T> implements INodeMonitorPanelComponent<T> {
   @Input() data!: T; // Module-specific data
-  @Input() readonly mutable: boolean; // Defines if the module is configurable
+  readonly mutable: boolean; // Defines if the module is configurable
 
   protected constructor(mutable: boolean = false) {
     this.mutable = mutable;

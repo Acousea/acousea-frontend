@@ -31,6 +31,11 @@
       "UNKNOWN": "Unknown"
     }
   },
+  "RTC": {
+    "TITLE": "Real Time Clock",
+    "DATE": "Date",
+    "TIME": "Time"
+  },
   "NODE_STATUS": {
     "TEMPERATURE": "Core Temperature",
     "OPERATION_MODE": "Operation Mode",

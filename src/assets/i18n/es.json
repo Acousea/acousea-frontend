@@ -31,6 +31,11 @@
       "UNKNOWN": "Desconocido"
     }
   },
+  "RTC": {
+    "TITLE": "Reloj en Tiempo Real",
+    "DATE": "Fecha",
+    "TIME": "Hora"
+  },
   "NODE_STATUS": {
     "TEMPERATURE": "Temperatura del Núcleo",
     "OPERATION_MODE": "Modo de Operación",

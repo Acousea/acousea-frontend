@@ -1,0 +1,26 @@
+<div class="module-card">
+  <h3>{{ getTitle() }}</h3>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Operation Mode</th>
+      <th>Reporting Period (s)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let period of data.reportingPeriods; let i = index">
+      <td>{{ period.operationModeIdx }}</td>
+      <td>
+        <input
+          *ngIf="mutable"
+          type="number"
+          [value]="period.value"
+          (change)="updateReportingPeriod(i, $event)"
+        />
+        <span *ngIf="!mutable">{{ period.value }}s</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

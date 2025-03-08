@@ -1,0 +1,38 @@
+.rtc-status-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: solid 1px #dfdfdf;
+  box-shadow: 0 7px 8px 3px rgba(0,0,0,0.05);
+}
+
+.rtc-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rtc-info h2 {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.rtc-info p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+}
+
+.rtc-icon-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rtc-icon-section i {
+  font-size: 24px;
+  color: #000;
+}

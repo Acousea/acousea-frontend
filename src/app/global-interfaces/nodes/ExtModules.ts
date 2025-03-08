@@ -38,7 +38,6 @@ export interface OperationModesGraph {
 
 // It has a sorted map of key: OperationMode - value: ReportingPeriod
 export interface ReportingModule {
-  // reportingPeriods: Map<OperationMode, number>;
   reportingPeriods: { operationModeIdx: number, value: number }[];
 }
 

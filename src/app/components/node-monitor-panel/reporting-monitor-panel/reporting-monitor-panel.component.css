@@ -1,0 +1,23 @@
+.module-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+input {
+  width: 60px;
+  padding: 4px;
+}
