@@ -26,7 +26,15 @@ export class ReportingMonitorPanelComponent extends NodeMonitorPanelComponent<Re
     if (!this.mutable) return;
     const inputValue = Number((event.target as HTMLInputElement).value);
     if (!isNaN(inputValue) && inputValue >= 0) {
-      this.data.reportingPeriods[index].value = inputValue;
+      this.data.reportingPeriodsPerOperationModeIdx[index] = inputValue;
     }
   }
+
+  getReportingPeriods() {
+    return Object.entries(this.data.reportingPeriodsPerOperationModeIdx).map(([key, value]) => ({
+      key: Number(key),
+      value
+    }));
+  }
+
 }

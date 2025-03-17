@@ -1,6 +1,16 @@
 <div>
-  <app-control-system-config [selectedNode]="selectedNode"/>
-<!--  <app-control-system-config [(selectedNode)]="selectedNode"/>-->
+  <app-reporting-periods-monitor-panel
+    *ngIf="selectedNode &&
+            selectedNode.extModules &&
+            selectedNode.extModules.operationModes &&
+            selectedNode.extModules.loRaReporting &&
+            selectedNode.extModules.iridiumReporting"
+    [data]="{
+      operationModes: selectedNode.extModules.operationModes,
+      loRaReporting: selectedNode.extModules.loRaReporting,
+      iridiumReporting: selectedNode.extModules.iridiumReporting
+    }"></app-reporting-periods-monitor-panel>
+  <!--  <app-control-system-config [(selectedNode)]="selectedNode"/>-->
   <app-streaming-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>
   <app-pam-system-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>
   <div class="bottom-container">

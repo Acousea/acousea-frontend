@@ -1,0 +1,47 @@
+<div class="node-config-site"
+     *ngIf="data.operationModes && data.loRaReporting && data.iridiumReporting; else noNodeSelected">
+  <h1>{{ "REPORTING_SETTINGS.TITLE" | translate }}</h1>
+  <div class="settings-container">
+    <!-- Sección para LoRa -->
+    <div class="settings-box">
+      <h2>{{ "REPORTING_SETTINGS.PERIODS.LORA_PERIOD" | translate }}</h2>
+      <div class="setting-group"
+           *ngFor="let entry of objectEntries(data.loRaReporting.reportingPeriodsPerOperationModeIdx)">
+
+        <label>
+          {{ data.operationModes.modes[entry.key] ?? 'Unknown Mode' }}
+          <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span>
+        </label>
+
+        <input
+          type="number"
+          [value]="data.loRaReporting.reportingPeriodsPerOperationModeIdx[entry.key]"
+          (input)="updateLoRaReporting(entry.key, $event.target)"
+        >
+      </div>
+    </div>
+
+    <!-- Sección para Iridium -->
+    <div class="settings-box">
+      <h2>{{ "REPORTING_SETTINGS.PERIODS.IRIDIUM_PERIOD" | translate }}</h2>
+      <div class="setting-group"
+           *ngFor="let entry of objectEntries(data.iridiumReporting.reportingPeriodsPerOperationModeIdx)">
+        <label>
+          {{ data.operationModes.modes[entry.key] ?? 'Unknown Mode' }}
+          <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span>
+        </label>
+        <input type="number"
+               [value]="data.iridiumReporting.reportingPeriodsPerOperationModeIdx[entry.key]"
+               (input)="updateIridiumReporting(entry.key, $event.target)"
+        >
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #noNodeSelected>
+  <div class="no-node-selected">
+    <p>{{ "ERROR_MESSAGES.NO_NODE_SELECTED" | translate }}</p>
+  </div>
+</ng-template>

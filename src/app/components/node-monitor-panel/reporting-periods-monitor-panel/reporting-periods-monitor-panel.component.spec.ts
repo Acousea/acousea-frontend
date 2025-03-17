@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ControlSystemConfigComponent } from './control-system-config.component';
+import { ReportingPeriodsMonitorPanel } from './reporting-periods-monitor-panel.component';
 
 describe('ControlSystemConfigComponent', () => {
-  let component: ControlSystemConfigComponent;
-  let fixture: ComponentFixture<ControlSystemConfigComponent>;
+  let component: ReportingPeriodsMonitorPanel;
+  let fixture: ComponentFixture<ReportingPeriodsMonitorPanel>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ControlSystemConfigComponent]
+      imports: [ReportingPeriodsMonitorPanel]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ControlSystemConfigComponent);
+    fixture = TestBed.createComponent(ReportingPeriodsMonitorPanel);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

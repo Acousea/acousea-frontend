@@ -38,7 +38,7 @@ export interface OperationModesGraph {
 
 // It has a sorted map of key: OperationMode - value: ReportingPeriod
 export interface ReportingModule {
-  reportingPeriods: { operationModeIdx: number, value: number }[];
+  reportingPeriodsPerOperationModeIdx: { [operationModeIdx: number]: number }; // Updated to use a Map-like object
 }
 
 // LoraReportingModule.ts

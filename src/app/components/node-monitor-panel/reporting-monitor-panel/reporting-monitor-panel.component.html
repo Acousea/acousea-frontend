@@ -9,16 +9,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let period of data.reportingPeriods; let i = index">
-      <td>{{ period.operationModeIdx }}</td>
+    <tr *ngFor="let entry of getReportingPeriods(); let i = index">
+      <td>{{ entry.key }}</td>
       <td>
         <input
           *ngIf="mutable"
           type="number"
-          [value]="period.value"
+          [value]="entry.value"
           (change)="updateReportingPeriod(i, $event)"
         />
-        <span *ngIf="!mutable">{{ period.value }}s</span>
+        <span *ngIf="!mutable">{{ entry.value }}s</span>
       </td>
     </tr>
     </tbody>
