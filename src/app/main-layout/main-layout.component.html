@@ -10,9 +10,9 @@
   <app-notification-list></app-notification-list>
   <app-flush-request-queue-popup></app-flush-request-queue-popup>
   <app-alert-popup></app-alert-popup>
-  <app-side-menu></app-side-menu>
   <app-loading-animation></app-loading-animation>
-  <div class="main-content" [class.hidden]="isLoading | async">
+  <app-side-menu (menuStateChanged)="onMenuStateChanged($event)"></app-side-menu>
+  <div class="main-content" [style.width]="mainContentWidth">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {NgClass, NgIf} from "@angular/common";
 import {MenuElementComponent} from "./menu-element/menu-element.component";
 import {SearchBarComponent} from "./search-bar/search-bar.component";
@@ -20,24 +20,11 @@ import {UserWindowBubbleComponent} from "@/app/components/user-site/user-window-
     NgIf,
     UserWindowBubbleComponent
   ],
-  animations: [
-    trigger('menuState', [
-      state('collapsed', style({
-        width: '50px',
-      })),
-      state('expanded', style({
-        width: '250px',
-      })),
-      transition('collapsed <=> expanded', [
-        animate('500ms ease-in-out')
-      ])
-    ])
-  ],
-
   templateUrl: './side-menu.component.html',
   styleUrl: './side-menu.component.css'
 })
 export class SideMenuComponent {
+  @Output() menuStateChanged = new EventEmitter<boolean>(); // Emite cambios en el menú
 
   protected readonly properties = {isCollapsed: true, isFixed: false}; // Propiedades del menú
 
@@ -45,12 +32,14 @@ export class SideMenuComponent {
   onMouseEnter() {
     if (!this.properties.isFixed) {
       this.properties.isCollapsed = false;
+      this.menuStateChanged.emit(this.properties.isCollapsed);
     }
   }
 
   onMouseLeave() {
     if (!this.properties.isFixed) {
       this.properties.isCollapsed = true;
+      this.menuStateChanged.emit(this.properties.isCollapsed);
     }
   }
 
@@ -60,5 +49,6 @@ export class SideMenuComponent {
 
   toggleMenu() {
     this.properties.isCollapsed = !this.properties.isCollapsed;
+    this.menuStateChanged.emit(this.properties.isCollapsed);
   }
 }

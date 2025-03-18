@@ -1,16 +1,28 @@
+
 .side-menu {
   display: flex;
+  flex:1;
+  height: 100vh;
   flex-direction: column;
   background-color: var(--background-white);
   border-right: 1px solid var(--light-gray);
-  padding: 30px 0; /* top-bottom right-left */
   gap: 20px;
-  height: 90vh;
-  /*height: -webkit-fill-available;*/
+  position: fixed;
+  transition: width 0.3s ease-in-out;
+}
+
+/* El header y footer deben desplazarse junto con el menú */
+.header, .footer {
+  background-color: var(--background-white);
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.side-menu.expanded {
+  width: 250px;
 }
 
 .side-menu.collapsed {
-  padding: 10px; /* Reduce el padding en modo colapsado */
+  width: 60px;
 }
 
 .header {
@@ -31,19 +43,19 @@
   height: 40px; /* Tamaño reducido del logo en modo colapsado */
 }
 
-.search-bar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
 nav {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: start;
   gap: 25px;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .side-menu.collapsed nav a {
@@ -53,11 +65,11 @@ nav {
 .footer {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   justify-content: center;
   align-items: center;
-  /*margin-top: auto*/
   margin-top: auto;
+  padding-bottom: 10px;
+
 }
 
 /* Estilos móviles */

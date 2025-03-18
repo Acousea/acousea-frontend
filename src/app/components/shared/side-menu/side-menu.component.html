@@ -1,7 +1,6 @@
 <div
   class="side-menu"
-  [@menuState]="properties.isCollapsed ? 'collapsed' : 'expanded'"
-  [ngClass]="{'collapsed': properties.isCollapsed}"
+  [ngClass]="{'collapsed': properties.isCollapsed, 'expanded': !properties.isCollapsed}"
   (mouseenter)="onMouseEnter()"
   (mouseleave)="onMouseLeave()">
   <div class="header" (click)="toggleMenu()" (dblclick)="toggleFix()">

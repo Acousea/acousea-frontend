@@ -1,7 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-
+  flex:1;
 }
 
 .summary-site {
@@ -10,6 +10,7 @@
   background-color: var(--background-lightgray);
   padding: 0 20px;
   text-align: center;
+  flex: 1;
 }
 
 .summary-site h1 {
