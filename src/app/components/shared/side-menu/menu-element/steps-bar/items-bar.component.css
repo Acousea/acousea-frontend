@@ -49,7 +49,7 @@
   font-size: 13px;
   font-weight: 500;
   padding: 5px;
-  color: var(--unselected-dark-color);
+  color: var(--selected-dark-color);
   white-space: nowrap; /* Evita que el texto se divida en varias líneas */
   overflow: hidden; /* Oculta el desbordamiento */
   text-overflow: ellipsis; /* Añade puntos suspensivos al texto desbordado */

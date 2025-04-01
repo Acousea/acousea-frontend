@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: var(--unselected-dark-color);
+  color: var(--selected-dark-color);
   cursor: pointer;
   border-radius: 5px;
   transition: color 0.3s ease, background-color 0.3s ease;

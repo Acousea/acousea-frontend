@@ -32,17 +32,6 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
 export class SettingsSiteComponent {
   nodes: NodeDevice[] = [];
   private _selectedNode: NodeDevice | undefined = undefined;
-  get selectedNode(): NodeDevice | undefined {
-    return this._selectedNode;
-  }
-
-  set selectedNode(value: NodeDevice | undefined) {
-    this._selectedNode = value;
-    console.warn('selectedNode ha cambiado:', this._selectedNode);
-    if (value) {
-      this.nodeContext.setSelectedNode(value);
-    }
-  }
 
   constructor(
     protected authService: AuthService,
@@ -58,6 +47,18 @@ export class SettingsSiteComponent {
       this.selectedNode = nodes[0];
 
     });
+  }
+
+  get selectedNode(): NodeDevice | undefined {
+    return this._selectedNode;
+  }
+
+  set selectedNode(value: NodeDevice | undefined) {
+    this._selectedNode = value;
+    console.warn('selectedNode ha cambiado:', this._selectedNode);
+    if (value) {
+      this.nodeContext.setSelectedNode(value);
+    }
   }
 
   protected readonly BackendRoutePaths = BackendRoutePaths;

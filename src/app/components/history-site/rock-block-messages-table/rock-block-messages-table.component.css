@@ -154,7 +154,7 @@
   display: flex;
   padding: 12px 12px;
   border: none;
-  background-color: var(--unselected-color);
+  background-color: var(--selected-color);
   color: #303030;
   font-weight: bold;
   border-radius: 50%;

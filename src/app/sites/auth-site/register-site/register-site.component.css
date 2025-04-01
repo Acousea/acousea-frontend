@@ -37,7 +37,7 @@
 
 .register-form li a {
   text-decoration: none;
-  color: var(--unselected-color);
+  color: var(--selected-color);
 }
 
 .register-form li a.active {
@@ -64,7 +64,7 @@ button {
 }
 
 button:disabled {
-  background-color: var(--unselected-dark-color);
+  background-color: var(--selected-dark-color);
   cursor: not-allowed;
 }
 

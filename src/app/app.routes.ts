@@ -27,15 +27,6 @@ import {
 import {
   NodeSettingsSectionComponent
 } from "@/app/components/dashboard-site/node-settings-section-component/node-settings-section.component";
-import {
-  ReportingPeriodsMonitorPanel
-} from "@/app/components/node-monitor-panel/reporting-periods-monitor-panel/reporting-periods-monitor-panel.component";
-import {
-  StreamingConfigComponent
-} from "@/app/components/node-monitor-panel/pam-modules/streaming-config/streaming-config.component";
-import {
-  PamSystemConfigComponent
-} from "@/app/components/node-monitor-panel/pam-modules/pam-system-config/pam-system-config.component";
 
 
 export const routes: Routes = [
@@ -51,17 +42,7 @@ export const routes: Routes = [
         children: [
           {path: 'stats', component: NodeStatsSectionComponent},
           {path: 'info', component: NodeInformationSectionComponent},
-          {
-            path: 'settings',
-            component: NodeSettingsSectionComponent,
-            children: [
-              { path: 'reporting', component: ReportingPeriodsMonitorPanel },
-              { path: 'streaming', component: StreamingConfigComponent },
-              { path: 'pam', component: PamSystemConfigComponent },
-              // { path: 'all', component: DashboardAllViewComponent },
-              { path: '', redirectTo: 'reporting', pathMatch: 'full' }
-            ]
-          },
+          {path: 'settings', component: NodeSettingsSectionComponent},
           {path: '', redirectTo: 'stats', pathMatch: 'full'}
         ]
       },

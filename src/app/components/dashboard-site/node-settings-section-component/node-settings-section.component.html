@@ -1,23 +1,40 @@
 <nav class="tabs">
-  <a routerLink="reporting" routerLinkActive="active">Reporting</a>
-  <a routerLink="streaming" routerLinkActive="active">Streaming</a>
-  <a routerLink="pam" routerLinkActive="active">PAM Config</a>
-  <a routerLink="all" routerLinkActive="active">View All</a>
+  <button (click)="changeView('all')" [class.active]="currentView === 'all'">View All</button>
+  <button (click)="changeView('reporting')" [class.active]="currentView === 'reporting'">Reporting</button>
+  <button (click)="changeView('streaming')" [class.active]="currentView === 'streaming'">Streaming</button>
+  <button (click)="changeView('pam')" [class.active]="currentView === 'pam'">PAM Config</button>
 </nav>
 
-<router-outlet></router-outlet>
+<section class="content">
+  <ng-container *ngIf="selectedNode">
+    <!-- Reporting -->
+    <app-reporting-periods-monitor-panel
+      *ngIf="(currentView === 'reporting' || currentView === 'all') &&
+             selectedNode.extModules &&
+             selectedNode.extModules.operationModes &&
+             selectedNode.extModules.loRaReporting &&
+             selectedNode.extModules.iridiumReporting"
+      [data]="{
+        operationModes: selectedNode.extModules.operationModes,
+        loRaReporting: selectedNode.extModules.loRaReporting,
+        iridiumReporting: selectedNode.extModules.iridiumReporting
+      }">
+    </app-reporting-periods-monitor-panel>
 
-<!--<app-reporting-periods-monitor-panel-->
-<!--  *ngIf="selectedNode &&-->
-<!--            selectedNode.extModules &&-->
-<!--            selectedNode.extModules.operationModes &&-->
-<!--            selectedNode.extModules.loRaReporting &&-->
-<!--            selectedNode.extModules.iridiumReporting"-->
-<!--  [data]="{-->
-<!--      operationModes: selectedNode.extModules.operationModes,-->
-<!--      loRaReporting: selectedNode.extModules.loRaReporting,-->
-<!--      iridiumReporting: selectedNode.extModules.iridiumReporting-->
-<!--    }"></app-reporting-periods-monitor-panel>-->
-<!--&lt;!&ndash;  <app-control-system-config [(selectedNode)]="selectedNode"/>&ndash;&gt;-->
-<!--<app-streaming-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>-->
-<!--<app-pam-system-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>-->
+    <!-- Streaming -->
+    <app-streaming-config
+      *ngIf="(currentView === 'streaming' || currentView === 'all') &&
+              selectedNode.pamModules &&
+             selectedNode.pamModules.length > 0"
+      [selectedNode]="selectedNode">
+    </app-streaming-config>
+
+    <!-- PAM -->
+    <app-pam-system-config
+      *ngIf="(currentView === 'pam' || currentView === 'all') &&
+             selectedNode.pamModules &&
+             selectedNode.pamModules.length > 0"
+      [selectedNode]="selectedNode">
+    </app-pam-system-config>
+  </ng-container>
+</section>

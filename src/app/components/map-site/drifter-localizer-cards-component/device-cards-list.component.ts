@@ -4,6 +4,7 @@ import { NgForOf, NgIf } from "@angular/common";
 import { SummaryCardComponent } from "../../cards/summary-card/summary-card.component";
 import { DeviceConfigPopUpService } from "@/app/services/pop-ups/device-config-popup-service/device-config-pop-up.service";
 import { NodeDevice } from "@/app/global-interfaces/nodes/NodeDevice";
+import {DeviceCardComponent} from "@/app/components/cards/device-card/device-card.component";
 
 @Component({
   selector: 'app-device-cards-list',
@@ -12,7 +13,8 @@ import { NodeDevice } from "@/app/global-interfaces/nodes/NodeDevice";
     FormsModule,
     NgForOf,
     SummaryCardComponent,
-    NgIf
+    NgIf,
+    DeviceCardComponent
   ],
   templateUrl: './device-cards-list.component.html',
   styleUrls: ['./device-cards-list.component.css']

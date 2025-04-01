@@ -59,7 +59,7 @@ h1 span {
 }
 
 .nav-item.active-tab {
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid var(--selected-intense-color);
 }
 
 .nav-item.active-tab a {

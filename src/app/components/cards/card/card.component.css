@@ -1,10 +1,7 @@
 .card {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border: 1px solid var(--light-gray);
   background-color: var(--background-white);
-  border-radius: 10px;
 }
 
 .icon-container {

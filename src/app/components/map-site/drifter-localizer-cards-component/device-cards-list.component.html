@@ -1,11 +1,11 @@
 <div class="dropdown-container">
   <!-- Nodo Seleccionado con Icono de Flecha -->
   <div class="selected-node" (click)="toggleDropdown()">
-    <app-summary-card
+    <app-device-card
       *ngIf="selectedNode; else noNodeSelected"
       [icon]="selectedNode.icon"
-      [boldText]="selectedNode.name">
-    </app-summary-card>
+      [boldText]="selectedNode.name"
+    />
     <ng-template #noNodeSelected>
       <span>Selecciona un nodo</span>
     </ng-template>
@@ -18,10 +18,10 @@
       *ngFor="let node of nodes"
       class="dropdown-item"
       (click)="selectNode(node)">
-      <app-summary-card
+      <app-device-card
         [icon]="node.icon"
         [boldText]="node.name">
-      </app-summary-card>
+      </app-device-card>
     </div>
   </div>
 </div>
