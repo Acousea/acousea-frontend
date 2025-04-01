@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
-import {distinctUntilChanged, Observable, switchMap} from "rxjs";
+import {BehaviorSubject, distinctUntilChanged, filter, Observable, switchMap} from "rxjs";
 import {NodeSelectionService} from "@/app/services/node-context/node-selection-service/node-selection.service";
 import {
   NodeCostEstimationService
@@ -8,23 +8,43 @@ import {
 import {
   NodeConfigurationService
 } from "@/app/services/node-context/node-configuration-service/node-configuration.service";
-
 @Injectable({providedIn: 'root'})
 export class NodeContextService {
+  private nodesSubject = new BehaviorSubject<NodeDevice[] | null>(null);
+  readonly nodes$ = this.nodesSubject.asObservable().pipe(
+    filter(nodes => nodes !== null)
+  ) as Observable<NodeDevice[]>;
+
   constructor(
     private selectedNodeService: NodeSelectionService,
     private nodeEstimationService: NodeCostEstimationService,
     private nodeConfigurationService: NodeConfigurationService
   ) {
+    // Start polling when selected node changes
     this.selectedNodeService.selectedNode$
       .pipe(
         distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
         switchMap(newState => this.nodeEstimationService.pollCostIfNeeded(newState))
       )
       .subscribe();
+
+    // Load nodes once on service initialization
+    this.nodeConfigurationService.getNodes().subscribe(nodes => {
+      this.nodesSubject.next(nodes);
+
+      // Set first node as selected if none selected
+      if (!this.selectedNodeService.selectedNodeSnapshot && nodes.length > 0) {
+        this.selectedNodeService.setSelectedNode(nodes[0]);
+      }
+    });
   }
 
-  // === FACADE DE FUNCIONES DE SelectedNodeService ===
+  // Accessor for single-fetch node list
+  getAllNodes(): Observable<NodeDevice[]> {
+    return this.nodes$;
+  }
+
+  // Selected node control
   setSelectedNode(node: NodeDevice): void {
     this.selectedNodeService.setSelectedNode(node);
   }
@@ -37,11 +57,7 @@ export class NodeContextService {
     return this.selectedNodeService.getChanges();
   }
 
-  // === FACADE DE FUNCIONES DE NodeConfigurationService ===
-  getAllNodes(): Observable<NodeDevice[]> {
-    return this.nodeConfigurationService.getNodes();
-  }
-
+  // Config actions
   saveNodeConfiguration(node: NodeDevice): void {
     this.nodeConfigurationService.setNodeConfiguration(node);
   }
@@ -50,4 +66,3 @@ export class NodeContextService {
     this.nodeConfigurationService.getUpdatedReportingPeriods();
   }
 }
-
