@@ -2,10 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {NgClass, NgIf} from "@angular/common";
 import {MenuElementComponent} from "./menu-element/menu-element.component";
 import {SearchBarComponent} from "./search-bar/search-bar.component";
-import {LanguageSelectorComponent} from "./language-selector/language-selector.component";
 import {TranslateModule} from "@ngx-translate/core";
-
-import {animate, state, style, transition, trigger} from "@angular/animations";
 import {UserWindowBubbleComponent} from "@/app/components/user-site/user-window-bubble/user-window-bubble.component";
 
 @Component({
@@ -15,7 +12,6 @@ import {UserWindowBubbleComponent} from "@/app/components/user-site/user-window-
     NgClass,
     MenuElementComponent,
     SearchBarComponent,
-    LanguageSelectorComponent,
     TranslateModule,
     NgIf,
     UserWindowBubbleComponent
@@ -47,7 +43,7 @@ export class SideMenuComponent {
     this.properties.isFixed = !this.properties.isFixed;
   }
 
-  toggleMenu(){
+  toggleMenu() {
     this.properties.isCollapsed = !this.properties.isCollapsed;
     this.menuStateChanged.emit(this.properties.isCollapsed);
   }

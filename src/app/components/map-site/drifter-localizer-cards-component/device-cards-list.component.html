@@ -1,15 +1,15 @@
 <div class="dropdown-container">
   <!-- Nodo Seleccionado con Icono de Flecha -->
   <div class="selected-node" (click)="toggleDropdown()">
-    <app-device-card
-      *ngIf="selectedNode; else noNodeSelected"
-      [icon]="selectedNode.icon"
-      [boldText]="selectedNode.name"
-    />
+    <ng-container *ngIf="selectedNode$ | async as selectedNode; else noNodeSelected">
+      <app-device-card
+        [icon]="selectedNode.icon"
+        [boldText]="selectedNode.name" />
+    </ng-container>
     <ng-template #noNodeSelected>
       <span>Selecciona un nodo</span>
     </ng-template>
-    <span class="arrow-icon">&#9660;</span> <!-- Flecha para el desplegable -->
+    <span class="arrow-icon">&#9660;</span>
   </div>
 
   <!-- Lista de Nodos -->

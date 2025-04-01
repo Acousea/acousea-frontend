@@ -8,12 +8,14 @@ import {
 import {
   NodeConfigurationService
 } from "@/app/services/node-context/node-configuration-service/node-configuration.service";
+
 @Injectable({providedIn: 'root'})
 export class NodeContextService {
   private nodesSubject = new BehaviorSubject<NodeDevice[] | null>(null);
-  readonly nodes$ = this.nodesSubject.asObservable().pipe(
-    filter(nodes => nodes !== null)
-  ) as Observable<NodeDevice[]>;
+  readonly nodes$ = this.nodesSubject.asObservable()
+    .pipe(
+      filter(nodes => nodes !== null)
+    ) as Observable<NodeDevice[]>;
 
   constructor(
     private selectedNodeService: NodeSelectionService,

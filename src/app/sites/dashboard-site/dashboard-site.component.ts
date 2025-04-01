@@ -9,8 +9,9 @@ import {
 import {TitleCasePipe} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AuthService} from "../../services/auth/auth.service";
-import {UpdateInfoButtonComponent} from "../../components/shared/addons/update-info-button/update-info-button.component";
-import {NodeConfigurationService} from "@/app/services/node-context/node-configuration-service/node-configuration.service";
+import {
+  UpdateInfoButtonComponent
+} from "../../components/shared/addons/update-info-button/update-info-button.component";
 import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
 export interface ChartInputData {
@@ -42,27 +43,19 @@ export class DashboardSiteComponent {
 
   set selectedNode(value: NodeDevice | undefined) {
     this._selectedNode = value;
-    console.warn('selectedNode ha cambiado:', this._selectedNode);
-    if (value) {
-      this.nodeContext.setSelectedNode(value);
-    }
   }
 
   constructor(
     protected authService: AuthService,
-    private nodeDevicesService: NodeConfigurationService,
     private nodeContext: NodeContextService
   ) {
-    this.nodeDevicesService.getNodes().subscribe(nodes => {
-      if (!nodes) {
-        console.error('Error fetching nodes');
-        return;
-      }
-      console.log("SummarySiteComponent() => Nodes fetched: ", nodes);
+    this.nodeContext.nodes$.subscribe(nodes => {
       this.nodes = nodes;
-      this.selectedNode = nodes[0];
-
-    });
+    })
+    this.nodeContext.selectedNode$.subscribe(selectedNode => {
+      console.warn("DashboardSiteComponent::selectedNodeChange: ", selectedNode);
+      this.selectedNode = selectedNode;
+    })
   }
 
   protected readonly BackendRoutePaths = BackendRoutePaths;

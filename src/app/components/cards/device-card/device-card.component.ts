@@ -1,13 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {CardComponent} from "../card/card.component";
-import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-device-card',
   standalone: true,
   imports: [
-    CardComponent,
-    NgIf
+    CardComponent
   ],
   templateUrl: './device-card.component.html',
   styleUrl: './device-card.component.css'
