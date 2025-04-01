@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { NgForOf, NgIf } from "@angular/common";
 import { SummaryCardComponent } from "../../cards/summary-card/summary-card.component";
-import { DeviceConfigPopUpService } from "@/app/services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
+import { DeviceConfigPopUpService } from "@/app/services/pop-ups/device-config-popup-service/device-config-pop-up.service";
 import { NodeDevice } from "@/app/global-interfaces/nodes/NodeDevice";
 
 @Component({

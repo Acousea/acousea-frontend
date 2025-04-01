@@ -2,13 +2,11 @@ import {AfterViewInit, Component, Input, OnChanges, SimpleChanges} from '@angula
 import * as L from "leaflet";
 import {Marker} from "leaflet";
 import 'leaflet-arrowheads';
-import {CurrentVectorsService} from "@/app/services/current-vectors-service/current-vectors.service";
 
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {
   DeviceConfigPopUpService
-} from "@/app/services/pop-ups-services/device-config-popup-service/device-config-pop-up.service";
-import {NodeDevicesService} from "@/app/services/node-devices-service/node-devices.service";
+} from "@/app/services/pop-ups/device-config-popup-service/device-config-pop-up.service";
 
 
 @Component({
@@ -25,8 +23,6 @@ export class MapGeoComponent implements OnChanges, AfterViewInit {
   private readonly LPGC_Coord = [28.1, -15.4];
 
   constructor(
-    private currentVectorParser: CurrentVectorsService,
-    private communicationSystemService: NodeDevicesService,
     protected deviceConfigPopUpService: DeviceConfigPopUpService
   ) {
   }

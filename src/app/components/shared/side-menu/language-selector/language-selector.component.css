@@ -4,6 +4,7 @@
   cursor: pointer;
 }
 
+/* Estilos comunes */
 .selected-language {
   display: flex;
   align-items: center;
@@ -14,7 +15,7 @@
 
 .selected-language .flag-icon {
   margin-right: 10px;
-  width: 24px; /* Tamaño fijo para la imagen */
+  width: 24px;
   height: auto;
 }
 
@@ -25,13 +26,22 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
   left: 0;
   right: 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: white;
   z-index: 1000;
+}
+
+/* Dirección hacia abajo (por defecto) */
+.language-selector.down .dropdown-menu {
+  top: 100%;
+}
+
+/* Dirección hacia arriba */
+.language-selector.up .dropdown-menu {
+  bottom: 100%;
 }
 
 .dropdown-item {
@@ -47,6 +57,6 @@
 
 .dropdown-item .flag-icon {
   margin-right: 10px;
-  width: 24px; /* Tamaño fijo para la imagen */
+  width: 24px;
   height: auto;
 }

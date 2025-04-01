@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LoadingAnimationService} from "@/app/services/loading-animation-service/loading-animation.service";
+import {LoadingAnimationService} from "@/app/services/shared/loading-animation-service/loading-animation.service";
 import {AsyncPipe, NgIf} from "@angular/common";
 
 @Component({

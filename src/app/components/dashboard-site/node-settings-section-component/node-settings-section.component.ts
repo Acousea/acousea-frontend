@@ -1,26 +1,17 @@
 import {Component} from '@angular/core';
-
-import {PamSystemConfigComponent} from "@/app/components/node-monitor-panel/pam-modules/pam-system-config/pam-system-config.component";
-import {StreamingConfigComponent} from "@/app/components/node-monitor-panel/pam-modules/streaming-config/streaming-config.component";
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
-import {SelectedNodeService} from "@/app/services/selected-node-service/selected-node.service";
 import {TranslateModule} from "@ngx-translate/core";
-import {NgIf, UpperCasePipe} from "@angular/common";
-import {NodeDevicesService} from "@/app/services/node-devices-service/node-devices.service";
-import {
-  ReportingPeriodsMonitorPanel
-} from "@/app/components/node-monitor-panel/reporting-periods-monitor-panel/reporting-periods-monitor-panel.component";
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
 @Component({
-  selector: 'app-settings-site',
+  selector: 'app-node-settings-section',
   standalone: true,
   imports: [
-    ReportingPeriodsMonitorPanel,
-    PamSystemConfigComponent,
-    StreamingConfigComponent,
     TranslateModule,
-    UpperCasePipe,
-    NgIf
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './node-settings-section.component.html',
   styleUrl: './node-settings-section.component.css'
@@ -30,21 +21,12 @@ export class NodeSettingsSectionComponent {
   selectedNode: NodeDevice | undefined;
 
   constructor(
-    protected selectedNodeService: SelectedNodeService,
-    protected nodeDevicesService: NodeDevicesService,
+    protected nodeContext: NodeContextService,
   ) {
-    selectedNodeService.selectedNode$.subscribe(node => {
+    nodeContext.selectedNode$.subscribe(node => {
       console.warn('New Selected node', node)
       this.selectedNode = node;
     });
-  }
-
-  applySettings() {
-    if (!this.selectedNode) {
-      console.error('No node selected');
-      return;
-    }
-    this.nodeDevicesService.setNodeConfiguration(this.selectedNode);
   }
 
 }

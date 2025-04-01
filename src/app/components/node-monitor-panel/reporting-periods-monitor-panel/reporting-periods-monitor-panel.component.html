@@ -1,5 +1,5 @@
 <div class="node-config-site"
-     *ngIf="data.operationModes && data.loRaReporting && data.iridiumReporting; else noNodeSelected">
+     *ngIf="data && data.operationModes && data.loRaReporting && data.iridiumReporting; else noNodeSelected">
   <h1>{{ "REPORTING_SETTINGS.TITLE" | translate }}</h1>
   <div class="settings-container">
     <!-- Sección para LoRa -->
@@ -9,7 +9,7 @@
            *ngFor="let entry of objectEntries(data.loRaReporting.reportingPeriodsPerOperationModeIdx)">
 
         <label>
-          {{ data.operationModes.modes[entry.key] ?? 'Unknown Mode' }}
+          {{ data.operationModes.modes[entry.key] }}
           <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span>
         </label>
 
@@ -27,7 +27,7 @@
       <div class="setting-group"
            *ngFor="let entry of objectEntries(data.iridiumReporting.reportingPeriodsPerOperationModeIdx)">
         <label>
-          {{ data.operationModes.modes[entry.key] ?? 'Unknown Mode' }}
+          {{ data.operationModes.modes[entry.key] }}
           <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span>
         </label>
         <input type="number"

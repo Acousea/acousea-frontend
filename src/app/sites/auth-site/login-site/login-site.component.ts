@@ -6,7 +6,7 @@ import {
   FieldContent
 } from "@/app/components/shared/addons/custom-inputs/custom-input/custom-input.component";
 import {ValidationRule} from "@/app/components/shared/addons/custom-inputs/validation.rule";
-import {AuthService} from "@/app/services/auth-service/auth.service";
+import {AuthService} from "@/app/services/auth/auth.service";
 
 @Component({
   selector: 'app-login-site',

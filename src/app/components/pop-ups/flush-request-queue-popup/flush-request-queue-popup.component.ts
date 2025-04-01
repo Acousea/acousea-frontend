@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {NgClass, NgIf} from "@angular/common";
 import {
   FlushRequestQueuePopupService
-} from "@/app/services/pop-ups-services/flush-request-queue-popup/flush-request-queue-popup.service";
+} from "@/app/services/pop-ups/flush-request-queue-popup/flush-request-queue-popup.service";
 
 @Component({
   selector: 'app-flush-request-queue-popup',

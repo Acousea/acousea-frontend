@@ -1,26 +1,23 @@
-:host{
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   background-color: var(--background-lightgray);
 }
-.bottom-container {
+
+.tabs {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 30px;
-  padding: 20px 0;
+  gap: 16px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
 }
-
-.apply-button {
-  background-color: var(--main-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  font-weight: bold;
+.tabs a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+}
+.tabs a.active {
+  background-color: #444CE7;
+  color: white;
 }
 
-.apply-button:hover {
-  background-color: #1a7ab6;
-}

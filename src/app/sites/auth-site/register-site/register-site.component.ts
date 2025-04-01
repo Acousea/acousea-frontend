@@ -4,8 +4,8 @@ import {FormsModule} from "@angular/forms";
 import {TranslateModule} from "@ngx-translate/core";
 import {AppRoutePaths} from "@/app/app.route.paths";
 import {NgForOf, NgIf} from "@angular/common";
-import {RegisterService} from "@/app/services/auth-service/register-service/register-service.service";
-import {FormValidationService} from "@/app/services/form-validation-service/form-validation.service";
+import {RegisterService} from "@/app/services/auth/register-service/register-service.service";
+import {FormValidationService} from "@/app/services/shared/form-validation-service/form-validation.service";
 
 
 @Component({

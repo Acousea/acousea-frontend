@@ -15,6 +15,16 @@
   transition: width 0.3s ease-in-out;
 }
 
+app-language-selector {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 9999; /* Asegura que se muestre sobre todos los elementos */
+  background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra ligera */
+}
+
+
 /* Apply the styles recursively to all child components */
 ::ng-deep .main-content > *:not(router-outlet) {
   flex-grow: 1;

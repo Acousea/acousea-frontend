@@ -47,8 +47,12 @@ export class SideMenuComponent {
     this.properties.isFixed = !this.properties.isFixed;
   }
 
-  toggleMenu() {
+  toggleMenu(){
     this.properties.isCollapsed = !this.properties.isCollapsed;
     this.menuStateChanged.emit(this.properties.isCollapsed);
+  }
+
+  onHeaderClick() {
+    window.location.href = '/';
   }
 }

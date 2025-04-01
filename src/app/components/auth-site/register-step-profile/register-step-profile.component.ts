@@ -5,10 +5,10 @@ import {NgIf} from "@angular/common";
 import {AddressSelectorComponent} from "../address-selector/address-selector.component";
 import {LanguageSelectorComponent} from "../../shared/side-menu/language-selector/language-selector.component";
 import {CustomInputComponent, FieldContent} from "../../shared/addons/custom-inputs/custom-input/custom-input.component";
-import {RegisterService} from '@/app/services/auth-service/register-service/register-service.service';
-import {AVAILABLE_LANGUAGES, Language} from "@/app/services/language-service/language.service";
+import {RegisterService} from '@/app/services/auth/register-service/register-service.service';
+import {AVAILABLE_LANGUAGES, Language} from "@/app/services/shared/language-service/language.service";
 import {ValidationRule} from "../../shared/addons/custom-inputs/validation.rule";
-import {FormValidationService} from "@/app/services/form-validation-service/form-validation.service";
+import {FormValidationService} from "@/app/services/shared/form-validation-service/form-validation.service";
 
 @Component({
   selector: 'app-register-step2-profile',

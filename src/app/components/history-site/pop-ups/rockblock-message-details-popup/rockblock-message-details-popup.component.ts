@@ -3,7 +3,7 @@ import {Message} from "../../rock-block-messages-table/rock-block-messages-table
 import {DatePipe, NgIf} from "@angular/common";
 import {
   MessageDetailsPopUpService
-} from "@/app/services/pop-ups-services/rockblock-message-details-popup/message-details-pop-up.service";
+} from "@/app/services/pop-ups/rockblock-message-details-popup/message-details-pop-up.service";
 import {OperationCode} from "@/app/global-interfaces/global-interfaces";
 
 @Component({

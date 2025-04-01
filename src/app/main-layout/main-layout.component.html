@@ -10,7 +10,15 @@
   <app-notification-list></app-notification-list>
   <app-flush-request-queue-popup></app-flush-request-queue-popup>
   <app-alert-popup></app-alert-popup>
+  <app-apply-discard-popup
+    [visible]="true"
+    [packetSize]="123"
+    (apply)="console.log('Apply clicked')"
+    (discard)="console.log('Discard clicked')"
+  />
+
   <app-loading-animation></app-loading-animation>
+  <app-language-selector [dropdownDirection]="'up'"></app-language-selector>
   <app-side-menu (menuStateChanged)="onMenuStateChanged($event)"></app-side-menu>
   <div class="main-content" [style.width]="mainContentWidth">
     <router-outlet></router-outlet>

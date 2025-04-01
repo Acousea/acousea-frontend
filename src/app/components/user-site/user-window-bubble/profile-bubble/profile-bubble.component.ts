@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {User} from "@/app/services/users/user.interfaces";
-import {AuthService} from "@/app/services/auth-service/auth.service";
+import {User} from "@/app/services/auth/user-service/user.interfaces";
+import {AuthService} from "@/app/services/auth/auth.service";
 
 @Component({
   selector: 'app-profile-bubble',

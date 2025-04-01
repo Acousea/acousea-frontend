@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "@/app/services/users/user.service";
-import {User} from "@/app/services/users/user.interfaces";
+import {UserService} from "@/app/services/auth/user-service/user.service";
+import {User} from "@/app/services/auth/user-service/user.interfaces";
 import {
   UserProfilePictureComponent
 } from "@/app/components/user-site/user-profile-picture/user-profile-picture.component";

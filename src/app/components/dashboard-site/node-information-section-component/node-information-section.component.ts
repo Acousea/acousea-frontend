@@ -9,7 +9,6 @@ import {
 import {TranslateModule} from "@ngx-translate/core";
 import {ICListenHF, pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
 import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
-import {SelectedNodeService} from "@/app/services/selected-node-service/selected-node.service";
 
 
 import {
@@ -27,6 +26,7 @@ import {
 import {
   RTCMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/rtc-monitor-panel/rtc-monitor-panel.component";
+import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
 
 @Component({
@@ -54,9 +54,9 @@ export class NodeInformationSectionComponent {
 
 
   constructor(
-    selectedNodeService: SelectedNodeService
+    nodeContext: NodeContextService
   ) {
-    selectedNodeService.selectedNode$.subscribe((node) => {
+    nodeContext.selectedNode$.subscribe((node) => {
       if (!node) {
         console.error("NodeInfoComponent.constructor() -> No node selected");
         this.errorMessage = 'No node selected';

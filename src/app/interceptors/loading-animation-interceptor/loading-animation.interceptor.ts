@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
-import {LoadingAnimationService} from "../../services/loading-animation-service/loading-animation.service";
+import {LoadingAnimationService} from "@/app/services/shared/loading-animation-service/loading-animation.service";
 
 
 @Injectable()

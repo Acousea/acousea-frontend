@@ -1,4 +1,4 @@
-<div class="language-selector">
+<div class="language-selector" [ngClass]="dropdownDirection">
   <div class="selected-language" (click)="toggleDropdown()">
     <img [src]="getFlagUrl(currentLanguage)" [alt]="currentLanguage" class="flag-icon"/>
     {{ getCurrentLanguageLabel() }}

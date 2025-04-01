@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ValidateFieldResult} from "@/app/services/auth-service/user.interfaces";
+import {ValidateFieldResult} from "@/app/services/auth/user.interfaces";
 import {ValidationRule} from "../validation.rule";
 
 export interface FieldContent {

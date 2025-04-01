@@ -1,6 +1,6 @@
-import {Component, ElementRef, HostListener, OnInit} from '@angular/core';
-import {Language, LanguageService} from "@/app/services/language-service/language.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {Component, ElementRef, HostListener, Input, OnInit} from '@angular/core';
+import {Language, LanguageService} from "@/app/services/shared/language-service/language.service";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -9,7 +9,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     NgForOf,
     FormsModule,
-    NgIf
+    NgIf,
+    NgClass
   ],
   templateUrl: './language-selector.component.html',
   styleUrl: './language-selector.component.css'
@@ -18,6 +19,7 @@ export class LanguageSelectorComponent implements OnInit {
   languages: Language[] = [];
   currentLanguage: string = '';
   dropdownOpen = false;
+  @Input() dropdownDirection: 'up' | 'down' = 'down'; // Valor por defecto
 
   constructor(private languageService: LanguageService,
               private elementRef: ElementRef

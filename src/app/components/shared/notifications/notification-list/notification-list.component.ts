@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationComponent} from "../notification/notification.component";
 import {NgForOf} from "@angular/common";
-import {NotificationService} from "@/app/services/notification-service/notification.service";
-import {Notification} from "@/app/services/notification-service/notification.service";
+import {NotificationService} from "@/app/services/real-time/notification-service/notification.service";
+import {Notification} from "@/app/services/real-time/notification-service/notification.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {CdkDrag, CdkDragEnd, CdkDragMove} from '@angular/cdk/drag-drop';
 

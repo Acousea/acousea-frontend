@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NgClass, NgIf} from "@angular/common";
-import {AlertPopUpService} from "@/app/services/pop-ups-services/alert-popup/alert-pop-up.service";
+import {AlertPopUpService} from "@/app/services/pop-ups/alert-popup/alert-pop-up.service";
 
 
 @Component({

@@ -3,7 +3,7 @@ import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
 import {TooltipComponent} from "../../../shared/addons/tooltip/tooltip.component";
-import {undoable} from "@/app/services/pop-ups-services/undo-popup-service/undoable-decorator";
+import {undoable} from "@/app/services/pop-ups/undo-popup-service/undoable-decorator";
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
 

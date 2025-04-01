@@ -1,0 +1,18 @@
+<div *ngIf="visible" class="popup-container" [@slideDown]>
+  <div class="popup-content">
+    <div *ngIf="packetSize != null" class="info-text">
+      <i class="fa-solid fa-coins"></i>&nbsp;
+      Size: <strong>{{ packetSize }} bytes </strong>
+      <b>|</b>
+      Credits: <strong>{{ creditCount }}</strong>
+    </div>
+    <div class="button-row">
+      <button class="btn discard" (click)="discard.emit()">
+        <i class="fa-solid fa-rotate-left"></i> Discard
+      </button>
+      <button class="btn apply" (click)="apply.emit()">
+        <i class="fa-solid fa-check"></i> Apply
+      </button>
+    </div>
+  </div>
+</div>

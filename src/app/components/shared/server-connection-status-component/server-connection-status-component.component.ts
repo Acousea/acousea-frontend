@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgClass, NgIf } from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {ServerConnectionStatusService} from "@/app/services/server-connection-service/server-connection-status.service";
+import {ServerConnectionStatusService} from "@/app/services/real-time/server-connection-service/server-connection-status.service";
 
 @Component({
   selector: 'app-server-connection-status-component',

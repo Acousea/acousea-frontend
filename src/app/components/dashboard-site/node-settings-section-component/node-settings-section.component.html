@@ -1,19 +1,23 @@
-<div>
-  <app-reporting-periods-monitor-panel
-    *ngIf="selectedNode &&
-            selectedNode.extModules &&
-            selectedNode.extModules.operationModes &&
-            selectedNode.extModules.loRaReporting &&
-            selectedNode.extModules.iridiumReporting"
-    [data]="{
-      operationModes: selectedNode.extModules.operationModes,
-      loRaReporting: selectedNode.extModules.loRaReporting,
-      iridiumReporting: selectedNode.extModules.iridiumReporting
-    }"></app-reporting-periods-monitor-panel>
-  <!--  <app-control-system-config [(selectedNode)]="selectedNode"/>-->
-  <app-streaming-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>
-  <app-pam-system-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>
-  <div class="bottom-container">
-    <button class="apply-button" (click)="applySettings()">{{ "BUTTONS.APPLY" | translate | uppercase }}</button>
-  </div>
-</div>
+<nav class="tabs">
+  <a routerLink="reporting" routerLinkActive="active">Reporting</a>
+  <a routerLink="streaming" routerLinkActive="active">Streaming</a>
+  <a routerLink="pam" routerLinkActive="active">PAM Config</a>
+  <a routerLink="all" routerLinkActive="active">View All</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+<!--<app-reporting-periods-monitor-panel-->
+<!--  *ngIf="selectedNode &&-->
+<!--            selectedNode.extModules &&-->
+<!--            selectedNode.extModules.operationModes &&-->
+<!--            selectedNode.extModules.loRaReporting &&-->
+<!--            selectedNode.extModules.iridiumReporting"-->
+<!--  [data]="{-->
+<!--      operationModes: selectedNode.extModules.operationModes,-->
+<!--      loRaReporting: selectedNode.extModules.loRaReporting,-->
+<!--      iridiumReporting: selectedNode.extModules.iridiumReporting-->
+<!--    }"></app-reporting-periods-monitor-panel>-->
+<!--&lt;!&ndash;  <app-control-system-config [(selectedNode)]="selectedNode"/>&ndash;&gt;-->
+<!--<app-streaming-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>-->
+<!--<app-pam-system-config [selectedNode]="selectedNode" *ngIf="selectedNode && selectedNode.pamModules.length > 0"/>-->

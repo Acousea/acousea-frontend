@@ -8,11 +8,11 @@ import {
 } from '@angular/common/http';
 import {Injectable, Provider} from "@angular/core";
 import {catchError, Observable, throwError} from "rxjs";
-import {AlertPopUpService} from "../../services/pop-ups-services/alert-popup/alert-pop-up.service";
+import {AlertPopUpService} from "@/app/services/pop-ups/alert-popup/alert-pop-up.service";
 import {map} from "rxjs/operators";
 import {
   FlushRequestQueuePopupService
-} from "../../services/pop-ups-services/flush-request-queue-popup/flush-request-queue-popup.service";
+} from "@/app/services/pop-ups/flush-request-queue-popup/flush-request-queue-popup.service";
 
 @Injectable()
 export class AlertPopUpInterceptor implements HttpInterceptor {

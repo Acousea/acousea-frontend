@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {DatePipe, NgClass, NgForOf, NgIf, NgStyle, UpperCasePipe} from "@angular/common";
-import {MessagesService} from "@/app/services/rockblock-messages-service/messages.service";
+import {MessageHistoryService} from "@/app/services/message-history/message-history.service";
 import {FormsModule} from "@angular/forms";
 import {
   MessageDetailsPopUpService
-} from "@/app/services/pop-ups-services/rockblock-message-details-popup/message-details-pop-up.service";
+} from "@/app/services/pop-ups/rockblock-message-details-popup/message-details-pop-up.service";
 import {OperationCode} from "@/app/global-interfaces/global-interfaces";
 import {TranslateModule} from "@ngx-translate/core";
 
@@ -53,7 +53,7 @@ export class RockBlockMessagesTableComponent implements OnInit {
   sortDirection: 'asc' | 'desc' = 'asc';
 
 
-  constructor(private messagesService: MessagesService,
+  constructor(private messagesService: MessageHistoryService,
               private messageDetailsPopUpService: MessageDetailsPopUpService,
               private datePipe: DatePipe
   ) {

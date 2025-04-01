@@ -19,14 +19,23 @@ import {AuthSiteComponent} from "@/app/sites/auth-site/auth-site/auth-site.compo
 
 import {TestSiteComponent} from "@/app/sites/test-site/test-site.component";
 import {
-  SummaryStatsSectionComponent
-} from "@/app/components/dashboard-site/summary-stats-section-component/summary-stats-section.component";
+  NodeStatsSectionComponent
+} from "@/app/components/dashboard-site/stats-section-component/node-stats-section.component";
 import {
   NodeInformationSectionComponent
 } from "@/app/components/dashboard-site/node-information-section-component/node-information-section.component";
 import {
   NodeSettingsSectionComponent
 } from "@/app/components/dashboard-site/node-settings-section-component/node-settings-section.component";
+import {
+  ReportingPeriodsMonitorPanel
+} from "@/app/components/node-monitor-panel/reporting-periods-monitor-panel/reporting-periods-monitor-panel.component";
+import {
+  StreamingConfigComponent
+} from "@/app/components/node-monitor-panel/pam-modules/streaming-config/streaming-config.component";
+import {
+  PamSystemConfigComponent
+} from "@/app/components/node-monitor-panel/pam-modules/pam-system-config/pam-system-config.component";
 
 
 export const routes: Routes = [
@@ -40,9 +49,19 @@ export const routes: Routes = [
         path: AppRoutePaths.summary.base,
         component: DashboardSiteComponent,
         children: [
-          {path: 'stats', component: SummaryStatsSectionComponent},
+          {path: 'stats', component: NodeStatsSectionComponent},
           {path: 'info', component: NodeInformationSectionComponent},
-          {path: 'settings', component: NodeSettingsSectionComponent},
+          {
+            path: 'settings',
+            component: NodeSettingsSectionComponent,
+            children: [
+              { path: 'reporting', component: ReportingPeriodsMonitorPanel },
+              { path: 'streaming', component: StreamingConfigComponent },
+              { path: 'pam', component: PamSystemConfigComponent },
+              // { path: 'all', component: DashboardAllViewComponent },
+              { path: '', redirectTo: 'reporting', pathMatch: 'full' }
+            ]
+          },
           {path: '', redirectTo: 'stats', pathMatch: 'full'}
         ]
       },

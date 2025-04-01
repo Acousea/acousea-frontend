@@ -4,7 +4,7 @@ import {FormsModule} from "@angular/forms";
 
 import {DeviceConfigPopupComponent} from "../../components/map-site/device-config-popup/device-config-popup.component";
 import {NodeDevice} from '../../global-interfaces/nodes/NodeDevice';
-import {NodeDevicesService} from "../../services/node-devices-service/node-devices.service";
+import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
 
 @Component({
@@ -22,8 +22,8 @@ export class MapSiteComponent {
 
   nodes: NodeDevice[] = [];
 
-  constructor(private communicationSystemService: NodeDevicesService) {
-    this.communicationSystemService.getNodes()
+  constructor(private nodeContext: NodeContextService) {
+    this.nodeContext.getAllNodes()
       .subscribe({
         next: nodes => {
           this.nodes = nodes;

@@ -22,12 +22,10 @@ export class ReportingPeriodsMonitorPanel extends NodeMonitorPanelComponent<{
   loRaReporting: LoraReportingModule,
   iridiumReporting: IridiumReportingModule
 }> {
-
-
   constructor() {
     super(true);
+    console.log("ReportingPeriodsMonitorPanel constructor: ", this.data);
   }
-
 
   updateLoRaReporting(key: number, value: EventTarget | null) {
     const val = (value as HTMLInputElement).value;

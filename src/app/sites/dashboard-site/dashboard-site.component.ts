@@ -8,10 +8,10 @@ import {
 } from "../../components/map-site/drifter-localizer-cards-component/device-cards-list.component";
 import {TitleCasePipe} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {AuthService} from "../../services/auth-service/auth.service";
-import {SelectedNodeService} from "../../services/selected-node-service/selected-node.service";
+import {AuthService} from "../../services/auth/auth.service";
 import {UpdateInfoButtonComponent} from "../../components/shared/addons/update-info-button/update-info-button.component";
-import {NodeDevicesService} from "../../services/node-devices-service/node-devices.service";
+import {NodeConfigurationService} from "@/app/services/node-context/node-configuration-service/node-configuration.service";
+import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -44,14 +44,14 @@ export class DashboardSiteComponent {
     this._selectedNode = value;
     console.warn('selectedNode ha cambiado:', this._selectedNode);
     if (value) {
-      this.selectedNodeService.setSelectedNode(value);
+      this.nodeContext.setSelectedNode(value);
     }
   }
 
   constructor(
     protected authService: AuthService,
-    private nodeDevicesService: NodeDevicesService,
-    private selectedNodeService: SelectedNodeService
+    private nodeDevicesService: NodeConfigurationService,
+    private nodeContext: NodeContextService
   ) {
     this.nodeDevicesService.getNodes().subscribe(nodes => {
       if (!nodes) {

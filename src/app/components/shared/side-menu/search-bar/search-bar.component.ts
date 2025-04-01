@@ -1,5 +1,5 @@
 import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
-import {SearchBarService, SearchContent} from "@/app/services/search-bar-service/search-bar.service";
+import {SearchBarService, SearchContent} from "@/app/services/shared/search-bar-service/search-bar.service";
 import {Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
