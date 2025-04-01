@@ -16,7 +16,7 @@
 }
 
 /* Apply the styles recursively to all child components */
-::ng-deep .main-content > * {
+::ng-deep .main-content > *:not(router-outlet) {
   flex-grow: 1;
   flex-shrink: 1;
   min-width: 0;
