@@ -31,34 +31,17 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
 })
 export class SettingsSiteComponent {
   nodes: NodeDevice[] = [];
-  private _selectedNode: NodeDevice | undefined = undefined;
 
   constructor(
     protected authService: AuthService,
     private nodeContext: NodeContextService
   ) {
-    this.nodeContext.getAllNodes().subscribe(nodes => {
-      if (!nodes) {
-        console.error('Error fetching nodes');
-        return;
-      }
-      console.log("SummarySiteComponent() => Nodes fetched: ", nodes);
-      this.nodes = nodes;
-      this.selectedNode = nodes[0];
-
-    });
   }
 
   get selectedNode(): NodeDevice | undefined {
-    return this._selectedNode;
-  }
-
-  set selectedNode(value: NodeDevice | undefined) {
-    this._selectedNode = value;
-    console.warn('selectedNode ha cambiado:', this._selectedNode);
-    if (value) {
-      this.nodeContext.setSelectedNode(value);
-    }
+    let selectedNode: NodeDevice | undefined;
+    this.nodeContext.selectedNode$.subscribe(node => selectedNode = node);
+    return selectedNode;
   }
 
   protected readonly BackendRoutePaths = BackendRoutePaths;

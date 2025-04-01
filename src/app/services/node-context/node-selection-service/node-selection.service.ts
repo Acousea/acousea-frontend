@@ -12,6 +12,10 @@ export class NodeSelectionService {
   // Observable para acceder al nodo seleccionado
   selectedNode$: Observable<NodeDevice | undefined> = this.selectedNodeSubject.asObservable();
 
+  get selectedNodeSnapshot(): NodeDevice | undefined {
+    return this.selectedNodeSubject.value;
+  }
+
   // Método para actualizar el nodo seleccionado
   setSelectedNode(node: NodeDevice): void {
     this.originalNodeSubject.next(node);
