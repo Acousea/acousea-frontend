@@ -1,7 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {NgStyle, SlicePipe} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  ReadonlyNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
 @Component({
   selector: 'app-core-temperature-and-operation-mode',
@@ -14,7 +16,7 @@ import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/nod
   templateUrl: './core-temperature-and-operation-mode.component.html',
   styleUrl: './core-temperature-and-operation-mode.component.css'
 })
-export class CoreTemperatureAndOperationModeComponent extends NodeMonitorPanelComponent<{
+export class CoreTemperatureAndOperationModeComponent extends ReadonlyNodeMonitorPanelComponent<{
   coreTemperature: number,
   operationModeIdx: number
 }> {

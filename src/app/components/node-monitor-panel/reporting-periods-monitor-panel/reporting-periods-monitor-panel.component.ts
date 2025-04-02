@@ -2,7 +2,9 @@ import {Component} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
 import {FormsModule} from "@angular/forms";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  MutableNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {IridiumReportingModule, LoraReportingModule, OperationModes} from "@/app/global-interfaces/nodes/ExtModules";
 import {WarningComponent} from "@/app/components/shared/warning-component/warning.component";
 
@@ -19,13 +21,13 @@ import {WarningComponent} from "@/app/components/shared/warning-component/warnin
   templateUrl: './reporting-periods-monitor-panel.component.html',
   styleUrls: ['../node-config.component.css']
 })
-export class ReportingPeriodsMonitorPanel extends NodeMonitorPanelComponent<{
+export class ReportingPeriodsMonitorPanel extends MutableNodeMonitorPanelComponent<{
   operationModes: OperationModes,
   loRaReporting: LoraReportingModule,
   iridiumReporting: IridiumReportingModule
 }> {
   constructor() {
-    super(true);
+    super();
     console.log("ReportingPeriodsMonitorPanel constructor: ", this.data);
   }
 
@@ -47,7 +49,7 @@ export class ReportingPeriodsMonitorPanel extends NodeMonitorPanelComponent<{
 
 
   objectEntries(obj: { [key: number]: number }): { key: number, value: number }[] {
-    return Object.entries(obj).map(([key, value]) => ({ key: Number(key), value }));
+    return Object.entries(obj).map(([key, value]) => ({key: Number(key), value}));
   }
 
 

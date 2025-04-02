@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {NgStyle} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  ReadonlyNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {AmbientModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
@@ -14,13 +16,14 @@ import {AmbientModule} from "@/app/global-interfaces/nodes/ExtModules";
   templateUrl: './ambient-monitor-panel.component.html',
   styleUrl: './ambient-monitor-panel.component.css'
 })
-export class AmbientMonitorPanelComponent extends NodeMonitorPanelComponent<AmbientModule> {
+export class AmbientMonitorPanelComponent extends ReadonlyNodeMonitorPanelComponent<AmbientModule> {
+
+  getTitle(): string {
+    return "ambient"
+  }
 
   constructor() {
     super();
-  }
-  getTitle(): string {
-    return "ambient"
   }
 
   getTemperatureColor(): string {

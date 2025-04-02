@@ -3,7 +3,9 @@ import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
 import {ICListenLoggingConfig} from "@/app/global-interfaces/nodes/PamModules";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  MutableNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
 @Component({
   selector: 'app-iclisten-data-collection-config-monitor-panel',
@@ -16,7 +18,7 @@ import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/nod
   templateUrl: './iclisten-data-collection-config-monitor-panel.component.html',
   styleUrl: '../../../node-config.component.css'
 })
-export class ICListenDataCollectionConfigMonitorPanel extends NodeMonitorPanelComponent<{
+export class ICListenDataCollectionConfigMonitorPanel extends MutableNodeMonitorPanelComponent<{
   loggingConfig: ICListenLoggingConfig
 }> {
   waveformSampleRates = [1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000, 512000];
@@ -37,11 +39,9 @@ export class ICListenDataCollectionConfigMonitorPanel extends NodeMonitorPanelCo
     return "iclisten-logging-config";
   }
 
-
   constructor() {
-    super(true);
+    super();
   }
-
 
   applySettings() {
 

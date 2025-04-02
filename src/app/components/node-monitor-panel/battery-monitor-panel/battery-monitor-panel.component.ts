@@ -3,7 +3,9 @@ import {NgIf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
 
 import {BatteryModule} from "@/app/global-interfaces/nodes/ExtModules";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  ReadonlyNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
 @Component({
   selector: 'app-battery-monitor-panel',
@@ -15,15 +17,13 @@ import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/nod
   templateUrl: './battery-monitor-panel.component.html',
   styleUrl: './battery-monitor-panel.component.css'
 })
-export class BatteryMonitorPanelComponent extends NodeMonitorPanelComponent<BatteryModule> implements OnInit {
+export class BatteryMonitorPanelComponent extends ReadonlyNodeMonitorPanelComponent<BatteryModule> implements OnInit {
+  getTitle(): string {
+    return "batteryModule";
+  }
 
   constructor() {
     super();
-  }
-
-
-  getTitle(): string {
-    return "batteryModule";
   }
 
   batteryStatusText: string = '';

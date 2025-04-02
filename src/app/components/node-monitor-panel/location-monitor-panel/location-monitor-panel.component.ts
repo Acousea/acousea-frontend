@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  ReadonlyNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {LocationModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
@@ -12,14 +14,16 @@ import {LocationModule} from "@/app/global-interfaces/nodes/ExtModules";
   templateUrl: './location-monitor-panel.component.html',
   styleUrl: './location-monitor-panel.component.css'
 })
-export class LocationMonitorPanelComponent extends NodeMonitorPanelComponent<LocationModule> {
-  constructor() {
-    super();
-  }
+export class LocationMonitorPanelComponent extends ReadonlyNodeMonitorPanelComponent<LocationModule> {
 
   getTitle(): string {
     return "location";
   }
+
+  constructor() {
+    super();
+  }
+
 
   latitudeDMS: string = '';
   longitudeDMS: string = '';

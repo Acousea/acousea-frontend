@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {DecimalPipe} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  ReadonlyNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {StorageModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Component({
@@ -14,17 +16,18 @@ import {StorageModule} from "@/app/global-interfaces/nodes/ExtModules";
   templateUrl: './storage-monitor-panel.component.html',
   styleUrl: './storage-monitor-panel.component.css'
 })
-export class StorageMonitorPanelComponent extends  NodeMonitorPanelComponent<StorageModule> implements OnInit {
-
-  constructor() {
-    super();
-  }
+export class StorageMonitorPanelComponent extends ReadonlyNodeMonitorPanelComponent<StorageModule> implements OnInit {
 
   getTitle(): string {
     return "storage";
   }
 
   usedPercentage: number = 0;
+
+
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
     this.calcUsageBarWidth();

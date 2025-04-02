@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {Component} from '@angular/core';
+import {
+  MutableNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {ReportingModule} from "@/app/global-interfaces/nodes/ExtModules";
 import {NgForOf, NgIf} from "@angular/common";
 
@@ -12,15 +14,14 @@ import {NgForOf, NgIf} from "@angular/common";
   templateUrl: './reporting-monitor-panel.component.html',
   styleUrl: './reporting-monitor-panel.component.css'
 })
-export class ReportingMonitorPanelComponent extends NodeMonitorPanelComponent<ReportingModule> {
-  constructor() {
-    super(true); // This component is writable
-  }
-
+export class ReportingMonitorPanelComponent extends MutableNodeMonitorPanelComponent<ReportingModule> {
   getTitle(): string {
     return "Reporting Configuration";
   }
 
+  constructor() {
+    super();
+  }
   /** Update a reporting period */
   updateReportingPeriod(index: number, event: Event) {
     if (!this.mutable) return;

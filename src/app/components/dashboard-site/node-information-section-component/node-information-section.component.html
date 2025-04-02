@@ -44,7 +44,7 @@
             coreTemperature: extModules.ambient.temperature,
             operationModeIdx: 2
           }"
-          >
+        >
 
         </app-core-temperature-and-operation-mode>
 
@@ -65,8 +65,7 @@
 </div>
 
 <ng-template #errorTemplate>
-  <div class="error-message">
-    Unable to retrieve complete device information.
-    <p>{{ errorMessage }}</p>
-  </div>
+  <app-warning
+    [message]="'Unable to retrieve complete device information. ' + errorMessage">
+  </app-warning>
 </ng-template>

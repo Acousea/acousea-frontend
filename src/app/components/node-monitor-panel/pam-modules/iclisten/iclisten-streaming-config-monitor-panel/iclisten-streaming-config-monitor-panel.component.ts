@@ -5,7 +5,9 @@ import {TranslateModule} from "@ngx-translate/core";
 import {TooltipComponent} from "../../../../shared/addons/tooltip/tooltip.component";
 import {undoable} from "@/app/services/pop-ups/undo-popup-service/undoable-decorator";
 import {ICListenStreamingConfig} from "@/app/global-interfaces/nodes/PamModules";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  MutableNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
 
 @Component({
@@ -20,7 +22,7 @@ import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/nod
   templateUrl: './iclisten-streaming-config-monitor-panel.component.html',
   styleUrls: ['../../../node-config.component.css']
 })
-export class ICListenStreamingConfigMonitorPanelComponent extends NodeMonitorPanelComponent<{
+export class ICListenStreamingConfigMonitorPanelComponent extends MutableNodeMonitorPanelComponent<{
   streamingConfig: ICListenStreamingConfig
 }> {
   waveformSampleRates = [1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000, 512000];
@@ -43,9 +45,8 @@ export class ICListenStreamingConfigMonitorPanelComponent extends NodeMonitorPan
     return "iclisten-iclisten-streaming-config-monitor-panel";
   }
 
-
   constructor() {
-    super(true);
+    super();
   }
 
   onMouseEnter(field: string) {

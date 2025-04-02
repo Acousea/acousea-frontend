@@ -27,6 +27,7 @@ import {
   RTCMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/rtc-monitor-panel/rtc-monitor-panel.component";
 import {NodeContextService} from "@/app/services/node-context/node-context.service";
+import {WarningComponent} from "@/app/components/shared/warning-component/warning.component";
 
 
 @Component({
@@ -41,7 +42,8 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
     TranslateModule,
     BatteryMonitorPanelComponent,
     AmbientMonitorPanelComponent,
-    RTCMonitorPanelComponent
+    RTCMonitorPanelComponent,
+    WarningComponent
   ],
   templateUrl: './node-information-section.component.html',
   styleUrl: './node-information-section.component.css'

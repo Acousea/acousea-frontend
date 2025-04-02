@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  ReadonlyNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
 @Component({
   selector: 'app-iclisten-device-status-monitor-panel',
@@ -11,7 +13,7 @@ import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/nod
   templateUrl: './iclisten-device-status-monitor-panel.component.html',
   styleUrl: './iclisten-device-status-monitor-panel.component.css'
 })
-export class ICListenDeviceStatusMonitorPanelComponent extends NodeMonitorPanelComponent<{
+export class ICListenDeviceStatusMonitorPanelComponent extends ReadonlyNodeMonitorPanelComponent<{
   statusCode: number
 }> implements OnInit {
   statusText: string = '';
@@ -23,7 +25,6 @@ export class ICListenDeviceStatusMonitorPanelComponent extends NodeMonitorPanelC
   override getTitle(): string {
     return "iclisten-device-status";
   }
-
 
   constructor() {
     super();

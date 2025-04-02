@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, ElementRef, HostListener} from '@angular/core';
-import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
+import {
+  ReadonlyNodeMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {OperationModes, OperationModesGraph} from "@/app/global-interfaces/nodes/ExtModules";
 import {GraphService} from "@/app/components/node-monitor-panel/operation-modes-monitor-panel/graph.service";
 
@@ -9,7 +11,7 @@ import {GraphService} from "@/app/components/node-monitor-panel/operation-modes-
   templateUrl: './operation-modes-card.component.html',
   styleUrls: ['./operation-modes-card.component.scss']
 })
-export class OperationModesMonitorPanelComponent extends NodeMonitorPanelComponent<{
+export class OperationModesMonitorPanelComponent extends ReadonlyNodeMonitorPanelComponent<{
   modes: OperationModes;
   graph: OperationModesGraph
 }> implements AfterViewInit {
