@@ -5,7 +5,6 @@ export interface NodeDevice {
   id: string;                // Identificador único del dispositivo
   name: string;              // Nombre del dispositivo
   icon: string;           // URL del icono asociado al dispositivo
-  operationMode: "LAUNCHING" | "WORKING" | "RECOVERING"; // Modo de operación del dispositivo
   extModules: ExtModule;      // Módulos del dispositivo
   pamModules: ICListenHF[]; // Módulos PAM asociados al dispositivo
 }

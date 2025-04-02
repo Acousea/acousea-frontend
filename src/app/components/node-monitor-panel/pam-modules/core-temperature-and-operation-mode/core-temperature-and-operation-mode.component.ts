@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {NgStyle, SlicePipe} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
+import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
 @Component({
   selector: 'app-core-temperature-and-operation-mode',
@@ -13,29 +14,35 @@ import {TranslateModule} from "@ngx-translate/core";
   templateUrl: './core-temperature-and-operation-mode.component.html',
   styleUrl: './core-temperature-and-operation-mode.component.css'
 })
-export class CoreTemperatureAndOperationModeComponent {
-  @Input() coreTemperature: number = 0; // Celsius
-  @Input() operationModeIdx: number = 1; // 1: Launching, 2: Working, 3: Recovering
-
+export class CoreTemperatureAndOperationModeComponent extends NodeMonitorPanelComponent<{
+  coreTemperature: number,
+  operationModeIdx: number
+}> {
   operationModes: string[] = ['None', 'Launching', 'Working', 'Recovering'];
 
+  getTitle(): string {
+    return "core-temperature-and-operation-mode";
+  }
+
   constructor() {
+    super();
   }
 
   getTemperatureColor(): string {
-    if (this.coreTemperature > 85) {
-      return 'rgb(246,0,0)'; // Hot - Red
-    } else if (this.coreTemperature > 70) {
-      return 'rgb(237,131,0)'; // Warm - Orange
-    } else if (this.coreTemperature > 50) {
-      return 'rgb(251,201,0)'; // Mild - Yellow
-    } else {
-      return 'rgba(30,144,255,1)'; // Cool - Blue
+    switch (true) {
+      case this.data.coreTemperature > 85:
+        return 'rgb(246,0,0)'; // Hot - Red
+      case this.data.coreTemperature > 70:
+        return 'rgb(237,131,0)'; // Warm - Orange
+      case this.data.coreTemperature > 50:
+        return 'rgb(251,201,0)'; // Mild - Yellow
+      default:
+        return 'rgba(30,144,255,1)'; // Cool - Blue
     }
   }
 
   getOperationModeColor(): string {
-    switch (this.operationModeIdx) {
+    switch (this.data.operationModeIdx) {
       case 1:
         return 'rgba(76,175,80,0.4)'; // Green for Launching
       case 2:
@@ -48,7 +55,7 @@ export class CoreTemperatureAndOperationModeComponent {
   }
 
   getOpModeLetterColor() {
-    switch (this.operationModeIdx) {
+    switch (this.data.operationModeIdx) {
       case 1:
         return 'rgba(76,175,80,1)'; // Green for Launching
       case 2:

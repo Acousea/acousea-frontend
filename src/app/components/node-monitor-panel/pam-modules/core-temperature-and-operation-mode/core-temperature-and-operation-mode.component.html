@@ -9,17 +9,17 @@
     </div>
     <div class="opmode-data">
       <h3>{{ 'NODE_STATUS.TEMPERATURE' | translate }}</h3>
-      <p>{{ coreTemperature }}°C</p>
+      <p>{{ data.coreTemperature }}°C</p>
     </div>
   </div>
   <div class="core-section operation-mode-section">
     <div class="icon operation-mode-icon"
          [ngStyle]="{'background-color': getOperationModeColor(), 'color': getOpModeLetterColor()}">
-      {{ 'NODE_STATUS.OPERATION_MODES.' + operationModes[operationModeIdx].toUpperCase() | translate | slice:0:1}}
+      {{ 'NODE_STATUS.OPERATION_MODES.' + operationModes[data.operationModeIdx].toUpperCase() | translate | slice:0:1}}
     </div>
     <div class="opmode-data">
       <h3>{{ 'NODE_STATUS.OPERATION_MODE' | translate }}</h3>
-      <p>{{ 'NODE_STATUS.OPERATION_MODES.' + operationModes[operationModeIdx].toUpperCase() | translate }}</p>
+      <p>{{ 'NODE_STATUS.OPERATION_MODES.' + operationModes[data.operationModeIdx].toUpperCase() | translate }}</p>
     </div>
   </div>
 </div>

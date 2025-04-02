@@ -45,8 +45,11 @@ export class AlertPopUpInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.error('Request failed:', error);
         const errorMessage = error.error || error.message || 'An unknown error occurred';
-        this.alertPopUpService.showErrorMessage(errorMessage);
-        return throwError(() => new Error(errorMessage));
+        const errorCode = error.status + " " + error.statusText;
+        const finalErrorMessage = errorCode + " " + errorMessage;
+        console.warn("AlertPopUpInterceptor -> error", finalErrorMessage);
+        // this.alertPopUpService.showErrorMessage(finalErrorMessage);
+        return throwError(() => new Error(finalErrorMessage));
       })
     );
   }

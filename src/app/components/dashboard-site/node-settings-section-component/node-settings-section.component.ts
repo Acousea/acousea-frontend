@@ -6,13 +6,13 @@ import {
   ReportingPeriodsMonitorPanel
 } from "@/app/components/node-monitor-panel/reporting-periods-monitor-panel/reporting-periods-monitor-panel.component";
 import {
-  ICListenStreamingConfigMonitorPanelComponent
-} from "@/app/components/node-monitor-panel/pam-modules/streaming-config/iclisten-streaming-config-monitor-panel.component";
-import {
   ICListenDataCollectionConfigMonitorPanel
-} from "@/app/components/node-monitor-panel/pam-modules/pam-system-config/iclisten-data-collection-config-monitor-panel.component";
+} from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-logging-config-monitor-panel/iclisten-data-collection-config-monitor-panel.component";
 import {NgIf} from "@angular/common";
 import {ICListenHF} from "@/app/global-interfaces/nodes/PamModules";
+import {
+  ICListenStreamingConfigMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-streaming-config-monitor-panel/iclisten-streaming-config-monitor-panel.component";
 
 type ViewMode = 'reporting' | 'streaming' | 'pam' | 'all';
 
@@ -22,9 +22,9 @@ type ViewMode = 'reporting' | 'streaming' | 'pam' | 'all';
   imports: [
     TranslateModule,
     ReportingPeriodsMonitorPanel,
-    ICListenStreamingConfigMonitorPanelComponent,
     ICListenDataCollectionConfigMonitorPanel,
-    NgIf
+    NgIf,
+    ICListenStreamingConfigMonitorPanelComponent
   ],
   templateUrl: './node-settings-section.component.html',
   styleUrl: './node-settings-section.component.css'

@@ -1,29 +1,41 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
+import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
 @Component({
-  selector: 'app-pam-device-status',
+  selector: 'app-iclisten-device-status-monitor-panel',
   standalone: true,
   imports: [
     TranslateModule
   ],
-  templateUrl: './pam-device-status.component.html',
-  styleUrl: './pam-device-status.component.css'
+  templateUrl: './iclisten-device-status-monitor-panel.component.html',
+  styleUrl: './iclisten-device-status-monitor-panel.component.css'
 })
-export class PamDeviceStatusComponent implements OnInit {
-  @Input() statusCode: number = 0;
+export class ICListenDeviceStatusMonitorPanelComponent extends NodeMonitorPanelComponent<{
+  statusCode: number
+}> implements OnInit {
   statusText: string = '';
   statusColor: string = '';
   statusIcon: string = '';
   borderColor: string = '';
+
+
+  override getTitle(): string {
+    return "iclisten-device-status";
+  }
+
+
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
     this.updateStatus();
   }
 
   updateStatus(): void {
-    this.statusCode=1;
-    switch (this.statusCode) {
+    this.data.statusCode = 1;
+    switch (this.data.statusCode) {
       case 0:
         this.statusText = 'READY';
         this.statusColor = 'rgba(0,200,83,0.1)'; // Green

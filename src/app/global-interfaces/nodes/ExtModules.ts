@@ -55,7 +55,7 @@ export interface ExtModule {
   rtc?: RTCModule;
   battery?: BatteryModule;
   location?: LocationModule;
-  temperature?: AmbientModule;
+  ambient?: AmbientModule;
   storage?: StorageModule;
   operationModes?: OperationModes;
   operationModesGraph?: OperationModesGraph;

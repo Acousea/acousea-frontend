@@ -3,9 +3,6 @@ import {Component} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
 import {AppRoutePaths, BackendRoutePaths} from "../../app.route.paths";
 import {NodeDevice} from "../../global-interfaces/nodes/NodeDevice";
-import {
-  DeviceCardsListComponent
-} from "../../components/map-site/drifter-localizer-cards-component/device-cards-list.component";
 import {TitleCasePipe} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AuthService} from "../../services/auth/auth.service";
@@ -13,6 +10,9 @@ import {
   UpdateInfoButtonComponent
 } from "../../components/shared/addons/update-info-button/update-info-button.component";
 import {NodeContextService} from "@/app/services/node-context/node-context.service";
+import {
+  DeviceCardsListComponent
+} from "@/app/components/map-site/drifter-localizer-cards-component/device-cards-list.component";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -24,12 +24,12 @@ export interface ChartInputData {
   standalone: true,
   imports: [
     TranslateModule,
-    DeviceCardsListComponent,
     RouterLink,
     RouterLinkActive,
     RouterOutlet,
     TitleCasePipe,
-    UpdateInfoButtonComponent
+    UpdateInfoButtonComponent,
+    DeviceCardsListComponent
   ],
   templateUrl: './dashboard-site.component.html',
   styleUrl: './dashboard-site.component.css'

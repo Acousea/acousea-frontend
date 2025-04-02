@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {MapGeoComponent} from "../../components/map-site/map-geo/map-geo.component";
 import {FormsModule} from "@angular/forms";
-
-import {DeviceConfigPopupComponent} from "../../components/map-site/device-config-popup/device-config-popup.component";
 import {NodeDevice} from '../../global-interfaces/nodes/NodeDevice';
 import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
@@ -13,7 +11,6 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
   imports: [
     MapGeoComponent,
     FormsModule,
-    DeviceConfigPopupComponent,
   ],
   templateUrl: './map-site.component.html',
   styleUrl: './map-site.component.css'

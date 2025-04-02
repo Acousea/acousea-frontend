@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {
-  PamDeviceStatusComponent
-} from "@/app/components/node-monitor-panel/pam-modules/pam-device-status/pam-device-status.component";
+  ICListenDeviceStatusMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-device-status-monitor-panel/iclisten-device-status-monitor-panel.component";
 import {
   CoreTemperatureAndOperationModeComponent
 } from "@/app/components/node-monitor-panel/pam-modules/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
@@ -36,7 +36,7 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
     NgIf,
     StorageMonitorPanelComponent,
     LocationMonitorPanelComponent,
-    PamDeviceStatusComponent,
+    ICListenDeviceStatusMonitorPanelComponent,
     CoreTemperatureAndOperationModeComponent,
     TranslateModule,
     BatteryMonitorPanelComponent,

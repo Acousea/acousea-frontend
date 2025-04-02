@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {HttpClient} from "@angular/common/http";
 import {EMPTY, Observable} from "rxjs";
+import {ApiService} from "@/app/services/api/api.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class NodeCostEstimationService {
 
   private previousState: NodeDevice | undefined = undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private apiService: ApiService) {}
 
   pollCostIfNeeded(newState: NodeDevice | undefined): Observable<any> {
     if (!newState || !this.previousState ) {
@@ -25,6 +26,6 @@ export class NodeCostEstimationService {
 
     this.previousState = newState;
 
-    return this.http.post('/api/estimate-cost', payload);
+    return this.apiService.post('/api/estimate-cost', payload);
   }
 }

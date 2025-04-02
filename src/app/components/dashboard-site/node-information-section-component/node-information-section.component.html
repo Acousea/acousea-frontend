@@ -16,7 +16,9 @@
     <div class="information-item" *ngIf="pamModule">
       <h2>{{ 'PAM_DEVICE.TITLE' | translate }}</h2>
       <ul>
-        <app-pam-device-status [statusCode]="pamModule.status.unitStatus"></app-pam-device-status>
+        <app-iclisten-device-status-monitor-panel
+          [data]="{statusCode: pamModule.status.unitStatus}">
+        </app-iclisten-device-status-monitor-panel>
         <app-ambient-monitor-panel
           [data]="{ temperature: pamModule.status.temperature, humidity: pamModule.status.humidity }"
         ></app-ambient-monitor-panel>
@@ -37,9 +39,13 @@
         ></app-location-monitor-panel>
 
         <app-core-temperature-and-operation-mode
-          *ngIf="extModules.temperature"
-          [coreTemperature]="extModules.temperature.temperature"
-          [operationModeIdx]="2">
+          *ngIf="extModules.ambient"
+          [data]="{
+            coreTemperature: extModules.ambient.temperature,
+            operationModeIdx: 2
+          }"
+          >
+
         </app-core-temperature-and-operation-mode>
 
         <app-battery-monitor-panel

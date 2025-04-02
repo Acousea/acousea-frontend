@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
-import {TooltipComponent} from "../../../shared/addons/tooltip/tooltip.component";
+import {TooltipComponent} from "../../../../shared/addons/tooltip/tooltip.component";
 import {undoable} from "@/app/services/pop-ups/undo-popup-service/undoable-decorator";
 import {ICListenStreamingConfig} from "@/app/global-interfaces/nodes/PamModules";
 import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
@@ -18,7 +18,7 @@ import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/nod
     TranslateModule
   ],
   templateUrl: './iclisten-streaming-config-monitor-panel.component.html',
-  styleUrls: ['../../node-config.component.css']
+  styleUrls: ['../../../node-config.component.css']
 })
 export class ICListenStreamingConfigMonitorPanelComponent extends NodeMonitorPanelComponent<{
   streamingConfig: ICListenStreamingConfig
@@ -40,7 +40,7 @@ export class ICListenStreamingConfigMonitorPanelComponent extends NodeMonitorPan
   private tooltipTimers: { [key: string]: any } = {};
 
   getTitle(): string {
-    return "iclisten-streaming-config";
+    return "iclisten-iclisten-streaming-config-monitor-panel";
   }
 
 

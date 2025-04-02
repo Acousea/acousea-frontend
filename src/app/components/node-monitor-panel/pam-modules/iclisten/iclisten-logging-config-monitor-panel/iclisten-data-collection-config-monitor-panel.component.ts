@@ -14,7 +14,7 @@ import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/nod
     TranslateModule
   ],
   templateUrl: './iclisten-data-collection-config-monitor-panel.component.html',
-  styleUrl: '../../node-config.component.css'
+  styleUrl: '../../../node-config.component.css'
 })
 export class ICListenDataCollectionConfigMonitorPanel extends NodeMonitorPanelComponent<{
   loggingConfig: ICListenLoggingConfig

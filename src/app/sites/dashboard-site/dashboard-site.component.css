@@ -58,6 +58,13 @@ h1 span {
   font-weight: 400;
 }
 
+.nav-item:hover {
+  background-color: var(--background-gray);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid var(--selected-intense-light-color);
+}
+
 .nav-item.active-tab {
   border-bottom: 2px solid var(--selected-intense-color);
 }

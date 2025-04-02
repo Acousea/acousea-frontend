@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
+import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
 @Component({
   selector: 'app-apply-discard-popup',
@@ -21,11 +22,18 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ]
 })
 export class ApplyDiscardPopupComponent {
-  @Input() visible = false;
-  @Input() packetSize?: number;
+  visible = false;
+  packetSize: number = 0;
 
   @Output() apply = new EventEmitter<void>();
   @Output() discard = new EventEmitter<void>();
+
+
+  constructor(private nodeContext: NodeContextService) {
+    this.nodeContext.selectedNode$.subscribe((node) => {
+
+    });
+  }
 
   get creditCount(): number | null {
     return this.packetSize != null ? Math.ceil(this.packetSize / 50) : null;

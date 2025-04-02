@@ -25,7 +25,14 @@ export class NodeContextService {
     // Start polling when selected node changes
     this.selectedNodeService.selectedNode$
       .pipe(
-        distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
+        distinctUntilChanged(
+          (a, b) => {
+            console.log("NodeContextService -> selectedNode$ -> distinctUntilChanged", a, b);
+            const a_str = JSON.stringify(a);
+            const b_str = JSON.stringify(b);
+            console.log("NodeContextService -> selectedNode$ -> distinctUntilChanged", a_str, b_str);
+            return JSON.stringify(a) === JSON.stringify(b)
+          }),
         switchMap(newState => this.nodeEstimationService.pollCostIfNeeded(newState))
       )
       .subscribe();

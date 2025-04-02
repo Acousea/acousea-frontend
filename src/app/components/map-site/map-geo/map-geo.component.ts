@@ -4,9 +4,6 @@ import {Marker} from "leaflet";
 import 'leaflet-arrowheads';
 
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
-import {
-  DeviceConfigPopUpService
-} from "@/app/services/pop-ups/device-config-popup-service/device-config-pop-up.service";
 
 
 @Component({
@@ -23,7 +20,6 @@ export class MapGeoComponent implements OnChanges, AfterViewInit {
   private readonly LPGC_Coord = [28.1, -15.4];
 
   constructor(
-    protected deviceConfigPopUpService: DeviceConfigPopUpService
   ) {
   }
 
@@ -76,7 +72,7 @@ export class MapGeoComponent implements OnChanges, AfterViewInit {
       marker.bindPopup(`${node.name}<br>Lat: ${node.extModules.location.latitude}, Lng: ${node.extModules.location.longitude}`)
         .on('mouseover', () => marker.openPopup()) // Mostrar popup en hover
         .on('mouseout', () => marker.closePopup())  // Ocultar popup al salir del hover
-        .on('click', () => this.deviceConfigPopUpService.showNodePopup(node)) // Llama al servicio en click
+        .on('click', () => console.warn("Should show popup for node ->",node)) // Llama al servicio en click
 
       this.markers[node.id] = marker; // Asigna el marcador al nodo por su ID
     });

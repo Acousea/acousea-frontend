@@ -6,11 +6,16 @@ import { NodeDevice } from '../../../global-interfaces/nodes/NodeDevice';
   providedIn: 'root'
 })
 export class NodeSelectionService {
-  private selectedNodeSubject = new BehaviorSubject<NodeDevice | undefined>(undefined);
   private originalNodeSubject = new BehaviorSubject<NodeDevice | undefined>(undefined);
 
   // Observable para acceder al nodo seleccionado
+  private selectedNodeSubject = new BehaviorSubject<NodeDevice | undefined>(undefined);
   selectedNode$: Observable<NodeDevice | undefined> = this.selectedNodeSubject.asObservable();
+
+  // Observable para acceder al nodo original
+  private changesSubject = new BehaviorSubject<Partial<NodeDevice> | undefined>(undefined);
+  readonly changes$ = this.changesSubject.asObservable();
+
 
   get selectedNodeSnapshot(): NodeDevice | undefined {
     return this.selectedNodeSubject.value;
