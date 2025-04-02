@@ -41,7 +41,5 @@
 </div>
 
 <ng-template #noNodeSelected>
-  <div class="no-node-selected">
-    <p>{{ "ERROR_MESSAGES.NO_NODE_SELECTED" | translate }}</p>
-  </div>
+  <app-warning [message]="'ERROR_MESSAGES.NO_NODE_SELECTED' | translate"/>
 </ng-template>

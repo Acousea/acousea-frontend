@@ -4,6 +4,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {FormsModule} from "@angular/forms";
 import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {IridiumReportingModule, LoraReportingModule, OperationModes} from "@/app/global-interfaces/nodes/ExtModules";
+import {WarningComponent} from "@/app/components/shared/warning-component/warning.component";
 
 @Component({
   selector: 'app-reporting-periods-monitor-panel',
@@ -12,7 +13,8 @@ import {IridiumReportingModule, LoraReportingModule, OperationModes} from "@/app
     NgForOf,
     TranslateModule,
     FormsModule,
-    NgIf
+    NgIf,
+    WarningComponent
   ],
   templateUrl: './reporting-periods-monitor-panel.component.html',
   styleUrls: ['../node-config.component.css']

@@ -22,19 +22,17 @@
     </app-reporting-periods-monitor-panel>
 
     <!-- Streaming -->
-    <app-streaming-config
+    <app-iclisten-streaming-config-monitor-panel
       *ngIf="(currentView === 'streaming' || currentView === 'all') &&
-              selectedNode.pamModules &&
-             selectedNode.pamModules.length > 0"
-      [selectedNode]="selectedNode">
-    </app-streaming-config>
+              getICListenModuleIfPresent()?.streamingConfig"
+      [data]="{ streamingConfig: getICListenModuleIfPresent()?.streamingConfig! }">
+    </app-iclisten-streaming-config-monitor-panel>
 
     <!-- PAM -->
-    <app-pam-system-config
+    <app-iclisten-data-collection-config-monitor-panel
       *ngIf="(currentView === 'pam' || currentView === 'all') &&
-             selectedNode.pamModules &&
-             selectedNode.pamModules.length > 0"
-      [selectedNode]="selectedNode">
-    </app-pam-system-config>
+              getICListenModuleIfPresent()?.loggingConfig"
+      [data]="{ loggingConfig: getICListenModuleIfPresent()?.loggingConfig! }">
+    </app-iclisten-data-collection-config-monitor-panel>
   </ng-container>
 </section>

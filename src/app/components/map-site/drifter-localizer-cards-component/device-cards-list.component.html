@@ -7,7 +7,7 @@
         [boldText]="selectedNode.name" />
     </ng-container>
     <ng-template #noNodeSelected>
-      <span>Selecciona un nodo</span>
+      <app-warning [message]="'ERROR_MESSAGES.NO_NODE_SELECTED' | translate"/>
     </ng-template>
     <span class="arrow-icon">&#9660;</span>
   </div>

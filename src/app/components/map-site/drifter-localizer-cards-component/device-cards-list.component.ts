@@ -7,6 +7,10 @@ import {
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {DeviceCardComponent} from "@/app/components/cards/device-card/device-card.component";
 import {NodeContextService} from "@/app/services/node-context/node-context.service";
+import {
+  WarningComponent
+} from "@/app/components/shared/warning-component/warning.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-device-cards-list',
@@ -16,7 +20,9 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
     NgForOf,
     NgIf,
     DeviceCardComponent,
-    AsyncPipe
+    AsyncPipe,
+    WarningComponent,
+    TranslateModule
   ],
   templateUrl: './device-cards-list.component.html',
   styleUrls: ['./device-cards-list.component.css']

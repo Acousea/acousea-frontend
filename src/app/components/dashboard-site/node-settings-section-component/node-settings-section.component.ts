@@ -6,12 +6,13 @@ import {
   ReportingPeriodsMonitorPanel
 } from "@/app/components/node-monitor-panel/reporting-periods-monitor-panel/reporting-periods-monitor-panel.component";
 import {
-  StreamingConfigComponent
-} from "@/app/components/node-monitor-panel/pam-modules/streaming-config/streaming-config.component";
+  ICListenStreamingConfigMonitorPanelComponent
+} from "@/app/components/node-monitor-panel/pam-modules/streaming-config/iclisten-streaming-config-monitor-panel.component";
 import {
-  PamSystemConfigComponent
-} from "@/app/components/node-monitor-panel/pam-modules/pam-system-config/pam-system-config.component";
+  ICListenDataCollectionConfigMonitorPanel
+} from "@/app/components/node-monitor-panel/pam-modules/pam-system-config/iclisten-data-collection-config-monitor-panel.component";
 import {NgIf} from "@angular/common";
+import {ICListenHF} from "@/app/global-interfaces/nodes/PamModules";
 
 type ViewMode = 'reporting' | 'streaming' | 'pam' | 'all';
 
@@ -21,8 +22,8 @@ type ViewMode = 'reporting' | 'streaming' | 'pam' | 'all';
   imports: [
     TranslateModule,
     ReportingPeriodsMonitorPanel,
-    StreamingConfigComponent,
-    PamSystemConfigComponent,
+    ICListenStreamingConfigMonitorPanelComponent,
+    ICListenDataCollectionConfigMonitorPanel,
     NgIf
   ],
   templateUrl: './node-settings-section.component.html',
@@ -43,6 +44,13 @@ export class NodeSettingsSectionComponent {
 
   changeView(view: ViewMode) {
     this.currentView = view;
+  }
+
+  getICListenModuleIfPresent(): ICListenHF | undefined {
+    if (this.selectedNode?.pamModules) {
+      return this.selectedNode.pamModules.find(module => module.name === 'ICListenHF') as ICListenHF;
+    }
+    return undefined;
   }
 
 }

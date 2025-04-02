@@ -12,7 +12,7 @@
                        [show]="showTooltip['recording-wav']"></app-tooltip>
         </label>
         <label class="switch">
-          <input type="checkbox" id="recording-wav" [(ngModel)]="waveformConfig.record_waveform">
+          <input type="checkbox" id="recording-wav" [(ngModel)]="data.streamingConfig.wav.recordWaveform">
           <span class="slider round"></span>
         </label>
       </div>
@@ -24,7 +24,7 @@
                        [show]="showTooltip['processing-wav']"></app-tooltip>
         </label>
         <label class="switch">
-          <input type="checkbox" id="processing-wav" [(ngModel)]="waveformConfig.process_waveform">
+          <input type="checkbox" id="processing-wav" [(ngModel)]="data.streamingConfig.wav.processWaveform">
           <span class="slider round"></span>
         </label>
       </div>
@@ -35,7 +35,7 @@
           <app-tooltip [text]="'Select the type of processing for WAV data'"
                        [show]="showTooltip['wav-processing-type']"></app-tooltip>
         </label>
-        <select id="wav-processing-type" [(ngModel)]="waveformConfig.waveform_processing_type"
+        <select id="wav-processing-type" [(ngModel)]="data.streamingConfig.wav.waveformProcessingType"
                 class="fixed-width-select">
           <option *ngFor="let type of wavProcessingTypes" [value]="type.value">{{ type.label }}</option>
         </select>
@@ -48,8 +48,8 @@
           <app-tooltip [text]="'Set the interval time (in seconds) between each WAV recording'"
                        [show]="showTooltip['wav-interval']"></app-tooltip>
         </label>
-        <input type="number" id="wav-interval" [(ngModel)]="waveformConfig.waveform_interval" min="1" max="65535"
-               [class.invalid]="!isDurationOrPeriodValid(waveformConfig.waveform_interval)">
+        <input type="number" id="wav-interval" [(ngModel)]="data.streamingConfig.wav.waveformInterval" min="1" max="65535"
+               [class.invalid]="!isDurationOrPeriodValid(data.streamingConfig.wav.waveformInterval)">
       </div>
       <div class="setting-group">
         <label for="wav-duration" (mouseenter)="onMouseEnter('wav-duration')"
@@ -59,8 +59,8 @@
           <app-tooltip [text]="'Set the duration (in seconds) for each WAV recording'"
                        [show]="showTooltip['wav-duration']"></app-tooltip>
         </label>
-        <input type="number" id="wav-duration" [(ngModel)]="waveformConfig.waveform_duration" min="1" max="65535"
-               [class.invalid]="!isDurationOrPeriodValid(waveformConfig.waveform_duration)">
+        <input type="number" id="wav-duration" [(ngModel)]="data.streamingConfig.wav.waveformDuration" min="1" max="65535"
+               [class.invalid]="!isDurationOrPeriodValid(data.streamingConfig.wav.waveformDuration)">
       </div>
     </div>
     <!------------------------------------------- SPECTRUM ------------------------------------------->
@@ -74,7 +74,7 @@
                        [show]="showTooltip['recording-fft']"></app-tooltip>
         </label>
         <label class="switch">
-          <input type="checkbox" id="recording-fft" [(ngModel)]="spectrumConfig.record_fft">
+          <input type="checkbox" id="recording-fft" [(ngModel)]="data.streamingConfig.fft.recordFFT">
           <span class="slider round"></span>
         </label>
       </div>
@@ -86,7 +86,7 @@
                        [show]="showTooltip['processing-fft']"></app-tooltip>
         </label>
         <label class="switch">
-          <input type="checkbox" id="processing-fft" [(ngModel)]="spectrumConfig.process_fft">
+          <input type="checkbox" id="processing-fft" [(ngModel)]="data.streamingConfig.fft.processFFT">
           <span class="slider round"></span>
         </label>
       </div>
@@ -97,7 +97,7 @@
           <app-tooltip [text]="'Select the type of processing for FFT data'"
                        [show]="showTooltip['fft-processing-type']"></app-tooltip>
         </label>
-        <select id="fft-processing-type" [(ngModel)]="spectrumConfig.fft_processing_type" class="fixed-width-select">
+        <select id="fft-processing-type" [(ngModel)]="data.streamingConfig.fft.fftProcessingType" class="fixed-width-select">
           <option *ngFor="let type of fftProcessingTypes" [value]="type.value">{{ type.label }}</option>
         </select>
       </div>
@@ -109,8 +109,8 @@
           <app-tooltip [text]="'Set the interval time (in seconds) between each FFT recording'"
                        [show]="showTooltip['fft-interval']"></app-tooltip>
         </label>
-        <input type="number" id="fft-interval" [(ngModel)]="spectrumConfig.fft_interval" min="1" max="65535"
-               [class.invalid]="!isDurationOrPeriodValid(spectrumConfig.fft_interval)">
+        <input type="number" id="fft-interval" [(ngModel)]="data.streamingConfig.fft.fftInterval" min="1" max="65535"
+               [class.invalid]="!isDurationOrPeriodValid(data.streamingConfig.fft.fftInterval)">
       </div>
       <div class="setting-group">
         <label for="fft-duration" (mouseenter)="onMouseEnter('fft-duration')"
@@ -120,8 +120,8 @@
           <app-tooltip [text]="'Set the duration (in seconds) for each FFT recording'"
                        [show]="showTooltip['fft-duration']"></app-tooltip>
         </label>
-        <input type="number" id="fft-duration" [(ngModel)]="spectrumConfig.fft_duration" min="1" max="65535"
-               [class.invalid]="!isDurationOrPeriodValid(spectrumConfig.fft_duration)">
+        <input type="number" id="fft-duration" [(ngModel)]="data.streamingConfig.fft.fftDuration" min="1" max="65535"
+               [class.invalid]="!isDurationOrPeriodValid(data.streamingConfig.fft.fftDuration)">
       </div>
     </div>
   </div>
