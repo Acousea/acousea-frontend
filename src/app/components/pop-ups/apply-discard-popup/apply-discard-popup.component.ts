@@ -30,9 +30,21 @@ export class ApplyDiscardPopupComponent {
 
 
   constructor(private nodeContext: NodeContextService) {
-    this.nodeContext.selectedNode$.subscribe((node) => {
+    this.nodeContext.observeChanges().subscribe((changes) => {
+      // If there are no changes, hide the popup
+      if (!changes) {
+        console.warn("No changes detected, hiding popup");
+        this.visible = false;
+        return;
+      }
+      // If there are changes, show the popup
+      console.warn("Changes detected, showing popup");
+      this.visible = true;
 
     });
+
+
+
   }
 
   get creditCount(): number | null {

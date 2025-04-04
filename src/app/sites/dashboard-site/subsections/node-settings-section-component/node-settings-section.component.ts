@@ -9,13 +9,13 @@ import {
   ICListenDataCollectionConfigMonitorPanel
 } from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-logging-config-monitor-panel/iclisten-data-collection-config-monitor-panel.component";
 import {NgIf} from "@angular/common";
-import {ICListenHF, ICListenLoggingConfig, ICListenStreamingConfig} from "@/app/global-interfaces/nodes/PamModules";
+import {ICListenHF} from "@/app/global-interfaces/nodes/PamModules";
 import {
   ICListenStreamingConfigMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-streaming-config-monitor-panel/iclisten-streaming-config-monitor-panel.component";
 import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
 
-type ViewMode = 'reporting' | 'streaming' | 'pam' | 'all';
+type ViewMode = 'reporting' | 'iclistenhf' | 'all';
 
 @Component({
   selector: 'app-node-settings-section',
@@ -57,23 +57,35 @@ export class NodeSettingsSectionComponent {
 
   onReportingPeriodsUpdate($event: Partial<ExtModule>) {
     // Rebuild all extmodule adding the new changes
-    const updatedExtModules: { extModules: ExtModule } =
-      {
-        extModules: {
-          ...this.selectedNode?.extModules,
-          ...$event
-        }
+    const updatedExtModules: { extModules: ExtModule } = {
+      extModules: {
+        ...this.selectedNode?.extModules,
+        ...$event
       }
+    }
 
     this.nodeContext.updateNode(updatedExtModules);
   }
 
-  onStreamingConfigUpdate($event: Partial<{ streamingConfig: ICListenStreamingConfig }>) {
-
+  onICListenHFConfigUpdate($event: Partial<ICListenHF>) {
+    const previousICListenHF = this.selectedNode?.pamModules?.ICListenHF;
+    if (!previousICListenHF) {
+      console.warn('No ICListenHF module found');
+      return;
+    }
+    const updatedICListenModule: { ICListenHF: ICListenHF } = {
+      ICListenHF: {
+        ...previousICListenHF,
+        ...$event
+      }
+    }
+    this.nodeContext.updateNode({
+      pamModules: {
+        ...this.selectedNode?.pamModules,
+        ...updatedICListenModule
+      }
+    });
 
   }
 
-  onDataCollectionConfigUpdate($event: Partial<{ loggingConfig: ICListenLoggingConfig }>) {
-
-  }
 }

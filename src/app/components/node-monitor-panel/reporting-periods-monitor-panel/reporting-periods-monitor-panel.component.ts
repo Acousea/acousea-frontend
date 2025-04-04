@@ -3,6 +3,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
 import {FormsModule} from "@angular/forms";
 import {
+  EmitChangesAfter,
   MutableNodeMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 import {IridiumReportingModule, LoraReportingModule, OperationModes} from "@/app/global-interfaces/nodes/ExtModules";
@@ -31,6 +32,7 @@ export class ReportingPeriodsMonitorPanel extends MutableNodeMonitorPanelCompone
     console.log("ReportingPeriodsMonitorPanel constructor: ", this.data);
   }
 
+  @EmitChangesAfter(self => self.emitChange(self.data))
   updateLoRaReporting(key: number, value: EventTarget | null) {
     const val = (value as HTMLInputElement).value;
     console.warn('updateLoRaReporting', key, val);
@@ -39,6 +41,7 @@ export class ReportingPeriodsMonitorPanel extends MutableNodeMonitorPanelCompone
     }
   }
 
+  @EmitChangesAfter(self => self.emitChange(self.data))
   updateIridiumReporting(key: number, value: EventTarget | null) {
     const val = (value as HTMLInputElement).value;
     console.warn('updateIridiumReporting', key, val);

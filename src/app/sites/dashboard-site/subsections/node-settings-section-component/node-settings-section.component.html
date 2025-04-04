@@ -1,8 +1,7 @@
 <nav class="tabs">
   <button (click)="changeView('all')" [class.active]="currentView === 'all'">View All</button>
   <button (click)="changeView('reporting')" [class.active]="currentView === 'reporting'">Reporting</button>
-  <button (click)="changeView('streaming')" [class.active]="currentView === 'streaming'">Streaming</button>
-  <button (click)="changeView('pam')" [class.active]="currentView === 'pam'">PAM Config</button>
+  <button (click)="changeView('iclistenhf')" [class.active]="currentView === 'iclistenhf'">ICListenHF</button>
 </nav>
 
 <section class="content">
@@ -23,23 +22,24 @@
     >
     </app-reporting-periods-monitor-panel>
 
-    <!-- Streaming -->
-    <app-iclisten-streaming-config-monitor-panel
-      *ngIf="(currentView === 'streaming' || currentView === 'all') &&
-              getICListenModuleIfPresent()?.streamingConfig"
-      [data]="{ streamingConfig: getICListenModuleIfPresent()?.streamingConfig! }"
-      (update)="onStreamingConfigUpdate($event)"
-
+    <div
+      *ngIf="(currentView === 'iclistenhf' || currentView === 'all')"
     >
-    </app-iclisten-streaming-config-monitor-panel>
+      <!-- Streaming -->
+      <app-iclisten-streaming-config-monitor-panel
+        *ngIf="getICListenModuleIfPresent()?.streamingConfig"
+        [data]="{ streamingConfig: getICListenModuleIfPresent()?.streamingConfig! }"
+        (update)="onICListenHFConfigUpdate($event)"
+      >
+      </app-iclisten-streaming-config-monitor-panel>
 
-    <!-- PAM -->
-    <app-iclisten-data-collection-config-monitor-panel
-      *ngIf="(currentView === 'pam' || currentView === 'all') &&
-              getICListenModuleIfPresent()?.loggingConfig"
-      [data]="{ loggingConfig: getICListenModuleIfPresent()?.loggingConfig! }"
-      (update)="onDataCollectionConfigUpdate($event)"
-    >
-    </app-iclisten-data-collection-config-monitor-panel>
+      <!-- Logging -->
+      <app-iclisten-data-collection-config-monitor-panel
+        *ngIf="getICListenModuleIfPresent()?.loggingConfig"
+        [data]="{ loggingConfig: getICListenModuleIfPresent()?.loggingConfig! }"
+        (update)="onICListenHFConfigUpdate($event)"
+      >
+      </app-iclisten-data-collection-config-monitor-panel>
+    </div>
   </ng-container>
 </section>

@@ -33,6 +33,27 @@ export abstract class MutableNodeMonitorPanelComponent<T> extends NodeMonitorPan
   protected emitChange(changes: Partial<T>) {
     this.update.emit(changes);
   }
+
+}
+
+
+export function EmitChangesAfter(fn: (self: any) => void) {
+  return function (
+    _: any,
+    __: string,
+    descriptor: PropertyDescriptor
+  ) {
+    const original = descriptor.value;
+    descriptor.value = function (...args: any[]) {
+      const result = original.apply(this, args);
+      if (result instanceof Promise) {
+        return result.finally(() => fn(this));
+      }
+      fn(this);
+      return result;
+    };
+    return descriptor;
+  };
 }
 
 @Directive()
@@ -41,5 +62,6 @@ export abstract class ReadonlyNodeMonitorPanelComponent<T> extends NodeMonitorPa
     super(false);
   }
 }
+
 
 

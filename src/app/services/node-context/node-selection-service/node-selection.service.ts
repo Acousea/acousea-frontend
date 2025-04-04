@@ -30,6 +30,7 @@ export class NodeSelectionService {
   }
 
   applyPartialUpdate(partial: Partial<NodeDevice>): void {
+    console.log("Applying partial update", partial);
     const current = this.selectedNodeSubject.value;
     if (!current) return;
 
