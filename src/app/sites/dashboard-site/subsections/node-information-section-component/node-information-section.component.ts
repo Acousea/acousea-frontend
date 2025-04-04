@@ -53,7 +53,7 @@ export class NodeInformationSectionComponent {
   pamModules: PamModule | undefined;
   extModules: ExtModule | undefined;
 
-  currentView: InfoViewMode = 'iclistenhf';
+  currentView: InfoViewMode = 'system';
 
   changeView(view: InfoViewMode) {
     this.currentView = view;

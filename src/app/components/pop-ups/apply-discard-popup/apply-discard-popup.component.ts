@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { trigger, transition, style, animate } from '@angular/animations';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {animate, style, transition, trigger} from '@angular/animations';
 import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
 @Component({
@@ -12,11 +12,11 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
   animations: [
     trigger('slideDown', [
       transition(':enter', [
-        style({ transform: 'translateY(-100%)', opacity: 0 }),
-        animate('300ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
+        style({ transform: 'translate(-50%, -100%)', opacity: 0 }),
+        animate('500ms ease-out', style({ transform: 'translate(-50%, 0)', opacity: 1 }))
       ]),
       transition(':leave', [
-        animate('300ms ease-in', style({ transform: 'translateY(-100%)', opacity: 0 }))
+        animate('500ms ease-in', style({ transform: 'translate(-50%, -100%)', opacity: 0 }))
       ])
     ])
   ]
@@ -42,7 +42,6 @@ export class ApplyDiscardPopupComponent {
       this.visible = true;
 
     });
-
 
 
   }

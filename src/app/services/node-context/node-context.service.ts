@@ -22,26 +22,31 @@ export class NodeContextService {
     private nodeEstimationService: NodeCostEstimationService,
     private nodeConfigurationService: NodeConfigurationService
   ) {
-    // Start polling when selected node changes
-    this.nodeSelectionService.selectedNode$
-      .pipe(
-        distinctUntilChanged(
-          (a, b) => {
-            console.log("NodeContextService -> selectedNode$ -> distinctUntilChanged", a, b);
-            return JSON.stringify(a) === JSON.stringify(b)
-          }),
-        switchMap(newState => this.nodeEstimationService.pollCostIfNeeded(newState))
-      )
-      .subscribe();
-
     // Load nodes once on service initialization
+    this.resetNodes()
+  }
+
+  private resetNodes(nodeId?: string) {
     this.nodeConfigurationService.getNodes().subscribe(nodes => {
       this.nodesSubject.next(nodes);
 
-      // Set first node as selected if none selected
-      if (!this.nodeSelectionService.selectedNodeSnapshot && nodes.length > 0) {
+      if (!nodeId) {
+        // If no nodeId is provided, set the first node as selected
+        if (nodes.length <= 0) {
+          console.warn("No nodes available");
+          return;
+        }
         this.nodeSelectionService.setSelectedNode(nodes[0]);
+        return;
       }
+      const node = nodes.find(node => node.id === nodeId);
+      if (!node) {
+        console.warn("Node not found", nodeId);
+        return;
+      }
+      this.nodeSelectionService.setSelectedNode(node);
+
+
     });
   }
 
@@ -68,11 +73,16 @@ export class NodeContextService {
   }
 
   // Config actions
-  saveNodeConfiguration(node: NodeDevice): void {
-    this.nodeConfigurationService.setNodeConfiguration(node);
+  applyChanges(): void {
+    console.warn("Applying node configuration ->", this.nodeSelectionService.selectedNodeSnapshot);
+    this.nodeConfigurationService.setNodeConfiguration(this.nodeSelectionService.selectedNodeSnapshot!);
   }
 
-  refreshReportingPeriods(): void {
-    this.nodeConfigurationService.getUpdatedReportingPeriods();
+  discardChanges(): void {
+    // Here we need to get the node from the nodes list with the same ID as the selected node
+    const nodeId = this.nodeSelectionService.selectedNodeSnapshot?.id;
+    console.warn("Discarding changes ->", nodeId);
+    this.resetNodes(nodeId);
   }
+
 }

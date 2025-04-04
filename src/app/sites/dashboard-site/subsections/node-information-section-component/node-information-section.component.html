@@ -1,13 +1,27 @@
 <nav class="tabs">
-  <button (click)="changeView('all')" [class.active]="currentView === 'all'">View All</button>
-  <button (click)="changeView('system')" [class.active]="currentView === 'system'">System</button>
-  <button (click)="changeView('iclistenhf')" [class.active]="currentView === 'iclistenhf'">ICListenHF</button>
+  <button
+    (click)="changeView('all')"
+    [class.active]="currentView === 'all'">
+    View All
+  </button>
+  <button
+    *ngIf="extModules"
+    (click)="changeView('system')"
+    [class.active]="currentView === 'system'">
+    System
+  </button>
+  <button
+    *ngIf="pamModules && pamModules.ICListenHF"
+    (click)="changeView('iclistenhf')"
+    [class.active]="currentView === 'iclistenhf'"
+  >ICListenHF
+  </button>
 </nav>
 
 <section class="system-info-site" *ngIf="extModules || pamModules; else errorTemplate">
-  <div class="meta-information" *ngIf="pamModules">
+  <div class="meta-information" *ngIf="extModules && extModules.rtc">
     <label>{{ 'SYSTEM_INFO_SITE.LAST_UPDATE' | translate }}:
-      <span>{{ pamModules.ICListenHF.recordingStats.epochTime }}</span></label>
+      <span>{{ extModules.rtc.currentTime }}</span></label>
   </div>
 
   <div class="information-container">

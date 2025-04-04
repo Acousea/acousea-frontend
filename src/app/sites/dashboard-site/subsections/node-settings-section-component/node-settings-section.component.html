@@ -1,7 +1,21 @@
 <nav class="tabs">
-  <button (click)="changeView('all')" [class.active]="currentView === 'all'">View All</button>
-  <button (click)="changeView('reporting')" [class.active]="currentView === 'reporting'">Reporting</button>
-  <button (click)="changeView('iclistenhf')" [class.active]="currentView === 'iclistenhf'">ICListenHF</button>
+  <button
+    (click)="changeView('all')"
+    [class.active]="currentView === 'all'">
+    View All
+  </button>
+  <button
+    *ngIf="selectedNode?.extModules?.operationModes"
+    (click)="changeView('reporting')"
+    [class.active]="currentView === 'reporting'">
+    Reporting
+  </button>
+  <button
+    *ngIf="selectedNode && selectedNode.pamModules && selectedNode.pamModules.ICListenHF"
+    (click)="changeView('iclistenhf')"
+    [class.active]="currentView === 'iclistenhf'"
+  >ICListenHF
+  </button>
 </nav>
 
 <section class="content">

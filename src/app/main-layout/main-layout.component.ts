@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, HostListener} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 
 import {RouterOutlet} from "@angular/router";
 import {SideMenuComponent} from "../components/shared/side-menu/side-menu.component";
@@ -21,6 +21,7 @@ import {
   LanguageSelectorComponent
 } from "@/app/components/shared/side-menu/language-selector/language-selector.component";
 import {ApplyDiscardPopupComponent} from "@/app/components/pop-ups/apply-discard-popup/apply-discard-popup.component";
+import {NodeContextService} from "@/app/services/node-context/node-context.service";
 
 @Component({
   selector: 'app-main-layout',
@@ -44,8 +45,10 @@ export class MainLayoutComponent implements AfterViewInit {
   isLoading: Observable<boolean>;
   isNotLoading: Observable<boolean>;
 
-  constructor(private loadingService: LoadingAnimationService,
-              private cdr: ChangeDetectorRef) {
+  constructor(
+    protected nodeContextService: NodeContextService,
+    private loadingService: LoadingAnimationService,
+    private cdr: ChangeDetectorRef) {
     this.isLoading = this.loadingService.isLoading;
     this.isNotLoading = this.loadingService.isLoading.pipe(map(loading => !loading));
     // console.warn("document.documentElement.clientWidth", document.documentElement.clientWidth);
