@@ -36,7 +36,7 @@ export class LineChartComponent implements OnChanges {
 
   public lineChartOptions: ChartOptions = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
 
     scales: {
       y: {

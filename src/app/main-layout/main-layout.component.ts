@@ -43,8 +43,6 @@ import {ApplyDiscardPopupComponent} from "@/app/components/pop-ups/apply-discard
 export class MainLayoutComponent implements AfterViewInit {
   isLoading: Observable<boolean>;
   isNotLoading: Observable<boolean>;
-  isMenuCollapsed: boolean = true; // Estado inicial
-  mainContentWidth: string = `${document.documentElement.clientWidth - 60.0}px`; // Usa el tamaño real de la ventana
 
   constructor(private loadingService: LoadingAnimationService,
               private cdr: ChangeDetectorRef) {
@@ -57,19 +55,6 @@ export class MainLayoutComponent implements AfterViewInit {
     this.isLoading.subscribe(() => {
       this.cdr.detectChanges();
     });
-  }
-
-  onMenuStateChanged(isCollapsed: boolean) {
-    this.isMenuCollapsed = isCollapsed;
-    this.onResize()
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    const menuWidth = this.isMenuCollapsed ? 60.0 : 250.0;
-    // console.warn("menuWidth", menuWidth);
-    // console.warn("document.documentElement.clientWidth", document.documentElement.clientWidth);
-    this.mainContentWidth = `${document.documentElement.clientWidth - menuWidth}px`; // Usa el tamaño real de la ventana
   }
 
   protected readonly console = console;

@@ -9,7 +9,7 @@
   display: flex; /* Añadido para que los hijos usen flex correctamente */
   flex: 1;
   flex-direction: column; /* Para alinear los hijos en una columna */
-  padding: 0 300px ;
+  padding: 0 200px ;
 }
 
 

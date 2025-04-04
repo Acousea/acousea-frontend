@@ -20,13 +20,13 @@ import {AuthSiteComponent} from "@/app/sites/auth-site/auth-site/auth-site.compo
 import {TestSiteComponent} from "@/app/sites/test-site/test-site.component";
 import {
   NodeStatsSectionComponent
-} from "@/app/components/dashboard-site/stats-section-component/node-stats-section.component";
+} from "@/app/sites/dashboard-site/subsections/node-stats-section-component/node-stats-section.component";
 import {
   NodeInformationSectionComponent
-} from "@/app/components/dashboard-site/node-information-section-component/node-information-section.component";
+} from "@/app/sites/dashboard-site/subsections/node-information-section-component/node-information-section.component";
 import {
   NodeSettingsSectionComponent
-} from "@/app/components/dashboard-site/node-settings-section-component/node-settings-section.component";
+} from "@/app/sites/dashboard-site/subsections/node-settings-section-component/node-settings-section.component";
 
 
 export const routes: Routes = [

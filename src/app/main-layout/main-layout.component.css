@@ -2,17 +2,15 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+
   background-color: var(--background-white);
-  height: max-content;
-  transition: margin-left 0.3s ease-in-out;
 }
 
 .main-content {
   display: flex;
-  align-self: flex-end;
-  height: 100%;
+  flex:1;
+  margin-left:60px;
   overflow: hidden;
-  transition: width 0.3s ease-in-out;
 }
 
 app-language-selector {

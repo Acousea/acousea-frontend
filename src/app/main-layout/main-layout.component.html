@@ -17,8 +17,8 @@
 
   <app-loading-animation></app-loading-animation>
   <app-language-selector [dropdownDirection]="'up'"></app-language-selector>
-  <app-side-menu (menuStateChanged)="onMenuStateChanged($event)"></app-side-menu>
-  <div class="main-content" [style.width]="mainContentWidth">
+  <app-side-menu></app-side-menu>
+  <div class="main-content">
     <router-outlet></router-outlet>
   </div>
 </div>
