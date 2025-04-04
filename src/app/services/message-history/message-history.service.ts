@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Message} from "../../components/history-site/rock-block-messages-table/rock-block-messages-table.component";
 import {Observable, Subject} from "rxjs";
-import {BackendRoutePaths} from "../../app.route.paths";
 import {ApiService} from "@/app/services/api/api.service";
+import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 
 @Injectable({
   providedIn: 'root'

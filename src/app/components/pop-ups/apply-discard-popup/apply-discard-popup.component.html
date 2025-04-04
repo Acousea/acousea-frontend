@@ -1,11 +1,17 @@
 <div *ngIf="visible" class="popup-container" [@slideDown]>
   <div class="popup-content">
-    <div *ngIf="packetSize != null" class="info-text">
+    <div *ngIf="cost != undefined; else warningTemplate" class="info-text">
       <i class="fa-solid fa-coins"></i>&nbsp;
-      Size: <strong>{{ packetSize }} bytes </strong>
+      Size: <strong>{{ cost.bytes }} bytes </strong>
       <b>|</b>
-      Cost: <strong>{{ creditCount }} credits</strong>
+      Cost: <strong>{{ cost.credits }} credits</strong>
     </div>
+    <ng-template #warningTemplate>
+      <app-warning
+        style="padding: 0.5rem 1rem"
+        [message]="'Error retrieving cost'"
+      />
+    </ng-template>
     <div class="button-row">
       <button class="btn discard" (click)="discard.emit()">
         <i class="fa-solid fa-rotate-left"></i> Discard

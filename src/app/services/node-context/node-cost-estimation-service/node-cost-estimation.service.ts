@@ -1,31 +1,36 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
-import {HttpClient} from "@angular/common/http";
-import {EMPTY, Observable} from "rxjs";
 import {ApiService} from "@/app/services/api/api.service";
+import {firstValueFrom} from "rxjs";
+
+import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
+
+export interface NodeCostEstimationPayload {
+  bytes: number;
+  credits: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class NodeCostEstimationService {
 
-  private previousState: NodeDevice | undefined = undefined;
+  constructor(private apiService: ApiService) {
+  }
 
-  constructor(private apiService: ApiService) {}
-
-  pollCostIfNeeded(newState: NodeDevice | undefined): Observable<any> {
-    if (!newState || !this.previousState ) {
-      this.previousState = newState;
-      return EMPTY;
+  async pollCostIfNeeded(newState: Partial<NodeDevice> | undefined): Promise<NodeCostEstimationPayload | undefined> {
+    // Check if changes are empty
+    if (!newState || Object.keys(newState).length === 0) {
+      console.warn("No changes detected, packet size is 0");
+      return Promise.resolve(undefined);
     }
 
     const payload = {
-      previous: this.previousState,
-      current: newState
+      changes: newState
     };
 
-    this.previousState = newState;
-
-    return this.apiService.post('/api/estimate-cost', payload);
+    return await firstValueFrom(
+      this.apiService.post<NodeCostEstimationPayload>(BackendRoutePaths.communicationSystem.costEstimation, payload)
+    );
   }
 }

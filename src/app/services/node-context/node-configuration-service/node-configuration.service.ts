@@ -4,9 +4,9 @@ import {CommunicationResultResponse} from "@/app/global-interfaces/global-interf
 import {AlertPopUpService} from "@/app/services/pop-ups/alert-popup/alert-pop-up.service";
 import {map} from "rxjs/operators";
 import {undoable} from "@/app/services/pop-ups/undo-popup-service/undoable-decorator";
-import {BackendRoutePaths} from "@/app/app.route.paths";
 import {NodeDevice, NodeDeviceMapper} from "@/app/global-interfaces/nodes/NodeDevice";
 import {ApiService} from "@/app/services/api/api.service";
+import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 
 
 export interface ReportingPeriods {

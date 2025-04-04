@@ -1,19 +1,19 @@
 import {Routes} from '@angular/router';
 import {MainLayoutComponent} from "@/app/main-layout/main-layout.component";
-import {MapSiteComponent} from "./sites/map-site/map-site.component";
-import {DashboardSiteComponent} from "./sites/dashboard-site/dashboard-site.component";
-import {HistorySiteComponent} from "./sites/history-site/history-site.component";
+import {MapSiteComponent} from "../sites/map-site/map-site.component";
+import {DashboardSiteComponent} from "../sites/dashboard-site/dashboard-site.component";
+import {HistorySiteComponent} from "../sites/history-site/history-site.component";
 import {UserProfileSiteComponent} from "@/app/sites/user-profile-site/user-profile-site.component";
-import {NotAvailableSiteComponent} from "./sites/not-available-site/not-available-site.component";
+import {NotAvailableSiteComponent} from "../sites/not-available-site/not-available-site.component";
 import {RegisterSiteComponent} from "@/app/sites/auth-site/register-site/register-site.component";
-import {AuthGuard} from "./guard/AuthGuard/authGuard";
+import {AuthGuard} from "../guard/AuthGuard/authGuard";
 import {AppRoutePaths} from "./app.route.paths";
 import {
   RegisterStepAccountComponent
-} from "./components/auth-site/register-step-account/register-step-account.component";
+} from "../components/auth-site/register-step-account/register-step-account.component";
 import {
   RegisterStepProfileComponent
-} from "./components/auth-site/register-step-profile/register-step-profile.component";
+} from "../components/auth-site/register-step-profile/register-step-profile.component";
 import {LoginSiteComponent} from "@/app/sites/auth-site/login-site/login-site.component";
 import {AuthSiteComponent} from "@/app/sites/auth-site/auth-site/auth-site.component";
 

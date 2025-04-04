@@ -1,7 +1,7 @@
 import {ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, isDevMode} from '@angular/core';
 import {provideRouter, withComponentInputBinding} from '@angular/router';
 
-import {routes} from './app.routes';
+import {routes} from './routes/app.routes';
 import {provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi} from "@angular/common/http";
 import {provideCharts, withDefaultRegisterables} from "ng2-charts";
 import {provideAnimations} from "@angular/platform-browser/animations";

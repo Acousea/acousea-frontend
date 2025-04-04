@@ -1,9 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {DeviceCardComponent} from "@/app/components/cards/device-card/device-card.component";
-import {NodeContextService} from "@/app/services/node-context/node-context.service";
 import {WarningComponent} from "@/app/components/shared/warning-component/warning.component";
 import {TranslateModule} from "@ngx-translate/core";
 
@@ -15,7 +14,6 @@ import {TranslateModule} from "@ngx-translate/core";
     NgForOf,
     NgIf,
     DeviceCardComponent,
-    AsyncPipe,
     WarningComponent,
     TranslateModule
   ],
@@ -24,22 +22,17 @@ import {TranslateModule} from "@ngx-translate/core";
 })
 export class DeviceCardsListComponent {
   @Input() nodes: NodeDevice[] = [];
-  selectedNode$ = this.nodeContext.selectedNode$;
+  @Input() selectedNode: NodeDevice | undefined = undefined;
+  @Output() nodeSelected = new EventEmitter<NodeDevice>();
+
   dropdownVisible = false;
 
-  constructor(
-    protected nodeContext: NodeContextService
-  ) {
-  }
-
   toggleDropdown() {
-    console.warn("Toggle dropdown -> showing nodes: " + this.nodes);
     this.dropdownVisible = !this.dropdownVisible;
   }
 
   selectNode(node: NodeDevice) {
-    this.nodeContext.setSelectedNode(node);
+    this.nodeSelected.emit(node);
     this.dropdownVisible = false;
   }
-
 }

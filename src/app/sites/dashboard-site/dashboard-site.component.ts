@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 import {TranslateModule} from "@ngx-translate/core";
-import {AppRoutePaths, BackendRoutePaths} from "../../app.route.paths";
+import {AppRoutePaths} from "../../routes/app.route.paths";
 import {NodeDevice} from "../../global-interfaces/nodes/NodeDevice";
-import {TitleCasePipe} from "@angular/common";
+import {AsyncPipe, TitleCasePipe} from "@angular/common";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AuthService} from "../../services/auth/auth.service";
 import {
@@ -13,6 +13,7 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
 import {
   DeviceCardsListComponent
 } from "@/app/components/map-site/drifter-localizer-cards-component/device-cards-list.component";
+import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -29,20 +30,18 @@ export interface ChartInputData {
     RouterOutlet,
     TitleCasePipe,
     UpdateInfoButtonComponent,
-    DeviceCardsListComponent
+    DeviceCardsListComponent,
+    AsyncPipe
   ],
   templateUrl: './dashboard-site.component.html',
   styleUrl: './dashboard-site.component.css'
 })
 export class DashboardSiteComponent {
   nodes: NodeDevice[] = [];
-  private _selectedNode: NodeDevice | undefined = undefined;
-  get selectedNode(): NodeDevice | undefined {
-    return this._selectedNode;
-  }
 
-  set selectedNode(value: NodeDevice | undefined) {
-    this._selectedNode = value;
+  selectedNode$ = this.nodeContext.selectedNode$;
+  onNodeSelected(node: NodeDevice) {
+    this.nodeContext.setSelectedNode(node);
   }
 
   constructor(
@@ -51,10 +50,6 @@ export class DashboardSiteComponent {
   ) {
     this.nodeContext.nodes$.subscribe(nodes => {
       this.nodes = nodes;
-    })
-    this.nodeContext.selectedNode$.subscribe(selectedNode => {
-      console.warn("DashboardSiteComponent::selectedNodeChange: ", selectedNode);
-      this.selectedNode = selectedNode;
     })
   }
 

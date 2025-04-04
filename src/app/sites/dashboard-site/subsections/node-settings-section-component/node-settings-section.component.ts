@@ -40,6 +40,7 @@ export class NodeSettingsSectionComponent {
     nodeContext.selectedNode$.subscribe(node => {
       console.warn('New Selected node', node)
       this.selectedNode = node;
+      this.currentView = 'reporting';
     });
   }
 

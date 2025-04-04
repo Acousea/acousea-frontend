@@ -3,6 +3,7 @@ import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {BehaviorSubject, distinctUntilChanged, filter, Observable, switchMap} from "rxjs";
 import {NodeSelectionService} from "@/app/services/node-context/node-selection-service/node-selection.service";
 import {
+  NodeCostEstimationPayload,
   NodeCostEstimationService
 } from "@/app/services/node-context/node-cost-estimation-service/node-cost-estimation.service";
 import {
@@ -85,4 +86,11 @@ export class NodeContextService {
     this.resetNodes(nodeId);
   }
 
+  estimatePacketSize(changes: Partial<NodeDevice>): Promise<NodeCostEstimationPayload | undefined>{
+    // Estimate the packet size
+    const packetSize = this.nodeEstimationService.pollCostIfNeeded(changes);
+    console.warn("Estimated packet size ->", packetSize);
+    return packetSize;
+
+  }
 }

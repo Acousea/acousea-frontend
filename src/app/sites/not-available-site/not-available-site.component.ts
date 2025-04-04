@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
-import {AppRoutePaths} from "../../app.route.paths";
+import {AppRoutePaths} from "../../routes/app.route.paths";
 
 @Component({
   selector: 'app-not-available-site',

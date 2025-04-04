@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {User} from "@/app/services/auth/user-service/user.interfaces";
-import {BackendRoutePaths} from "../../app.route.paths";
 import {ApiService} from "@/app/services/api/api.service";
+import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 
 
 @Injectable({

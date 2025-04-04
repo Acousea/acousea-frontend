@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ApiResponse} from "@/app/global-interfaces/global-interfaces";
-import {BackendRoutePaths} from "@/app/app.route.paths";
+
+import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 
 interface FlushRequestQueuePopUpState {
   display: boolean;

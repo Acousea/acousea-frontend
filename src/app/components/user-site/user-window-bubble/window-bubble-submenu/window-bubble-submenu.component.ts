@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NgForOf} from "@angular/common";
-import {AppRoutePaths} from "@/app/app.route.paths";
+import {AppRoutePaths} from "@/app/routes/app.route.paths";
 import {Router} from "@angular/router";
 import {AuthService} from "@/app/services/auth/auth.service";
 

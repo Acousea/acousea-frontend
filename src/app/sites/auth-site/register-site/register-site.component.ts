@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, RouterOutlet} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {TranslateModule} from "@ngx-translate/core";
-import {AppRoutePaths} from "@/app/app.route.paths";
+import {AppRoutePaths} from "@/app/routes/app.route.paths";
 import {NgForOf, NgIf} from "@angular/common";
 import {RegisterService} from "@/app/services/auth/register-service/register-service.service";
 import {FormValidationService} from "@/app/services/shared/form-validation-service/form-validation.service";

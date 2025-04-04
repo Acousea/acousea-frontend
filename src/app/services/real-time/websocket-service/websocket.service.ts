@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
-import {BackendRoutePaths} from "@/app/app.route.paths";
+
+import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 
 export interface WebSocketMessage {
   type: string;

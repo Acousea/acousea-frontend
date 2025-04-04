@@ -3,7 +3,12 @@
     <span>{{ authService.getCurrentUser()!.personalInfo.firstName | titlecase }}</span>
   </h1>
   <div class="device-and-section-selection">
-    <app-device-cards-list [nodes]="nodes"/>
+    <app-device-cards-list
+      [nodes]="nodes"
+      [selectedNode]="(selectedNode$ | async) ?? undefined"
+      (nodeSelected)="onNodeSelected($event)">
+    </app-device-cards-list>
+
     <div class="nav-tabs">
       <div class="nav-item" [routerLink]="['/' + AppRoutePaths.summary.stats]" routerLinkActive="active-tab">
         <a>Stats</a>

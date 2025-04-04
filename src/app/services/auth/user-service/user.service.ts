@@ -4,7 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from "./user.interfaces";
 import {map} from "rxjs/operators";
-import {BackendRoutePaths} from "../../../app.route.paths";
+
+import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 
 
 @Injectable({

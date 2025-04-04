@@ -73,6 +73,8 @@ export class NodeInformationSectionComponent {
       }
       this.pamModules = node.pamModules;
       this.extModules = node.extModules
+      this.errorMessage = undefined;
+      this.currentView = 'system';
     });
   }
 
