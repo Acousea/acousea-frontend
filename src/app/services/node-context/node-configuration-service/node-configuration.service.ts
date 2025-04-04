@@ -30,10 +30,6 @@ export class NodeConfigurationService {
   getNodes(): Observable<NodeDevice[]> {
     return this.apiService.get<NodeDevice[]>(BackendRoutePaths.communicationSystem.allNodes)
       .pipe(
-        map(response => {
-          // Usa NodeDeviceMapper para procesar cada NodeDevice
-          return response.map(NodeDeviceMapper.mapNodeDevice);
-        }),
         catchError(error => {
           this.alertPopUpService.showErrorMessage('An error occurred while fetching the nodes.');
           return throwError(() => new Error('Failed to fetch nodes.'));

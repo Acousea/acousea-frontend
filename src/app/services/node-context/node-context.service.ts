@@ -18,12 +18,12 @@ export class NodeContextService {
     ) as Observable<NodeDevice[]>;
 
   constructor(
-    private selectedNodeService: NodeSelectionService,
+    private nodeSelectionService: NodeSelectionService,
     private nodeEstimationService: NodeCostEstimationService,
     private nodeConfigurationService: NodeConfigurationService
   ) {
     // Start polling when selected node changes
-    this.selectedNodeService.selectedNode$
+    this.nodeSelectionService.selectedNode$
       .pipe(
         distinctUntilChanged(
           (a, b) => {
@@ -42,8 +42,8 @@ export class NodeContextService {
       this.nodesSubject.next(nodes);
 
       // Set first node as selected if none selected
-      if (!this.selectedNodeService.selectedNodeSnapshot && nodes.length > 0) {
-        this.selectedNodeService.setSelectedNode(nodes[0]);
+      if (!this.nodeSelectionService.selectedNodeSnapshot && nodes.length > 0) {
+        this.nodeSelectionService.setSelectedNode(nodes[0]);
       }
     });
   }
@@ -55,15 +55,19 @@ export class NodeContextService {
 
   // Selected node control
   setSelectedNode(node: NodeDevice): void {
-    this.selectedNodeService.setSelectedNode(node);
+    this.nodeSelectionService.setSelectedNode(node);
   }
 
   get selectedNode$(): Observable<NodeDevice | undefined> {
-    return this.selectedNodeService.selectedNode$;
+    return this.nodeSelectionService.selectedNode$;
   }
 
-  getChanges(): Partial<NodeDevice> | undefined {
-    return this.selectedNodeService.getChanges();
+  observeChanges(): Observable<Partial<NodeDevice> | undefined> {
+    return this.nodeSelectionService.changes$;
+  }
+
+  updateNode(partial: Partial<NodeDevice>): void {
+    this.nodeSelectionService.applyPartialUpdate(partial);
   }
 
   // Config actions

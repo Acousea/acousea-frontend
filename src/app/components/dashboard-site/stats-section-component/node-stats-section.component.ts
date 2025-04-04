@@ -42,7 +42,7 @@ export class NodeStatsSectionComponent {
     if (!node) {
       return;
     }
-    const iclistenHF = node.pamModules.find((module) => module.name === pamModuleTypes.ICListenHF);
+    const iclistenHF = node.pamModules.iclistenHF;
     if (!iclistenHF) {
       return;
     }

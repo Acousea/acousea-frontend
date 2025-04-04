@@ -9,10 +9,11 @@ import {
   ICListenDataCollectionConfigMonitorPanel
 } from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-logging-config-monitor-panel/iclisten-data-collection-config-monitor-panel.component";
 import {NgIf} from "@angular/common";
-import {ICListenHF} from "@/app/global-interfaces/nodes/PamModules";
+import {ICListenHF, ICListenLoggingConfig, ICListenStreamingConfig} from "@/app/global-interfaces/nodes/PamModules";
 import {
   ICListenStreamingConfigMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-streaming-config-monitor-panel/iclisten-streaming-config-monitor-panel.component";
+import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 type ViewMode = 'reporting' | 'streaming' | 'pam' | 'all';
 
@@ -34,7 +35,7 @@ export class NodeSettingsSectionComponent {
   currentView: ViewMode = 'reporting';
 
   constructor(
-    protected nodeContext: NodeContextService,
+    protected nodeContext: NodeContextService
   ) {
     nodeContext.selectedNode$.subscribe(node => {
       console.warn('New Selected node', node)
@@ -48,9 +49,31 @@ export class NodeSettingsSectionComponent {
 
   getICListenModuleIfPresent(): ICListenHF | undefined {
     if (this.selectedNode?.pamModules) {
-      return this.selectedNode.pamModules.find(module => module.name === 'ICListenHF') as ICListenHF;
+      return this.selectedNode.pamModules.iclistenHF
     }
     return undefined;
   }
 
+
+  onReportingPeriodsUpdate($event: Partial<ExtModule>) {
+    // Rebuild all extmodule adding the new changes
+    const updatedExtModules: { extModules: ExtModule } =
+      {
+        extModules: {
+          ...this.selectedNode?.extModules,
+          ...$event
+        }
+      }
+
+    this.nodeContext.updateNode(updatedExtModules);
+  }
+
+  onStreamingConfigUpdate($event: Partial<{ streamingConfig: ICListenStreamingConfig }>) {
+
+
+  }
+
+  onDataCollectionConfigUpdate($event: Partial<{ loggingConfig: ICListenLoggingConfig }>) {
+
+  }
 }

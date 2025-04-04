@@ -1,10 +1,4 @@
-export interface PamModule {
-  id: string;
-  name: string;
-  serialNumber: string;
-}
-
-export interface ICListenHF extends PamModule {
+export interface ICListenHF  {
   id: string;
   name: string;
   serialNumber: string;
@@ -78,3 +72,7 @@ export const pamModuleClasses: { [key: string]: (data: Partial<PamModule>) => IC
   }) as ICListenHF
 };
 
+
+export interface PamModule {
+  iclistenHF: ICListenHF;
+}

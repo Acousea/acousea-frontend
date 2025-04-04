@@ -49,7 +49,7 @@ import {WarningComponent} from "@/app/components/shared/warning-component/warnin
   styleUrl: './node-information-section.component.css'
 })
 export class NodeInformationSectionComponent {
-  pamModule: ICListenHF | undefined;
+  icListenHF: ICListenHF | undefined;
   extModules: ExtModule | undefined;
 
   errorMessage: string | undefined;
@@ -64,7 +64,7 @@ export class NodeInformationSectionComponent {
         this.errorMessage = 'No node selected';
         return;
       }
-      this.pamModule = node.pamModules.find((module) => module.name === pamModuleTypes.ICListenHF) as ICListenHF;
+      this.icListenHF = node.pamModules.iclistenHF;
       this.extModules = node.extModules
 
     });

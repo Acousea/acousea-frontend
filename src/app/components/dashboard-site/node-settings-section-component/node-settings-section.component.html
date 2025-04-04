@@ -18,21 +18,28 @@
         operationModes: selectedNode.extModules.operationModes,
         loRaReporting: selectedNode.extModules.loRaReporting,
         iridiumReporting: selectedNode.extModules.iridiumReporting
-      }">
+      }"
+      (update)="onReportingPeriodsUpdate($event)"
+    >
     </app-reporting-periods-monitor-panel>
 
     <!-- Streaming -->
     <app-iclisten-streaming-config-monitor-panel
       *ngIf="(currentView === 'streaming' || currentView === 'all') &&
               getICListenModuleIfPresent()?.streamingConfig"
-      [data]="{ streamingConfig: getICListenModuleIfPresent()?.streamingConfig! }">
+      [data]="{ streamingConfig: getICListenModuleIfPresent()?.streamingConfig! }"
+      (update)="onStreamingConfigUpdate($event)"
+
+    >
     </app-iclisten-streaming-config-monitor-panel>
 
     <!-- PAM -->
     <app-iclisten-data-collection-config-monitor-panel
       *ngIf="(currentView === 'pam' || currentView === 'all') &&
               getICListenModuleIfPresent()?.loggingConfig"
-      [data]="{ loggingConfig: getICListenModuleIfPresent()?.loggingConfig! }">
+      [data]="{ loggingConfig: getICListenModuleIfPresent()?.loggingConfig! }"
+      (update)="onDataCollectionConfigUpdate($event)"
+    >
     </app-iclisten-data-collection-config-monitor-panel>
   </ng-container>
 </section>
