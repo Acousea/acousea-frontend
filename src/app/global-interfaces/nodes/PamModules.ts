@@ -74,5 +74,5 @@ export const pamModuleClasses: { [key: string]: (data: Partial<PamModule>) => IC
 
 
 export interface PamModule {
-  iclistenHF: ICListenHF;
+  ICListenHF: ICListenHF;
 }

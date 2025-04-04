@@ -7,7 +7,7 @@ import {
   CoreTemperatureAndOperationModeComponent
 } from "@/app/components/node-monitor-panel/pam-modules/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
 import {TranslateModule} from "@ngx-translate/core";
-import {ICListenHF, pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
+import {PamModule} from "@/app/global-interfaces/nodes/PamModules";
 import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
 
 
@@ -29,6 +29,7 @@ import {
 import {NodeContextService} from "@/app/services/node-context/node-context.service";
 import {WarningComponent} from "@/app/components/shared/warning-component/warning.component";
 
+type InfoViewMode = 'system' | 'iclistenhf' | 'all';
 
 @Component({
   selector: 'app-node-information-section',
@@ -46,11 +47,17 @@ import {WarningComponent} from "@/app/components/shared/warning-component/warnin
     WarningComponent
   ],
   templateUrl: './node-information-section.component.html',
-  styleUrl: './node-information-section.component.css'
+  styleUrls: ['./node-information-section.component.css', '../inner-tabs-style.css'],
 })
 export class NodeInformationSectionComponent {
-  icListenHF: ICListenHF | undefined;
+  pamModules: PamModule | undefined;
   extModules: ExtModule | undefined;
+
+  currentView: InfoViewMode = 'iclistenhf';
+
+  changeView(view: InfoViewMode) {
+    this.currentView = view;
+  }
 
   errorMessage: string | undefined;
 
@@ -64,9 +71,8 @@ export class NodeInformationSectionComponent {
         this.errorMessage = 'No node selected';
         return;
       }
-      this.icListenHF = node.pamModules.iclistenHF;
+      this.pamModules = node.pamModules;
       this.extModules = node.extModules
-
     });
   }
 

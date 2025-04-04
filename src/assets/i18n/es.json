@@ -64,22 +64,27 @@
   "PAM_DEVICE": {
     "TITLE": "Dispositivo PAM",
     "STATUS": "Estado del Dispositivo",
-    "SETTINGS": {
-      "TITLE": "Configuración del Dispositivo PAM",
-      "STREAMING_SETTINGS": {
-        "TITLE": "Configuración de Streaming",
-        "STREAMING": "Streaming"
+    "ICLISTENHF": {
+      "TITLE": "ICListenHF",
+      "SETTINGS": {
+        "TITLE": "Configuración del ICListenHF",
+        "STREAMING": {
+          "TITLE": "Streaming"
+        }
+      },
+      "STATUS": {
+        "TITLE": "ICListenHF-Status",
+        "STATUSES": {
+          "READY": "Listo",
+          "NOT_READY": "No Listo",
+          "DATA_ACQUISITION_NOT_READY": "Adquisición de Datos No Lista",
+          "START_UP_CONFIGURATION_FAILED": "Inicio de Configuración Fallido",
+          "BAUD_RATE_RECONFIGURING": "Reconfigurando Velocidad de Transmisión",
+          "FILE_SYSTEM_FAULT": "Fallo del Sistema de Archivos",
+          "OFFLINE": "Desconectado",
+          "UNKNOWN": "Desconocido"
+        }
       }
-    },
-    "STATUSES": {
-      "READY": "Listo",
-      "DATA_ACQUISITION_NOT_READY": "Adquisición de Datos No Lista",
-      "NOT_READY": "No Listo",
-      "START_UP_CONFIGURATION_FAILED": "Inicio de Configuración Fallido",
-      "BAUD_RATE_RECONFIGURING": "Reconfigurando Velocidad de Transmisión",
-      "FILE_SYSTEM_FAULT": "Fallo del Sistema de Archivos",
-      "OFFLINE": "Desconectado",
-      "UNKNOWN": "Desconocido"
     }
   },
   "STORAGE_STATUS": {

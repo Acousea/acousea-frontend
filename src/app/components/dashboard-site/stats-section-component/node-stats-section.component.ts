@@ -42,7 +42,7 @@ export class NodeStatsSectionComponent {
     if (!node) {
       return;
     }
-    const iclistenHF = node.pamModules.iclistenHF;
+    const iclistenHF = node.pamModules.ICListenHF;
     if (!iclistenHF) {
       return;
     }

@@ -5,26 +5,5 @@
   background-color: var(--background-lightgray);
 }
 
-.tabs {
-  display: flex;
-  justify-content: end;
-  gap: 16px;
-  padding: 16px;
-}
-.tabs button {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  color: var(--text-gray);
-}
-.tabs button:hover {
-  background-color: var(--hover-light-color);
-  color: var(--text-black);
-}
 
-.tabs button.active {
-  background-color: var(--selected-intense-color);
-  color: var(--text-white);
-  font-weight: bold;
-}
 

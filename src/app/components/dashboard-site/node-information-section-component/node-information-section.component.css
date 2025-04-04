@@ -1,9 +1,7 @@
 :host {
   display: flex;
+  flex-direction: column;
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 40px;
   background-color: var(--background-lightgray);
 }
 
@@ -11,8 +9,8 @@
   display: flex; /* Añadido para que los hijos usen flex correctamente */
   flex: 1;
   flex-direction: column; /* Para alinear los hijos en una columna */
+  padding: 0 300px ;
 }
-
 
 
 .top-container h1 {
@@ -21,7 +19,6 @@
 
 .meta-information {
   display: flex;
-  flex: 1;
   align-items: center;
   justify-content: space-between; /* Distribuir el espacio entre los elementos */
   margin-bottom: 20px; /* Añadido para separación visual */
@@ -35,15 +32,10 @@
   font-weight: normal;
 }
 
-.storage-container {
-  flex: 1;
-  margin-bottom: 20px;
-}
-
 .information-container {
   display: grid;
   align-content: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 20px;
 }
 

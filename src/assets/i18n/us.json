@@ -64,22 +64,27 @@
   "PAM_DEVICE": {
     "TITLE": "PAM Device",
     "STATUS": "Device Status",
-    "SETTINGS": {
-      "TITLE": "PAM Device Settings",
-      "STREAMING_SETTINGS": {
-        "TITLE": "Streaming Settings",
-        "STREAMING": "Streaming"
+    "ICLISTENHF": {
+      "TITLE": "ICListenHF",
+      "SETTINGS": {
+        "TITLE": "ICListenHF Settings",
+        "STREAMING": {
+          "TITLE": "Streaming"
+        }
+      },
+      "STATUS": {
+        "TITLE": "ICListenHF-Status",
+        "STATUSES": {
+          "READY": "Ready",
+          "NOT_READY": "Not Ready",
+          "DATA_ACQUISITION_NOT_READY": "Data Acquisition Not Ready",
+          "START_UP_CONFIGURATION_FAILED": "Start Up Configuration Failed",
+          "BAUD_RATE_RECONFIGURING": "Baud Rate Reconfiguring",
+          "FILE_SYSTEM_FAULT": "File System Fault",
+          "OFFLINE": "Offline",
+          "UNKNOWN": "Unknown"
+        }
       }
-    },
-    "STATUSES": {
-      "READY": "Ready",
-      "DATA_ACQUISITION_NOT_READY": "Data Acquisition Not Ready",
-      "NOT_READY": "Not Ready",
-      "START_UP_CONFIGURATION_FAILED": "Start Up Configuration Failed",
-      "BAUD_RATE_RECONFIGURING": "Baud Rate Reconfiguring",
-      "FILE_SYSTEM_FAULT": "File System Fault",
-      "OFFLINE": "Offline",
-      "UNKNOWN": "Unknown"
     }
   },
   "STORAGE_STATUS": {

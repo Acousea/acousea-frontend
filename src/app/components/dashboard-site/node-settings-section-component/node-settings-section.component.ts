@@ -28,7 +28,7 @@ type ViewMode = 'reporting' | 'streaming' | 'pam' | 'all';
     ICListenStreamingConfigMonitorPanelComponent
   ],
   templateUrl: './node-settings-section.component.html',
-  styleUrl: './node-settings-section.component.css'
+  styleUrls: ['./node-settings-section.component.css', '../inner-tabs-style.css'],
 })
 export class NodeSettingsSectionComponent {
   selectedNode: NodeDevice | undefined;
@@ -49,7 +49,7 @@ export class NodeSettingsSectionComponent {
 
   getICListenModuleIfPresent(): ICListenHF | undefined {
     if (this.selectedNode?.pamModules) {
-      return this.selectedNode.pamModules.iclistenHF
+      return this.selectedNode.pamModules.ICListenHF
     }
     return undefined;
   }
