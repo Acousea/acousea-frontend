@@ -17,7 +17,7 @@
             "customWebpackConfig": {
               "path": "custom-webpack.config.ts"
             },
-            "outputPath": "dist/web-iclisten",
+            "outputPath": "dist",
             "index": "src/index.html",
             "polyfills": [
               "zone.js"
