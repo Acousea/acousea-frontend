@@ -18,9 +18,16 @@ export class WebSocketService {
     url: BackendRoutePaths.websocket.notifications,
     isConnectedSubject: new BehaviorSubject<boolean>(true),
     RECONNECT_DELAY: 5000, // Default reconnect delay
-    reconnectTimeout: null as any
+    reconnectTimeout: null as any,
+    PING_INTERVAL: 45000, // Default ping interval
+    pingIntervalId: null as any
   };
-  private messageSubjects: Map<string, Subject<any>> = new Map();
+  private messageSubjects: Map<string, Subject<any>> = new Map(
+    [
+      ['ping', new Subject<void>()],
+      ['notification', new Subject<any>()]
+    ]
+  );
 
   constructor() {
     this.connect();
@@ -46,12 +53,33 @@ export class WebSocketService {
         this.scheduleReconnect();
       }
     });
+
+    this.startPing();
   }
 
+  private startPing() {
+    this.clearPing(); // por si acaso ya estaba uno activo
+    console.warn("Starting ping interval ->>", this.connectionDetails.PING_INTERVAL);
+    this.connectionDetails.pingIntervalId = setInterval(() => {
+      if (this.socket$) {
+        this.socket$.next({type: 'ping', payload: {}});
+      }
+    }, this.connectionDetails.PING_INTERVAL);
+  }
+
+  private clearPing() {
+    if (this.connectionDetails.pingIntervalId) {
+      clearInterval(this.connectionDetails.pingIntervalId);
+      this.connectionDetails.pingIntervalId = null;
+    }
+  }
+
+
   private handleMessage(message: WebSocketMessage) {
+    console.log("Handle message ->>", message);
     const subject = this.messageSubjects.get(message.type);
     if (!subject) {
-      console.warn(`Unhandled WebSocket message type: ${message.type}`);
+      console.warn(`Unhandled WebSocket message type: ${message.type} with payload: ${message.payload}`);
       return;
     }
     subject.next(message.payload);

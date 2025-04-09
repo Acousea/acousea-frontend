@@ -25,12 +25,9 @@ export class NodeCostEstimationService {
       return Promise.resolve(undefined);
     }
 
-    const payload = {
-      changes: newState
-    };
-
+    console.warn("Polling cost estimation for new state", newState);
     return await firstValueFrom(
-      this.apiService.post<NodeCostEstimationPayload>(BackendRoutePaths.communicationSystem.costEstimation, payload)
+      this.apiService.post<NodeCostEstimationPayload>(BackendRoutePaths.communicationSystem.costEstimation, newState)
     );
   }
 }

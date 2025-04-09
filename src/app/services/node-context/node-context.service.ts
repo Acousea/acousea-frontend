@@ -27,11 +27,11 @@ export class NodeContextService {
     this.resetNodes()
   }
 
-  private resetNodes(nodeId?: string) {
+  public resetNodes(defaultSelectedNodeId?: string) {
     this.nodeConfigurationService.getNodes().subscribe(nodes => {
       this.nodesSubject.next(nodes);
 
-      if (!nodeId) {
+      if (!defaultSelectedNodeId) {
         // If no nodeId is provided, set the first node as selected
         if (nodes.length <= 0) {
           console.warn("No nodes available");
@@ -40,9 +40,9 @@ export class NodeContextService {
         this.nodeSelectionService.setSelectedNode(nodes[0]);
         return;
       }
-      const node = nodes.find(node => node.id === nodeId);
+      const node = nodes.find(node => node.id === defaultSelectedNodeId);
       if (!node) {
-        console.warn("Node not found", nodeId);
+        console.warn("Node not found", defaultSelectedNodeId);
         return;
       }
       this.nodeSelectionService.setSelectedNode(node);
@@ -54,11 +54,6 @@ export class NodeContextService {
   // Accessor for single-fetch node list
   getAllNodes(): Observable<NodeDevice[]> {
     return this.nodes$;
-  }
-
-  // Selected node control
-  setSelectedNode(node: NodeDevice): void {
-    this.nodeSelectionService.setSelectedNode(node);
   }
 
   get selectedNode$(): Observable<NodeDevice | undefined> {

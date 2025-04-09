@@ -61,18 +61,8 @@ export interface RecordingStats {
   numberOfFiles: number;
 }
 
-// Const or enum for pamModuleTypes
-export const pamModuleTypes = {
-  ICListenHF: 'ICListenHF'
-};
-
-export const pamModuleClasses: { [key: string]: (data: Partial<PamModule>) => ICListenHF } = {
-  "ICListenHF": (data) => ({
-    ...data,
-  }) as ICListenHF
-};
-
-
 export interface PamModule {
-  ICListenHF: ICListenHF;
+  ICListenHF?: ICListenHF;
+  ICListenLoggingConfig?: ICListenLoggingConfig;
+  ICListenLStreamingConfig?: ICListenStreamingConfig;
 }

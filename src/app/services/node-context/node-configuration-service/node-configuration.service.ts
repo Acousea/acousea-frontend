@@ -2,9 +2,8 @@ import {Injectable} from '@angular/core';
 import {catchError, Observable, throwError} from "rxjs";
 import {CommunicationResultResponse} from "@/app/global-interfaces/global-interfaces";
 import {AlertPopUpService} from "@/app/services/pop-ups/alert-popup/alert-pop-up.service";
-import {map} from "rxjs/operators";
 import {undoable} from "@/app/services/pop-ups/undo-popup-service/undoable-decorator";
-import {NodeDevice, NodeDeviceMapper} from "@/app/global-interfaces/nodes/NodeDevice";
+import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {ApiService} from "@/app/services/api/api.service";
 import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 

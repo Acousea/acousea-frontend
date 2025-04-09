@@ -4,7 +4,6 @@ import {LineChartComponent} from "../../../../components/charts/line-chart/line-
 import {TranslateModule} from "@ngx-translate/core";
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {ChartInputData} from "@/app/sites/dashboard-site/dashboard-site.component";
-import {pamModuleTypes} from "@/app/global-interfaces/nodes/PamModules";
 import {NodeContextService} from "@/app/services/node-context/node-context.service";
 import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 

@@ -41,7 +41,7 @@ export class DashboardSiteComponent {
 
   selectedNode$ = this.nodeContext.selectedNode$;
   onNodeSelected(node: NodeDevice) {
-    this.nodeContext.setSelectedNode(node);
+    this.nodeContext.resetNodes(node.id);
   }
 
   constructor(
