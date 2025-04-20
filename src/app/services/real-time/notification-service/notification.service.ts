@@ -1,68 +1,71 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {distinctUntilChanged, filter, Observable, of, Subject} from 'rxjs';
 import {WebSocketService} from "@/app/services/real-time/websocket-service/websocket.service";
-
-export interface Notification {
-  type: 'info' | 'success' | 'warning' | 'error';
-  message: string;
-  id?: number; // Optional for tracking notifications
-  date: Date;
-}
-
+import {catchError, merge} from "rxjs/operators";
+import {Notification} from "@/app/global-interfaces/notification/notification.interface";
+import {v4 as uuidv4} from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
-  private readonly _notifications$: Observable<Notification>;
-  mockNotifications: Notification[] = [
+  private notificationSubject = new Subject<Notification.Interface>();
+  private readonly _notifications$: Observable<Notification.Interface>;
 
-    {
-      type: 'info',
-      message: 'This is an info message',
-      date: new Date()
-    },
-    {
-      type: 'success',
-      message: 'This is a success message',
-      date: new Date()
-    },
-    {
-      type: 'warning',
-      message: 'This is a warning message',
-      date: new Date()
-    },
-    {
-      type: 'error',
-      message: 'This is an error message',
-      date: new Date()
-    }
+  mockNotifications: Notification.Interface[] = [
+    Notification.info('This is an info message'),
+    Notification.success('This is a success message'),
+    Notification.warning('This is a warning message'),
+    Notification.error('This is an error message'),
+
   ];
 
-
   constructor(private wsService: WebSocketService) {
-    this._notifications$ = this.wsService.subscribeToMessageType<Notification>('notification');
-    // Wait for 3 seconds before sending the notifications
-    // setTimeout(() => {
-    //   this.simulateNotifications();
-    // }, 3000);
+    // Combine both WebSocket notifications and local notifications
+    this._notifications$ = this.wsService.subscribeToMessageType<Notification.Interface>('notification').pipe(
+      // Merge with local notifications
+      merge(this.notificationSubject.asObservable()),
+      // Distinct by ID to avoid duplicates
+      distinctUntilChanged((prev, curr) => prev.id === curr.id),
+      // Filter out any unwanted notifications
+      filter(notification => notification.type !== undefined && notification.message !== undefined),
+      // Handle errors if needed
+      catchError(error => {
+        console.error('Error in notification stream:', error);
+        return of(); // Return an empty array on error
+      }
+    ));
+
+
   }
 
+  // Method to push a notification locally
+  pushNotification(notification: Notification.Interface) {
+    // Add date if not provided
+    if (!notification.date) {
+      notification.date = new Date();
+    }
+    // Generate ID if not provided
+    if (notification.id === undefined) {
+      notification.id = uuidv4();
+    }
+    this.notificationSubject.next(notification);
+  }
 
-  get notifications$(): Observable<Notification> {
+  get notifications$(): Observable<Notification.Interface> {
     return this._notifications$;
   }
 
   simulateNotifications() {
-    // Wait for 2 seconds between sending each notification
     this.mockNotifications.forEach((notification, index) => {
       setTimeout(() => {
-        this.mockNotifications.forEach((notification: Notification) => this.wsService.sendMessage({
+        this.pushNotification(notification);
+        // Also send via WebSocket if needed
+        this.wsService.sendMessage({
           type: 'notification',
           payload: notification
-        }));
+        });
       }, index * 500);
     });
   }
-
 }

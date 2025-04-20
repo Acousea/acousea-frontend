@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Notification} from "@/app/services/real-time/notification-service/notification.service";
 import {DatePipe, NgClass} from "@angular/common";
+import {Notification} from "@/app/global-interfaces/notification/notification.interface";
 
 @Component({
   selector: 'app-notification',
@@ -13,7 +13,7 @@ import {DatePipe, NgClass} from "@angular/common";
   styleUrl: './notification.component.css'
 })
 export class NotificationComponent {
-  @Input() notification: Notification | undefined;
+  @Input() notification: Notification.Interface | undefined;
 
   constructor() {}
 

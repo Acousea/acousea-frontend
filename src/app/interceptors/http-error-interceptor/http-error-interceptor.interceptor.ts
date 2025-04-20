@@ -4,20 +4,22 @@ import {
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
-  HttpRequest, HttpResponse
+  HttpRequest,
+  HttpResponse
 } from '@angular/common/http';
 import {Injectable, Provider} from "@angular/core";
 import {catchError, Observable, throwError} from "rxjs";
-import {AlertPopUpService} from "@/app/services/pop-ups/alert-popup/alert-pop-up.service";
 import {map} from "rxjs/operators";
 import {
   FlushRequestQueuePopupService
 } from "@/app/services/pop-ups/flush-request-queue-popup/flush-request-queue-popup.service";
+import {NotificationService} from "@/app/services/real-time/notification-service/notification.service";
+import {Notification} from "@/app/global-interfaces/notification/notification.interface";
 
 @Injectable()
-export class AlertPopUpInterceptor implements HttpInterceptor {
+export class HttpErrorInterceptor implements HttpInterceptor {
 
-  constructor(private alertPopUpService: AlertPopUpService,
+  constructor(private notificationService: NotificationService,
               private flushRequestQueueService: FlushRequestQueuePopupService) {
   }
 
@@ -38,7 +40,7 @@ export class AlertPopUpInterceptor implements HttpInterceptor {
           this.flushRequestQueueService.showPopUp();
         } else {
           const errorMessage = event.body.error?.error_message || 'An unknown error occurred';
-          this.alertPopUpService.showErrorMessage(errorMessage);
+          this.notificationService.pushNotification(Notification.error(errorMessage));
         }
         return event;
       }),
@@ -48,7 +50,6 @@ export class AlertPopUpInterceptor implements HttpInterceptor {
         const errorCode = error.status + " " + error.statusText;
         const finalErrorMessage = errorCode + " " + errorMessage;
         console.warn("AlertPopUpInterceptor -> error", finalErrorMessage);
-        // this.alertPopUpService.showErrorMessage(finalErrorMessage);
         return throwError(() => new Error(finalErrorMessage));
       })
     );
@@ -57,6 +58,6 @@ export class AlertPopUpInterceptor implements HttpInterceptor {
 
 export const AlertPopUpInterceptorProvider: Provider = {
   provide: HTTP_INTERCEPTORS,
-  useClass: AlertPopUpInterceptor,
+  useClass: HttpErrorInterceptor,
   multi: true
 }

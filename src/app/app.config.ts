@@ -7,7 +7,7 @@ import {provideCharts, withDefaultRegisterables} from "ng2-charts";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {
   AlertPopUpInterceptorProvider
-} from "./interceptors/alert-pop-up-interceptor/alert-pop-up-interceptor.service";
+} from "@/app/interceptors/http-error-interceptor/http-error-interceptor.interceptor";
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {LoadingInterceptorProvider} from "./interceptors/loading-animation-interceptor/loading-animation.interceptor";
 import {TranslateModule} from "@ngx-translate/core";

@@ -2,14 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {AlertPopUpService} from "@/app/services/pop-ups/alert-popup/alert-pop-up.service";
-import {ApiResponse} from "../../global-interfaces/global-interfaces";
+import {ApiResponse} from "../../global-interfaces/global.interface";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private httpClient: HttpClient, private alertPopupService: AlertPopUpService) {
+  constructor(private httpClient: HttpClient) {
   }
 
   private handleApiResponse<T>(observable: Observable<ApiResponse<T>>): Observable<T> {
@@ -21,14 +20,12 @@ export class ApiService {
 
         if (response.error) {
           const errorMessage = `Error ${response.error.error_code}: ${response.error.error_message}`;
-          this.alertPopupService.showErrorMessage(errorMessage);
           throw new Error(errorMessage);
         }
 
         throw new Error('Unexpected response format');
       }),
       catchError((error) => {
-        this.alertPopupService.showErrorMessage(error.message || 'An unknown error occurred');
         throw error; // Re-throw the error for further handling
       })
     );
@@ -43,7 +40,7 @@ export class ApiService {
   }
 
   // POST Method
-  public  post<T>(url: string, body: any, headers?: HttpHeaders): Observable<T> {
+  public post<T>(url: string, body: any, headers?: HttpHeaders): Observable<T> {
     return this.handleApiResponse<T>(
       this.httpClient.post<ApiResponse<T>>(url, body, {headers})
     );

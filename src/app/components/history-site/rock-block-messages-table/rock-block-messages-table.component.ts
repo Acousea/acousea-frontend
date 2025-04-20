@@ -5,7 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {
   MessageDetailsPopUpService
 } from "@/app/services/pop-ups/rockblock-message-details-popup/message-details-pop-up.service";
-import {OperationCode} from "@/app/global-interfaces/global-interfaces";
+import {OperationCode} from "@/app/global-interfaces/global.interface";
 import {TranslateModule} from "@ngx-translate/core";
 
 

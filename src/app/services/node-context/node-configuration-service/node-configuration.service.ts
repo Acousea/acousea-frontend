@@ -1,21 +1,12 @@
 import {Injectable} from '@angular/core';
-import {catchError, Observable, throwError} from "rxjs";
-import {CommunicationResultResponse} from "@/app/global-interfaces/global-interfaces";
-import {AlertPopUpService} from "@/app/services/pop-ups/alert-popup/alert-pop-up.service";
+import {catchError, Observable, of} from "rxjs";
+import {CommunicationResultResponse} from "@/app/global-interfaces/global.interface";
 import {undoable} from "@/app/services/pop-ups/undo-popup-service/undoable-decorator";
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {ApiService} from "@/app/services/api/api.service";
 import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
-
-
-export interface ReportingPeriods {
-  launchingSbdPeriod: number;
-  launchingLoraPeriod: number;
-  workingSbdPeriod: number;
-  workingLoraPeriod: number;
-  recoveringSbdPeriod: number;
-  recoveringLoraPeriod: number;
-}
+import {NotificationService} from "@/app/services/real-time/notification-service/notification.service";
+import {Notification} from "@/app/global-interfaces/notification/notification.interface";
 
 
 @Injectable({
@@ -23,15 +14,18 @@ export interface ReportingPeriods {
 })
 export class NodeConfigurationService {
 
-  constructor(private apiService: ApiService, private alertPopUpService: AlertPopUpService) {
+  constructor(private apiService: ApiService, private notificationService: NotificationService) {
   }
 
   getNodes(): Observable<NodeDevice[]> {
     return this.apiService.get<NodeDevice[]>(BackendRoutePaths.communicationSystem.allNodes)
       .pipe(
         catchError(error => {
-          this.alertPopUpService.showErrorMessage('An error occurred while fetching the nodes.');
-          return throwError(() => new Error('Failed to fetch nodes.'));
+          console.error('Error while fetching nodes:', error);
+          this.notificationService.pushNotification(Notification.error(
+            'Error while fetching nodes'
+          ));
+          return of([]);
         })
       );
   }
@@ -41,10 +35,13 @@ export class NodeConfigurationService {
     const apiUrl = BackendRoutePaths.set(BackendRoutePaths.communicationSystem.nodeConfiguration);
     this.apiService.put<CommunicationResultResponse>(apiUrl, node).subscribe({
       next: (response) => {
-        this.alertPopUpService.showSuccessMessage(response.message);
+        this.notificationService.pushNotification(Notification.success(response.message));
       },
       error: (error) => {
-        this.alertPopUpService.showErrorMessage('An error occurred while setting the node configuration.');
+        console.error('Error updating node configuration', error);
+        this.notificationService.pushNotification(Notification.error(
+          'Error while setting the node configuration'
+        ));
       }
     });
   }
@@ -54,10 +51,13 @@ export class NodeConfigurationService {
     const apiUrl = BackendRoutePaths.update(BackendRoutePaths.communicationSystem.reportingPeriods('drifter'));
     this.apiService.post<CommunicationResultResponse>(apiUrl, {}).subscribe({
       next: (response) => {
-        this.alertPopUpService.showSuccessMessage(response.message);
+        this.notificationService.pushNotification(Notification.success(response.message));
       },
       error: (error) => {
-        this.alertPopUpService.showErrorMessage('An error occurred while setting the reporting periods.');
+        console.error("Error updating reporting periods", error);
+        this.notificationService.pushNotification(Notification.error(
+          'Error while setting the reporting periods'
+        ));
       }
     });
   }

@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {NotificationComponent} from "../notification/notification.component";
 import {NgForOf} from "@angular/common";
 import {NotificationService} from "@/app/services/real-time/notification-service/notification.service";
-import {Notification} from "@/app/services/real-time/notification-service/notification.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {CdkDrag, CdkDragEnd, CdkDragMove} from '@angular/cdk/drag-drop';
+import {Notification} from "@/app/global-interfaces/notification/notification.interface";
 
 @Component({
   selector: 'app-notification-list',
@@ -26,7 +26,7 @@ import {CdkDrag, CdkDragEnd, CdkDragMove} from '@angular/cdk/drag-drop';
   ]
 })
 export class NotificationListComponent implements OnInit {
-  notifications: Notification[] = [];
+  notifications: Notification.Interface[] = [];
   private readonly audioFiles: { [key: string]: HTMLAudioElement };
 
 
@@ -57,7 +57,7 @@ export class NotificationListComponent implements OnInit {
     }
   }
 
-  onDragMove(event: CdkDragMove, notification: Notification): void {
+  onDragMove(event: CdkDragMove, notification: Notification.Interface): void {
     const offsetX = event.distance.x;
     if (offsetX < 0) {
       event.source.reset();
@@ -68,7 +68,7 @@ export class NotificationListComponent implements OnInit {
 
   }
 
-  onDragEnd(event: CdkDragEnd, notification: Notification): void {
+  onDragEnd(event: CdkDragEnd, notification: Notification.Interface): void {
     const offsetX = event.distance.x;
     if (offsetX > 100) { // Arbitrary threshold to remove the notification
       this.notifications = this.notifications.filter(n => n !== notification);
@@ -78,7 +78,7 @@ export class NotificationListComponent implements OnInit {
     }
   }
 
-  private removeNotificationAfterTimeout(notification: Notification) {
+  private removeNotificationAfterTimeout(notification: Notification.Interface) {
     setTimeout(() => {
       this.notifications = this.notifications.filter(n => n !== notification);
     }, 5000);

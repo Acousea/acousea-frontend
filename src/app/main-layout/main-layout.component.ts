@@ -2,7 +2,6 @@ import {AfterViewInit, ChangeDetectorRef, Component} from '@angular/core';
 
 import {RouterOutlet} from "@angular/router";
 import {SideMenuComponent} from "../components/shared/side-menu/side-menu.component";
-import {AlertPopupComponent} from "../components/pop-ups/alert-popup/alert-popup.component";
 import {
   NotificationListComponent
 } from "../components/shared/notifications/notification-list/notification-list.component";
@@ -29,7 +28,6 @@ import {NodeContextService} from "@/app/services/node-context/node-context.servi
   imports: [
     SideMenuComponent,
     RouterOutlet,
-    AlertPopupComponent,
     NotificationListComponent,
     FlushRequestQueuePopupComponent,
     UndoPopupComponent,

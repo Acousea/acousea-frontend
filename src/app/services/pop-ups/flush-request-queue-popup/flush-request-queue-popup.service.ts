@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {ApiResponse} from "@/app/global-interfaces/global-interfaces";
+import {ApiResponse} from "@/app/global-interfaces/global.interface";
 
 import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 
