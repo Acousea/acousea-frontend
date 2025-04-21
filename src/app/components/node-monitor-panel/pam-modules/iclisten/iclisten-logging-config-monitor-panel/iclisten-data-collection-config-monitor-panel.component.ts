@@ -47,8 +47,8 @@ export class ICListenDataCollectionConfigMonitorPanel extends MutableNodeMonitor
   }
 
   @EmitChangesAfter(self => self.emitChange(self.data))
-  setWavLoggingMode(value: number) {
-    this.data.loggingConfig.wav.loggingMode = value;
+  setWavLoggingMode(checked: boolean) {
+    this.data.loggingConfig.wav.loggingMode = checked ? 1 : 0;
   }
 
   @EmitChangesAfter(self => self.emitChange(self.data))
@@ -73,7 +73,8 @@ export class ICListenDataCollectionConfigMonitorPanel extends MutableNodeMonitor
 
   @EmitChangesAfter(self => self.emitChange(self.data))
   setFftLoggingMode(value: number) {
-    this.data.loggingConfig.fft.loggingMode = value;
+    // 0: Disabled, 1: Enabled
+    this.data.loggingConfig.fft.loggingMode = value ? 1 : 0;
   }
 
   @EmitChangesAfter(self => self.emitChange(self.data))

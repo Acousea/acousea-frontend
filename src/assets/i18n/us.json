@@ -137,7 +137,7 @@
     }
   },
   "DATA_COLLECTION_SETTINGS": {
-    "TITLE": "Data Collection Settings",
+    "TITLE": "Data Logging Settings",
     "WAVEFORM": {
       "TITLE": "Waveform Data",
       "LOGGING": "Waveform Logging",

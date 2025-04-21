@@ -14,6 +14,7 @@ import {
   ICListenStreamingConfigMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-streaming-config-monitor-panel/iclisten-streaming-config-monitor-panel.component";
 import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
+import {WarningComponent} from "@/app/components/shared/warning-component/warning.component";
 
 type ViewMode = 'reporting' | 'iclistenhf' | 'all';
 
@@ -25,7 +26,8 @@ type ViewMode = 'reporting' | 'iclistenhf' | 'all';
     ReportingPeriodsMonitorPanel,
     ICListenDataCollectionConfigMonitorPanel,
     NgIf,
-    ICListenStreamingConfigMonitorPanelComponent
+    ICListenStreamingConfigMonitorPanelComponent,
+    WarningComponent
   ],
   templateUrl: './node-settings-section.component.html',
   styleUrls: ['./node-settings-section.component.css', '../inner-tabs-style.css'],
@@ -76,7 +78,9 @@ export class NodeSettingsSectionComponent {
     }
     const updatedICListenModule: { ICListenHF: ICListenHF } = {
       ICListenHF: {
-        ...previousICListenHF,
+        id: previousICListenHF.id,
+        name: previousICListenHF.name,
+        serialNumber: previousICListenHF.serialNumber,
         ...$event
       }
     }

@@ -36,9 +36,8 @@ export class NodeSelectionService {
       console.warn("No current node to update");
       return;
     }
-
-    const updated = { ...current, ...partial };
-    this.selectedNodeSubject.next(updated);
+    // const updated = { ...current, ...partial };
+    // this.selectedNodeSubject.next(updated);
     this.changesSubject.next({
       ...this.changesSubject.value,
       ...partial

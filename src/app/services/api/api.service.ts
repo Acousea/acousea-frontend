@@ -1,14 +1,19 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {ApiResponse} from "../../global-interfaces/global.interface";
+import {NotificationService} from "@/app/services/real-time/notification-service/notification.service";
+import {Notification} from "@/app/global-interfaces/notification/notification.interface";
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient,
+    private notificationService: NotificationService
+  ) {
   }
 
   private handleApiResponse<T>(observable: Observable<ApiResponse<T>>): Observable<T> {
@@ -26,7 +31,16 @@ export class ApiService {
         throw new Error('Unexpected response format');
       }),
       catchError((error) => {
-        throw error; // Re-throw the error for further handling
+        const errorMessage = error.error || error.message || 'An unknown error occurred';
+        console.error("ApiService -> error", errorMessage);
+        this.notificationService.pushNotification(
+          Notification.error(errorMessage)
+        );
+
+        return new Observable<T>((observer) => {
+          observer.error(errorMessage);
+          observer.complete();
+        });
       })
     );
   }

@@ -37,23 +37,30 @@
     </app-reporting-periods-monitor-panel>
 
     <div
-      *ngIf="(currentView === 'iclistenhf' || currentView === 'all')"
+      *ngIf="(currentView === 'iclistenhf' || currentView === 'all') &&
+       selectedNode.pamModules && selectedNode.pamModules.ICListenHF"
     >
       <!-- Streaming -->
       <app-iclisten-streaming-config-monitor-panel
-        *ngIf="getICListenModuleIfPresent()?.streamingConfig"
+        *ngIf="getICListenModuleIfPresent()?.streamingConfig; else noStreamingConfig"
         [data]="{ streamingConfig: getICListenModuleIfPresent()?.streamingConfig! }"
         (update)="onICListenHFConfigUpdate($event)"
       >
       </app-iclisten-streaming-config-monitor-panel>
+      <ng-template #noStreamingConfig>
+        <app-warning [message]="'No streaming configuration available for ICListenHF'"/>
+      </ng-template>
 
       <!-- Logging -->
       <app-iclisten-data-collection-config-monitor-panel
-        *ngIf="getICListenModuleIfPresent()?.loggingConfig"
+        *ngIf="getICListenModuleIfPresent()?.loggingConfig; else noLoggingConfig"
         [data]="{ loggingConfig: getICListenModuleIfPresent()?.loggingConfig! }"
         (update)="onICListenHFConfigUpdate($event)"
       >
       </app-iclisten-data-collection-config-monitor-panel>
+      <ng-template #noLoggingConfig>
+        <app-warning [message]="'No logging configuration available for ICListenHF'"/>
+      </ng-template>
     </div>
   </ng-container>
 </section>

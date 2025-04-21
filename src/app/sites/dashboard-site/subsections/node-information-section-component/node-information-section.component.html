@@ -69,7 +69,8 @@
          *ngIf="
          (currentView === 'iclistenhf' || currentView === 'all') &&
          pamModules &&
-         pamModules.ICListenHF"
+         pamModules.ICListenHF &&
+         pamModules.ICListenHF.status"
     >
       <h2>{{ 'PAM_DEVICE.ICLISTENHF.TITLE' | translate }}</h2>
       <ul>

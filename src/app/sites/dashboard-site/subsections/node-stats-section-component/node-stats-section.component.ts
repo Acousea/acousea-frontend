@@ -43,13 +43,17 @@ export class NodeStatsSectionComponent {
     }
     const iclistenHF = node.pamModules.ICListenHF;
     if (!iclistenHF) {
+      console.warn("No ICListenHF module present");
       return;
     }
+    if (!iclistenHF.recordingStats) {
+      console.warn("No recording stats present");
+      return;
+    }
+
     this.numClicks = iclistenHF.recordingStats.numberOfClicks;
     this.numMinutes = iclistenHF.recordingStats.recordedMinutes;
     this.numFiles = iclistenHF.recordingStats.numberOfFiles;
-
-
   }
 
   protected readonly BackendRoutePaths = BackendRoutePaths;

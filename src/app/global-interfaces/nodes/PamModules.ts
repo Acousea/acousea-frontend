@@ -2,10 +2,10 @@ export interface ICListenHF  {
   id: string;
   name: string;
   serialNumber: string;
-  status: ICListenStatus;
-  loggingConfig: ICListenLoggingConfig;
-  streamingConfig: ICListenStreamingConfig;
-  recordingStats: RecordingStats;
+  status?: ICListenStatus;
+  loggingConfig?: ICListenLoggingConfig;
+  streamingConfig?: ICListenStreamingConfig;
+  recordingStats?: RecordingStats;
 }
 
 // Definiciones de las interfaces de estado y configuraciones específicas de ICListenHF
@@ -63,6 +63,4 @@ export interface RecordingStats {
 
 export interface PamModule {
   ICListenHF?: ICListenHF;
-  ICListenLoggingConfig?: ICListenLoggingConfig;
-  ICListenLStreamingConfig?: ICListenStreamingConfig;
 }
