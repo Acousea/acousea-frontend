@@ -1,14 +1,21 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpInterceptorFn } from '@angular/common/http';
+import { LoadingInterceptor } from './loading-animation.interceptor';
+import { LoadingAnimationService } from '../../services/loading-animation-service/loading-animation.service';
 
-import { loadingAnimationInterceptor } from './loading-animation.interceptor';
-
-describe('loadingAnimationInterceptor', () => {
-  const interceptor: HttpInterceptorFn = (req, next) => 
-    TestBed.runInInjectionContext(() => loadingAnimationInterceptor(req, next));
+describe('LoadingInterceptor', () => {
+  let interceptor: LoadingInterceptor;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    const loadingServiceSpy = jasmine.createSpyObj('LoadingAnimationService', ['show', 'hide']);
+
+    TestBed.configureTestingModule({
+      providers: [
+        LoadingInterceptor,
+        { provide: LoadingAnimationService, useValue: loadingServiceSpy }
+      ]
+    });
+
+    interceptor = TestBed.inject(LoadingInterceptor);
   });
 
   it('should be created', () => {
