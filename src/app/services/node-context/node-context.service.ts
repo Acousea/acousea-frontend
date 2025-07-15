@@ -9,6 +9,7 @@ import {
 import {
   NodeConfigurationService
 } from "@/app/services/node-context/node-configuration-service/node-configuration.service";
+import {ExtModuleNameType} from "@/app/global-interfaces/nodes/ExtModules";
 
 @Injectable({providedIn: 'root'})
 export class NodeContextService {
@@ -72,6 +73,16 @@ export class NodeContextService {
   applyChanges(): void {
     console.warn("Applying node configuration ->", this.nodeSelectionService.selectedNodeSnapshot);
     this.nodeConfigurationService.setNodeConfiguration(this.nodeSelectionService.selectedNodeSnapshot!);
+  }
+
+  requestUpdate(requestedModules: ExtModuleNameType[] = []): void {
+    const nodeId = this.nodeSelectionService.selectedNodeSnapshot?.id;
+    if (!nodeId) {
+      console.warn("No node selected for update request");
+      return;
+    }
+    console.warn("Requesting update for node ->", nodeId, requestedModules);
+    this.nodeConfigurationService.requestUpdatedNodeConfiguration(nodeId, requestedModules);
   }
 
   discardChanges(): void {

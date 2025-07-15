@@ -14,6 +14,22 @@ import {
   DeviceCardsListComponent
 } from "@/app/components/map-site/drifter-localizer-cards-component/device-cards-list.component";
 import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
+import {
+  ICListenLoggingConfig,
+  ICListenRecordingStats,
+  ICListenStatus,
+  ICListenStreamingConfig
+} from "@/app/global-interfaces/nodes/PamModules";
+import {
+  AmbientModule,
+  BatteryModule,
+  IridiumReportingModule,
+  LocationModule,
+  LoraReportingModule,
+  OperationModes,
+  RTCModule,
+  StorageModule
+} from "@/app/global-interfaces/nodes/ExtModules";
 
 export interface ChartInputData {
   dataLabel: string;
@@ -37,9 +53,11 @@ export interface ChartInputData {
   styleUrl: './dashboard-site.component.css'
 })
 export class DashboardSiteComponent {
+
   nodes: NodeDevice[] = [];
 
   selectedNode$ = this.nodeContext.selectedNode$;
+
   onNodeSelected(node: NodeDevice) {
     this.nodeContext.resetNodes(node.id);
   }
@@ -53,7 +71,43 @@ export class DashboardSiteComponent {
     })
   }
 
+  updateStatsSection() {
+    this.nodeContext.requestUpdate(
+      [
+        ICListenRecordingStats.moduleName
+      ]
+    )
+  }
+
+  updateInfoSection() {
+    this.nodeContext.requestUpdate(
+      [
+        RTCModule.moduleName,
+        BatteryModule.moduleName,
+        LocationModule.moduleName,
+        AmbientModule.moduleName,
+        StorageModule.moduleName,
+        OperationModes.moduleName
+      ]
+    );
+
+  }
+
+  updateSettingsSection() {
+    this.nodeContext.requestUpdate(
+      [
+        LoraReportingModule.moduleName,
+        IridiumReportingModule.moduleName,
+        ICListenStatus.moduleName,
+        ICListenLoggingConfig.moduleName,
+        ICListenStreamingConfig.moduleName
+      ]
+    );
+
+  }
+
   protected readonly BackendRoutePaths = BackendRoutePaths;
   protected readonly AppRoutePaths = AppRoutePaths;
   protected readonly console = console;
+
 }

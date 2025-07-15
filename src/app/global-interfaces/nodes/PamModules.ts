@@ -6,7 +6,7 @@ export class ICListenHF {
   status?: ICListenStatus;
   loggingConfig?: ICListenLoggingConfig;
   streamingConfig?: ICListenStreamingConfig;
-  recordingStats?: RecordingStats;
+  recordingStats?: ICListenRecordingStats;
 }
 
 
@@ -58,8 +58,8 @@ export class ICListenStreamingConfig {
   timestamp!: string;
 }
 
-export class RecordingStats {
-  static moduleName = "RecordingStats";
+export class ICListenRecordingStats {
+  static moduleName = "ICListenRecordingStats";
   epochTime!: string;  // ISO
   numberOfClicks!: number;
   recordedMinutes!: number;

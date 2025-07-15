@@ -2,7 +2,7 @@ import {
   ICListenHF,
   ICListenLoggingConfig,
   ICListenStatus,
-  ICListenStreamingConfig, RecordingStats
+  ICListenStreamingConfig, ICListenRecordingStats
 } from "@/app/global-interfaces/nodes/PamModules";
 
 export class RTCModule {
@@ -87,6 +87,6 @@ export type ExtModuleNameType =
   | typeof ICListenStatus.moduleName
   | typeof ICListenLoggingConfig.moduleName
   | typeof ICListenStreamingConfig.moduleName
-  | typeof RecordingStats.moduleName;
+  | typeof ICListenRecordingStats.moduleName;
 
 
