@@ -7,6 +7,8 @@ import {ApiService} from "@/app/services/api/api.service";
 import {BackendRoutePaths} from "@/app/routes/backend.route.paths";
 import {NotificationService} from "@/app/services/real-time/notification-service/notification.service";
 import {Notification} from "@/app/global-interfaces/notification/notification.interface";
+import {ExtModuleNameType} from "@/app/global-interfaces/nodes/ExtModules";
+
 
 
 @Injectable({
@@ -47,17 +49,21 @@ export class NodeConfigurationService {
   }
 
   @undoable(2000)
-  getUpdatedReportingPeriods(): void {
-    const apiUrl = BackendRoutePaths.update(BackendRoutePaths.communicationSystem.reportingPeriods('drifter'));
-    this.apiService.post<CommunicationResultResponse>(apiUrl, {}).subscribe({
+  requestUpdatedNodeConfiguration(
+    nodeId: string,
+    requestedModules: ExtModuleNameType[] = []
+
+  ): void {
+    const apiUrl = BackendRoutePaths.update(BackendRoutePaths.communicationSystem.nodeConfiguration);
+    this.apiService.put<CommunicationResultResponse>(apiUrl, {
+      nodeId: nodeId,
+      requestedModules: requestedModules
+    }).subscribe({
       next: (response) => {
         this.notificationService.pushNotification(Notification.success(response.message));
       },
       error: (error) => {
         console.error("Error updating reporting periods", error);
-        this.notificationService.pushNotification(Notification.error(
-          'Error while setting the reporting periods'
-        ));
       }
     });
   }

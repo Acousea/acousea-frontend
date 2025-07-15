@@ -1,66 +1,72 @@
-export interface ICListenHF  {
-  id: string;
-  name: string;
-  serialNumber: string;
+export class ICListenHF {
+  static moduleName = "ICListenHF";
+  id!: string;
+  name!: string;
+  serialNumber!: string;
   status?: ICListenStatus;
   loggingConfig?: ICListenLoggingConfig;
   streamingConfig?: ICListenStreamingConfig;
   recordingStats?: RecordingStats;
 }
 
-// Definiciones de las interfaces de estado y configuraciones específicas de ICListenHF
-export interface ICListenStatus {
-  unitStatus: number;
-  batteryStatus: number;
-  batteryPercentage: number;
-  temperature: number;
-  humidity: number;
-  timestamp: string; // Fecha y hora en formato ISO
+
+export class ICListenStatus {
+  static moduleName = "ICListenStatus";
+  unitStatus!: number;
+  batteryStatus!: number;
+  batteryPercentage!: number;
+  temperature!: number;
+  humidity!: number;
+  timestamp!: string; // ISO
 }
 
-export interface ICListenLoggingConfig {
-  wav: {
+export class ICListenLoggingConfig {
+  static moduleName = "ICListenLoggingConfig";
+  wav!: {
     gain: number;
     sampleRate: number;
     bitDepth: number;
     loggingMode: number;
     logLength: number;
-  }
-  fft: {
+  };
+  fft!: {
     processingType: number;
     sampleRate: number;
     fftsAccumulated: number;
     loggingMode: number;
     logLength: number;
-  }
-  timestamp: string;
+  };
+  timestamp!: string;
 }
 
-export interface ICListenStreamingConfig {
-  wav: {
+export class ICListenStreamingConfig {
+  static moduleName = "ICListenStreamingConfig";
+  wav!: {
     recordWaveform: boolean;
     processWaveform: boolean;
     waveformProcessingType: number;
     waveformInterval: number;
     waveformDuration: number;
-  }
-  fft: {
+  };
+  fft!: {
     recordFFT: boolean;
     processFFT: boolean;
     fftProcessingType: number;
     fftInterval: number;
     fftDuration: number;
-  }
-  timestamp: string;
+  };
+  timestamp!: string;
 }
 
-export interface RecordingStats {
-  epochTime: string;  // Fecha y hora en formato ISO
-  numberOfClicks: number;
-  recordedMinutes: number;
-  numberOfFiles: number;
+export class RecordingStats {
+  static moduleName = "RecordingStats";
+  epochTime!: string;  // ISO
+  numberOfClicks!: number;
+  recordedMinutes!: number;
+  numberOfFiles!: number;
 }
 
 export interface PamModule {
   ICListenHF?: ICListenHF;
 }
+
