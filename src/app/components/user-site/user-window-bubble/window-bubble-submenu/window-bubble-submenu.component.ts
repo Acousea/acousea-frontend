@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {AppRoutePaths} from "@/app/routes/app.route.paths";
 import {Router} from "@angular/router";
 import {AuthService} from "@/app/services/auth/auth.service";
 
-interface SubmenuItem{
+export interface SubmenuItem{
   title: string;
   icon: string;
   action: () => void;
@@ -20,38 +20,9 @@ interface SubmenuItem{
   styleUrl: './window-bubble-submenu.component.css'
 })
 export class WindowBubbleSubmenuComponent {
+  @Input() menuItems: SubmenuItem[] = [];
 
-  constructor(
-    private router: Router,
-    private authService: AuthService
-  ) {}
+  constructor() {}
 
-  menuItems: SubmenuItem[] = [
-    {
-      title: 'Profile',
-      icon: 'account_circle',
-      action: () => {
-        console.log('Profile clicked');
-        this.router.navigate([AppRoutePaths.fullPath(AppRoutePaths.user.profile)]);
-      }
-    },
-    {
-      title: 'Settings',
-      icon: 'settings',
-      action: () => {
-        console.log('Settings clicked');
-
-      }
-
-    },
-    {
-      title: 'Logout',
-      icon: 'logout',
-      action: () => {
-        console.log('Logout clicked');
-        this.authService.logout();
-      }
-    }
-  ];
 
 }

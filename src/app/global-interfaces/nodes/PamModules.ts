@@ -66,7 +66,4 @@ export class ICListenRecordingStats {
   numberOfFiles!: number;
 }
 
-export interface PamModule {
-  ICListenHF?: ICListenHF;
-}
 

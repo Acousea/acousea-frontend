@@ -114,6 +114,9 @@
       "MINUTES": "minutes"
     }
   },
+  "OPERATION_MODES_GRAPH": {
+    "TITLE": "Operation Modes Graph"
+  },
   "RECORDING_PROCESSING_SETTINGS": {
     "TITLE": "Recording and Processing Streaming Settings",
     "WAVEFORM": {

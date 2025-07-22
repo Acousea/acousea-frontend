@@ -1,0 +1,29 @@
+<div class="operation-modes-graph-site">
+
+  <h1>{{ "OPERATION_MODES_GRAPH.TITLE" | translate }}</h1>
+  <div class="operation-modes-graph-monitor-panel">
+    <div class="graph-controls">
+      <button (click)="addNode()">➕ Add Node</button>
+      <!--    Button to reset the nodes-->
+      <button (click)="resetNodes()">🔄 Reset Nodes</button>
+    </div>
+    <div
+      #cyContainer
+      id="cy"></div>
+
+    <div
+      id="context-menu"
+      class="context-menu"
+      [style.top.px]="contextMenuPosition.y"
+      [style.left.px]="contextMenuPosition.x"
+      [class.visible]="contextMenuVisible"
+    >
+      <ul>
+        <li (click)="editNode()">✏ Edit Node</li>
+        <li (click)="deleteNode()">❌ Delete Node</li>
+        <li (click)="addEdge()">🔗 Add Edge</li>
+        <li (click)="deleteEdge()">❌ Delete Edge</li>
+      </ul>
+    </div>
+  </div>
+</div>

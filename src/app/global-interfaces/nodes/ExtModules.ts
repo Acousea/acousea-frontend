@@ -61,7 +61,7 @@ export class IridiumReportingModule extends ReportingModule {
 
 
 // Diccionario para los diferentes módulos de un NodeDevice
-export interface ExtModule {
+export interface SerializableModules {
   rtc?: RTCModule;
   battery?: BatteryModule;
   location?: LocationModule;
@@ -71,6 +71,7 @@ export interface ExtModule {
   operationModesGraph?: OperationModesGraph;
   loRaReporting?: LoraReportingModule;
   iridiumReporting?: IridiumReportingModule;
+  ICListenHF?: ICListenHF;
 }
 
 export type ExtModuleNameType =

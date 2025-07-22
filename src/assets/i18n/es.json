@@ -114,6 +114,9 @@
       "MINUTES": "minutos"
     }
   },
+  "OPERATION_MODES_GRAPH": {
+    "TITLE": "Gráfico de Modos de Operación"
+  },
   "RECORDING_PROCESSING_SETTINGS": {
     "TITLE": "Configuración de Grabación y Procesamiento en Streaming",
     "WAVEFORM": {

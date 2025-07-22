@@ -13,8 +13,11 @@ import {ICListenHF} from "@/app/global-interfaces/nodes/PamModules";
 import {
   ICListenStreamingConfigMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/pam-modules/iclisten/iclisten-streaming-config-monitor-panel/iclisten-streaming-config-monitor-panel.component";
-import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
+import {SerializableModules} from "@/app/global-interfaces/nodes/ExtModules";
 import {WarningComponent} from "@/app/components/shared/warning-component/warning.component";
+import {
+  OperationModesGraphMonitorPanel
+} from "@/app/components/node-monitor-panel/operation-modes-monitor-panel/operation-modes-graph-monitor-panel.component";
 
 type ViewMode = 'reporting' | 'iclistenhf' | 'all';
 
@@ -27,7 +30,8 @@ type ViewMode = 'reporting' | 'iclistenhf' | 'all';
     ICListenDataCollectionConfigMonitorPanel,
     NgIf,
     ICListenStreamingConfigMonitorPanelComponent,
-    WarningComponent
+    WarningComponent,
+    OperationModesGraphMonitorPanel
   ],
   templateUrl: './node-settings-section.component.html',
   styleUrls: ['./node-settings-section.component.css', '../inner-tabs-style.css'],
@@ -51,18 +55,18 @@ export class NodeSettingsSectionComponent {
   }
 
   getICListenModuleIfPresent(): ICListenHF | undefined {
-    if (this.selectedNode?.pamModules) {
-      return this.selectedNode.pamModules.ICListenHF
+    if (this.selectedNode?.modules) {
+      return this.selectedNode.modules.ICListenHF
     }
     return undefined;
   }
 
 
-  onReportingPeriodsUpdate($event: Partial<ExtModule>) {
+  onExtModuleUpdate($event: Partial<SerializableModules>) {
     // Rebuild all extmodule adding the new changes
-    const updatedExtModules: { extModules: ExtModule } = {
-      extModules: {
-        ...this.selectedNode?.extModules,
+    const updatedExtModules: { modules: SerializableModules } = {
+      modules: {
+        ...this.selectedNode?.modules,
         ...$event
       }
     }
@@ -70,8 +74,9 @@ export class NodeSettingsSectionComponent {
     this.nodeContext.updateNode(updatedExtModules);
   }
 
+
   onICListenHFConfigUpdate($event: Partial<ICListenHF>) {
-    const previousICListenHF = this.selectedNode?.pamModules?.ICListenHF;
+    const previousICListenHF = this.selectedNode?.modules?.ICListenHF;
     if (!previousICListenHF) {
       console.warn('No ICListenHF module found');
       return;
@@ -85,12 +90,11 @@ export class NodeSettingsSectionComponent {
       }
     }
     this.nodeContext.updateNode({
-      pamModules: {
-        ...this.selectedNode?.pamModules,
+      modules: {
+        ...this.selectedNode?.modules,
         ...updatedICListenModule
       }
     });
 
   }
-
 }

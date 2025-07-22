@@ -64,12 +64,12 @@ export class MapGeoComponent implements OnChanges, AfterViewInit {
         iconAnchor: [16, 16]
       });
 
-      if (!node.extModules.location) return; // Verifica que el módulo de localización esté presente
+      if (!node.modules.location) return; // Verifica que el módulo de localización esté presente
 
-      const marker = L.marker([node.extModules.location.latitude, node.extModules.location.longitude], {icon})
+      const marker = L.marker([node.modules.location.latitude, node.modules.location.longitude], {icon})
         .addTo(this.map)
 
-      marker.bindPopup(`${node.name}<br>Lat: ${node.extModules.location.latitude}, Lng: ${node.extModules.location.longitude}`)
+      marker.bindPopup(`${node.name}<br>Lat: ${node.modules.location.latitude}, Lng: ${node.modules.location.longitude}`)
         .on('mouseover', () => marker.openPopup()) // Mostrar popup en hover
         .on('mouseout', () => marker.closePopup())  // Ocultar popup al salir del hover
         .on('click', () => console.warn("Should show popup for node ->",node)) // Llama al servicio en click

@@ -2,7 +2,10 @@
 <div class="profile-bubble">
   <app-profile-bubble (click)="toggleSubmenu()"></app-profile-bubble>
   <div class="window-bubble-submenu">
-    <app-window-bubble-submenu *ngIf="showSubmenu.value"></app-window-bubble-submenu>
+    <app-window-bubble-submenu
+      *ngIf="showSubmenu.value"
+      [menuItems]="menuItems"
+    ></app-window-bubble-submenu>
   </div>
 </div>
 

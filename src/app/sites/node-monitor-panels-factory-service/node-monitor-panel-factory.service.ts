@@ -1,7 +1,7 @@
 import {ComponentFactoryResolver, Injectable, Injector, Type} from '@angular/core';
 import {NodeMonitorPanelComponent} from "@/app/components/node-monitor-panel/node-monitor-panel-component.directive";
 
-import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
+import {SerializableModules} from "@/app/global-interfaces/nodes/ExtModules";
 import {
   ReportingMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/reporting-monitor-panel/reporting-monitor-panel.component";
@@ -21,8 +21,8 @@ import {
   StorageMonitorPanelComponent
 } from "@/app/components/node-monitor-panel/storage-monitor-panel/storage-monitor-panel.component";
 import {
-  OperationModesMonitorPanelComponent
-} from "@/app/components/node-monitor-panel/operation-modes-monitor-panel/operation-modes-card.component";
+  OperationModesGraphMonitorPanel
+} from "@/app/components/node-monitor-panel/operation-modes-monitor-panel/operation-modes-graph-monitor-panel.component";
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +36,8 @@ export class NodeMonitorPanelFactoryService {
     location: LocationMonitorPanelComponent,
     temperature: AmbientMonitorPanelComponent,
     storage: StorageMonitorPanelComponent,
-    operationModes: OperationModesMonitorPanelComponent,
-    operationModesGraph: OperationModesMonitorPanelComponent,
+    operationModes: OperationModesGraphMonitorPanel,
+    operationModesGraph: OperationModesGraphMonitorPanel,
     loRaReporting: ReportingMonitorPanelComponent,
     iridiumReporting: ReportingMonitorPanelComponent
   };
@@ -49,7 +49,7 @@ export class NodeMonitorPanelFactoryService {
   }
 
   /** Returns all components (mutable or non-mutable) */
-  getComponents(extModules: ExtModule, mutable: boolean): NodeMonitorPanelComponent<any>[] {
+  getComponents(extModules: SerializableModules, mutable: boolean): NodeMonitorPanelComponent<any>[] {
     return Object.entries(extModules)
       .filter(([key, value]) => value !== undefined) // Only process existing modules
       .map(([key, moduleData]) => {

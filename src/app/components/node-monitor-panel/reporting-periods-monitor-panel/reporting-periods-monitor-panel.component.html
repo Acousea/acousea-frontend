@@ -8,12 +8,16 @@
       <div class="setting-group"
            *ngFor="let entry of objectEntries(data.loRaReporting.reportingPeriodsPerOperationModeIdx)">
 
-        <label>
+        <label
+          id="lora-reporting-label-{{ entry.key }}"
+          for="lora-reporting-input-{{ entry.key }}">
+
           {{ data.operationModes.modes[entry.key] }}
           <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span>
         </label>
 
         <input
+          id="lora-reporting-input-{{ entry.key }}"
           type="number"
           [value]="data.loRaReporting.reportingPeriodsPerOperationModeIdx[entry.key]"
           (input)="updateLoRaReporting(entry.key, $event.target)"
@@ -26,13 +30,16 @@
       <h2>{{ "REPORTING_SETTINGS.PERIODS.IRIDIUM_PERIOD" | translate }}</h2>
       <div class="setting-group"
            *ngFor="let entry of objectEntries(data.iridiumReporting.reportingPeriodsPerOperationModeIdx)">
-        <label>
+        <label id="iridium-reporting-label-{{ entry.key }}"
+               for="iridium-reporting-input-{{ entry.key }}">
           {{ data.operationModes.modes[entry.key] }}
           <span>({{ "REPORTING_SETTINGS.UNITS.MINUTES" | translate }})</span>
         </label>
-        <input type="number"
-               [value]="data.iridiumReporting.reportingPeriodsPerOperationModeIdx[entry.key]"
-               (input)="updateIridiumReporting(entry.key, $event.target)"
+        <input
+          id="iridium-reporting-input-{{ entry.key }}"
+          type="number"
+          [value]="data.iridiumReporting.reportingPeriodsPerOperationModeIdx[entry.key]"
+          (input)="updateIridiumReporting(entry.key, $event.target)"
         >
       </div>
     </div>

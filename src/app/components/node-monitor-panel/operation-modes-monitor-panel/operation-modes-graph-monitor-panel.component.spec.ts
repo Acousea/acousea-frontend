@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OperationModesCardComponent } from './operation-modes-card.component';
+import { OperationModesCardComponent } from './operation-modes-graph-monitor-panel.component';
 
 describe('OperationModesCardComponent', () => {
   let component: OperationModesCardComponent;

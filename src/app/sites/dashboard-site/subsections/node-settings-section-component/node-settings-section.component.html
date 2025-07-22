@@ -5,13 +5,13 @@
     View All
   </button>
   <button
-    *ngIf="selectedNode?.extModules?.operationModes"
+    *ngIf="selectedNode?.modules?.operationModes"
     (click)="changeView('reporting')"
     [class.active]="currentView === 'reporting'">
     Reporting
   </button>
   <button
-    *ngIf="selectedNode && selectedNode.pamModules && selectedNode.pamModules.ICListenHF"
+    *ngIf="selectedNode && selectedNode.modules && selectedNode.modules.ICListenHF"
     (click)="changeView('iclistenhf')"
     [class.active]="currentView === 'iclistenhf'"
   >ICListenHF
@@ -23,22 +23,35 @@
     <!-- Reporting -->
     <app-reporting-periods-monitor-panel
       *ngIf="(currentView === 'reporting' || currentView === 'all') &&
-             selectedNode.extModules &&
-             selectedNode.extModules.operationModes &&
-             selectedNode.extModules.loRaReporting &&
-             selectedNode.extModules.iridiumReporting"
+             selectedNode.modules &&
+             selectedNode.modules.operationModes &&
+             selectedNode.modules.loRaReporting &&
+             selectedNode.modules.iridiumReporting"
       [data]="{
-        operationModes: selectedNode.extModules.operationModes,
-        loRaReporting: selectedNode.extModules.loRaReporting,
-        iridiumReporting: selectedNode.extModules.iridiumReporting
+        operationModes: selectedNode.modules.operationModes,
+        loRaReporting: selectedNode.modules.loRaReporting,
+        iridiumReporting: selectedNode.modules.iridiumReporting
       }"
-      (update)="onReportingPeriodsUpdate($event)"
+      (update)="onExtModuleUpdate($event)"
     >
     </app-reporting-periods-monitor-panel>
+    <app-operation-modes-graph-monitor-panel
+      *ngIf="(currentView === 'reporting' || currentView === 'all') &&
+      selectedNode.modules &&
+      selectedNode.modules.operationModes &&
+      selectedNode.modules.operationModesGraph"
+      (update)="onExtModuleUpdate($event)"
+
+      [data]="{
+        operationModes: selectedNode.modules.operationModes,
+        operationModesGraph: selectedNode.modules.operationModesGraph
+      }"
+    ></app-operation-modes-graph-monitor-panel>
+
 
     <div
       *ngIf="(currentView === 'iclistenhf' || currentView === 'all') &&
-       selectedNode.pamModules && selectedNode.pamModules.ICListenHF"
+       selectedNode.modules && selectedNode.modules.ICListenHF"
     >
       <!-- Streaming -->
       <app-iclisten-streaming-config-monitor-panel

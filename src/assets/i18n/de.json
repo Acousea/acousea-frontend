@@ -114,6 +114,10 @@
       "MINUTES": "Minuten"
     }
   },
+  "OPERATION_MODES_GRAPH": {
+    "TITLE": "Betriebsmodi Diagramm"
+  },
+
   "RECORDING_PROCESSING_SETTINGS": {
     "TITLE": "Aufzeichnungs- und Verarbeitungseinstellungen",
     "WAVEFORM": {

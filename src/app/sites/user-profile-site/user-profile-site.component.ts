@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "@/app/services/auth/user-service/user.service";
 import {User} from "@/app/services/auth/user-service/user.interfaces";
 import {
   UserProfilePictureComponent
@@ -8,6 +7,7 @@ import {UserPersonalInfoComponent} from "@/app/components/user-site/user-persona
 import {UserStatusComponent} from "@/app/components/user-site/user-status/user-status.component";
 import {UserAddressComponent} from "@/app/components/user-site/user-address/user-address.component";
 import {NgIf} from "@angular/common";
+import {AuthService} from "@/app/services/auth/auth.service";
 
 @Component({
   selector: 'app-user-profile-site',
@@ -25,15 +25,18 @@ import {NgIf} from "@angular/common";
 export class UserProfileSiteComponent implements OnInit {
   user: User | undefined;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private authService: AuthService
+    ) {}
 
   ngOnInit(): void {
-    this.loadUserProfile('user-id'); // Reemplaza con el ID del usuario actual
+
+    const user = this.authService.getCurrentUser();
+    if (user) {
+      this.user = user;
+    } else {
+      console.error(UserProfileSiteComponent.name + ": User not found");
+    }
   }
 
-  loadUserProfile(userId: string): void {
-    this.userService.getUserProfile(userId).subscribe(data => {
-      this.user = data;
-    });
-  }
 }

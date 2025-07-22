@@ -7,8 +7,7 @@ import {
   CoreTemperatureAndOperationModeComponent
 } from "@/app/components/node-monitor-panel/pam-modules/core-temperature-and-operation-mode/core-temperature-and-operation-mode.component";
 import {TranslateModule} from "@ngx-translate/core";
-import {PamModule} from "@/app/global-interfaces/nodes/PamModules";
-import {ExtModule} from "@/app/global-interfaces/nodes/ExtModules";
+import {SerializableModules} from "@/app/global-interfaces/nodes/ExtModules";
 
 
 import {
@@ -50,8 +49,7 @@ type InfoViewMode = 'system' | 'iclistenhf' | 'all';
   styleUrls: ['./node-information-section.component.css', '../inner-tabs-style.css'],
 })
 export class NodeInformationSectionComponent {
-  pamModules: PamModule | undefined;
-  extModules: ExtModule | undefined;
+  extModules: SerializableModules | undefined;
 
   currentView: InfoViewMode = 'system';
 
@@ -71,8 +69,7 @@ export class NodeInformationSectionComponent {
         this.errorMessage = 'No node selected';
         return;
       }
-      this.pamModules = node.pamModules;
-      this.extModules = node.extModules
+      this.extModules = node.modules
       this.errorMessage = undefined;
       this.currentView = 'system';
     });

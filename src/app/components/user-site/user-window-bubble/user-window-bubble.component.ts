@@ -1,8 +1,11 @@
 import {Component, ElementRef, HostListener} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {WindowBubbleSubmenuComponent} from "./window-bubble-submenu/window-bubble-submenu.component";
+import {SubmenuItem, WindowBubbleSubmenuComponent} from "./window-bubble-submenu/window-bubble-submenu.component";
 import {BehaviorSubject} from "rxjs";
 import {ProfileBubbleComponent} from "./profile-bubble/profile-bubble.component";
+import {AppRoutePaths} from "@/app/routes/app.route.paths";
+import {AuthService} from "@/app/services/auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-window-bubble',
@@ -17,8 +20,30 @@ import {ProfileBubbleComponent} from "./profile-bubble/profile-bubble.component"
 })
 export class UserWindowBubbleComponent {
   showSubmenu: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  menuItems: SubmenuItem[] = [
+    {
+      title: 'Profile',
+      icon: 'account_circle',
+      action: () => {
+        console.log('Profile clicked');
+        this.router.navigate([AppRoutePaths.fullPath(AppRoutePaths.user.profile)]);
+      }
+    },
+    {
+      title: 'Logout',
+      icon: 'logout',
+      action: () => {
+        console.log('Logout clicked');
+        this.authService.logout();
+      }
+    }
+  ];
 
-  constructor(private elementRef: ElementRef) {
+  constructor(
+    private elementRef: ElementRef,
+    private router: Router,
+    private authService: AuthService
+  ) {
   }
 
   toggleSubmenu() {

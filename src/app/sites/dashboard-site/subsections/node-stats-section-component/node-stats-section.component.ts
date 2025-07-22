@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {SummaryCardComponent} from "../../../../components/cards/summary-card/summary-card.component";
-import {LineChartComponent} from "../../../../components/charts/line-chart/line-chart.component";
+import {SummaryCardComponent} from "@/app/components/cards/summary-card/summary-card.component";
+import {LineChartComponent} from "@/app/components/charts/line-chart/line-chart.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {NodeDevice} from "@/app/global-interfaces/nodes/NodeDevice";
 import {ChartInputData} from "@/app/sites/dashboard-site/dashboard-site.component";
@@ -41,7 +41,7 @@ export class NodeStatsSectionComponent {
     if (!node) {
       return;
     }
-    const iclistenHF = node.pamModules.ICListenHF;
+    const iclistenHF = node.modules.ICListenHF;
     if (!iclistenHF) {
       console.warn("No ICListenHF module present");
       return;
